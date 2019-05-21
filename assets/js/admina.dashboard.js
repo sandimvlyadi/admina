@@ -1,0 +1,1 @@
+$('#li-dashboard').addClass('active');
