@@ -19,7 +19,7 @@
             </a>
 					</li>
 					<li id="li-pasien">
-            <a href="">
+            <a href="<?php echo base_url('pasien/'); ?>">
               <i class="now-ui-icons design_bullet-list-67"></i>
               <p>Pasien</p>
             </a>
@@ -58,7 +58,7 @@
 						<div class="collapse " id="menuSurat">
 							<ul class="nav">
 								<li id="li-surat-sakit">
-									<a href="">
+									<a href="<?php echo base_url('surat-sakit/'); ?>">
 										<i class="now-ui-icons arrows-1_minimal-right"></i>
 										<p>Surat Sakit</p>
 									</a>
@@ -192,7 +192,7 @@
 									</a>
 								</li>
 								<li id="li-karyawan">
-									<a href="">
+									<a href="<?php echo base_url('karyawan/'); ?>">
 										<i class="now-ui-icons arrows-1_minimal-right"></i>
 										<p>Karyawan</p>
 									</a>
@@ -265,7 +265,7 @@
 									</a>
 								</li>
 								<li id="li-karyawan">
-									<a href="">
+									<a href="<?php echo base_url('karyawan/'); ?>">
 										<i class="now-ui-icons arrows-1_minimal-right"></i>
 										<p>Karyawan</p>
 									</a>

@@ -1,0 +1,328 @@
+<?php
+defined('BASEPATH') OR exit('No direct script access allowed');
+
+class Pasien_model extends CI_Model {
+
+	function _get($data = array())
+    {
+    	$q = "SELECT a.*, b.`nama_kota`, c.`nama_pekerjaan`, d.`nama_kota` AS `nama_kota_suami`, e.`nama_pekerjaan` AS `nama_pekerjaan_suami`, f.`nama_desa` FROM `pasiens` a LEFT JOIN `kotas` b ON a.`tempat_lahir` = b.`id` LEFT JOIN `pekerjaans` c ON a.`pekerjaan_istri` = c.`id` LEFT JOIN `kotas` d ON a.`id_kota` = d.`id` LEFT JOIN `pekerjaans` e ON a.`pekerjaan_suami` = e.`id` LEFT JOIN `desas` f ON a.`id_desa` = f.`id` ";
+
+        if ($data['search']['value'] && !isset($data['all'])) {
+        	$s = $this->db->escape_str($data['search']['value']);
+            $q .= "WHERE (a.`nama_pasien` LIKE '%". $s ."%' OR b.`nama_kota` LIKE '%". $s ."%' OR a.`tgl_lahir` LIKE '%". $s ."%' OR a.`gol_darah` LIKE '%". $s ."%' OR a.`alamat_istri` LIKE '%". $s ."%' OR a.`no_telp_pasien` LIKE '%". $s ."%' OR a.`jenis_pasien` LIKE '%". $s ."%' OR a.`no_registrasi` LIKE '%". $s ."%' OR c.`nama_pekerjaan` LIKE '%". $s ."%' OR d.`nama_kota` LIKE '%". $s ."%' OR a.`pendidikan_istri` LIKE '%". $s ."%' OR a.`nama_suami` LIKE '%". $s ."%' OR a.`tgl_lahir_suami` LIKE '%". $s ."%' OR a.`pendidikan_suami` LIKE '%". $s ."%' OR a.`agama_suami` LIKE '%". $s ."%' OR a.`agama_istri` LIKE '%". $s ."%' OR e.`nama_pekerjaan` LIKE '%". $s ."%' OR a.`alamat_suami` LIKE '%". $s ."%' OR a.`gravida` LIKE '%". $s ."%' OR a.`para` LIKE '%". $s ."%' OR a.`abortus` LIKE '%". $s ."%' OR a.`hpht` LIKE '%". $s ."%' OR a.`siklus` LIKE '%". $s ."%' OR a.`durasi_haid` LIKE '%". $s ."%' OR a.`taksiran_partus` LIKE '%". $s ."%' OR a.`catatan_bidan` LIKE '%". $s ."%' OR f.`nama_desa` LIKE '%". $s ."%') AND a.`deleted_at` IS NULL ";
+        } else{
+        	$q .= "WHERE a.`deleted_at` IS NULL ";
+        }
+
+        if (isset($data['order'])) {
+        	$dir = $this->db->escape_str($data['order'][0]['dir']);
+        	$col = $this->db->escape_str($data['columns'][$data['order'][0]['column']]['data']);
+        	if ($data['order'][0]['column'] != 0) {
+                if ($col == 'nama_kota') {
+                    $q .= "ORDER BY b.`nama_kota` ". $dir ." ";
+                } elseif ($col == 'nama_pekerjaan') {
+                    $q .= "ORDER BY c.`nama_pekerjaan` ". $dir ." ";
+                } elseif ($col == 'nama_pekerjaan_suami') {
+                    $q .= "ORDER BY `nama_pekerjaan_suami` ". $dir ." ";
+                } elseif ($col == 'nama_kota_suami') {
+                    $q .= "ORDER BY `nama_kota_suami` ". $dir ." ";
+                } elseif ($col == 'nama_desa') {
+                    $q .= "ORDER BY f.`nama_desa` ". $dir ." ";
+                } else {
+                    $q .= "ORDER BY a.`". $col ."` ". $dir ." ";
+                }
+        	} else{
+        		$q .= "ORDER BY a.`id` ". $dir ." ";
+        	}
+        } else{
+        	$q .= "ORDER BY a.`id` DESC ";
+        }
+
+        return $q;
+    }
+
+    function _list($data = array())
+    {
+        $q = $this->_get($data);
+        $q .= "LIMIT ". $this->db->escape_str($data['start']) .", ". $this->db->escape_str($data['length']);
+        $r = $this->db->query($q, false)->result_array();
+        
+        return $r;
+    }
+
+    function _filtered($data = array())
+    {
+        $q = $this->_get($data);
+        $r = $this->db->query($q, false)->result_array();
+        
+        return count($r);
+    }
+
+    function _all($data = array())
+    {
+        $data['all'] = true;
+        $q = $this->_get($data);
+        $r = $this->db->query($q)->result_array();
+        
+        return count($r);
+    }
+    
+	function datatable($data = array())
+	{
+		$result = array(
+            'draw'              => 1,
+            'recordsTotal'      => 0,
+            'recordsFiltered'   => 0,
+            'data'              => array(),
+            'result'            => false,
+            'msg'               => ''
+        );
+
+        $list = $this->_list($data);
+        if (count($list) > 0) {
+            $result = array(
+                'draw'              => $data['draw'],
+                'recordsTotal'      => $this->_all($data),
+                'recordsFiltered'   => $this->_filtered($data),
+                'data'              => $list,
+                'result'            => true,
+                'msg'               => 'Loaded.',
+                'start'             => (int) $data['start'] + 1
+            );
+        } else{
+            $result['msg'] = 'No data left.';
+        }
+
+        return $result;
+	}
+
+    function edit($id = 0)
+    {
+        $result = array(
+            'result'    => false,
+            'msg'       => 'Data pasien tidak ditemukan.'  
+        );
+
+        $q = "SELECT * FROM `pasiens` WHERE `id` = '". $this->db->escape_str($id) ."';";
+        $r = $this->db->query($q)->result_array();
+        if (count($r) > 0) {
+            $result['result'] = true;
+            $result['data'] = $r[0];
+        }
+
+        return $result;
+    }
+
+	function save($data = array())
+	{
+		$result = array(
+			'result'    => false,
+			'msg'		=> ''  
+		);
+
+		$u = $data['userData'];
+		$d = $data['postData'];
+		$id = $d['id'];
+		parse_str($d['form'], $f);
+
+        if (!array_key_exists('catatan_bidan', $f)) {
+            $f['catatan_bidan'] = '[]';
+        }
+
+		$q = '';
+		if ($id == 0) {
+			$q =    "INSERT INTO 
+                        `pasiens` 
+                        (
+                            `nama_pasien`,
+                            `tgl_lahir`,
+                            `gol_darah`,
+                            `alamat_istri`,
+                            `no_telp_pasien`,
+                            `jenis_pasien`,
+                            `no_registrasi`,
+                            `pekerjaan_istri`,
+                            `id_kota`,
+                            `pendidikan_istri`,
+                            `nama_suami`,
+                            `tgl_lahir_suami`,
+                            `pendidikan_suami`,
+                            `agama_suami`,
+                            `agama_istri`,
+                            `pekerjaan_suami`,
+                            `alamat_suami`,
+                            `gravida`,
+                            `para`,
+                            `abortus`,
+                            `hpht`,
+                            `siklus`,
+                            `durasi_haid`,
+                            `taksiran_partus`,
+                            `catatan_bidan`,
+                            `id_desa`
+                        ) 
+                    VALUES 
+                        (
+                            '". $this->db->escape_str($f['nama_pasien']) ."',
+                            '". $this->db->escape_str($f['tgl_lahir']) ."',
+                            '". $this->db->escape_str($f['gol_darah']) ."',
+                            '". $this->db->escape_str($f['alamat_istri']) ."',
+                            '". $this->db->escape_str($f['no_telp_pasien']) ."',
+                            '". $this->db->escape_str($f['jenis_pasien']) ."',
+                            '". $this->db->escape_str($f['no_registrasi']) ."',
+                            '". $this->db->escape_str($f['pekerjaan_istri']) ."',
+                            '". $this->db->escape_str($f['id_kota']) ."',
+                            '". $this->db->escape_str($f['pendidikan_istri']) ."',
+                            '". $this->db->escape_str($f['nama_suami']) ."',
+                            '". $this->db->escape_str($f['tgl_lahir_suami']) ."',
+                            '". $this->db->escape_str($f['pendidikan_suami']) ."',
+                            '". $this->db->escape_str($f['agama_suami']) ."',
+                            '". $this->db->escape_str($f['agama_istri']) ."',
+                            '". $this->db->escape_str($f['pekerjaan_suami']) ."',
+                            '". $this->db->escape_str($f['alamat_istri']) ."',
+                            '". $this->db->escape_str($f['gravida']) ."',
+                            '". $this->db->escape_str($f['para']) ."',
+                            '". $this->db->escape_str($f['abortus']) ."',
+                            '". $this->db->escape_str($f['hpht']) ."',
+                            '". $this->db->escape_str($f['siklus']) ."',
+                            '". $this->db->escape_str($f['durasi_haid']) ."',
+                            '". $this->db->escape_str($f['taksiran_partus']) ."',
+                            '". $this->db->escape_str($f['catatan_bidan']) ."',
+                            '". $this->db->escape_str($f['id_desa']) ."'
+                        )
+                    ;";
+		} else{
+            $q =    "UPDATE 
+                        `pasiens` 
+                    SET 
+                        `nama_pasien` = '". $this->db->escape_str($f['nama_pasien']) ."', 
+                        `tgl_lahir` = '". $this->db->escape_str($f['tgl_lahir']) ."', 
+                        `gol_darah` = '". $this->db->escape_str($f['gol_darah']) ."', 
+                        `alamat_istri` = '". $this->db->escape_str($f['alamat_istri']) ."', 
+                        `no_telp_pasien` = '". $this->db->escape_str($f['no_telp_pasien']) ."', 
+                        `jenis_pasien` = '". $this->db->escape_str($f['jenis_pasien']) ."', 
+                        `no_registrasi` = '". $this->db->escape_str($f['no_registrasi']) ."', 
+                        `pekerjaan_istri` = '". $this->db->escape_str($f['pekerjaan_istri']) ."', 
+                        `nama_suami` = '". $this->db->escape_str($f['nama_suami']) ."', 
+                        `tgl_lahir_suami` = '". $this->db->escape_str($f['tgl_lahir_suami']) ."', 
+                        `pendidikan_suami` = '". $this->db->escape_str($f['pendidikan_suami']) ."',
+                        `agama_suami` = '". $this->db->escape_str($f['agama_suami']) ."',
+                        `agama_istri` = '". $this->db->escape_str($f['agama_istri']) ."',
+                        `pekerjaan_suami` = '". $this->db->escape_str($f['pekerjaan_suami']) ."',
+                        `alamat_suami` = '". $this->db->escape_str($f['alamat_istri']) ."',
+                        `gravida` = '". $this->db->escape_str($f['gravida']) ."',
+                        `para` = '". $this->db->escape_str($f['para']) ."',
+                        `abortus` = '". $this->db->escape_str($f['abortus']) ."',
+                        `hpht` = '". $this->db->escape_str($f['hpht']) ."',
+                        `siklus` = '". $this->db->escape_str($f['siklus']) ."',
+                        `durasi_haid` = '". $this->db->escape_str($f['durasi_haid']) ."',
+                        `taksiran_partus` = '". $this->db->escape_str($f['taksiran_partus']) ."',
+                        `catatan_bidan` = '". $this->db->escape_str($f['catatan_bidan']) ."',
+                        `id_desa` = '". $this->db->escape_str($f['id_desa']) ."'
+                    WHERE 
+                        `id` = '". $this->db->escape_str($id) ."'
+                    ;";
+		}
+
+		if ($this->db->simple_query($q)) {
+			$result['result'] = true;
+			$result['msg'] = 'Data berhasil disimpan.';
+		} else{
+			$result['msg'] = 'Terjadi kesalahan saat menyimpan data.';
+		}
+
+		return $result;
+	}
+
+	function delete($data = array())
+	{
+		$result = array(
+			'result'    => false,
+			'msg'		=> ''  
+		);
+
+		$u = $data['userData'];
+		$d = $data['postData'];
+		$id = $d['id'];
+		$q = "UPDATE `pasiens` SET `deleted_at` = NOW() WHERE `id` = '". $this->db->escape_str($id) ."';";
+		if ($this->db->simple_query($q)) {
+			$result['result'] = true;
+			$result['msg'] = 'Data berhasil dihapus.';
+		} else{
+			$result['msg'] = 'Terjadi kesalahan saat menghapus data.';
+		}
+
+		return $result;
+	}
+
+    function select_kota()
+    {
+        $result = array(
+            'result'    => false,
+            'msg'       => ''  
+        );
+
+        $q = "SELECT * FROM `kotas` WHERE `deleted_at` IS NULL ORDER BY `nama_kota` ASC;";
+        $r = $this->db->query($q, false)->result_array();
+        if (count($r) > 0) {
+            $result['result'] = true;
+            $result['data'] = $r;
+        }
+
+        return $result;
+    }
+
+    function select_desa()
+    {
+        $result = array(
+            'result'    => false,
+            'msg'       => ''  
+        );
+
+        $q = "SELECT * FROM `desas` WHERE `deleted_at` IS NULL ORDER BY `nama_desa` ASC;";
+        $r = $this->db->query($q, false)->result_array();
+        if (count($r) > 0) {
+            $result['result'] = true;
+            $result['data'] = $r;
+        }
+
+        return $result;
+    }
+
+    function select_pekerjaan()
+    {
+        $result = array(
+            'result'    => false,
+            'msg'       => ''  
+        );
+
+        $q = "SELECT * FROM `pekerjaans` WHERE `deleted_at` IS NULL ORDER BY `nama_pekerjaan` ASC;";
+        $r = $this->db->query($q, false)->result_array();
+        if (count($r) > 0) {
+            $result['result'] = true;
+            $result['data'] = $r;
+        }
+
+        return $result;
+    }
+
+    function input_no_registrasi()
+    {
+        $result = array(
+            'result'    => false,
+            'msg'       => ''  
+        );
+
+        $d = date('Ym');
+        $q = "SELECT COUNT(*) AS `total` FROM `pasiens` WHERE `no_registrasi` LIKE '". $d ."%';";
+        $r = $this->db->query($q, false)->result_array();
+        if (count($r) > 0) {
+            $result['result'] = true;
+            $total = $r[0]['total'] + 1;
+            $result['value'] = $d . str_pad($total, 3, '0', STR_PAD_LEFT);
+        }
+
+        return $result;
+    }
+
+}
