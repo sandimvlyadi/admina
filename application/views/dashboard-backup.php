@@ -92,19 +92,123 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       </div>
       <div class="content">
         <div class="row">
+          <div class="col-lg-4">
+            <div class="card">
+              <div class="card-header card-antrian">
+                <div class="card-category d-flex justify-content-center">0</div>
+                <div class="card-title d-flex justify-content-center">Antrian / Registrasi</div>
+              </div>
+              <div class="card-body d-flex justify-content-center">
+                <i class="fa fa-users fa-10x"></i>
+              </div>
+              <div class="card-footer">
+                <a href="<?php echo base_url('antrian/'); ?>">Tambah Antrian / Registrasi <i class="fa fa-arrow-right"></i></a>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="card">
+              <div class="card-header card-pembayaran">
+                <div class="card-category d-flex justify-content-center">0</div>
+                <div class="card-title d-flex justify-content-center">Pembayaran</div>
+              </div>
+              <div class="card-body d-flex justify-content-center">
+                <i class="fa fa-money-bill-wave fa-10x"></i>
+              </div>
+              <div class="card-footer">
+                <a href="<?php echo base_url('pembayaran/'); ?>">Tambah Pembayaran <i class="fa fa-arrow-right"></i></a>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="card">
+              <div class="card-header card-pasien">
+                <div class="card-category d-flex justify-content-center">!</div>
+                <div class="card-title d-flex justify-content-center">Pasien</div>
+              </div>
+              <div class="card-body d-flex justify-content-center">
+                <i class="fa fa-book fa-10x"></i>
+              </div>
+              <div class="card-footer">
+                <a href="<?php echo base_url('pasien/'); ?>">Tambah Pasien Baru <i class="fa fa-arrow-right"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
           <div id="table" class="col-md-12">
             <div class="card">
               <div class="card-header">
                 <div class="row">
-                	<div class="col-6">
-                		<h4 class="card-title"> Tabel Pembayaran</h4>
-                	</div>
+                  <div class="col-6">
+                    <h4 class="card-title"> Pasien yang harus dilayani (hari ini): </h4>
+                  </div>
                 </div>
               </div>
               <div class="card-body">
                 <div class="table-responsive">
-                  <table id="tableDilayani" class="table table-striped table-hover">
-                    <thead class="text-primary table-success">
+                  <table id="tableDilayani" class="table table-striped table-hover table-danger">
+                    <thead class="text-primary">
+                      <th>No. Antrian</th>
+                      <th>Nama Pasien</th>
+                      <th>Jenis Pelayanan</th>
+                      <th>Dokter</th>
+                      <th>Status</th>
+                      <th>Tanggal</th>
+                      <th>Aksi</th>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div id="table" class="col-md-12">
+            <div class="card">
+              <div class="card-header">
+                <div class="row">
+                  <div class="col-6">
+                    <h4 class="card-title"> Pasien yang sedang dilayani (hari ini): </h4>
+                  </div>
+                </div>
+              </div>
+              <div class="card-body">
+                <div class="table-responsive">
+                  <table id="tableProses" class="table table-striped table-hover table-warning">
+                    <thead class="text-primary">
+                      <th>No. Antrian</th>
+                      <th>Nama Pasien</th>
+                      <th>Jenis Pelayanan</th>
+                      <th>Dokter</th>
+                      <th>Status</th>
+                      <th>Tanggal</th>
+                      <th>Aksi</th>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div id="table" class="col-md-12">
+            <div class="card">
+              <div class="card-header">
+                <div class="row">
+                  <div class="col-6">
+                    <h4 class="card-title"> Pasien yang sudah dilayani (hari ini): </h4>
+                  </div>
+                </div>
+              </div>
+              <div class="card-body">
+                <div class="table-responsive">
+                  <table id="tableTerlayani" class="table table-striped table-hover table-success">
+                    <thead class="text-primary">
                       <th>No. Antrian</th>
                       <th>Nama Pasien</th>
                       <th>Jenis Pelayanan</th>

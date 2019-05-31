@@ -9,7 +9,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <link rel="icon" type="image/png" href="../assets/img/favicon.png">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <title>
-    Admina | Dashboard
+    Admina | Penjualan Detail
   </title>
   <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
   <!--     Fonts and icons     -->
@@ -56,7 +56,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <span class="navbar-toggler-bar bar3"></span>
               </button>
             </div>
-            <a class="navbar-brand" href="">Dashboard</a>
+            <a class="navbar-brand" href="">Penjualan Detail</a>
           </div>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-bar navbar-kebab"></span>
@@ -97,26 +97,90 @@ defined('BASEPATH') OR exit('No direct script access allowed');
               <div class="card-header">
                 <div class="row">
                 	<div class="col-6">
-                		<h4 class="card-title"> Tabel Pembayaran</h4>
+                		<h4 class="card-title"> Tabel Penjualan Detail</h4>
+                	</div>
+                	<div class="col-6">
+                		<div class="pull-right">
+                			<button name="btn_add" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i> Tambah Data</button>
+                		</div>
                 	</div>
                 </div>
               </div>
               <div class="card-body">
                 <div class="table-responsive">
-                  <table id="tableDilayani" class="table table-striped table-hover">
-                    <thead class="text-primary table-success">
-                      <th>No. Antrian</th>
-                      <th>Nama Pasien</th>
-                      <th>Jenis Pelayanan</th>
-                      <th>Dokter</th>
-                      <th>Status</th>
-                      <th>Tanggal</th>
-                      <th>Aksi</th>
+                  <table id="tablePenjualanDetail" class="table table-striped table-hover">
+                    <thead class="text-primary">
+                      <th>No.</th>
+                      <th>No. Faktur</th>
+                      <th>Obat</th>
+                      <th>Nama Obat</th>
+                      <th>Harga Beli</th>
+                      <th>Quantiti</th>
+                      <th>Harga Jual</th>
+                      <th style="min-width: 100px;">Aksi</th>
                     </thead>
                     <tbody>
                     </tbody>
                   </table>
                 </div>
+              </div>
+            </div>
+          </div>
+
+          <div id="form" class="col-md-12" style="display: none;">
+            <div class="card">
+              <div class="card-header">
+                <h4 id="formTitle" class="card-title"> Tambah Data</h4>
+              </div>
+              <div class="card-body">
+                <form id="formData">
+                	<div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label>No. Faktur</label>
+                        <select name="id_penjualan" class="form-control"></select>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label>Obat</label>
+                        <select name="id_obat" class="form-control"></select>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label>Nama Obat</label>
+                        <input type="text" name="nama_obat_jual" class="form-control" placeholder="Nama Obat" required>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label>Harga Beli</label>
+                        <input type="number" name="harga_beli_penjualan" class="form-control" placeholder="Harga Beli" required>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label>Quantiti</label>
+                        <input type="number" name="qty_jual" class="form-control" placeholder="Quantiti" required>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label>Harga Jual</label>
+                        <input type="number" name="harga_jual_penjualan" class="form-control" placeholder="Harga Jual" required>
+                      </div>
+                    </div>
+                	</div>
+                </form>
+              </div>
+              <div class="card-footer row">
+              	<div class="col-md-2">
+            			<button id="0" name="btn_save" class="btn btn-primary btn-block"><i class="fa fa-save"></i> Save</button>
+            		</div>
+            		<div class="col-md-2">
+            			<button name="btn_cancel" class="btn btn-danger btn-block"><i class="fa fa-times"></i> Cancel</button>
+            		</div>
               </div>
             </div>
           </div>
@@ -137,7 +201,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <script src="<?php echo base_url('assets/js/now-ui-dashboard.min.js?v=1.3.0'); ?>" type="text/javascript"></script>
   <!-- Now Ui Dashboard DEMO methods, don't include it in your project! -->
   <script src="<?php echo base_url('assets/demo/demo.js'); ?>"></script>
-  <script src="<?php echo base_url('assets/js/admina.dashboard.js'); ?>" type="text/javascript"></script>
+  <script src="<?php echo base_url('assets/js/admina.penjualan.detail.js'); ?>" type="text/javascript"></script>
   <script type="text/javascript" src="<?php echo base_url('assets/DataTables/datatables.min.js'); ?>"></script>
   <script type="text/javascript" src="<?php echo base_url('assets/select2/js/select2.min.js'); ?>"></script>
 </body>

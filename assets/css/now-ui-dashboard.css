@@ -3901,3 +3901,12 @@ input[type=number]::-webkit-outer-spin-button {
   -webkit-appearance: none; 
   margin: 0; 
 }
+
+.card-antrian .card-category, .card-pasien .card-category, .card-pembayaran .card-category {
+  font-size: 48px;
+  line-height: 1;
+}
+
+.card-antrian .card-title, .card-pasien .card-title, .card-pembayaran .card-title {
+  font-size: 24px;
+}

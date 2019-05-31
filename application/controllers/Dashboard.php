@@ -9,6 +9,7 @@ class Dashboard extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->model('login_model', 'login');
+		$this->load->model('dashboard_model', 'model');
 
 		$this->userData = array(
 			'session'	=> $this->session->userdata('userSession'),
@@ -46,6 +47,18 @@ class Dashboard extends CI_Controller {
     {
         $this->session->sess_destroy();
         redirect();
+    }
+
+    public function datatable_dilayani()
+    {
+		$response 	= array(
+			'result'	=> false,
+			'msg'		=> ''
+		);
+
+		$param 		= $_GET;
+		$response 	= $this->model->datatable_dilayani($param);
+    	echo json_encode($response, JSON_PRETTY_PRINT);
     }
     
 }

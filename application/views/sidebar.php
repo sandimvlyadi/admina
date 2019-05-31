@@ -7,13 +7,13 @@
             </a>
 					</li>
 					<li id="li-antrian">
-            <a href="">
+            <a href="<?php echo base_url('antrian/'); ?>">
               <i class="now-ui-icons design_bullet-list-67"></i>
               <p>Antrian</p>
             </a>
 					</li>
 					<li id="li-obat">
-            <a href="">
+            <a href="<?php echo base_url('obat/'); ?>">
               <i class="now-ui-icons design_bullet-list-67"></i>
               <p>Obat</p>
             </a>
@@ -31,19 +31,19 @@
             </a>
 					</li>
 					<li id="li-pembayaran">
-            <a href="">
+            <a href="<?php echo base_url('pembayaran/'); ?>">
               <i class="now-ui-icons design_bullet-list-67"></i>
               <p>Pembayaran</p>
             </a>
 					</li>
 					<li id="li-penjualan">
-            <a href="">
+            <a href="<?php echo base_url('penjualan/'); ?>">
               <i class="now-ui-icons design_bullet-list-67"></i>
               <p>Penjualan</p>
             </a>
 					</li>
 					<li id="li-supplier">
-            <a href="">
+            <a href="<?php echo base_url('supplier/'); ?>">
               <i class="now-ui-icons design_bullet-list-67"></i>
               <p>Supplier</p>
             </a>

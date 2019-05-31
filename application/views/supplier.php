@@ -9,7 +9,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <link rel="icon" type="image/png" href="../assets/img/favicon.png">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <title>
-    Admina | Dashboard
+    Admina | Supplier
   </title>
   <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
   <!--     Fonts and icons     -->
@@ -56,7 +56,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <span class="navbar-toggler-bar bar3"></span>
               </button>
             </div>
-            <a class="navbar-brand" href="">Dashboard</a>
+            <a class="navbar-brand" href="">Supplier</a>
           </div>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-bar navbar-kebab"></span>
@@ -97,26 +97,118 @@ defined('BASEPATH') OR exit('No direct script access allowed');
               <div class="card-header">
                 <div class="row">
                 	<div class="col-6">
-                		<h4 class="card-title"> Tabel Pembayaran</h4>
+                		<h4 class="card-title"> Tabel Supplier</h4>
+                	</div>
+                	<div class="col-6">
+                		<div class="pull-right">
+                			<button name="btn_add" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i> Tambah Data</button>
+                		</div>
                 	</div>
                 </div>
               </div>
               <div class="card-body">
                 <div class="table-responsive">
-                  <table id="tableDilayani" class="table table-striped table-hover">
-                    <thead class="text-primary table-success">
-                      <th>No. Antrian</th>
-                      <th>Nama Pasien</th>
-                      <th>Jenis Pelayanan</th>
-                      <th>Dokter</th>
-                      <th>Status</th>
-                      <th>Tanggal</th>
-                      <th>Aksi</th>
+                  <table id="tableSupplier" class="table table-striped table-hover">
+                    <thead class="text-primary">
+                      <th>No.</th>
+                      <th>Nama Supplier</th>
+                      <th>Alamat</th>
+                      <th>No. Telepon</th>
+                      <th>No. Handphone</th>
+                      <th>Kontak Person</th>
+                      <th>Nama Bank</th>
+                      <th>No. Rekening</th>
+                      <th>Email</th>
+                      <th>Website</th>
+                      <th>Kota</th>
+                      <th style="min-width: 100px;">Aksi</th>
                     </thead>
                     <tbody>
                     </tbody>
                   </table>
                 </div>
+              </div>
+            </div>
+          </div>
+
+          <div id="form" class="col-md-12" style="display: none;">
+            <div class="card">
+              <div class="card-header">
+                <h4 id="formTitle" class="card-title"> Tambah Data</h4>
+              </div>
+              <div class="card-body">
+                <form id="formData">
+                	<div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label>Nama Supplier</label>
+                        <input type="text" name="nama_supplier" class="form-control" placeholder="Nama Supplier" required>
+                      </div>
+                    </div>
+                		<div class="col-md-6">
+                			<div class="form-group">
+                				<label>Alamat</label>
+                				<input type="text" name="alamat_supplier" class="form-control" placeholder="Alamat Supplier" required>
+                			</div>
+                		</div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label>No. Telepon</label>
+                        <input type="number" name="no_telepon" class="form-control" placeholder="No. Telepon" required>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label>No. Handphone</label>
+                        <input type="number" name="no_handphone" class="form-control" placeholder="No. Handphone">
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label>Kontak Person</label>
+                        <input type="text" name="kontak_person" class="form-control" placeholder="Kontak Person" required>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label>Nama Bank</label>
+                        <input type="text" name="nama_bank" class="form-control" placeholder="Nama Bank">
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label>No. Rekening</label>
+                        <input type="text" name="no_rekening" class="form-control" placeholder="No. Rekening">
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" name="email" class="form-control" placeholder="Email">
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label>Website</label>
+                        <input type="text" name="website" class="form-control" placeholder="Website">
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label>Kota</label>
+                        <select name="id_kota" class="form-control"></select>
+                      </div>
+                    </div>
+                	</div>
+                </form>
+              </div>
+              <div class="card-footer row">
+              	<div class="col-md-2">
+            			<button id="0" name="btn_save" class="btn btn-primary btn-block"><i class="fa fa-save"></i> Save</button>
+            		</div>
+            		<div class="col-md-2">
+            			<button name="btn_cancel" class="btn btn-danger btn-block"><i class="fa fa-times"></i> Cancel</button>
+            		</div>
               </div>
             </div>
           </div>
@@ -137,7 +229,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <script src="<?php echo base_url('assets/js/now-ui-dashboard.min.js?v=1.3.0'); ?>" type="text/javascript"></script>
   <!-- Now Ui Dashboard DEMO methods, don't include it in your project! -->
   <script src="<?php echo base_url('assets/demo/demo.js'); ?>"></script>
-  <script src="<?php echo base_url('assets/js/admina.dashboard.js'); ?>" type="text/javascript"></script>
+  <script src="<?php echo base_url('assets/js/admina.supplier.js'); ?>" type="text/javascript"></script>
   <script type="text/javascript" src="<?php echo base_url('assets/DataTables/datatables.min.js'); ?>"></script>
   <script type="text/javascript" src="<?php echo base_url('assets/select2/js/select2.min.js'); ?>"></script>
 </body>

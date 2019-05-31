@@ -9,7 +9,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <link rel="icon" type="image/png" href="../assets/img/favicon.png">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <title>
-    Admina | Dashboard
+    Admina | Penjualan
   </title>
   <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
   <!--     Fonts and icons     -->
@@ -56,7 +56,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <span class="navbar-toggler-bar bar3"></span>
               </button>
             </div>
-            <a class="navbar-brand" href="">Dashboard</a>
+            <a class="navbar-brand" href="">Penjualan</a>
           </div>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-bar navbar-kebab"></span>
@@ -97,26 +97,79 @@ defined('BASEPATH') OR exit('No direct script access allowed');
               <div class="card-header">
                 <div class="row">
                 	<div class="col-6">
-                		<h4 class="card-title"> Tabel Pembayaran</h4>
+                		<h4 class="card-title"> Tabel Penjualan</h4>
+                	</div>
+                	<div class="col-6">
+                		<div class="pull-right">
+                			<button name="btn_add" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i> Tambah Data</button>
+                		</div>
                 	</div>
                 </div>
               </div>
               <div class="card-body">
                 <div class="table-responsive">
-                  <table id="tableDilayani" class="table table-striped table-hover">
-                    <thead class="text-primary table-success">
-                      <th>No. Antrian</th>
-                      <th>Nama Pasien</th>
-                      <th>Jenis Pelayanan</th>
-                      <th>Dokter</th>
+                  <table id="tablePenjualan" class="table table-striped table-hover">
+                    <thead class="text-primary">
+                      <th>No.</th>
+                      <th>No. Faktur</th>
+                      <th>Pasien</th>
+                      <th>Tanggal Penjualan</th>
+                      <th>Total Penjualan</th>
+                      <th>Bayar</th>
                       <th>Status</th>
-                      <th>Tanggal</th>
-                      <th>Aksi</th>
+                      <th>Kode Antrian</th>
+                      <th style="min-width: 150px;">Aksi</th>
                     </thead>
                     <tbody>
                     </tbody>
                   </table>
                 </div>
+              </div>
+            </div>
+          </div>
+
+          <div id="form" class="col-md-12" style="display: none;">
+            <div class="card">
+              <div class="card-header">
+                <h4 id="formTitle" class="card-title"> Tambah Data</h4>
+              </div>
+              <div class="card-body">
+                <form id="formData">
+                	<div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label>No. Faktur</label>
+                        <input type="text" name="no_faktur" class="form-control" placeholder="No. Antrian" required>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label>Pasien</label>
+                        <select name="id_pasien" class="form-control"></select>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label>Tanggal Penjualan</label>
+                        <input type="date" name="tgl_penjualan" class="form-control" placeholder="Tanggal Penjualan" required>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label>Kode Antrian</label>
+                        <select name="id_antrian" class="form-control"></select>
+                      </div>
+                    </div>
+                	</div>
+                </form>
+              </div>
+              <div class="card-footer row">
+              	<div class="col-md-2">
+            			<button id="0" name="btn_save" class="btn btn-primary btn-block"><i class="fa fa-save"></i> Save</button>
+            		</div>
+            		<div class="col-md-2">
+            			<button name="btn_cancel" class="btn btn-danger btn-block"><i class="fa fa-times"></i> Cancel</button>
+            		</div>
               </div>
             </div>
           </div>
@@ -137,7 +190,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <script src="<?php echo base_url('assets/js/now-ui-dashboard.min.js?v=1.3.0'); ?>" type="text/javascript"></script>
   <!-- Now Ui Dashboard DEMO methods, don't include it in your project! -->
   <script src="<?php echo base_url('assets/demo/demo.js'); ?>"></script>
-  <script src="<?php echo base_url('assets/js/admina.dashboard.js'); ?>" type="text/javascript"></script>
+  <script src="<?php echo base_url('assets/js/admina.penjualan.js'); ?>" type="text/javascript"></script>
   <script type="text/javascript" src="<?php echo base_url('assets/DataTables/datatables.min.js'); ?>"></script>
   <script type="text/javascript" src="<?php echo base_url('assets/select2/js/select2.min.js'); ?>"></script>
 </body>
