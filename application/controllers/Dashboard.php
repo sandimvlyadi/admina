@@ -60,5 +60,67 @@ class Dashboard extends CI_Controller {
 		$response 	= $this->model->datatable_dilayani($param);
     	echo json_encode($response, JSON_PRETTY_PRINT);
     }
+
+    public function datatable_proses()
+    {
+		$response 	= array(
+			'result'	=> false,
+			'msg'		=> ''
+		);
+
+		$param 		= $_GET;
+		$response 	= $this->model->datatable_proses($param);
+    	echo json_encode($response, JSON_PRETTY_PRINT);
+    }
+
+    public function datatable_terlayani()
+    {
+		$response 	= array(
+			'result'	=> false,
+			'msg'		=> ''
+		);
+
+		$param 		= $_GET;
+		$response 	= $this->model->datatable_terlayani($param);
+    	echo json_encode($response, JSON_PRETTY_PRINT);
+    }
+
+    public function layani()
+    {
+		$response 	= array(
+			'result'	=> false,
+			'msg'		=> ''
+		);
+
+		$param = array(
+			'userData' => $this->userData,
+			'postData' => $_POST
+		);
+		$response = $this->model->layani($param);
+
+		echo json_encode($response, JSON_PRETTY_PRINT);
+    }
+
+    public function selesai()
+    {
+		$response 	= array(
+			'result'	=> false,
+			'msg'		=> ''
+		);
+
+		$param = array(
+			'userData' => $this->userData,
+			'postData' => $_POST
+		);
+		$response = $this->model->selesai($param);
+
+		echo json_encode($response, JSON_PRETTY_PRINT);
+    }
+
+    public function info()
+    {
+    	$response = $this->model->info();
+		echo json_encode($response, JSON_PRETTY_PRINT);	
+    }
     
 }
