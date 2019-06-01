@@ -148,7 +148,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
               <div class="card-body">
                 <div class="table-responsive">
                   <table id="tableDilayani" class="table table-striped table-hover">
-                    <thead class="table-success">
+                    <thead class="table-danger">
                       <th>No. Antrian</th>
                       <th>Nama Pasien</th>
                       <th>Jenis Pelayanan</th>

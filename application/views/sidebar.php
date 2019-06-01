@@ -25,7 +25,7 @@
             </a>
 					</li>
 					<li id="li-pembelian">
-            <a href="">
+            <a href="<?php echo base_url('pembelian/'); ?>">
               <i class="now-ui-icons design_bullet-list-67"></i>
               <p>Pembelian</p>
             </a>

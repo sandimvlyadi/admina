@@ -118,7 +118,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                       <th>Stok Minimal</th>
                       <th>Satuan</th>
                       <th>Kategori</th>
-                      <th>Aksi</th>
+                      <th style="min-width: 100px;">Aksi</th>
                     </thead>
                     <tbody>
                     </tbody>

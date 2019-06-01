@@ -1,5 +1,7 @@
 var table = '';
 
+$('a[href="#menuMaster"]').attr('aria-expanded', 'true');
+$('#menuMaster').addClass('show');
 $('#li-data-icd').addClass('active');
 
 $(document).ready(function(){

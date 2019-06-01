@@ -1,5 +1,7 @@
 var table = '';
 
+$('a[href="#menuMaster"]').attr('aria-expanded', 'true');
+$('#menuMaster').addClass('show');
 $('#li-pekerjaan').addClass('active');
 
 $(document).ready(function(){

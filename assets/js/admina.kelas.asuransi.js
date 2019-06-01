@@ -1,6 +1,8 @@
 var table = '';
 var selectAsuransi = '';
 
+$('a[href="#menuMaster"]').attr('aria-expanded', 'true');
+$('#menuMaster').addClass('show');
 $('#li-kelas-asuransi').addClass('active');
 
 $(document).ready(function(){

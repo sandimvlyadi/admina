@@ -1,6 +1,8 @@
 var table = '';
 var selectKota = '';
 
+$('a[href="#menuMaster"]').attr('aria-expanded', 'true');
+$('#menuMaster').addClass('show');
 $('#li-desa').addClass('active');
 
 $(document).ready(function(){

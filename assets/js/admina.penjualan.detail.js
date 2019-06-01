@@ -210,7 +210,7 @@ $('#tablePenjualanDetail').on('click', 'button[name="btn_delete"]', function(){
                       align: 'center'
                     }
                 });
-                table.ajax.reload(null, false);
+                window.location.reload();
             } else{
                 $.notify({
                     icon: "now-ui-icons ui-1_bell-53",

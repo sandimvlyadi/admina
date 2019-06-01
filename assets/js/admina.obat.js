@@ -2,7 +2,10 @@ var table = '';
 var selectSatuan = '';
 var selectKategori = '';
 
+$('a[href="#menuMaster"]').attr('aria-expanded', 'true');
+$('#menuMaster').addClass('show');
 $('#li-obat').addClass('active');
+$('#menuMaster #li-obat').addClass('active');
 
 $(document).ready(function(){
 	table = $('#tableObat').DataTable({

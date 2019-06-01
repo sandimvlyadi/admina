@@ -2,6 +2,8 @@ var table = '';
 var selectDokter = '';
 var selectHari = '';
 
+$('a[href="#menuMaster"]').attr('aria-expanded', 'true');
+$('#menuMaster').addClass('show');
 $('#li-hari-praktek').addClass('active');
 
 $(document).ready(function(){

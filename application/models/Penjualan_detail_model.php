@@ -182,7 +182,7 @@ class Penjualan_detail_model extends CI_Model {
 			$result['result'] = true;
 			$result['msg'] = 'Data berhasil disimpan.';
 
-            $q = "SELECT * FROM `penjualan_details` WHERE `id_penjualan` = '". $this->db->escape_str($idPenjualan) ."';";
+            $q = "SELECT * FROM `penjualan_details` WHERE `id_penjualan` = '". $this->db->escape_str($idPenjualan) ."' AND `deleted_at` IS NULL;";
             $r = $this->db->query($q)->result_array();
             if (count($r) > 0) {
                 $total = 0;
@@ -214,6 +214,22 @@ class Penjualan_detail_model extends CI_Model {
 		if ($this->db->simple_query($q)) {
 			$result['result'] = true;
 			$result['msg'] = 'Data berhasil dihapus.';
+
+            $q = "SELECT * FROM `penjualan_details` WHERE `id` = '". $this->db->escape_str($id) ."';";
+            $r = $this->db->query($q)->result_array();
+            if (count($r) > 0) {
+                $idPenjualan = $r[0]['id_penjualan'];
+                $q = "SELECT * FROM `penjualan_details` WHERE `id_penjualan` = '". $idPenjualan ."' AND `deleted_at` IS NULL;";
+                $r = $this->db->query($q)->result_array();
+                $total = 0.00;
+                if (count($r) > 0) {
+                    for ($i=0; $i < count($r); $i++) { 
+                        $total += $r[$i]['qty_jual'] * $r[$i]['harga_jual_penjualan'];
+                    }
+                }
+                $q = "UPDATE `penjualans` SET `total_penjualan` = '". $total ."' WHERE `id` = '". $this->db->escape_str($idPenjualan) ."';";
+                $this->db->simple_query($q);
+            }
 		} else{
 			$result['msg'] = 'Terjadi kesalahan saat menghapus data.';
 		}

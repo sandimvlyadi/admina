@@ -123,7 +123,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                       <th>Department</th>
                       <th>Tanggal Lahir</th>
                       <th>Role</th>
-                      <th>Aksi</th>
+                      <th style="min-width: 100px;">Aksi</th>
                     </thead>
                     <tbody>
                     </tbody>

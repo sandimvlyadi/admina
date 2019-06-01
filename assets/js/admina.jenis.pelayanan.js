@@ -1,5 +1,7 @@
 var table = '';
 
+$('a[href="#menuMaster"]').attr('aria-expanded', 'true');
+$('#menuMaster').addClass('show');
 $('#li-jenis-pelayanan').addClass('active');
 
 $(document).ready(function(){
