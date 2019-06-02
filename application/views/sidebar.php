@@ -63,6 +63,18 @@
 										<p>Surat Sakit</p>
 									</a>
 								</li>
+								<li id="li-surat-lahir">
+									<a href="<?php echo base_url('surat-lahir/'); ?>">
+										<i class="now-ui-icons arrows-1_minimal-right"></i>
+										<p>Surat Keterangan Lahir</p>
+									</a>
+								</li>
+								<li id="li-surat-postpartum">
+									<a href="<?php echo base_url('surat-postpartum/'); ?>">
+										<i class="now-ui-icons arrows-1_minimal-right"></i>
+										<p>Surat Keterangan Postpartum</p>
+									</a>
+								</li>
 								<li id="li-surat-hamil">
 									<a href="">
 										<i class="now-ui-icons arrows-1_minimal-right"></i>

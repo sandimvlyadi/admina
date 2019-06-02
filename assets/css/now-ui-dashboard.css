@@ -2780,13 +2780,13 @@ Created using IcoMoon - icomoon.io
     z-index: 3; }
   .sidebar[data-color="blue"]:after,
   .off-canvas-sidebar[data-color="blue"]:after {
-    background: #2CA8FF; }
+    background: #2B5797; }
   .sidebar[data-color="blue"] .nav li.active > a:not([data-toggle="collapse"]),
   .off-canvas-sidebar[data-color="blue"] .nav li.active > a:not([data-toggle="collapse"]) {
-    color: #2CA8FF; }
+    color: #2B5797; }
     .sidebar[data-color="blue"] .nav li.active > a:not([data-toggle="collapse"]) i,
     .off-canvas-sidebar[data-color="blue"] .nav li.active > a:not([data-toggle="collapse"]) i {
-      color: #2CA8FF; }
+      color: #2B5797; }
   .sidebar[data-color="green"]:after,
   .off-canvas-sidebar[data-color="green"]:after {
     background: #18ce0f; }
@@ -2870,7 +2870,7 @@ Created using IcoMoon - icomoon.io
   background: #141E30;
   /* fallback for old browsers */
   /*background: linear-gradient(to right, #0575e6 0%, #45a247 75%, #45a247 100%);*/
-  background: linear-gradient(to right, #45a247 100%, #45a247 75%, #45a247 100%);
+  background: #1E7145;
   position: relative;
   overflow: hidden; }
   .panel-header .header .title {
