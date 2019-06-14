@@ -297,6 +297,49 @@ class Dashboard_model extends CI_Model {
         return $result;
     }
 
+    function pre_selesai($id = 0)
+    {
+        $result = array(
+            'result'    => false,
+            'msg'       => 'Data antrian tidak ditemukan.'  
+        );
+
+        $q =    "SELECT 
+                    a.*,
+                    b.`nama_dokter`,
+                    c.`nama_pasien`,
+                    c.`tgl_lahir`,
+                    c.`nama_suami`,
+                    c.`alamat_istri`,
+                    c.`nik`,
+                    c.`no_kk`,
+                    d.`nama_pelayanan`
+                FROM 
+                    `antrians` a 
+                LEFT JOIN
+                    `dokters` b
+                        ON
+                    a.`id_dokter` = b.`id`
+                LEFT JOIN
+                    `pasiens` c
+                        ON
+                    a.`id_pasien` = c.`id`
+                LEFT JOIN
+                    `jenis_pelayanans` d
+                        ON
+                    a.`id_jenis_pelayanan` = d.`id`
+                WHERE 
+                    a.`id` = '". $this->db->escape_str($id) ."'
+                ;";
+        $r = $this->db->query($q)->result_array();
+        if (count($r) > 0) {
+            $result['result'] = true;
+            $result['data'] = $r[0];
+        }
+
+        return $result;
+    }
+
     function selesai($data = array())
     {
         $result = array(
@@ -307,12 +350,282 @@ class Dashboard_model extends CI_Model {
         $u = $data['userData'];
         $d = $data['postData'];
         $id = $d['id'];
+        parse_str($d['form'], $f);
+
         $q = "UPDATE `antrians` SET `status_antrian` = 'Selesai' WHERE `id` = '". $this->db->escape_str($id) ."';";
         if ($this->db->simple_query($q)) {
             $result['result'] = true;
             $result['msg'] = 'Data berhasil diperbaharui.';
         } else{
             $result['msg'] = 'Terjadi kesalahan saat memperbaharui data.';
+        }
+
+        if ($id != 0) {
+            $idJenisPelayanan = $f['id_jenis_pelayanan'];
+            switch ($idJenisPelayanan) {
+                case '9': // pemeriksaan umum
+                    $q =    "INSERT INTO 
+                            `detail_pemeriksaan_umum` 
+                            (
+                                `created_at`,
+                                `id_antrian`,
+                                `id_penyakit`,
+                                `id_rentang_umur`,
+                                `catatan`
+                            ) 
+                        VALUES 
+                            (
+                                NOW(),
+                                '". $this->db->escape_str($id) ."',
+                                '". $this->db->escape_str($f['id_penyakit']) ."',
+                                '". $this->db->escape_str($f['id_rentang_umur']) ."',
+                                '". $this->db->escape_str($f['catatan']) ."'
+                            )
+                        ;";
+                    $this->db->simple_query($q);
+                    break;
+                case '34': // program ispa
+                    $q =    "INSERT INTO 
+                            `detail_program_ispa` 
+                            (
+                                `created_at`,
+                                `id_antrian`,
+                                `nama_anak`,
+                                `jenis_kelamin`,
+                                `umur_tahun`,
+                                `umur_bulan`,
+                                `tb_pb`,
+                                `bb`,
+                                `catatan`
+                            ) 
+                        VALUES 
+                            (
+                                NOW(),
+                                '". $this->db->escape_str($id) ."',
+                                '". $this->db->escape_str($f['nama_anak']) ."',
+                                '". $this->db->escape_str($f['jenis_kelamin']) ."',
+                                '". $this->db->escape_str($f['umur_tahun']) ."',
+                                '". $this->db->escape_str($f['umur_bulan']) ."',
+                                '". $this->db->escape_str($f['tb_pb']) ."',
+                                '". $this->db->escape_str($f['bb']) ."',
+                                '". $this->db->escape_str($f['catatan']) ."'
+                            )
+                        ;";
+                    $this->db->simple_query($q);
+                    break;
+                case '8': // imunisasi
+                    $q =    "INSERT INTO 
+                            `detail_imunisasi` 
+                            (
+                                `created_at`,
+                                `id_antrian`,
+                                `nama_anak`,
+                                `no_kk`,
+                                `alamat`,
+                                `tgl_lahir`,
+                                `bb_lahir`,
+                                `bb`,
+                                `pb`,
+                                `hb0`,
+                                `bcg`,
+                                `dpt1`,
+                                `dpt2`,
+                                `dpt3`,
+                                `dpt4`,
+                                `polio1`,
+                                `polio2`,
+                                `polio3`,
+                                `polio4`,
+                                `ipy`,
+                                `campak1`,
+                                `campak2`,
+                                `catatan`
+                            ) 
+                        VALUES 
+                            (
+                                NOW(),
+                                '". $this->db->escape_str($id) ."',
+                                '". $this->db->escape_str($f['nama_anak']) ."',
+                                '". $this->db->escape_str($f['no_kk']) ."',
+                                '". $this->db->escape_str($f['alamat']) ."',
+                                '". $this->db->escape_str($f['tgl_lahir']) ."',
+                                '". $this->db->escape_str($f['bb_lahir']) ."',
+                                '". $this->db->escape_str($f['bb']) ."',
+                                '". $this->db->escape_str($f['pb']) ."',
+                                '". $this->db->escape_str($f['hb0']) ."',
+                                '". $this->db->escape_str($f['bcg']) ."',
+                                '". $this->db->escape_str($f['dpt1']) ."',
+                                '". $this->db->escape_str($f['dpt2']) ."',
+                                '". $this->db->escape_str($f['dpt3']) ."',
+                                '". $this->db->escape_str($f['dpt4']) ."',
+                                '". $this->db->escape_str($f['polio1']) ."',
+                                '". $this->db->escape_str($f['polio2']) ."',
+                                '". $this->db->escape_str($f['polio3']) ."',
+                                '". $this->db->escape_str($f['polio4']) ."',
+                                '". $this->db->escape_str($f['ipy']) ."',
+                                '". $this->db->escape_str($f['campak1']) ."',
+                                '". $this->db->escape_str($f['campak2']) ."',
+                                '". $this->db->escape_str($f['catatan']) ."'
+                            )
+                        ;";
+                    $this->db->simple_query($q);
+                    break;
+                case '3': // persalinan
+                    $q =    "INSERT INTO 
+                            `detail_persalinan` 
+                            (
+                                `created_at`,
+                                `id_antrian`,
+                                `id_pasien`,
+                                `umur`,
+                                `alamat`,
+                                `anak_ke`,
+                                `bb`,
+                                `pb`,
+                                `tgl_lahir`,
+                                `jam_lahir`,
+                                `jenis_kelamin`,
+                                `imd`,
+                                `lingkar_kepala`,
+                                `resiko`,
+                                `keterangan`,
+                                `catatan`
+                            ) 
+                        VALUES 
+                            (
+                                NOW(),
+                                '". $this->db->escape_str($id) ."',
+                                '". $this->db->escape_str($f['id_pasien']) ."',
+                                '". $this->db->escape_str($f['umur']) ."',
+                                '". $this->db->escape_str($f['alamat']) ."',
+                                '". $this->db->escape_str($f['anak_ke']) ."',
+                                '". $this->db->escape_str($f['bb']) ."',
+                                '". $this->db->escape_str($f['pb']) ."',
+                                '". $this->db->escape_str($f['tgl_lahir']) ."',
+                                '". $this->db->escape_str($f['jam_lahir']) ."',
+                                '". $this->db->escape_str($f['jenis_kelamin']) ."',
+                                '". $this->db->escape_str($f['imd']) ."',
+                                '". $this->db->escape_str($f['lingkar_kepala']) ."',
+                                '". $this->db->escape_str($f['resiko']) ."',
+                                '". $this->db->escape_str($f['keterangan']) ."',
+                                '". $this->db->escape_str($f['catatan']) ."'
+                            )
+                        ;";
+                    $this->db->simple_query($q);
+                    break;
+                case '1': // pemeriksaan kehamilan
+                    $q =    "INSERT INTO 
+                            `detail_pemeriksaan_kehamilan` 
+                            (
+                                `created_at`,
+                                `id_antrian`,
+                                `id_pasien`,
+                                `tgl_lahir`,
+                                `nik`,
+                                `umur`,
+                                `nama_suami`,
+                                `no_kk`,
+                                `buku_kia`,
+                                `alamat`,
+                                `hpht`,
+                                `tp`,
+                                `bb`,
+                                `tb`,
+                                `usia_kehamilan`,
+                                `gpa`,
+                                `k1`,
+                                `k4`,
+                                `tt`,
+                                `lila`,
+                                `hb`,
+                                `resiko`,
+                                `keterangan`,
+                                `vct`,
+                                `catatan`
+                            ) 
+                        VALUES 
+                            (
+                                NOW(),
+                                '". $this->db->escape_str($id) ."',
+                                '". $this->db->escape_str($f['id_pasien']) ."',
+                                '". $this->db->escape_str($f['tgl_lahir']) ."',
+                                '". $this->db->escape_str($f['nik']) ."',
+                                '". $this->db->escape_str($f['umur']) ."',
+                                '". $this->db->escape_str($f['nama_suami']) ."',
+                                '". $this->db->escape_str($f['no_kk']) ."',
+                                '". $this->db->escape_str($f['buku_kia']) ."',
+                                '". $this->db->escape_str($f['alamat']) ."',
+                                '". $this->db->escape_str($f['hpht']) ."',
+                                '". $this->db->escape_str($f['tp']) ."',
+                                '". $this->db->escape_str($f['bb']) ."',
+                                '". $this->db->escape_str($f['tb']) ."',
+                                '". $this->db->escape_str($f['usia_kehamilan']) ."',
+                                '". $this->db->escape_str($f['gpa']) ."',
+                                '". $this->db->escape_str($f['k1']) ."',
+                                '". $this->db->escape_str($f['k4']) ."',
+                                '". $this->db->escape_str($f['tt']) ."',
+                                '". $this->db->escape_str($f['lila']) ."',
+                                '". $this->db->escape_str($f['hb']) ."',
+                                '". $this->db->escape_str($f['resiko']) ."',
+                                '". $this->db->escape_str($f['keterangan']) ."',
+                                '". $this->db->escape_str($f['vct']) ."',
+                                '". $this->db->escape_str($f['catatan']) ."'
+                            )
+                        ;";
+                    $this->db->simple_query($q);
+                    break;
+                case '37': // KB
+                    $q =    "INSERT INTO 
+                            `detail_pemeriksaan_kb` 
+                            (
+                                `created_at`,
+                                `id_antrian`,
+                                `nama_pasien`,
+                                `umur`,
+                                `nama_suami`,
+                                `alamat`,
+                                `jml_anak_laki`,
+                                `jml_anak_perempuan`,
+                                `jml_anak`,
+                                `usia_anak_terkecil`,
+                                `id_satuan_usia`,
+                                `pasang_baru`,
+                                `pasang_cabut`,
+                                `id_alat_kontrasepsi`,
+                                `akli`,
+                                `t_4`,
+                                `ganti_cara`,
+                                `catatan`
+                            ) 
+                        VALUES 
+                            (
+                                NOW(),
+                                '". $this->db->escape_str($id) ."',
+                                '". $this->db->escape_str($f['nama_pasien']) ."',
+                                '". $this->db->escape_str($f['umur']) ."',
+                                '". $this->db->escape_str($f['nama_suami']) ."',
+                                '". $this->db->escape_str($f['alamat']) ."',
+                                '". $this->db->escape_str($f['jml_anak_laki']) ."',
+                                '". $this->db->escape_str($f['jml_anak_perempuan']) ."',
+                                '". $this->db->escape_str($f['jml_anak']) ."',
+                                '". $this->db->escape_str($f['usia_anak_terkecil']) ."',
+                                '". $this->db->escape_str($f['id_satuan_usia']) ."',
+                                '". $this->db->escape_str($f['pasang_baru']) ."',
+                                '". $this->db->escape_str($f['pasang_cabut']) ."',
+                                '". $this->db->escape_str($f['id_alat_kontrasepsi']) ."',
+                                '". $this->db->escape_str($f['akli']) ."',
+                                '". $this->db->escape_str($f['t_4']) ."',
+                                '". $this->db->escape_str($f['ganti_cara']) ."',
+                                '". $this->db->escape_str($f['catatan']) ."'
+                            )
+                        ;";
+                    file_put_contents('./dump/asdf.txt', $q);
+                    $this->db->simple_query($q);
+                    break;
+                default:
+                    # code...
+                    break;
+            }
         }
 
         return $result;
@@ -341,6 +654,116 @@ class Dashboard_model extends CI_Model {
         $r = $this->db->query($q)->result_array();
         if (count($r) > 0) {
             $result['data']['pembayaran'] = $r[0]['total'];
+        }
+
+        return $result;
+    }
+
+    function select_penyakit($id = 0)
+    {
+        $result = array(
+            'result'    => false,
+            'msg'       => ''  
+        );
+
+        $q = "";
+        if ($id == 0) {
+            $q = "SELECT * FROM `jenis_penyakit` WHERE `deleted_at` IS NULL ORDER BY `nama_penyakit` ASC;";
+        } else{
+            $q = "SELECT * FROM `jenis_penyakit` WHERE `id` = '". $this->db->escape_str($id) ."' AND `deleted_at` IS NULL;";
+        }
+        $r = $this->db->query($q, false)->result_array();
+        if (count($r) > 0) {
+            $result['result'] = true;
+            $result['data'] = $r;
+        }
+
+        return $result;
+    }
+
+    function select_rentang_umur($id = 0)
+    {
+        $result = array(
+            'result'    => false,
+            'msg'       => ''  
+        );
+
+        $q = "";
+        if ($id == 0) {
+            $q = "SELECT * FROM `rentang_umur` WHERE `deleted_at` IS NULL ORDER BY `id` ASC;";
+        } else{
+            $q = "SELECT * FROM `rentang_umur` WHERE `id` = '". $this->db->escape_str($id) ."' AND `deleted_at` IS NULL;";
+        }
+        $r = $this->db->query($q, false)->result_array();
+        if (count($r) > 0) {
+            $result['result'] = true;
+            $result['data'] = $r;
+        }
+
+        return $result;
+    }
+
+    function select_macam_imunisasi($id = 0)
+    {
+        $result = array(
+            'result'    => false,
+            'msg'       => ''  
+        );
+
+        $q = "";
+        if ($id == 0) {
+            $q = "SELECT * FROM `macam_imunisasi` WHERE `deleted_at` IS NULL ORDER BY `nama_imunisasi` ASC;";
+        } else{
+            $q = "SELECT * FROM `macam_imunisasi` WHERE `id` = '". $this->db->escape_str($id) ."' AND `deleted_at` IS NULL;";
+        }
+        $r = $this->db->query($q, false)->result_array();
+        if (count($r) > 0) {
+            $result['result'] = true;
+            $result['data'] = $r;
+        }
+
+        return $result;
+    }
+
+    function select_satuan_usia($id = 0)
+    {
+        $result = array(
+            'result'    => false,
+            'msg'       => ''  
+        );
+
+        $q = "";
+        if ($id == 0) {
+            $q = "SELECT * FROM `satuan_usia` WHERE `deleted_at` IS NULL ORDER BY `nama_satuan` ASC;";
+        } else{
+            $q = "SELECT * FROM `satuan_usia` WHERE `id` = '". $this->db->escape_str($id) ."' AND `deleted_at` IS NULL;";
+        }
+        $r = $this->db->query($q, false)->result_array();
+        if (count($r) > 0) {
+            $result['result'] = true;
+            $result['data'] = $r;
+        }
+
+        return $result;
+    }
+
+    function select_alat_kontrasepsi($id = 0)
+    {
+        $result = array(
+            'result'    => false,
+            'msg'       => ''  
+        );
+
+        $q = "";
+        if ($id == 0) {
+            $q = "SELECT * FROM `alat_kontrasepsi` WHERE `deleted_at` IS NULL ORDER BY `nama_alat` ASC;";
+        } else{
+            $q = "SELECT * FROM `alat_kontrasepsi` WHERE `id` = '". $this->db->escape_str($id) ."' AND `deleted_at` IS NULL;";
+        }
+        $r = $this->db->query($q, false)->result_array();
+        if (count($r) > 0) {
+            $result['result'] = true;
+            $result['data'] = $r;
         }
 
         return $result;

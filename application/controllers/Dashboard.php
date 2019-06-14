@@ -101,6 +101,12 @@ class Dashboard extends CI_Controller {
 		echo json_encode($response, JSON_PRETTY_PRINT);
     }
 
+    public function pre_selesai($id = 0)
+    {
+    	$response = $this->model->pre_selesai($id);
+		echo json_encode($response, JSON_PRETTY_PRINT);	
+    }
+
     public function selesai()
     {
 		$response 	= array(
@@ -121,6 +127,61 @@ class Dashboard extends CI_Controller {
     {
     	$response = $this->model->info();
 		echo json_encode($response, JSON_PRETTY_PRINT);	
+    }
+
+    public function select_penyakit($id = 0)
+    {
+    	$response 	= array(
+			'result'	=> false,
+			'msg'		=> ''
+		);
+
+		$response = $this->model->select_penyakit($id);
+    	echo json_encode($response, JSON_PRETTY_PRINT);
+    }
+
+    public function select_rentang_umur($id = 0)
+    {
+    	$response 	= array(
+			'result'	=> false,
+			'msg'		=> ''
+		);
+
+		$response = $this->model->select_rentang_umur($id);
+    	echo json_encode($response, JSON_PRETTY_PRINT);
+    }
+
+    public function select_macam_imunisasi($id = 0)
+    {
+    	$response 	= array(
+			'result'	=> false,
+			'msg'		=> ''
+		);
+
+		$response = $this->model->select_macam_imunisasi($id);
+    	echo json_encode($response, JSON_PRETTY_PRINT);
+    }
+
+    public function select_satuan_usia($id = 0)
+    {
+    	$response 	= array(
+			'result'	=> false,
+			'msg'		=> ''
+		);
+
+		$response = $this->model->select_satuan_usia($id);
+    	echo json_encode($response, JSON_PRETTY_PRINT);
+    }
+
+    public function select_alat_kontrasepsi($id = 0)
+    {
+    	$response 	= array(
+			'result'	=> false,
+			'msg'		=> ''
+		);
+
+		$response = $this->model->select_alat_kontrasepsi($id);
+    	echo json_encode($response, JSON_PRETTY_PRINT);
     }
     
 }

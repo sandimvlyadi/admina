@@ -76,21 +76,15 @@
 									</a>
 								</li>
 								<li id="li-surat-hamil">
-									<a href="">
+									<a href="<?php echo base_url('surat-hamil/'); ?>">
 										<i class="now-ui-icons arrows-1_minimal-right"></i>
 										<p>Surat Hamil</p>
 									</a>
 								</li>
 								<li id="li-surat-keterangan-hamil">
-									<a href="">
+									<a href="<?php echo base_url('surat-keterangan-hamil'); ?>">
 										<i class="now-ui-icons arrows-1_minimal-right"></i>
 										<p>Surat Keterangan Hamil</p>
-									</a>
-								</li>
-								<li id="li-surat-imunisasi">
-									<a href="">
-										<i class="now-ui-icons arrows-1_minimal-right"></i>
-										<p>Laporan Imunisasi</p>
 									</a>
 								</li>
 								<li id="li-surat-rujukan">
@@ -103,7 +97,13 @@
 							<hr>
 						</div>
 					</li>
-					<li>
+					<li id="li-laporan">
+            <a href="<?php echo base_url('laporan/'); ?>">
+              <i class="now-ui-icons design_bullet-list-67"></i>
+              <p>Laporan</p>
+            </a>
+					</li>
+					<!-- <li>
 						<a data-toggle="collapse" href="#menuLaporan" >
 							<i class="now-ui-icons files_single-copy-04"></i>
 							<p>
@@ -157,7 +157,7 @@
 							</ul>
 							<hr>
 						</div>
-					</li>
+					</li> -->
 					<li>
 						<a data-toggle="collapse" href="#menuMaster" >
 							<i class="now-ui-icons shopping_box"></i>

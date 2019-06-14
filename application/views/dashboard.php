@@ -224,6 +224,895 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             </div>
           </div>
         </div>
+
+        <div class="modal fade" id="pemeriksaanUmum" tabindex="-1" role="dialog" aria-labelledby="pemeriksaanUmumLabel" aria-hidden="true">
+          <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="pemeriksaanUmumLabel">Pemeriksaan Umum</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form id="formDataPemeriksaanUmum">
+                  <div class="row">
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <label>No. Antrian</label>
+                        <input type="text" name="no_antrian" class="form-control" placeholder="No. Antrian" readonly>
+                      </div>
+                    </div>
+                    <div class="col-md-8">
+                      <div class="form-group">
+                        <label>Nama Pasien</label>
+                        <input type="text" name="nama_pasien" class="form-control" placeholder="Nama Pasien" readonly>
+                      </div>
+                    </div>
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <label>Jenis Pelayanan</label>
+                        <input type="hidden" name="id_jenis_pelayanan">
+                        <input type="text" name="nama_pelayanan" class="form-control" placeholder="Jenis Pelayanan" readonly>
+                      </div>
+                    </div>
+                    <div class="col-md-12">
+                      <h3><b>Hasil Pemeriksaan:</b></h3>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label>Nama Penyakit</label>
+                        <select name="id_penyakit" class="form-control"></select>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label>Rentang Umur</label>
+                        <select name="id_rentang_umur" class="form-control"></select>
+                      </div>
+                    </div>
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <label>Catatan</label>
+                        <textarea name="catatan" class="form-control"></textarea>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-sm btn-danger" data-dismiss="modal"><i class="fa fa-times"></i> Batal</button>
+                <button id="0" name="btn_selesai_pemeriksaan_umum" type="button" class="btn btn-sm btn-success"><i class="fa fa-check"></i> Selesai</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal fade" id="pemeriksaanUmum" tabindex="-1" role="dialog" aria-labelledby="pemeriksaanUmumLabel" aria-hidden="true">
+          <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="pemeriksaanUmumLabel">Pemeriksaan Umum</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form id="formDataPemeriksaanUmum">
+                  <div class="row">
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <label>No. Antrian</label>
+                        <input type="text" name="no_antrian" class="form-control" placeholder="No. Antrian" readonly>
+                      </div>
+                    </div>
+                    <div class="col-md-8">
+                      <div class="form-group">
+                        <label>Nama Pasien</label>
+                        <input type="text" name="nama_pasien" class="form-control" placeholder="Nama Pasien" readonly>
+                      </div>
+                    </div>
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <label>Jenis Pelayanan</label>
+                        <input type="hidden" name="id_jenis_pelayanan">
+                        <input type="text" name="nama_pelayanan" class="form-control" placeholder="Jenis Pelayanan" readonly>
+                      </div>
+                    </div>
+                    <div class="col-md-12">
+                      <h3><b>Hasil Pemeriksaan:</b></h3>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label>Nama Penyakit</label>
+                        <select name="id_penyakit" class="form-control"></select>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label>Rentang Umur</label>
+                        <select name="id_rentang_umur" class="form-control"></select>
+                      </div>
+                    </div>
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <label>Catatan</label>
+                        <textarea name="catatan" class="form-control"></textarea>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-sm btn-danger" data-dismiss="modal"><i class="fa fa-times"></i> Batal</button>
+                <button id="0" name="btn_selesai_pemeriksaan_umum" type="button" class="btn btn-sm btn-success"><i class="fa fa-check"></i> Selesai</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal fade" id="programIspa" tabindex="-1" role="dialog" aria-labelledby="programIspaLabel" aria-hidden="true">
+          <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="programIspaLabel">Program ISPA</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form id="formDataProgramIspa">
+                  <div class="row">
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <label>No. Antrian</label>
+                        <input type="text" name="no_antrian" class="form-control" placeholder="No. Antrian" readonly>
+                      </div>
+                    </div>
+                    <div class="col-md-8">
+                      <div class="form-group">
+                        <label>Nama Pasien</label>
+                        <input type="text" name="nama_pasien" class="form-control" placeholder="Nama Pasien" readonly>
+                      </div>
+                    </div>
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <label>Jenis Pelayanan</label>
+                        <input type="hidden" name="id_jenis_pelayanan">
+                        <input type="text" name="nama_pelayanan" class="form-control" placeholder="Jenis Pelayanan" readonly>
+                      </div>
+                    </div>
+                    <div class="col-md-12">
+                      <h3><b>Hasil Pemeriksaan:</b></h3>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label>Nama Anak</label>
+                        <input type="text" name="nama_anak" class="form-control" placeholder="Nama Anak" required>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label>Jenis Kelamin</label>
+                        <select name="jenis_kelamin" class="form-control">
+                          <option value="L" selected>Laki-laki</option>
+                          <option value="P">Perempuan</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label>Umur (tahun)</label>
+                        <input type="number" name="umur_tahun" class="form-control" placeholder="Umur (tahun)">
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label>Umur (bulan)</label>
+                        <input type="number" name="umur_bulan" class="form-control" placeholder="Umur (bulan)">
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label>TB/PB</label>
+                        <input type="number" name="tb_pb" class="form-control" placeholder="Tinggi / Panjang Badan">
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label>BB</label>
+                        <input type="number" name="bb" class="form-control" placeholder="Berat Badan">
+                      </div>
+                    </div>
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <label>Catatan</label>
+                        <textarea name="catatan" class="form-control"></textarea>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-sm btn-danger" data-dismiss="modal"><i class="fa fa-times"></i> Batal</button>
+                <button id="0" name="btn_selesai_program_ispa" type="button" class="btn btn-sm btn-success"><i class="fa fa-check"></i> Selesai</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal fade" id="imunisasi" tabindex="-1" role="dialog" aria-labelledby="imunisasiLabel" aria-hidden="true">
+          <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="imunisasiLabel">Imunisasi</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form id="formDataImunisasi">
+                  <div class="row">
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <label>No. Antrian</label>
+                        <input type="text" name="no_antrian" class="form-control" placeholder="No. Antrian" readonly>
+                      </div>
+                    </div>
+                    <div class="col-md-8">
+                      <div class="form-group">
+                        <label>Nama Pasien</label>
+                        <input type="text" name="nama_pasien" class="form-control" placeholder="Nama Pasien" readonly>
+                      </div>
+                    </div>
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <label>Jenis Pelayanan</label>
+                        <input type="hidden" name="id_jenis_pelayanan">
+                        <input type="text" name="nama_pelayanan" class="form-control" placeholder="Jenis Pelayanan" readonly>
+                      </div>
+                    </div>
+                    <div class="col-md-12">
+                      <h3><b>Hasil Pemeriksaan:</b></h3>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label>Nama Anak</label>
+                        <input type="text" name="nama_anak" class="form-control" placeholder="Nama Anak" required>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label>No. KK Ortu</label>
+                        <input type="text" name="no_kk" class="form-control" placeholder="No. KK Orang Tua">
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label>Alamat</label>
+                        <textarea name="alamat" class="form-control" placeholder="Alamat"></textarea>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label>Tanggal Lahir</label>
+                        <input type="date" name="tgl_lahir" class="form-control" placeholder="Tanggal Lahir" required>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label>BB Lahir (Gram)</label>
+                        <input type="number" name="bb_lahir" class="form-control" placeholder="Berat Badan Lahir">
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label>BB (Gram)</label>
+                        <input type="number" name="bb" class="form-control" placeholder="Berat Badan">
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label>PB (cm)</label>
+                        <input type="number" name="pb" class="form-control" placeholder="Panjang Badan">
+                      </div>
+                    </div>
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <label>Catatan</label>
+                        <textarea name="catatan" class="form-control"></textarea>
+                      </div>
+                    </div>
+                    <div class="col-md-12">
+                      <h3><b>Macam Imunisasi:</b></h3>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label>Hb0</label>
+                        <select name="hb0" class="form-control">
+                          <option value="0" selected>Tidak</option>
+                          <option value="1">Ya</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label>BCG</label>
+                        <select name="bcg" class="form-control">
+                          <option value="0" selected>Tidak</option>
+                          <option value="1">Ya</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="form-group">
+                        <label>DPT 1</label>
+                        <select name="dpt1" class="form-control">
+                          <option value="0" selected>Tidak</option>
+                          <option value="1">Ya</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="form-group">
+                        <label>DPT 2</label>
+                        <select name="dpt2" class="form-control">
+                          <option value="0" selected>Tidak</option>
+                          <option value="1">Ya</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="form-group">
+                        <label>DPT 3</label>
+                        <select name="dpt3" class="form-control">
+                          <option value="0" selected>Tidak</option>
+                          <option value="1">Ya</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="form-group">
+                        <label>DPT 4</label>
+                        <select name="dpt4" class="form-control">
+                          <option value="0" selected>Tidak</option>
+                          <option value="1">Ya</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="form-group">
+                        <label>Polio 1</label>
+                        <select name="polio1" class="form-control">
+                          <option value="0" selected>Tidak</option>
+                          <option value="1">Ya</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="form-group">
+                        <label>Polio 2</label>
+                        <select name="polio2" class="form-control">
+                          <option value="0" selected>Tidak</option>
+                          <option value="1">Ya</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="form-group">
+                        <label>Polio 3</label>
+                        <select name="polio3" class="form-control">
+                          <option value="0" selected>Tidak</option>
+                          <option value="1">Ya</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="form-group">
+                        <label>Polio 4</label>
+                        <select name="polio4" class="form-control">
+                          <option value="0" selected>Tidak</option>
+                          <option value="1">Ya</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label>IPY</label>
+                        <select name="ipy" class="form-control">
+                          <option value="0" selected>Tidak</option>
+                          <option value="1">Ya</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="form-group">
+                        <label>Campak 1</label>
+                        <select name="campak1" class="form-control">
+                          <option value="0" selected>Tidak</option>
+                          <option value="1">Ya</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="form-group">
+                        <label>Campak 2</label>
+                        <select name="campak2" class="form-control">
+                          <option value="0" selected>Tidak</option>
+                          <option value="1">Ya</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-sm btn-danger" data-dismiss="modal"><i class="fa fa-times"></i> Batal</button>
+                <button id="0" name="btn_selesai_imunisasi" type="button" class="btn btn-sm btn-success"><i class="fa fa-check"></i> Selesai</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal fade" id="persalinan" tabindex="-1" role="dialog" aria-labelledby="persalinanLabel" aria-hidden="true">
+          <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="persalinanLabel">Imunisasi</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form id="formDataPersalinan">
+                  <div class="row">
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <label>No. Antrian</label>
+                        <input type="text" name="no_antrian" class="form-control" placeholder="No. Antrian" readonly>
+                      </div>
+                    </div>
+                    <div class="col-md-8">
+                      <div class="form-group">
+                        <label>Nama Pasien</label>
+                        <input type="hidden" name="id_pasien" class="form-control">
+                        <input type="text" name="nama_pasien" class="form-control" placeholder="Nama Pasien" readonly>
+                      </div>
+                    </div>
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <label>Jenis Pelayanan</label>
+                        <input type="hidden" name="id_jenis_pelayanan">
+                        <input type="text" name="nama_pelayanan" class="form-control" placeholder="Jenis Pelayanan" readonly>
+                      </div>
+                    </div>
+                    <div class="col-md-12">
+                      <h3><b>Hasil Pemeriksaan:</b></h3>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label>Umur</label>
+                        <input type="number" name="umur" class="form-control" placeholder="Umur" required>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label>Alamat</label>
+                        <textarea name="alamat" class="form-control" placeholder="Alamat"></textarea>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label>Anak Ke</label>
+                        <input type="number" name="anak_ke" class="form-control" placeholder="Anak Ke" required>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label>BB (kg)</label>
+                        <input type="number" name="bb" class="form-control" placeholder="Berat Badan" required>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label>PB (cm)</label>
+                        <input type="number" name="pb" class="form-control" placeholder="Panjang Badan" required>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label>Tanggal Lahir</label>
+                        <input type="date" name="tgl_lahir" class="form-control" placeholder="Tanggal Lahir" required>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label>Jam</label>
+                        <input type="text" name="jam_lahir" class="form-control" placeholder="Jam Lahir" required>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label>Jenis Kelamin</label>
+                        <select name="jenis_kelamin" class="form-control">
+                          <option value="L" selected>Laki-laki</option>
+                          <option value="P">Perempuan</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label>IMD</label>
+                        <select name="imd" class="form-control">
+                          <option value="1" selected>Ya</option>
+                          <option value="1">Tidak</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label>Lingkar Kepala</label>
+                        <input type="number" name="lingkar_kepala" class="form-control" placeholder="Lingkar Kepala" required>
+                      </div>
+                    </div>
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <label>Resiko</label>
+                        <textarea name="resiko" class="form-control"></textarea>
+                      </div>
+                    </div>
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <label>Keterangan</label>
+                        <textarea name="keterangan" class="form-control"></textarea>
+                      </div>
+                    </div>
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <label>Catatan</label>
+                        <textarea name="catatan" class="form-control"></textarea>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-sm btn-danger" data-dismiss="modal"><i class="fa fa-times"></i> Batal</button>
+                <button id="0" name="btn_selesai_persalinan" type="button" class="btn btn-sm btn-success"><i class="fa fa-check"></i> Selesai</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal fade" id="pemeriksaanKehamilan" tabindex="-1" role="dialog" aria-labelledby="pemeriksaanKehamilanLabel" aria-hidden="true">
+          <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="pemeriksaanKehamilanLabel">Imunisasi</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form id="formDataPemeriksaanKehamilan">
+                  <div class="row">
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <label>No. Antrian</label>
+                        <input type="text" name="no_antrian" class="form-control" placeholder="No. Antrian" readonly>
+                      </div>
+                    </div>
+                    <div class="col-md-8">
+                      <div class="form-group">
+                        <label>Nama Pasien</label>
+                        <input type="hidden" name="id_pasien" class="form-control">
+                        <input type="text" name="nama_pasien" class="form-control" placeholder="Nama Pasien" readonly>
+                      </div>
+                    </div>
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <label>Jenis Pelayanan</label>
+                        <input type="hidden" name="id_jenis_pelayanan">
+                        <input type="text" name="nama_pelayanan" class="form-control" placeholder="Jenis Pelayanan" readonly>
+                      </div>
+                    </div>
+                    <div class="col-md-12">
+                      <h3><b>Hasil Pemeriksaan:</b></h3>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label>Tanggal Lahir</label>
+                        <input type="date" name="tgl_lahir" class="form-control" placeholder="Tanggal Lahir">
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label>NIK</label>
+                        <input type="text" name="nik" class="form-control" placeholder="NIK">
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label>Umur</label>
+                        <input type="number" name="umur" class="form-control" placeholder="Umur" required>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label>Nama Suami</label>
+                        <input type="text" name="nama_suami" class="form-control" placeholder="Nama Suami" required>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label>No. KK</label>
+                        <input type="text" name="no_kk" class="form-control" placeholder="No. KK">
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label>Buku KIA</label>
+                        <input type="text" name="buku_kia" class="form-control" placeholder="Buku KIA">
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label>Alamat</label>
+                        <textarea name="alamat" class="form-control" placeholder="Alamat"></textarea>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label>HPHT</label>
+                        <input type="date" name="hpht" class="form-control" placeholder="HPHT" required>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label>TP</label>
+                        <input type="date" name="tp" class="form-control" placeholder="TP" required>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label>BB</label>
+                        <input type="number" name="bb" class="form-control" placeholder="Berat Badan" required>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label>TB</label>
+                        <input type="number" name="tb" class="form-control" placeholder="Tinggi Badan" required>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label>Usia Kehamilan (minggu)</label>
+                        <input type="text" name="usia_kehamilan" class="form-control" placeholder="Usia Kehamilan" required>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label>GPA</label>
+                        <input type="text" name="gpa" class="form-control" placeholder="GPA" required>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label>K1</label>
+                        <select name="k1" class="form-control">
+                          <option value="1" selected>Ya</option>
+                          <option value="0">Tidak</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label>K4</label>
+                        <select name="k4" class="form-control">
+                          <option value="1" selected>Ya</option>
+                          <option value="0">Tidak</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label>TT</label>
+                        <input type="text" name="tt" class="form-control" placeholder="TT">
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label>LILA (cm)</label>
+                        <input type="number" name="lila" class="form-control" placeholder="LILA (cm)" required>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label>Hb (g/dl)</label>
+                        <input type="number" name="hb" class="form-control" placeholder="Hb (g/dl)">
+                      </div>
+                    </div>
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <label>Resiko</label>
+                        <textarea name="resiko" class="form-control"></textarea>
+                      </div>
+                    </div>
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <label>Keterangan (10 T, Jumlah Fe)</label>
+                        <textarea name="keterangan" class="form-control"></textarea>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label>VCT</label>
+                        <input type="text" name="vct" class="form-control" placeholder="VCT" required>
+                      </div>
+                    </div>
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <label>Catatan</label>
+                        <textarea name="catatan" class="form-control"></textarea>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-sm btn-danger" data-dismiss="modal"><i class="fa fa-times"></i> Batal</button>
+                <button id="0" name="btn_selesai_pemeriksaan_kehamilan" type="button" class="btn btn-sm btn-success"><i class="fa fa-check"></i> Selesai</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal fade" id="pemeriksaanKB" tabindex="-1" role="dialog" aria-labelledby="pemeriksaanKBLabel" aria-hidden="true">
+          <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="pemeriksaanKBLabel">Imunisasi</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form id="formDataKB">
+                  <div class="row">
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <label>No. Antrian</label>
+                        <input type="text" name="no_antrian" class="form-control" placeholder="No. Antrian" readonly>
+                      </div>
+                    </div>
+                    <div class="col-md-8">
+                      <div class="form-group">
+                        <label>Nama Pasien</label>
+                        <input type="hidden" name="id_pasien" class="form-control">
+                        <input type="text" name="nama_pasien" class="form-control" placeholder="Nama Pasien" readonly>
+                      </div>
+                    </div>
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <label>Jenis Pelayanan</label>
+                        <input type="hidden" name="id_jenis_pelayanan">
+                        <input type="text" name="nama_pelayanan" class="form-control" placeholder="Jenis Pelayanan" readonly>
+                      </div>
+                    </div>
+                    <div class="col-md-12">
+                      <h3><b>Hasil Pemeriksaan:</b></h3>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label>Umur</label>
+                        <input type="number" name="umur" class="form-control" placeholder="Umur" required>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label>Nama Suami</label>
+                        <input type="text" name="nama_suami" class="form-control" placeholder="Nama Suami">
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label>Alamat</label>
+                        <textarea name="alamat" class="form-control" placeholder="Alamat"></textarea>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label>Jumlah Anak Laki-laki</label>
+                        <input type="number" name="jml_anak_laki" class="form-control" placeholder="Jumlah Anak Laki-laki" required>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label>Jumlah Anak Perempuan</label>
+                        <input type="number" name="jml_anak_perempuan" class="form-control" placeholder="Jumlah Anak Perempuan" required>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label>Jumlah Anak</label>
+                        <input type="number" name="jml_anak" class="form-control" placeholder="Jumlah Anak" required>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label>Usia Anak Terkecil</label>
+                        <input type="number" name="usia_anak_terkecil" class="form-control" placeholder="Usia Anak Terkecil" required>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label>Satuan Usia</label>
+                        <select name="id_satuan_usia" class="form-control"></select>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label>Pasang Baru</label>
+                        <select name="pasang_baru" class="form-control">
+                          <option value="1" selected>Ya</option>
+                          <option value="0">Tidak</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label>Pemasangan / Pencabutan</label>
+                        <select name="pasang_cabut" class="form-control">
+                          <option value="PEMASANGAN" selected>Pemasangan</option>
+                          <option value="PENCABUTAN">Pencabutan</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label>Alat Kontrasepsi</label>
+                        <select name="id_alat_kontrasepsi" class="form-control"></select>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label>AKLI</label>
+                        <input type="text" name="akli" class="form-control" placeholder="AKLI">
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label>4T</label>
+                        <select name="t_4" class="form-control">
+                          <option value="1" selected>Ya</option>
+                          <option value="0">Tidak</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label>Ganti Cara</label>
+                        <input type="text" name="ganti_cara" class="form-control" placeholder="Ganti Cara">
+                      </div>
+                    </div>
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <label>Catatan</label>
+                        <textarea name="catatan" class="form-control"></textarea>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-sm btn-danger" data-dismiss="modal"><i class="fa fa-times"></i> Batal</button>
+                <button id="0" name="btn_selesai_kb" type="button" class="btn btn-sm btn-success"><i class="fa fa-check"></i> Selesai</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
   </div>
