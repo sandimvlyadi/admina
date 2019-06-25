@@ -106,10 +106,11 @@ class Laporan extends CI_Controller {
     		$idJenisLaporan = $response['data']['id_jenis_laporan'];
     		switch ($idJenisLaporan) {
     			case '1':
-    				# code...
+    				$this->load->view('laporan_bulanan_cetak', $response);
     				break;
     			case '2':
-    				# code...
+    				$this->load->view('laporan_rekap_penyakit_cetak', $response);
+    				// echo json_encode($response, JSON_PRETTY_PRINT);
     				break;
     			case '3':
     				$this->load->view('laporan_program_ispa_cetak', $response);

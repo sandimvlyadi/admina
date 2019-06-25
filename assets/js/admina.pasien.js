@@ -33,12 +33,12 @@ $(document).ready(function(){
                             'jenis_pasien'      : response.data[x].jenis_pasien,
                             'no_registrasi'     : response.data[x].no_registrasi,
                             'nama_pasien'       : response.data[x].nama_pasien,
-                            'tgl_lahir'         : response.data[x].tgl_lahir,
-                            'nama_suami'        : response.data[x].nama_suami,
-                            'tgl_lahir_suami'   : response.data[x].tgl_lahir_suami,
-                            'nama_kota_suami'   : response.data[x].nama_kota,
-                            'hpht'              : response.data[x].hpht,
-                            'taksiran_partus'   : response.data[x].taksiran_partus,
+                            // 'tgl_lahir'         : response.data[x].tgl_lahir,
+                            // 'nama_suami'        : response.data[x].nama_suami,
+                            // 'tgl_lahir_suami'   : response.data[x].tgl_lahir_suami,
+                            // 'nama_kota_suami'   : response.data[x].nama_kota,
+                            // 'hpht'              : response.data[x].hpht,
+                            // 'taksiran_partus'   : response.data[x].taksiran_partus,
 	            			'aksi'	            : button
 	            		});
 	            		i = i + 1;
@@ -58,12 +58,12 @@ $(document).ready(function(){
             { 'data' : 'jenis_pasien' },
             { 'data' : 'no_registrasi' },
             { 'data' : 'nama_pasien' },
-            { 'data' : 'tgl_lahir' },
-            { 'data' : 'nama_suami' },
-            { 'data' : 'tgl_lahir_suami' },
-            { 'data' : 'nama_kota_suami' },
-            { 'data' : 'hpht' },
-            { 'data' : 'taksiran_partus' },
+            // { 'data' : 'tgl_lahir' },
+            // { 'data' : 'nama_suami' },
+            // { 'data' : 'tgl_lahir_suami' },
+            // { 'data' : 'nama_kota_suami' },
+            // { 'data' : 'hpht' },
+            // { 'data' : 'taksiran_partus' },
         	{ 'data' : 'aksi' }
         ],
 
@@ -72,7 +72,7 @@ $(document).ready(function(){
 		'columnDefs': [
     		{
     			'orderable'	: false,
-    			'targets'	: [ 0, 10 ]
+    			'targets'	: [ 0, 4 ]
     		}
   		]
 	});
@@ -515,4 +515,14 @@ $('button[name="btn_save"]').click(function(){
             }
         }
     });
+});
+
+$('#formData').on('change', 'select[name="jenis_pasien"]', function(){
+    var jenis = $(this).val();
+    
+    if (jenis == 'Hamil' || jenis == 'Melahirkan') {
+        $('.formTambahan').show();
+    } else{
+        $('.formTambahan').hide();
+    }
 });

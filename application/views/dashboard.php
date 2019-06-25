@@ -201,7 +201,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
               <div class="card-header">
                 <div class="row">
                   <div class="col-6">
-                    <h4 class="card-title"> Pasien yang sudah dilayani (hari ini): </h4>
+                    <h4 class="card-title"> Pasien yang sudah dilayani: </h4>
+                  </div>
+                  <div class="col-3">
+                    
+                  </div>
+                  <div class="col-3 form-group">
+                    <label><b>Filter Hari:</b></label>
+                    <input type="date" name="filterDate" class="form-control">
                   </div>
                 </div>
               </div>
@@ -258,6 +265,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     </div>
                     <div class="col-md-12">
                       <h3><b>Hasil Pemeriksaan:</b></h3>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label>Jenis Kelamin</label>
+                        <select name="jenis_kelamin" class="form-control">
+                          <option value="L" selected>Laki-laki</option>
+                          <option value="P">Perempuan</option>
+                        </select>
+                      </div>
                     </div>
                     <div class="col-md-6">
                       <div class="form-group">

@@ -243,7 +243,29 @@ class Laporan_model extends CI_Model {
                     
                     break;
                 case '2':
-                    
+                    $q = "SELECT * FROM `jenis_penyakit` WHERE `deleted_at` IS NULL;";
+                    $r = $this->db->query($q)->result_array();
+                    $q = "SELECT * FROM `rentang_umur` WHERE `deleted_at` IS NULL;";
+                    $u = $this->db->query($q)->result_array();
+                    if (count($r) > 0) {
+                        for ($i=0; $i < count($r); $i++) { 
+                            if (count($u) > 0) {
+                                for ($j=0; $j < count($u); $j++) { 
+                                    $q = "SELECT COUNT(*) AS `total` FROM `detail_pemeriksaan_umum` WHERE `jenis_kelamin` = 'L' AND `id_penyakit` = '". $r[$i]['id'] ."' AND `id_rentang_umur` = '". $u[$j]['id'] ."' AND `deleted_at` IS NULL AND `created_at` IS NOT NULL;";
+                                    $sum = $this->db->query($q)->result_array();
+                                    $sumL = $sum[0]['total'];
+                                    $q = "SELECT COUNT(*) AS `total` FROM `detail_pemeriksaan_umum` WHERE `jenis_kelamin` = 'P' AND `id_penyakit` = '". $r[$i]['id'] ."' AND `id_rentang_umur` = '". $u[$j]['id'] ."' AND `deleted_at` IS NULL AND `created_at` IS NOT NULL;";
+                                    $sum = $this->db->query($q)->result_array();
+                                    $sumP = $sum[0]['total'];
+                                    $u[$j]['L'] = $sumL;
+                                    $u[$j]['P'] = $sumP;
+                                }
+                                $r[$i]['rekap'] = $u;
+                            }
+                        }
+                    }
+
+                    $result['rentangUmur'] = $u;
                     break;
                 case '3':
                     $q = "SELECT * FROM `detail_program_ispa` WHERE `created_at` LIKE '". $periode ."%' AND `deleted_at` IS NULL;";
@@ -293,7 +315,19 @@ class Laporan_model extends CI_Model {
                     $r = $this->db->query($q)->result_array();
                     break;
                 case '7':
-                    $q = "SELECT * FROM `detail_pemeriksaan_kehamilan` WHERE `created_at` LIKE '". $periode ."%' AND `deleted_at` IS NULL;";
+                    $q =    "SELECT 
+                                a.*,
+                                b.`nama_pasien`
+                            FROM 
+                                `detail_pemeriksaan_kehamilan` a 
+                            LEFT JOIN
+                                `pasiens` b
+                                    ON
+                                a.`id_pasien` = b.`id`
+                            WHERE 
+                                a.`created_at` LIKE '". $periode ."%' 
+                                    AND 
+                                a.`deleted_at` IS NULL;";
                     $r = $this->db->query($q)->result_array();
                     break;
                 default:

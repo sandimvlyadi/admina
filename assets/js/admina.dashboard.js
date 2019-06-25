@@ -161,7 +161,7 @@ $(document).ready(function(){
             { 'data' : 'tgl_antrian' }
         ],
 
-        'order' 	: [[ 5, 'ASC' ]]
+        'order' 	: [[ 5, 'DESC' ]]
 	});
 
     $.ajax({
@@ -193,6 +193,10 @@ $(document).ready(function(){
         }
     });
     selectRentangUmur = $('#formDataPemeriksaanUmum select[name="id_rentang_umur"]').select2({
+        'theme': 'bootstrap4'
+    });
+
+    $('#formDataPemeriksaanUmum select[name="jenis_kelamin"]').select2({
         'theme': 'bootstrap4'
     });
 
@@ -367,6 +371,7 @@ $('#tableProses').on('click', 'button[name="btn_selesai"]', function(){
                         $('#formDataPemeriksaanUmum input[name="no_antrian"]').val(d.no_antrian);
                         $('#formDataPemeriksaanUmum input[name="nama_pasien"]').val(d.nama_pasien);
                         $('#formDataPemeriksaanUmum input[name="nama_pelayanan"]').val(d.nama_pelayanan);
+                        $('#formDataPemeriksaanUmum select[name="jenis_kelamin"]').val('L');
                         $(selectPenyakit).val('20').trigger('change');
                         $(selectRentangUmur).val('1').trigger('change');
                         $('button[name="btn_selesai_pemeriksaan_umum"]').attr('id', d.id);
@@ -583,6 +588,7 @@ $('button[name="btn_selesai_pemeriksaan_umum"]').click(function(){
 
                 $('#pemeriksaanUmum').modal('hide');
                 autoRefreshData();
+                $(this).removeAttr('disabled');
             } else{
                 $.notify({
                     icon: "now-ui-icons ui-1_bell-53",
@@ -596,6 +602,7 @@ $('button[name="btn_selesai_pemeriksaan_umum"]').click(function(){
                       align: 'center'
                     }
                 });
+                $(this).removeAttr('disabled');
             }
         }
     });
@@ -974,4 +981,8 @@ $('button[name="btn_selesai_kb"]').click(function(){
             }
         }
     });
+});
+
+$('input[name="filterDate"]').on('change', function(){
+    tableTerlayani.search($(this).val()).draw();
 });

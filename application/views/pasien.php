@@ -112,14 +112,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <thead class="text-primary">
                       <th>No.</th>
                       <th>Jenis Pasien</th>
-                      <th>No. Buku / No. Reg</th>
+                      <th>No. Rekam Medis</th>
                       <th>Nama Pasien</th>
-                      <th>Tanggal Lahir</th>
+                      <!-- <th>Tanggal Lahir</th>
                       <th>Penanggung Jawab</th>
                       <th>Tgl. Lahir</th>
                       <th>Kota</th>
                       <th>HPHT</th>
-                      <th>Taksiran Partus</th>
+                      <th>Taksiran Partus</th> -->
                       <th style="min-width: 100px;">Aksi</th>
                     </thead>
                     <tbody>
@@ -150,12 +150,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                           <option value="Imunisasi">Imunisasi</option>
                           <option value="KB">KB</option>
                           <option value="Poli Gigi">Poli Gigi</option>
+                          <option value="Hamil">Hamil</option>
+                          <option value="Melahirkan">Melahirkan</option>
                         </select>
                       </div>
                     </div>
                 		<div class="col-md-6">
                 			<div class="form-group">
-                				<label>No. Buku / No. Reg</label>
+                				<label>No. Rekam Medis</label>
                 				<input type="text" name="no_registrasi" class="form-control" placeholder="No. Buku / No. Reg" required readonly>
                 			</div>
                 		</div>
@@ -273,25 +275,25 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     </div>
                     <hr>
 
-                    <div class="col-md-12">
+                    <div class="col-md-12 formTambahan">
                       <h1>Data Tambahan</h1>
                       <div class="alert alert-danger" role="alert">
                         Catatan: Khusus untuk <b>Kabupaten Bandung Barat</b> silahkan pilih nama desa, selain itu nama desa biarkan "<b>Tidak Ada</b>".
                       </div>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-4 formTambahan">
                       <div class="form-group">
                         <label>Kota</label>
                         <select name="id_kota" class="form-control"></select>
                       </div>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-4 formTambahan">
                       <div class="form-group">
                         <label>Desa</label>
                         <select name="id_desa" class="form-control"></select>
                       </div>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-4 formTambahan">
                       <div class="form-group">
                         <label>Golongan Darah</label>
                         <select name="gol_darah" class="form-control">
@@ -303,55 +305,55 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         </select>
                       </div>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-4 formTambahan">
                       <div class="form-group">
                         <label>No Telepon</label>
                         <input type="text" name="no_telp_pasien" class="form-control" placeholder="No Telepon">
                       </div>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-4 formTambahan">
                       <div class="form-group">
                         <label>Gravida (G)</label>
-                        <input type="number" name="gravida" class="form-control" placeholder="Gravida" required>
+                        <input type="number" name="gravida" class="form-control" placeholder="Gravida">
                       </div>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-4 formTambahan">
                       <div class="form-group">
                         <label>Para (P)</label>
-                        <input type="number" name="para" class="form-control" placeholder="Para" required>
+                        <input type="number" name="para" class="form-control" placeholder="Para">
                       </div>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-4 formTambahan">
                       <div class="form-group">
                         <label>Abortus (A)</label>
-                        <input type="number" name="abortus" class="form-control" placeholder="Abortus" required>
+                        <input type="number" name="abortus" class="form-control" placeholder="Abortus">
                       </div>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-4 formTambahan">
                       <div class="form-group">
                         <label>HPHT</label>
-                        <input type="date" name="hpht" class="form-control" placeholder="HPHT" required>
+                        <input type="date" name="hpht" class="form-control" placeholder="HPHT">
                       </div>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-4 formTambahan">
                       <div class="form-group">
                         <label>Siklus</label>
-                        <input type="number" name="siklus" class="form-control" placeholder="Siklus" required>
+                        <input type="number" name="siklus" class="form-control" placeholder="Siklus">
                       </div>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-4 formTambahan">
                       <div class="form-group">
                         <label>Durasi Haid</label>
-                        <input type="number" name="durasi_haid" class="form-control" placeholder="Durasi Haid" required>
+                        <input type="number" name="durasi_haid" class="form-control" placeholder="Durasi Haid">
                       </div>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-4 formTambahan">
                       <div class="form-group">
                         <label>Taksiran Partus</label>
-                        <input type="date" name="taksiran_partus" class="form-control" placeholder="Taksiran Partus" required>
+                        <input type="date" name="taksiran_partus" class="form-control" placeholder="Taksiran Partus">
                       </div>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-4 formTambahan">
                       <div class="form-group">
                         <label>Catatan Bidan</label>
                         <select name="catatan_bidan" class="form-control" multiple>

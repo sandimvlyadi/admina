@@ -193,9 +193,9 @@ class Dashboard_model extends CI_Model {
 
         if ($data['search']['value'] && !isset($data['all'])) {
             $s = $this->db->escape_str($data['search']['value']);
-            $q .= "WHERE (a.`status_antrian` LIKE '%". $s ."%' OR a.`tgl_antrian` LIKE '%". $s ."%' OR b.`nama_dokter` LIKE '%". $s ."%' OR c.`nama_pasien` LIKE '%". $s ."%' OR d.`nama_pelayanan` LIKE '%". $s ."%' OR a.`kode_antrian` LIKE '%". $s ."%') AND a.`status_antrian` = 'Selesai' AND a.`tgl_antrian` LIKE '". $d ."%' AND a.`deleted_at` IS NULL ";
+            $q .= "WHERE (a.`status_antrian` LIKE '%". $s ."%' OR a.`tgl_antrian` LIKE '%". $s ."%' OR b.`nama_dokter` LIKE '%". $s ."%' OR c.`nama_pasien` LIKE '%". $s ."%' OR d.`nama_pelayanan` LIKE '%". $s ."%' OR a.`kode_antrian` LIKE '%". $s ."%' OR a.`tgl_antrian` LIKE '". $d ."%') AND a.`status_antrian` = 'Selesai' AND a.`deleted_at` IS NULL ";
         } else{
-            $q .= "WHERE a.`status_antrian` = 'Selesai' AND a.`tgl_antrian` LIKE '". $d ."%' AND a.`deleted_at` IS NULL ";
+            $q .= "WHERE a.`status_antrian` = 'Selesai' AND a.`deleted_at` IS NULL ";
         }
 
         if (isset($data['order'])) {
@@ -369,6 +369,7 @@ class Dashboard_model extends CI_Model {
                             (
                                 `created_at`,
                                 `id_antrian`,
+                                `jenis_kelamin`,
                                 `id_penyakit`,
                                 `id_rentang_umur`,
                                 `catatan`
@@ -377,6 +378,7 @@ class Dashboard_model extends CI_Model {
                             (
                                 NOW(),
                                 '". $this->db->escape_str($id) ."',
+                                '". $this->db->escape_str($f['jenis_kelamin']) ."',
                                 '". $this->db->escape_str($f['id_penyakit']) ."',
                                 '". $this->db->escape_str($f['id_rentang_umur']) ."',
                                 '". $this->db->escape_str($f['catatan']) ."'
