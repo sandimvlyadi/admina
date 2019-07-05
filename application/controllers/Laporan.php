@@ -110,7 +110,6 @@ class Laporan extends CI_Controller {
     				break;
     			case '2':
     				$this->load->view('laporan_rekap_penyakit_cetak', $response);
-    				// echo json_encode($response, JSON_PRETTY_PRINT);
     				break;
     			case '3':
     				$this->load->view('laporan_program_ispa_cetak', $response);

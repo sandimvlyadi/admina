@@ -149,6 +149,16 @@ $('button[name="btn_add"]').click(function(){
     var m = date.getMonth()+1;
     var d = date.getDate();
 
+    $('#tableLaporanBulanan tbody input').val('');
+    $('#tableLaporanBulanan tbody tr').each(function(){
+        $(this).find('td:last').text('');
+    });
+    $('#tableLaporanBulanan tbody tr:last td').each(function(i){
+        if (i > 0) {
+            $(this).text('');
+        }
+    });
+
     $(selectJenisLaporan).val('1').trigger('change');
     $(selectTahun).val(y).trigger('change');
     $(selectBulan).val(((''+m).length<2 ? '0' : '') + m).trigger('change');
@@ -300,4 +310,43 @@ $('button[name="btn_save"]').click(function(){
 $('#tableLaporan').on('click', 'button[name="btn_print"]', function(){
     var id = $(this).attr('id');
     window.open(baseurl + 'laporan/cetak/' + id + '/', '_blank');
+});
+
+$('select[name="id_jenis_laporan"]').on('change', function(){
+    var id = $(this).val();
+    if (id == 1) {
+        $('.laporan-bulanan').show();
+    } else{
+        $('.laporan-bulanan').hide();
+    }
+});
+
+$('#tableLaporanBulanan tbody td').on('change', 'input', function(){
+    var jml = Array();
+    jml.length = $('#tableLaporanBulanan tbody tr:last td').length - 2;
+    $('#tableLaporanBulanan tbody tr').each(function(i){
+        var sum = 0;
+        $(this).find('input').each(function(j){
+            var val = $(this).val();
+            if (!isNaN(val) && val.length !== 0) {
+                sum += parseFloat(val);
+                if (jml[j] === undefined) {
+                    jml[j] = 0;
+                }
+                jml[j] += parseFloat(val)
+            }
+        });
+        $(this).find('td:last').text(sum);
+    });
+
+    var total = 0;
+    $('#tableLaporanBulanan tbody tr:last td').each(function(i){
+        if (i != 0) {
+            $(this).text(jml[i-1]);
+            if (!isNaN(jml[i-1]) && jml[i-1].length !== 0) {
+                total += parseFloat(jml[i-1]);
+            }
+        }
+    });
+    $('#tableLaporanBulanan tbody tr:last td:last').text(total);
 });
