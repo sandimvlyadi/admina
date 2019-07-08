@@ -304,7 +304,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           </div>
         </div>
 
-        <div class="modal fade" id="pemeriksaanUmum" tabindex="-1" role="dialog" aria-labelledby="pemeriksaanUmumLabel" aria-hidden="true">
+        <!-- <div class="modal fade" id="pemeriksaanUmum" tabindex="-1" role="dialog" aria-labelledby="pemeriksaanUmumLabel" aria-hidden="true">
           <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
               <div class="modal-header">
@@ -365,7 +365,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
               </div>
             </div>
           </div>
-        </div>
+        </div> -->
 
         <div class="modal fade" id="programIspa" tabindex="-1" role="dialog" aria-labelledby="programIspaLabel" aria-hidden="true">
           <div class="modal-dialog modal-lg" role="document">

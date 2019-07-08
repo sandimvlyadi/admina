@@ -1,4 +1,5 @@
 var table = '';
+var tableRM = '';
 var selectJenisPasien = '';
 var selectPendidikanPasien = '';
 var selectPendidikanSuami = '';
@@ -26,7 +27,7 @@ $(document).ready(function(){
             	var row = new Array();
             	if (response.result) {
             		for(var x in response.data){
-            			var button = '<button id="'+ response.data[x].id +'" name="btn_edit" class="btn btn-info btn-sm" title="Edit Data"><i class="fa fa-edit"></i></button> <button id="'+ response.data[x].id +'" name="btn_delete" class="btn btn-danger btn-sm" title="Hapus Data"><i class="fa fa-trash"></i></button>';
+            			var button = '<button id="'+ response.data[x].id +'" name="btn_view" class="btn btn-default btn-sm" title="Lihat Detail"><i class="fa fa-search"></i></button> <button id="'+ response.data[x].id +'" name="btn_print" class="btn btn-success btn-sm" title="Cetak Data Pasien"><i class="fa fa-print"></i></button> <button id="'+ response.data[x].id +'" name="btn_edit" class="btn btn-info btn-sm" title="Edit Data"><i class="fa fa-edit"></i></button> <button id="'+ response.data[x].id +'" name="btn_delete" class="btn btn-danger btn-sm" title="Hapus Data"><i class="fa fa-trash"></i></button>';
 
 	            		row.push({
 	            			'no'                : i,
@@ -76,6 +77,13 @@ $(document).ready(function(){
     		}
   		]
 	});
+
+    tableRM = $('#tableRM').DataTable({
+        'searching' : false,
+        'paging'    : false,
+        'info'      : false,
+        'sorting'   : false
+    });
 
     selectJenisPasien = $('select[name="jenis_pasien"]').select2({
         'theme': 'bootstrap4'
@@ -201,21 +209,28 @@ $('button[name="btn_add"]').click(function(){
             }
         }
     });
+    $('input[name="nik"]').val('');
     $('input[name="nama_pasien"]').val('');
     $('input[name="tgl_lahir"]').val(output);
     $(selectPendidikanPasien).val('Tidak Tamat').trigger('change');
     $(selectAgamaPasien).val('Islam').trigger('change');
     $(selectPekerjaanPasien).val('0').trigger('change');
+    $('input[name="alamat_ktp_istri"]').val('');
     $('input[name="alamat_istri"]').val('');
+    $('input[name="nama_ayah_kandung"]').val('');
     $('input[name="nama_suami"]').val('');
     $('input[name="tgl_lahir_suami"]').val(output);
     $(selectPendidikanSuami).val('Tidak Tamat').trigger('change');
     $(selectAgamaSuami).val('Islam').trigger('change');
     $(selectPekerjaanSuami).val('0').trigger('change');
+    $('input[name="alamat_ktp_suami"]').val('');
+    $('input[name="alamat_suami"]').val('');
     $(selectKota).val('164').trigger('change');
     $(selectDesa).val('8').trigger('change');
     $(selectDarah).val('-').trigger('change');
     $('input[name="no_telp_pasien"]').val('');
+    $('input[name="email"]').val('');
+    $('input[name="medsos"]').val('');
     $('input[name="gravida"]').val('1');
     $('input[name="para"]').val('0');
     $('input[name="abortus"]').val('0');
@@ -227,9 +242,14 @@ $('button[name="btn_add"]').click(function(){
     $('#formTitle').text('Tambah Data');
 
 	$('#table').hide();
+    $('.table-detail').hide();
 	setTimeout(function(){
 		$('#form').fadeIn()
 	}, 100);
+});
+
+$('input[name="alamat_istri"]').on('change', function(){
+    $('input[name="alamat_suami"]').val($(this).val());
 });
 
 $('#tablePasien').on('click', 'button[name="btn_edit"]', function(){
@@ -250,6 +270,7 @@ $('#tablePasien').on('click', 'button[name="btn_edit"]', function(){
                 });
 
                 $('input[name="no_registrasi"]').val(d.no_registrasi);
+                $('input[name="nik"]').val(d.nik);
                 $('input[name="nama_pasien"]').val(d.nama_pasien);
                 $('input[name="tgl_lahir"]').val(d.tgl_lahir);
 
@@ -271,7 +292,9 @@ $('#tablePasien').on('click', 'button[name="btn_edit"]', function(){
                     }
                 });
 
+                $('input[name="alamat_ktp_istri"]').val(d.alamat_ktp_istri);
                 $('input[name="alamat_istri"]').val(d.alamat_istri);
+                $('input[name="nama_ayah_kandung"]').val(d.nama_ayah_kandung);
                 $('input[name="nama_suami"]').val(d.nama_suami);
                 $('input[name="tgl_lahir_suami"]').val(d.tgl_lahir_suami);
 
@@ -293,6 +316,9 @@ $('#tablePasien').on('click', 'button[name="btn_edit"]', function(){
                     }
                 });
 
+                $('input[name="alamat_ktp_suami"]').val(d.alamat_ktp_suami);
+                $('input[name="alamat_suami"]').val(d.alamat_suami);
+
                 $(selectKota).find('option').each(function(){
                     if ($(this).val() == d.id_kota) {
                         $(selectKota).val($(this).val()).trigger('change');
@@ -312,6 +338,8 @@ $('#tablePasien').on('click', 'button[name="btn_edit"]', function(){
                 });
 
                 $('input[name="no_telp_pasien"]').val(d.no_telp_pasien);
+                $('input[name="email"]').val(d.email);
+                $('input[name="medsos"]').val(d.medsos);
                 $('input[name="gravida"]').val(d.gravida);
                 $('input[name="para"]').val(d.para);
                 $('input[name="abortus"]').val(d.abortus);
@@ -332,6 +360,7 @@ $('#tablePasien').on('click', 'button[name="btn_edit"]', function(){
                 $('#formTitle').text('Edit Data');
 
                 $('#table').hide();
+                $('.table-detail').hide();
                 setTimeout(function(){
                     $('#form').fadeIn()
                 }, 100);
@@ -404,6 +433,7 @@ $('button[name="btn_cancel"]').click(function(){
 	$('#form').hide();
 	setTimeout(function(){
 		$('#table').fadeIn();
+        $('.table-detail').fadeIn();
 	}, 100);
 });
 
@@ -496,9 +526,15 @@ $('button[name="btn_save"]').click(function(){
                 });
                 table.ajax.reload(null, false);
                 $('#form').hide();
+                $('.table-detail').hide();
 				setTimeout(function(){
 					$('#table').fadeIn();
+                    $('.table-detail').fadeIn();
 				}, 100);
+
+                if (response.redirect_id != 0) {
+                    window.open(baseurl + 'pasien/cetak/' + response.redirect_id + '/', '_blank');
+                }
             } else{
                 $.notify({
                     icon: "now-ui-icons ui-1_bell-53",
@@ -526,3 +562,105 @@ $('#formData').on('change', 'select[name="jenis_pasien"]', function(){
         $('.formTambahan').hide();
     }
 });
+
+$('#tablePasien').on('click', 'button[name="btn_print"]', function(){
+    var id = $(this).attr('id');
+    window.open(baseurl + 'pasien/cetak/' + id + '/', '_blank');
+});
+
+$('#tablePasien').on('click', 'button[name="btn_view"]', function(){
+    var id = $(this).attr('id');
+    $.ajax({
+        type: 'POST',
+        url: baseurl + 'pasien/detail/',
+        data: {
+            'id': id
+        },
+        dataType: 'json',
+        success: function(response){
+            if(response.result){
+                var detail = response.detail;
+                var rm = response.rm;
+                
+                $('#tableDetail tbody tr:eq(0) td:last').text(detail.no_registrasi);
+                $('#tableDetail tbody tr:eq(1) td:last').text(detail.nik);
+                $('#tableDetail tbody tr:eq(2) td:last').text(detail.nama_pasien);
+                $('#tableDetail tbody tr:eq(3) td:last').text(formatTglLahir(detail.tgl_lahir));
+                $('#tableDetail tbody tr:eq(4) td:last').text(detail.pendidikan_istri);
+                $('#tableDetail tbody tr:eq(5) td:last').text(detail.agama_istri);
+                $('#tableDetail tbody tr:eq(6) td:last').text(detail.nama_pekerjaan_istri);
+                $('#tableDetail tbody tr:eq(7) td:last').text(detail.alamat_ktp_istri);
+                $('#tableDetail tbody tr:eq(8) td:last').text(detail.alamat_istri);
+                $('#tableDetail tbody tr:eq(9) td:last').text(detail.nama_ayah_kandung);
+                $('#tableDetail tbody tr:eq(10) td:last').text(detail.nama_suami);
+                $('#tableDetail tbody tr:eq(11) td:last').text(formatTglLahir(detail.tgl_lahir_suami));
+                $('#tableDetail tbody tr:eq(12) td:last').text(detail.pendidikan_suami);
+                $('#tableDetail tbody tr:eq(13) td:last').text(detail.agama_suami);
+                $('#tableDetail tbody tr:eq(14) td:last').text(detail.nama_pekerjaan_suami);
+                $('#tableDetail tbody tr:eq(15) td:last').text(detail.alamat_ktp_suami);
+                $('#tableDetail tbody tr:eq(16) td:last').text(detail.alamat_suami);
+                $('#tableDetail tbody tr:eq(17) td:last').text(detail.no_telp_pasien);
+                $('#tableDetail tbody tr:eq(18) td:last').text(detail.email);
+                $('#tableDetail tbody tr:eq(19) td:last').text(detail.medsos);
+
+                $('#tableRM tbody tr').remove();
+                for (var i = 0; i < rm.length; i++) {
+                    var tr = $('<tr>');
+                    tr.append('<td>'+ formatWaktu(rm[i].tgl_antrian) +'</td>');
+                    tr.append('<td>'+ rm[i].nama_pelayanan +'</td>');
+                    $('#tableRM tbody').append(tr);
+                }
+            } else{
+                $.notify({
+                    icon: "now-ui-icons ui-1_bell-53",
+                    message: response.msg
+                }, {
+                    type: 'danger',
+                    delay: 3000,
+                    timer: 1000,
+                    placement: {
+                      from: 'top',
+                      align: 'center'
+                    }
+                });
+            }
+        }
+    }); 
+});
+
+function getMonth(i)
+{
+    var month = ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Agu', 'Sep', 'Okt', 'Nov', 'Des'];
+    return month[i - 1];
+}
+
+function formatWaktu(waktu)
+{
+    var format = '';
+
+    var y = waktu.substring(0, 4);
+    var m = waktu.substring(5, 7);
+    m = parseInt(m);
+    var d = waktu.substring(8, 10);
+    d = parseInt(d);
+    var t = waktu.substring(11, 16);
+
+    format = d + '-' + getMonth(m) + '-' + y + ' ' + t;
+
+    return format;
+}
+
+function formatTglLahir(waktu)
+{
+    var format = '';
+
+    var y = waktu.substring(0, 4);
+    var m = waktu.substring(5, 7);
+    m = parseInt(m);
+    var d = waktu.substring(8, 10);
+    d = parseInt(d);
+
+    format = d + '-' + getMonth(m) + '-' + y;
+
+    return format;
+}

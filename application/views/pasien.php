@@ -23,6 +23,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/DataTables/datatables.min.css'); ?>"/>
   <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/select2/css/select2.min.css'); ?>"/>
   <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/select2/css/select2-bootstrap4.css'); ?>"/>
+  <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/custom.css'); ?>">
   <script type="text/javascript">
     var baseurl = "<?php echo base_url(); ?>";
   </script>
@@ -92,7 +93,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       </div>
       <div class="content">
         <div class="row">
-          <div id="table" class="col-md-12">
+          <div id="table" class="col-md-8">
             <div class="card">
               <div class="card-header">
                 <div class="row">
@@ -120,7 +121,110 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                       <th>Kota</th>
                       <th>HPHT</th>
                       <th>Taksiran Partus</th> -->
-                      <th style="min-width: 100px;">Aksi</th>
+                      <th style="min-width: 200px;">Aksi</th>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4 table-detail">
+            <div class="card">
+              <div class="card-body">
+                <div class="table-responsive">
+                  <table id="tableDetail" class="table table-striped table-hover">
+                    <tbody>
+                      <tr>
+                        <td>No. RM</td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td>NIK</td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td>Nama</td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td>Tgl. Lahir</td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td>Pendidikan</td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td>Agama</td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td>Pekerjaan</td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td>Alamat KTP</td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td>Domisili</td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td>Ayah Kandung</td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td>Suami</td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td>Tgl. Lahir Suami</td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td>Pendidikan Suami</td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td>Agama Suami</td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td>Pekerjaan Suami</td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td>Alamat KTP Suami</td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td>Domisili Suami</td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td>Kontak</td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td>Email</td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td>Medsos</td>
+                        <td></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div class="table-responsive" style="max-height: 500px;">
+                  <table id="tableRM" class="table table-striped table-hover">
+                    <thead>
+                      <th>Waktu Kunjungan</th>
+                      <th>Jenis Pelayanan</th>
                     </thead>
                     <tbody>
                     </tbody>
@@ -141,7 +245,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <div class="col-md-12">
                       <h1>Data Umum</h1>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-12">
                       <div class="form-group">
                         <label>Jenis Pasien</label>
                         <select name="jenis_pasien" class="form-control">
@@ -155,9 +259,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         </select>
                       </div>
                     </div>
-                		<div class="col-md-6">
+                		<div class="col-md-12">
                 			<div class="form-group">
-                				<label>No. Rekam Medis</label>
+                				<label>No. Rekam Medis (RM)</label>
                 				<input type="text" name="no_registrasi" class="form-control" placeholder="No. Buku / No. Reg" required readonly>
                 			</div>
                 		</div>
@@ -166,19 +270,25 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <div class="col-md-12">
                       <h1>Data Pasien</h1>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <label>NIK</label>
+                        <input type="text" name="nik" class="form-control" placeholder="NIK">
+                      </div>
+                    </div>
+                    <div class="col-md-12">
                       <div class="form-group">
                         <label>Nama Pasien</label>
                         <input type="text" name="nama_pasien" class="form-control" placeholder="Nama Pasien" required>
                       </div>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-12">
                       <div class="form-group">
                         <label>Tanggal Lahir</label>
                         <input type="date" name="tgl_lahir" class="form-control" placeholder="Tanggal Lahir" required>
                       </div>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-12">
                       <div class="form-group">
                         <label>Pendidikan Pasien</label>
                         <select name="pendidikan_istri" class="form-control">
@@ -195,7 +305,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         </select>
                       </div>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-12">
                       <div class="form-group">
                         <label>Agama Pasien</label>
                         <select name="agama_istri" class="form-control">
@@ -208,16 +318,22 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         </select>
                       </div>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-12">
                       <div class="form-group">
                         <label>Pekerjaan Pasien</label>
                         <select name="pekerjaan_istri" class="form-control"></select>
                       </div>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-12">
                       <div class="form-group">
-                        <label>Alamat</label>
-                        <input type="text" name="alamat_istri" class="form-control" placeholder="Alamat">
+                        <label>Alamat KTP</label>
+                        <input type="text" name="alamat_ktp_istri" class="form-control" placeholder="Alamat KTP">
+                      </div>
+                    </div>
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <label>Alamat Domisili</label>
+                        <input type="text" name="alamat_istri" class="form-control" placeholder="Alamat Domisili">
                       </div>
                     </div>
                     <hr>
@@ -225,19 +341,25 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <div class="col-md-12">
                       <h1>Data Penanggung Jawab (Suami/Istri/Ibu)</h1>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <label>Nama Ayah Kandung</label>
+                        <input type="text" name="nama_ayah_kandung" class="form-control" placeholder="Nama Ayah Kandung">
+                      </div>
+                    </div>
+                    <div class="col-md-12">
                       <div class="form-group">
                         <label>Penanggung Jawab</label>
                         <input type="text" name="nama_suami" class="form-control" placeholder="Penanggung Jawab" required>
                       </div>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-12">
                       <div class="form-group">
                         <label>Tanggal Lahir</label>
                         <input type="date" name="tgl_lahir_suami" class="form-control" placeholder="Tanggal Lahir Penanggung Jawab" required>
                       </div>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-12">
                       <div class="form-group">
                         <label>Pendidikan</label>
                         <select name="pendidikan_suami" class="form-control">
@@ -254,7 +376,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         </select>
                       </div>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-12">
                       <div class="form-group">
                         <label>Agama</label>
                         <select name="agama_suami" class="form-control">
@@ -267,10 +389,22 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         </select>
                       </div>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-12">
                       <div class="form-group">
                         <label>Pekerjaan</label>
                         <select name="pekerjaan_suami" class="form-control"></select>
+                      </div>
+                    </div>
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <label>Alamat KTP</label>
+                        <input type="text" name="alamat_ktp_suami" class="form-control" placeholder="Alamat KTP">
+                      </div>
+                    </div>
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <label>Alamat Domisili</label>
+                        <input type="text" name="alamat_suami" class="form-control" placeholder="Alamat Domisili">
                       </div>
                     </div>
                     <hr>
@@ -281,19 +415,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         Catatan: Khusus untuk <b>Kabupaten Bandung Barat</b> silahkan pilih nama desa, selain itu nama desa biarkan "<b>Tidak Ada</b>".
                       </div>
                     </div>
-                    <div class="col-md-4 formTambahan">
+                    <div class="col-md-12 formTambahan">
                       <div class="form-group">
                         <label>Kota</label>
                         <select name="id_kota" class="form-control"></select>
                       </div>
                     </div>
-                    <div class="col-md-4 formTambahan">
+                    <div class="col-md-12 formTambahan">
                       <div class="form-group">
                         <label>Desa</label>
                         <select name="id_desa" class="form-control"></select>
                       </div>
                     </div>
-                    <div class="col-md-4 formTambahan">
+                    <div class="col-md-12 formTambahan">
                       <div class="form-group">
                         <label>Golongan Darah</label>
                         <select name="gol_darah" class="form-control">
@@ -305,55 +439,67 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         </select>
                       </div>
                     </div>
-                    <div class="col-md-4 formTambahan">
+                    <div class="col-md-12 formTambahan">
                       <div class="form-group">
-                        <label>No Telepon</label>
+                        <label>No Telp / WA</label>
                         <input type="text" name="no_telp_pasien" class="form-control" placeholder="No Telepon">
                       </div>
                     </div>
-                    <div class="col-md-4 formTambahan">
+                    <div class="col-md-12 formTambahan">
+                      <div class="form-group">
+                        <label>Alamat Email</label>
+                        <input type="email" name="email" class="form-control" placeholder="Alamat Email">
+                      </div>
+                    </div>
+                    <div class="col-md-12 formTambahan">
+                      <div class="form-group">
+                        <label>Medsos</label>
+                        <input type="text" name="medsos" class="form-control" placeholder="Medsos">
+                      </div>
+                    </div>
+                    <div class="col-md-12 formTambahan">
                       <div class="form-group">
                         <label>Gravida (G)</label>
                         <input type="number" name="gravida" class="form-control" placeholder="Gravida">
                       </div>
                     </div>
-                    <div class="col-md-4 formTambahan">
+                    <div class="col-md-12 formTambahan">
                       <div class="form-group">
                         <label>Para (P)</label>
                         <input type="number" name="para" class="form-control" placeholder="Para">
                       </div>
                     </div>
-                    <div class="col-md-4 formTambahan">
+                    <div class="col-md-12 formTambahan">
                       <div class="form-group">
                         <label>Abortus (A)</label>
                         <input type="number" name="abortus" class="form-control" placeholder="Abortus">
                       </div>
                     </div>
-                    <div class="col-md-4 formTambahan">
+                    <div class="col-md-12 formTambahan">
                       <div class="form-group">
                         <label>HPHT</label>
                         <input type="date" name="hpht" class="form-control" placeholder="HPHT">
                       </div>
                     </div>
-                    <div class="col-md-4 formTambahan">
+                    <div class="col-md-12 formTambahan">
                       <div class="form-group">
                         <label>Siklus</label>
                         <input type="number" name="siklus" class="form-control" placeholder="Siklus">
                       </div>
                     </div>
-                    <div class="col-md-4 formTambahan">
+                    <div class="col-md-12 formTambahan">
                       <div class="form-group">
                         <label>Durasi Haid</label>
                         <input type="number" name="durasi_haid" class="form-control" placeholder="Durasi Haid">
                       </div>
                     </div>
-                    <div class="col-md-4 formTambahan">
+                    <div class="col-md-12 formTambahan">
                       <div class="form-group">
                         <label>Taksiran Partus</label>
                         <input type="date" name="taksiran_partus" class="form-control" placeholder="Taksiran Partus">
                       </div>
                     </div>
-                    <div class="col-md-4 formTambahan">
+                    <div class="col-md-12 formTambahan">
                       <div class="form-group">
                         <label>Catatan Bidan</label>
                         <select name="catatan_bidan" class="form-control" multiple>

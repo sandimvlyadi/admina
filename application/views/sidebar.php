@@ -24,6 +24,12 @@
               <p>Pasien</p>
             </a>
 					</li>
+					<li id="li-rekam-medis">
+            <a href="<?php echo base_url('rekam-medis/'); ?>">
+              <i class="now-ui-icons design_bullet-list-67"></i>
+              <p>Rekam Medis</p>
+            </a>
+					</li>
 					<li id="li-pembelian">
             <a href="<?php echo base_url('pembelian/'); ?>">
               <i class="now-ui-icons design_bullet-list-67"></i>

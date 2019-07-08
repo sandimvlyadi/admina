@@ -134,11 +134,16 @@ class Pasien_model extends CI_Model {
 			$q =    "INSERT INTO 
                         `pasiens` 
                         (
+                            `nik`,
+                            `nama_ayah_kandung`,
                             `nama_pasien`,
                             `tgl_lahir`,
                             `gol_darah`,
+                            `alamat_ktp_istri`,
                             `alamat_istri`,
                             `no_telp_pasien`,
+                            `email`,
+                            `medsos`,
                             `jenis_pasien`,
                             `no_registrasi`,
                             `pekerjaan_istri`,
@@ -150,6 +155,7 @@ class Pasien_model extends CI_Model {
                             `agama_suami`,
                             `agama_istri`,
                             `pekerjaan_suami`,
+                            `alamat_ktp_suami`,
                             `alamat_suami`,
                             `gravida`,
                             `para`,
@@ -163,11 +169,16 @@ class Pasien_model extends CI_Model {
                         ) 
                     VALUES 
                         (
+                            '". $this->db->escape_str($f['nik']) ."',
+                            '". $this->db->escape_str($f['nama_ayah_kandung']) ."',
                             '". $this->db->escape_str($f['nama_pasien']) ."',
                             '". $this->db->escape_str($f['tgl_lahir']) ."',
                             '". $this->db->escape_str($f['gol_darah']) ."',
+                            '". $this->db->escape_str($f['alamat_ktp_istri']) ."',
                             '". $this->db->escape_str($f['alamat_istri']) ."',
                             '". $this->db->escape_str($f['no_telp_pasien']) ."',
+                            '". $this->db->escape_str($f['email']) ."',
+                            '". $this->db->escape_str($f['medsos']) ."',
                             '". $this->db->escape_str($f['jenis_pasien']) ."',
                             '". $this->db->escape_str($f['no_registrasi']) ."',
                             '". $this->db->escape_str($f['pekerjaan_istri']) ."',
@@ -179,7 +190,8 @@ class Pasien_model extends CI_Model {
                             '". $this->db->escape_str($f['agama_suami']) ."',
                             '". $this->db->escape_str($f['agama_istri']) ."',
                             '". $this->db->escape_str($f['pekerjaan_suami']) ."',
-                            '". $this->db->escape_str($f['alamat_istri']) ."',
+                            '". $this->db->escape_str($f['alamat_ktp_suami']) ."',
+                            '". $this->db->escape_str($f['alamat_suami']) ."',
                             '". $this->db->escape_str($f['gravida']) ."',
                             '". $this->db->escape_str($f['para']) ."',
                             '". $this->db->escape_str($f['abortus']) ."',
@@ -195,11 +207,16 @@ class Pasien_model extends CI_Model {
             $q =    "UPDATE 
                         `pasiens` 
                     SET 
+                        `nik` = '". $this->db->escape_str($f['nik']) ."', 
+                        `nama_ayah_kandung` = '". $this->db->escape_str($f['nama_ayah_kandung']) ."', 
                         `nama_pasien` = '". $this->db->escape_str($f['nama_pasien']) ."', 
                         `tgl_lahir` = '". $this->db->escape_str($f['tgl_lahir']) ."', 
                         `gol_darah` = '". $this->db->escape_str($f['gol_darah']) ."', 
+                        `alamat_ktp_istri` = '". $this->db->escape_str($f['alamat_ktp_istri']) ."', 
                         `alamat_istri` = '". $this->db->escape_str($f['alamat_istri']) ."', 
                         `no_telp_pasien` = '". $this->db->escape_str($f['no_telp_pasien']) ."', 
+                        `email` = '". $this->db->escape_str($f['email']) ."', 
+                        `medsos` = '". $this->db->escape_str($f['medsos']) ."', 
                         `jenis_pasien` = '". $this->db->escape_str($f['jenis_pasien']) ."', 
                         `no_registrasi` = '". $this->db->escape_str($f['no_registrasi']) ."', 
                         `pekerjaan_istri` = '". $this->db->escape_str($f['pekerjaan_istri']) ."', 
@@ -209,7 +226,8 @@ class Pasien_model extends CI_Model {
                         `agama_suami` = '". $this->db->escape_str($f['agama_suami']) ."',
                         `agama_istri` = '". $this->db->escape_str($f['agama_istri']) ."',
                         `pekerjaan_suami` = '". $this->db->escape_str($f['pekerjaan_suami']) ."',
-                        `alamat_suami` = '". $this->db->escape_str($f['alamat_istri']) ."',
+                        `alamat_ktp_suami` = '". $this->db->escape_str($f['alamat_ktp_suami']) ."',
+                        `alamat_suami` = '". $this->db->escape_str($f['alamat_suami']) ."',
                         `gravida` = '". $this->db->escape_str($f['gravida']) ."',
                         `para` = '". $this->db->escape_str($f['para']) ."',
                         `abortus` = '". $this->db->escape_str($f['abortus']) ."',
@@ -227,6 +245,15 @@ class Pasien_model extends CI_Model {
 		if ($this->db->simple_query($q)) {
 			$result['result'] = true;
 			$result['msg'] = 'Data berhasil disimpan.';
+
+            $result['redirect_id'] = 0;
+            if ($id == 0) {
+                $q = "SELECT * FROM `pasiens` WHERE `deleted_at` IS NULL ORDER BY `id` DESC LIMIT 1;";
+                $r = $this->db->query($q, false)->result_array();
+                if (count($r) > 0) {
+                    $result['redirect_id'] = $r[0]['id'];
+                }
+            }
 		} else{
 			$result['msg'] = 'Terjadi kesalahan saat menyimpan data.';
 		}
@@ -320,6 +347,98 @@ class Pasien_model extends CI_Model {
             $result['result'] = true;
             $total = $r[0]['total'] + 1;
             $result['value'] = $d . str_pad($total, 3, '0', STR_PAD_LEFT);
+        }
+
+        return $result;
+    }
+
+    function cetak($id = 0)
+    {
+        $result = array(
+            'result'    => false,
+            'msg'       => 'Data pasien tidak ditemukan.'  
+        );
+
+        $q =    "SELECT 
+                    a.*,
+                    b.`nama_pekerjaan` AS `nama_pekerjaan_istri`,
+                    c.`nama_pekerjaan` AS `nama_pekerjaan_suami`
+                FROM 
+                    `pasiens` a
+                LEFT JOIN
+                    `pekerjaans` b
+                        ON
+                    a.`pekerjaan_istri` = b.`id`
+                LEFT JOIN
+                    `pekerjaans` c
+                        ON
+                    a.`pekerjaan_suami` = c.`id`
+                WHERE 
+                    a.`id` = '". $this->db->escape_str($id) ."'
+                ;";
+        $r = $this->db->query($q)->result_array();
+        if (count($r) > 0) {
+            $result['result'] = true;
+            $result['detail'] = $r[0];
+        }
+
+        return $result;
+    }
+
+    function detail($data = array())
+    {
+        $result = array(
+            'result'    => false,
+            'msg'       => ''  
+        );
+
+        $u = $data['userData'];
+        $d = $data['postData'];
+        $id = $d['id'];
+        $q =    "SELECT 
+                    a.`no_registrasi`,
+                    a.`nik`,
+                    a.`nama_pasien`,
+                    a.`tgl_lahir`, 
+                    a.`pendidikan_istri`,
+                    a.`agama_istri`,
+                    b.`nama_pekerjaan` AS `nama_pekerjaan_istri`,
+                    a.`alamat_ktp_istri`,
+                    a.`alamat_istri`,
+                    a.`nama_ayah_kandung`,
+                    a.`nama_suami`,
+                    a.`tgl_lahir_suami`,
+                    a.`pendidikan_suami`,
+                    a.`agama_suami`,
+                    c.`nama_pekerjaan` AS `nama_pekerjaan_suami`,
+                    a.`alamat_ktp_suami`,
+                    a.`alamat_suami`,
+                    a.`no_telp_pasien`,
+                    a.`email`,
+                    a.`medsos`
+                FROM 
+                    `pasiens` a 
+                LEFT JOIN 
+                    `pekerjaans` b 
+                        ON 
+                    a.`pekerjaan_istri` = b.`id` 
+                LEFT JOIN 
+                    `pekerjaans` c 
+                        ON 
+                    a.`pekerjaan_suami` = c.`id` 
+                WHERE 
+                    a.`id` = '". $this->db->escape_str($id) ."'
+                ;";
+        $r = $this->db->query($q, false)->result_array();
+        if (count($r) > 0) {
+            $result['result'] = true;
+            $result['detail'] = $r[0];
+
+            $q = "SELECT a.`tgl_antrian`, b.`nama_pelayanan` FROM `antrians` a LEFT JOIN `jenis_pelayanans` b ON a.`id_jenis_pelayanan` = b.`id` WHERE a.`id_pasien` = '". $this->db->escape_str($id) ."' ORDER BY a.`tgl_antrian` DESC ";
+            $r = $this->db->query($q, false)->result_array();
+            $result['rm'] = $r;
+        } else{
+            $result['msg'] = 'Data detail tidak tersedia.';
         }
 
         return $result;

@@ -131,5 +131,31 @@ class Pasien extends CI_Controller {
 		$response = $this->model->input_no_registrasi();
     	echo json_encode($response, JSON_PRETTY_PRINT);
     }
+
+    public function cetak($id = 0)
+    {
+    	$response = $this->model->cetak($id);
+    	if ($response['result']) {
+    		$this->load->view('pasien_cetak', $response);
+    	} else{
+    		redirect('pasien/');
+    	}
+    }
+
+    public function detail()
+    {
+		$response 	= array(
+			'result'	=> false,
+			'msg'		=> ''
+		);
+
+		$param = array(
+			'userData' => $this->userData,
+			'postData' => $_POST
+		);
+		$response = $this->model->detail($param);
+
+		echo json_encode($response, JSON_PRETTY_PRINT);
+    }
     
 }
