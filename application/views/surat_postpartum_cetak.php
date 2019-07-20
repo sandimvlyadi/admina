@@ -122,7 +122,7 @@ function terbilang($bilangan)
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Surat Keterangan Postpartum</title>
+    <title>Surat Keterangan Kontrol</title>
 	<style type="text/css">
 	body {
 	  counter-reset: section;           /* Set the section counter to 0 */
@@ -179,7 +179,7 @@ function terbilang($bilangan)
 
 				<tr>
 					<td colspan="2" align="center">
-						<h2><u>SURAT KETERANGAN POSTPARTUM</u></h2>
+						<h2><u>SURAT KETERANGAN KONTROL</u></h2>
 					</td>
 				</tr>
 			</table>

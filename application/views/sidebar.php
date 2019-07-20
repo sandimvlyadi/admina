@@ -9,7 +9,7 @@
 					<li id="li-antrian">
             <a href="<?php echo base_url('antrian/'); ?>">
               <i class="now-ui-icons design_bullet-list-67"></i>
-              <p>Antrian</p>
+              <p>Kunjungan</p>
             </a>
 					</li>
 					<li id="li-obat">
@@ -78,7 +78,7 @@
 								<li id="li-surat-postpartum">
 									<a href="<?php echo base_url('surat-postpartum/'); ?>">
 										<i class="now-ui-icons arrows-1_minimal-right"></i>
-										<p>Surat Keterangan Postpartum</p>
+										<p>Surat Keterangan Kontrol</p>
 									</a>
 								</li>
 								<li id="li-surat-hamil">
@@ -88,7 +88,7 @@
 									</a>
 								</li>
 								<li id="li-surat-keterangan-hamil">
-									<a href="<?php echo base_url('surat-keterangan-hamil'); ?>">
+									<a href="<?php echo base_url('surat-keterangan-hamil/'); ?>">
 										<i class="now-ui-icons arrows-1_minimal-right"></i>
 										<p>Surat Keterangan Hamil</p>
 									</a>

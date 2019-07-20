@@ -2,10 +2,23 @@ var tableDilayani = '';
 var tableProses = '';
 var tableTerlayani = '';
 
+var selectJenisPelayanan = '';
+var selectPasien = '';
+var selectDokter = '';
 var selectPenyakit = '';
 var selectRentangUmur = '';
 var selectSatuanUsia = '';
 var selectAlatKontrasepsi = '';
+var selectPendidikanPasien = '';
+var selectPendidikanSuami = '';
+var selectAgamaPasien = '';
+var selectAgamaSuami = '';
+var selectPekerjaanPasien = '';
+var selectPekerjaanSuami = '';
+var selectKota = '';
+var selectDesa = '';
+var selectDarah = '';
+var selectCatatan = '';
 
 $('#li-dashboard').addClass('active');
 
@@ -166,6 +179,54 @@ $(document).ready(function(){
 
     $.ajax({
         type: 'GET',
+        url: baseurl + 'antrian/select-jenis-pelayanan/',
+        dataType: 'json',
+        success: function(response){
+            if(response.result){
+                for(var x in response.data){
+                    $('select[name="id_jenis_pelayanan"]').append('<option value="'+ response.data[x].id +'">'+response.data[x].nama_pelayanan+'</option>');
+                }
+            }
+        }
+    });
+    selectJenisPelayanan = $('select[name="id_jenis_pelayanan"]').select2({
+        'theme': 'bootstrap4'
+    });
+
+    $.ajax({
+        type: 'GET',
+        url: baseurl + 'antrian/select-pasien/',
+        dataType: 'json',
+        success: function(response){
+            if(response.result){
+                for(var x in response.data){
+                    $('select[name="id_pasien"]').append('<option value="'+ response.data[x].id +'">'+response.data[x].no_registrasi+' | '+response.data[x].nama_pasien+'</option>');
+                }
+            }
+        }
+    });
+    selectPasien = $('select[name="id_pasien"]').select2({
+        'theme': 'bootstrap4'
+    });
+
+    $.ajax({
+        type: 'GET',
+        url: baseurl + 'antrian/select-dokter/',
+        dataType: 'json',
+        success: function(response){
+            if(response.result){
+                for(var x in response.data){
+                    $('select[name="id_dokter"]').append('<option value="'+ response.data[x].id +'">'+response.data[x].nama_dokter+'</option>');
+                }
+            }
+        }
+    });
+    selectDokter = $('select[name="id_dokter"]').select2({
+        'theme': 'bootstrap4'
+    });
+
+    $.ajax({
+        type: 'GET',
         url: baseurl + 'dashboard/select-penyakit/',
         dataType: 'json',
         success: function(response){
@@ -304,7 +365,389 @@ $(document).ready(function(){
         'theme': 'bootstrap4'
     });
 
+    selectPendidikanPasien = $('select[name="pendidikan_istri"]').select2({
+        'theme': 'bootstrap4'
+    });
+
+    selectAgamaPasien = $('select[name="agama_istri"]').select2({
+        'theme': 'bootstrap4'
+    });
+
+    selectPendidikanSuami = $('select[name="pendidikan_suami"]').select2({
+        'theme': 'bootstrap4'
+    });
+
+    selectAgamaSuami = $('select[name="agama_suami"]').select2({
+        'theme': 'bootstrap4'
+    });
+
+    selectDarah = $('select[name="gol_darah"]').select2({
+        'theme': 'bootstrap4'
+    });
+
+    selectCatatan = $('select[name="catatan_bidan"]').select2({
+        'theme': 'bootstrap4'
+    });
+
+    $.ajax({
+        type: 'GET',
+        url: baseurl + 'pasien/select-pekerjaan/',
+        dataType: 'json',
+        success: function(response){
+            if(response.result){
+                $('select[name="pekerjaan_istri"]').append('<option value="0">- Pilih Pekerjaan -</option>');
+                for(var x in response.data){
+                    $('select[name="pekerjaan_istri"]').append('<option value="'+ response.data[x].id +'">'+response.data[x].nama_pekerjaan+'</option>');
+                }
+            } else{
+                $('select[name="pekerjaan_istri"]').append('<option value="0">- Pilih Pekerjaan -</option>');
+            }
+        }
+    });
+    selectPekerjaanPasien = $('select[name="pekerjaan_istri"]').select2({
+        'theme': 'bootstrap4'
+    });
+
+    $.ajax({
+        type: 'GET',
+        url: baseurl + 'pasien/select-pekerjaan/',
+        dataType: 'json',
+        success: function(response){
+            if(response.result){
+                $('select[name="pekerjaan_suami"]').append('<option value="0">- Pilih Pekerjaan -</option>');
+                for(var x in response.data){
+                    $('select[name="pekerjaan_suami"]').append('<option value="'+ response.data[x].id +'">'+response.data[x].nama_pekerjaan+'</option>');
+                }
+            } else{
+                $('select[name="pekerjaan_suami"]').append('<option value="0">- Pilih Pekerjaan -</option>');
+            }
+        }
+    });
+    selectPekerjaanSuami = $('select[name="pekerjaan_suami"]').select2({
+        'theme': 'bootstrap4'
+    });
+
+    $.ajax({
+        type: 'GET',
+        url: baseurl + 'pasien/select-kota/',
+        dataType: 'json',
+        success: function(response){
+            if(response.result){
+                for(var x in response.data){
+                    $('select[name="id_kota"]').append('<option value="'+ response.data[x].id +'">'+response.data[x].nama_kota+'</option>');
+                }
+            } else{
+                $('select[name="id_kota"]').append('<option value="164">Kabupaten Bandung Barat</option>');
+            }
+        }
+    });
+    selectKota = $('select[name="id_kota"]').select2({
+        'theme': 'bootstrap4'
+    });
+
+    $.ajax({
+        type: 'GET',
+        url: baseurl + 'pasien/select-desa/',
+        dataType: 'json',
+        success: function(response){
+            if(response.result){
+                for(var x in response.data){
+                    $('select[name="id_desa"]').append('<option value="'+ response.data[x].id +'">'+response.data[x].nama_desa+'</option>');
+                }
+            } else{
+                $('select[name="id_desa"]').append('<option value="8">Tidak Ada</option>');
+            }
+        }
+    });
+    selectDesa = $('select[name="id_desa"]').select2({
+        'theme': 'bootstrap4'
+    });
+
 	setInterval('autoRefreshData()', 3000);
+});
+
+$('a[href="#tambahKunjungan"]').on('click', function(){
+    $(selectJenisPelayanan).val('9').trigger('change');
+    $(selectPasien).val('1').trigger('change');
+    $(selectDokter).val('1').trigger('change');
+    $('input[name="no_antrian"]').val('0');
+    $.ajax({
+        type: 'GET',
+        url: baseurl + 'antrian/input-tgl-antrian/',
+        dataType: 'json',
+        success: function(response){
+            if(response.result){
+                $('input[name="tgl_antrian"]').val(response.value);
+            }
+        }
+    });
+    $.ajax({
+        type: 'GET',
+        url: baseurl + 'antrian/input-kode-antrian/',
+        dataType: 'json',
+        success: function(response){
+            if(response.result){
+                $('input[name="kode_antrian"]').val(response.value);
+            }
+        }
+    });
+
+    $('#tambahKunjungan').modal('show');
+});
+
+$('select[name="id_dokter"], select[name="id_jenis_pelayanan"]').change(function(){
+    $.ajax({
+        type: 'POST',
+        url: baseurl + 'antrian/input-no-antrian/',
+        data: {
+            'id_dokter': $('select[name="id_dokter"]').val(),
+            'id_jenis_pelayanan': $('select[name="id_jenis_pelayanan"]').val(),
+        },
+        dataType: 'json',
+        success: function(response){
+            if(response.result){
+                $('input[name="no_antrian"]').val(response.value);
+            }
+        }
+    });
+});
+
+$('button[name="btn_tambah_kunjungan"]').on('click', function(){
+    $(this).attr('disabled', 'disabled');
+    var missing = false;
+    $('#formDataTambahKunjungan').find('input').each(function(){
+        if($(this).prop('required')){
+            if($(this).val() == ''){
+                var placeholder = $(this).attr('placeholder');
+                $.notify({
+                    icon: 'now-ui-icons ui-1_bell-53',
+                    message: 'Kolom '+ placeholder +' tidak boleh kosong.'
+                }, {
+                    type: 'warning',
+                    delay: 1000,
+                    timer: 500,
+                    placement: {
+                      from: 'top',
+                      align: 'center'
+                    }
+                });
+                $(this).focus();
+                missing = true;
+                return false;
+            }
+        }
+    });
+
+    $(this).removeAttr('disabled');
+    if(missing){
+        return;
+    }
+
+    $.ajax({
+        type: 'POST',
+        url: baseurl + 'antrian/save/',
+        data: {
+            'id': $(this).attr('id'),
+            'form': $('#formDataTambahKunjungan').serialize()
+        },
+        dataType: 'json',
+        success: function(response){
+            if(response.result){
+                $.notify({
+                    icon: "now-ui-icons ui-1_bell-53",
+                    message: response.msg
+                }, {
+                    type: 'primary',
+                    delay: 3000,
+                    timer: 1000,
+                    placement: {
+                      from: 'top',
+                      align: 'center'
+                    }
+                });
+                autoRefreshData();
+                $('#tambahKunjungan').modal('hide');
+            } else{
+                $.notify({
+                    icon: "now-ui-icons ui-1_bell-53",
+                    message: response.msg
+                }, {
+                    type: 'danger',
+                    delay: 3000,
+                    timer: 1000,
+                    placement: {
+                      from: 'top',
+                      align: 'center'
+                    }
+                });
+            }
+        }
+    });
+});
+
+$('a[href="#tambahPasien"]').on('click', function(){
+    var d = new Date();
+    var month = d.getMonth()+1;
+    var day = d.getDate();
+
+    var output = d.getFullYear() + '-' + ((''+month).length<2 ? '0' : '') + month + '-' + ((''+day).length<2 ? '0' : '') + day;
+
+    // $('button[name="btn_save"]').attr('id', '0');
+    // $(selectJenisPasien).val('Bersalin').trigger('change');
+    $.ajax({
+        type: 'GET',
+        url: baseurl + 'pasien/input-no-registrasi/',
+        dataType: 'json',
+        success: function(response){
+            if(response.result){
+                $('input[name="no_registrasi"]').val(response.value);
+            } else{
+                $('input[name="no_registrasi"]').val('');
+            }
+        }
+    });
+    $('input[name="nik"]').val('');
+    $('input[name="nama_pasien"]').val('');
+    $('input[name="tgl_lahir"]').val(output);
+    $(selectPendidikanPasien).val('Tidak Tamat').trigger('change');
+    $(selectAgamaPasien).val('Islam').trigger('change');
+    $(selectPekerjaanPasien).val('0').trigger('change');
+    $('input[name="alamat_ktp_istri"]').val('');
+    $('input[name="alamat_istri"]').val('');
+    $('input[name="nama_ayah_kandung"]').val('');
+    $('input[name="nama_suami"]').val('');
+    $('input[name="tgl_lahir_suami"]').val(output);
+    $(selectPendidikanSuami).val('Tidak Tamat').trigger('change');
+    $(selectAgamaSuami).val('Islam').trigger('change');
+    $(selectPekerjaanSuami).val('0').trigger('change');
+    $('input[name="alamat_ktp_suami"]').val('');
+    $('input[name="alamat_suami"]').val('');
+    $(selectKota).val('164').trigger('change');
+    $(selectDesa).val('8').trigger('change');
+    $(selectDarah).val('-').trigger('change');
+    $('input[name="no_telp_pasien"]').val('');
+    $('input[name="email"]').val('');
+    $('input[name="medsos"]').val('');
+    // $('input[name="gravida"]').val('1');
+    // $('input[name="para"]').val('0');
+    // $('input[name="abortus"]').val('0');
+    // $('input[name="hpht"]').val(output);
+    // $('input[name="siklus"]').val('5');
+    // $('input[name="durasi_haid"]').val('5');
+    // $('input[name="taksiran_partus"]').val(output);
+    $(selectCatatan).val('');
+
+    $('#tambahPasien').modal('show');
+});
+
+$('input[name="alamat_istri"]').on('change', function(){
+    $('input[name="alamat_suami"]').val($(this).val());
+});
+
+$('button[name="btn_tambah_Pasien"]').on('click', function(){
+    $(this).attr('disabled', 'disabled');
+    var missing = false;
+    $('#formDataTambahPasien').find('input').each(function(){
+        if($(this).prop('required')){
+            if($(this).val() == ''){
+                var placeholder = $(this).attr('placeholder');
+                $.notify({
+                    icon: 'now-ui-icons ui-1_bell-53',
+                    message: 'Kolom '+ placeholder +' tidak boleh kosong.'
+                }, {
+                    type: 'warning',
+                    delay: 1000,
+                    timer: 500,
+                    placement: {
+                      from: 'top',
+                      align: 'center'
+                    }
+                });
+                $(this).focus();
+                missing = true;
+                return false;
+            }
+        }
+    });
+
+    $(this).removeAttr('disabled');
+    if(missing){
+        return;
+    }
+
+    if ($('select[name="pekerjaan_istri"]').val() == 0) {
+        $.notify({
+            icon: 'now-ui-icons ui-1_bell-53',
+            message: 'Silakan pilih pekerjaan pasien terlebih dahulu.'
+        }, {
+            type: 'warning',
+            delay: 1000,
+            timer: 500,
+            placement: {
+              from: 'top',
+              align: 'center'
+            }
+        });
+        $(this).focus();
+        return;
+    }
+
+    if ($('select[name="pekerjaan_suami"]').val() == 0) {
+        $.notify({
+            icon: 'now-ui-icons ui-1_bell-53',
+            message: 'Silakan pilih pekerjaan penanggung jawab terlebih dahulu.'
+        }, {
+            type: 'warning',
+            delay: 1000,
+            timer: 500,
+            placement: {
+              from: 'top',
+              align: 'center'
+            }
+        });
+        $(this).focus();
+        return;
+    }
+
+    $.ajax({
+        type: 'POST',
+        url: baseurl + 'pasien/save/',
+        data: {
+            'id': $(this).attr('id'),
+            'form': $('#formDataTambahPasien').serialize()
+        },
+        dataType: 'json',
+        success: function(response){
+            if(response.result){
+                $.notify({
+                    icon: "now-ui-icons ui-1_bell-53",
+                    message: response.msg
+                }, {
+                    type: 'primary',
+                    delay: 3000,
+                    timer: 1000,
+                    placement: {
+                      from: 'top',
+                      align: 'center'
+                    }
+                });
+                $('#tambahPasien').modal('hide');
+            } else{
+                $.notify({
+                    icon: "now-ui-icons ui-1_bell-53",
+                    message: response.msg
+                }, {
+                    type: 'danger',
+                    delay: 3000,
+                    timer: 1000,
+                    placement: {
+                      from: 'top',
+                      align: 'center'
+                    }
+                });
+            }
+        }
+    });
 });
 
 $('#tableDilayani').on('click', 'button[name="btn_layani"]', function(){
@@ -335,6 +778,7 @@ $('#tableDilayani').on('click', 'button[name="btn_layani"]', function(){
                 tableProses.ajax.reload(null, false);
                 tableTerlayani.ajax.reload(null, false);
                 getInfo();
+                $(this).removeAttr('disabled');
             } else{
                 $.notify({
                     icon: "now-ui-icons ui-1_bell-53",
@@ -348,6 +792,7 @@ $('#tableDilayani').on('click', 'button[name="btn_layani"]', function(){
                       align: 'center'
                     }
                 });
+                $(this).removeAttr('disabled');
             }
         }
     });

@@ -31,7 +31,7 @@ $(document).ready(function(){
 
 	            		row.push({
 	            			'no'                : i,
-                            'jenis_pasien'      : response.data[x].jenis_pasien,
+                            // 'jenis_pasien'      : response.data[x].jenis_pasien,
                             'no_registrasi'     : response.data[x].no_registrasi,
                             'nama_pasien'       : response.data[x].nama_pasien,
                             // 'tgl_lahir'         : response.data[x].tgl_lahir,
@@ -56,7 +56,7 @@ $(document).ready(function(){
 
         'columns' : [
         	{ 'data' : 'no' },
-            { 'data' : 'jenis_pasien' },
+            // { 'data' : 'jenis_pasien' },
             { 'data' : 'no_registrasi' },
             { 'data' : 'nama_pasien' },
             // { 'data' : 'tgl_lahir' },
@@ -73,7 +73,7 @@ $(document).ready(function(){
 		'columnDefs': [
     		{
     			'orderable'	: false,
-    			'targets'	: [ 0, 4 ]
+    			'targets'	: [ 0, 3 ]
     		}
   		]
 	});
@@ -85,9 +85,9 @@ $(document).ready(function(){
         'sorting'   : false
     });
 
-    selectJenisPasien = $('select[name="jenis_pasien"]').select2({
-        'theme': 'bootstrap4'
-    });
+    // selectJenisPasien = $('select[name="jenis_pasien"]').select2({
+    //     'theme': 'bootstrap4'
+    // });
 
     selectPendidikanPasien = $('select[name="pendidikan_istri"]').select2({
         'theme': 'bootstrap4'
@@ -196,7 +196,7 @@ $('button[name="btn_add"]').click(function(){
     var output = d.getFullYear() + '-' + ((''+month).length<2 ? '0' : '') + month + '-' + ((''+day).length<2 ? '0' : '') + day;
 
 	$('button[name="btn_save"]').attr('id', '0');
-    $(selectJenisPasien).val('Bersalin').trigger('change');
+    // $(selectJenisPasien).val('Bersalin').trigger('change');
     $.ajax({
         type: 'GET',
         url: baseurl + 'pasien/input-no-registrasi/',
@@ -231,13 +231,13 @@ $('button[name="btn_add"]').click(function(){
     $('input[name="no_telp_pasien"]').val('');
     $('input[name="email"]').val('');
     $('input[name="medsos"]').val('');
-    $('input[name="gravida"]').val('1');
-    $('input[name="para"]').val('0');
-    $('input[name="abortus"]').val('0');
-    $('input[name="hpht"]').val(output);
-    $('input[name="siklus"]').val('5');
-    $('input[name="durasi_haid"]').val('5');
-    $('input[name="taksiran_partus"]').val(output);
+    // $('input[name="gravida"]').val('1');
+    // $('input[name="para"]').val('0');
+    // $('input[name="abortus"]').val('0');
+    // $('input[name="hpht"]').val(output);
+    // $('input[name="siklus"]').val('5');
+    // $('input[name="durasi_haid"]').val('5');
+    // $('input[name="taksiran_partus"]').val(output);
     $(selectCatatan).val('');
     $('#formTitle').text('Tambah Data');
 
@@ -263,11 +263,11 @@ $('#tablePasien').on('click', 'button[name="btn_edit"]', function(){
             if(response.result){
                 var d = response.data;
 
-                $(selectJenisPasien).find('option').each(function(){
-                    if ($(this).val() == d.jenis_pasien) {
-                        $(selectJenisPasien).val($(this).val()).trigger('change');
-                    }
-                });
+                // $(selectJenisPasien).find('option').each(function(){
+                //     if ($(this).val() == d.jenis_pasien) {
+                //         $(selectJenisPasien).val($(this).val()).trigger('change');
+                //     }
+                // });
 
                 $('input[name="no_registrasi"]').val(d.no_registrasi);
                 $('input[name="nik"]').val(d.nik);
@@ -553,15 +553,15 @@ $('button[name="btn_save"]').click(function(){
     });
 });
 
-$('#formData').on('change', 'select[name="jenis_pasien"]', function(){
-    var jenis = $(this).val();
+// $('#formData').on('change', 'select[name="jenis_pasien"]', function(){
+//     var jenis = $(this).val();
     
-    if (jenis == 'Hamil' || jenis == 'Melahirkan') {
-        $('.formTambahan').show();
-    } else{
-        $('.formTambahan').hide();
-    }
-});
+//     if (jenis == 'Hamil' || jenis == 'Melahirkan') {
+//         $('.formTambahan').show();
+//     } else{
+//         $('.formTambahan').hide();
+//     }
+// });
 
 $('#tablePasien').on('click', 'button[name="btn_print"]', function(){
     var id = $(this).attr('id');

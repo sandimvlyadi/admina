@@ -144,7 +144,6 @@ class Pasien_model extends CI_Model {
                             `no_telp_pasien`,
                             `email`,
                             `medsos`,
-                            `jenis_pasien`,
                             `no_registrasi`,
                             `pekerjaan_istri`,
                             `id_kota`,
@@ -157,13 +156,6 @@ class Pasien_model extends CI_Model {
                             `pekerjaan_suami`,
                             `alamat_ktp_suami`,
                             `alamat_suami`,
-                            `gravida`,
-                            `para`,
-                            `abortus`,
-                            `hpht`,
-                            `siklus`,
-                            `durasi_haid`,
-                            `taksiran_partus`,
                             `catatan_bidan`,
                             `id_desa`
                         ) 
@@ -179,7 +171,6 @@ class Pasien_model extends CI_Model {
                             '". $this->db->escape_str($f['no_telp_pasien']) ."',
                             '". $this->db->escape_str($f['email']) ."',
                             '". $this->db->escape_str($f['medsos']) ."',
-                            '". $this->db->escape_str($f['jenis_pasien']) ."',
                             '". $this->db->escape_str($f['no_registrasi']) ."',
                             '". $this->db->escape_str($f['pekerjaan_istri']) ."',
                             '". $this->db->escape_str($f['id_kota']) ."',
@@ -192,13 +183,6 @@ class Pasien_model extends CI_Model {
                             '". $this->db->escape_str($f['pekerjaan_suami']) ."',
                             '". $this->db->escape_str($f['alamat_ktp_suami']) ."',
                             '". $this->db->escape_str($f['alamat_suami']) ."',
-                            '". $this->db->escape_str($f['gravida']) ."',
-                            '". $this->db->escape_str($f['para']) ."',
-                            '". $this->db->escape_str($f['abortus']) ."',
-                            '". $this->db->escape_str($f['hpht']) ."',
-                            '". $this->db->escape_str($f['siklus']) ."',
-                            '". $this->db->escape_str($f['durasi_haid']) ."',
-                            '". $this->db->escape_str($f['taksiran_partus']) ."',
                             '". $this->db->escape_str($f['catatan_bidan']) ."',
                             '". $this->db->escape_str($f['id_desa']) ."'
                         )
@@ -217,7 +201,6 @@ class Pasien_model extends CI_Model {
                         `no_telp_pasien` = '". $this->db->escape_str($f['no_telp_pasien']) ."', 
                         `email` = '". $this->db->escape_str($f['email']) ."', 
                         `medsos` = '". $this->db->escape_str($f['medsos']) ."', 
-                        `jenis_pasien` = '". $this->db->escape_str($f['jenis_pasien']) ."', 
                         `no_registrasi` = '". $this->db->escape_str($f['no_registrasi']) ."', 
                         `pekerjaan_istri` = '". $this->db->escape_str($f['pekerjaan_istri']) ."', 
                         `nama_suami` = '". $this->db->escape_str($f['nama_suami']) ."', 
@@ -228,13 +211,6 @@ class Pasien_model extends CI_Model {
                         `pekerjaan_suami` = '". $this->db->escape_str($f['pekerjaan_suami']) ."',
                         `alamat_ktp_suami` = '". $this->db->escape_str($f['alamat_ktp_suami']) ."',
                         `alamat_suami` = '". $this->db->escape_str($f['alamat_suami']) ."',
-                        `gravida` = '". $this->db->escape_str($f['gravida']) ."',
-                        `para` = '". $this->db->escape_str($f['para']) ."',
-                        `abortus` = '". $this->db->escape_str($f['abortus']) ."',
-                        `hpht` = '". $this->db->escape_str($f['hpht']) ."',
-                        `siklus` = '". $this->db->escape_str($f['siklus']) ."',
-                        `durasi_haid` = '". $this->db->escape_str($f['durasi_haid']) ."',
-                        `taksiran_partus` = '". $this->db->escape_str($f['taksiran_partus']) ."',
                         `catatan_bidan` = '". $this->db->escape_str($f['catatan_bidan']) ."',
                         `id_desa` = '". $this->db->escape_str($f['id_desa']) ."'
                     WHERE 
@@ -341,12 +317,12 @@ class Pasien_model extends CI_Model {
         );
 
         $d = date('Ym');
-        $q = "SELECT COUNT(*) AS `total` FROM `pasiens` WHERE `no_registrasi` LIKE '". $d ."%';";
+        $q = "SELECT COUNT(*) AS `total` FROM `pasiens`;";
         $r = $this->db->query($q, false)->result_array();
         if (count($r) > 0) {
             $result['result'] = true;
             $total = $r[0]['total'] + 1;
-            $result['value'] = $d . str_pad($total, 3, '0', STR_PAD_LEFT);
+            $result['value'] = str_pad($total, 6, '0', STR_PAD_LEFT);
         }
 
         return $result;

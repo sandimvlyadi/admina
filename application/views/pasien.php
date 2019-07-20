@@ -112,7 +112,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                   <table id="tablePasien" class="table table-striped table-hover">
                     <thead class="text-primary">
                       <th>No.</th>
-                      <th>Jenis Pasien</th>
+                      <!-- <th>Jenis Pasien</th> -->
                       <th>No. Rekam Medis</th>
                       <th>Nama Pasien</th>
                       <!-- <th>Tanggal Lahir</th>
@@ -245,7 +245,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <div class="col-md-12">
                       <h1>Data Umum</h1>
                     </div>
-                    <div class="col-md-12">
+                    <!-- <div class="col-md-12">
                       <div class="form-group">
                         <label>Jenis Pasien</label>
                         <select name="jenis_pasien" class="form-control">
@@ -258,7 +258,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                           <option value="Melahirkan">Melahirkan</option>
                         </select>
                       </div>
-                    </div>
+                    </div> -->
                 		<div class="col-md-12">
                 			<div class="form-group">
                 				<label>No. Rekam Medis (RM)</label>
@@ -457,7 +457,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <input type="text" name="medsos" class="form-control" placeholder="Medsos">
                       </div>
                     </div>
-                    <div class="col-md-12 formTambahan">
+                    <!-- <div class="col-md-12 formTambahan">
                       <div class="form-group">
                         <label>Gravida (G)</label>
                         <input type="number" name="gravida" class="form-control" placeholder="Gravida">
@@ -498,7 +498,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <label>Taksiran Partus</label>
                         <input type="date" name="taksiran_partus" class="form-control" placeholder="Taksiran Partus">
                       </div>
-                    </div>
+                    </div> -->
                     <div class="col-md-12 formTambahan">
                       <div class="form-group">
                         <label>Catatan Bidan</label>

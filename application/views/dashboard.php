@@ -96,13 +96,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <div class="card">
               <div class="card-header card-antrian">
                 <div class="card-category d-flex justify-content-center">0</div>
-                <div class="card-title d-flex justify-content-center">Antrian / Registrasi</div>
+                <div class="card-title d-flex justify-content-center">Kunjungan</div>
               </div>
               <div class="card-body d-flex justify-content-center">
                 <i class="fa fa-users fa-10x"></i>
               </div>
               <div class="card-footer">
-                <a href="<?php echo base_url('antrian/'); ?>">Tambah Antrian / Registrasi <i class="fa fa-arrow-right"></i></a>
+                <a href="#tambahKunjungan">Tambah Kunjungan <i class="fa fa-arrow-right"></i></a>
               </div>
             </div>
           </div>
@@ -130,7 +130,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <i class="fa fa-book fa-10x"></i>
               </div>
               <div class="card-footer">
-                <a href="<?php echo base_url('pasien/'); ?>">Tambah Pasien Baru <i class="fa fa-arrow-right"></i></a>
+                <a href="#tambahPasien">Tambah Pasien Baru <i class="fa fa-arrow-right"></i></a>
               </div>
             </div>
           </div>
@@ -232,7 +232,303 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           </div>
         </div>
 
-        <div class="modal fade" id="pemeriksaanUmum" tabindex="-1" role="dialog" aria-labelledby="pemeriksaanUmumLabel" aria-hidden="true">
+        <div class="modal fade" id="tambahKunjungan" role="dialog" aria-labelledby="tambahKunjunganLabel" aria-hidden="true">
+          <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="tambahKunjunganLabel">Tambah Kunjungan</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form id="formDataTambahKunjungan">
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label>Jenis Pelayanan</label>
+                        <select name="id_jenis_pelayanan" class="form-control"></select>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label>Pasien</label>
+                        <select name="id_pasien" class="form-control"></select>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label>Dokter</label>
+                        <select name="id_dokter" class="form-control"></select>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label>No. Antrian</label>
+                        <input type="number" name="no_antrian" class="form-control" placeholder="No. Antrian" required>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label>Tanggal Kunjungan</label>
+                        <input type="text" name="tgl_antrian" class="form-control" placeholder="Tanggal Antrian" required>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label>Kode Antrian</label>
+                        <input type="text" name="kode_antrian" class="form-control" placeholder="Kode Antrian" readonly>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-sm btn-danger" data-dismiss="modal"><i class="fa fa-times"></i> Batal</button>
+                <button id="0" name="btn_tambah_kunjungan" type="button" class="btn btn-sm btn-success"><i class="fa fa-plus"></i> Tambah</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal fade" id="tambahPasien" role="dialog" aria-labelledby="tambahPasienLabel" aria-hidden="true">
+          <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="tambahPasienLabel">Tambah Pasien</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form id="formDataTambahPasien">
+                  <div class="row">
+                    <div class="col-md-12">
+                      <h1>Data Umum</h1>
+                    </div>
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <label>No. Rekam Medis (RM)</label>
+                        <input type="text" name="no_registrasi" class="form-control" placeholder="No. Buku / No. Reg" required readonly>
+                      </div>
+                    </div>
+                    <hr>
+
+                    <div class="col-md-12">
+                      <h1>Data Pasien</h1>
+                    </div>
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <label>NIK</label>
+                        <input type="text" name="nik" class="form-control" placeholder="NIK">
+                      </div>
+                    </div>
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <label>Nama Pasien</label>
+                        <input type="text" name="nama_pasien" class="form-control" placeholder="Nama Pasien" required>
+                      </div>
+                    </div>
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <label>Tanggal Lahir</label>
+                        <input type="date" name="tgl_lahir" class="form-control" placeholder="Tanggal Lahir" required>
+                      </div>
+                    </div>
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <label>Pendidikan Pasien</label>
+                        <select name="pendidikan_istri" class="form-control">
+                          <option value="Tidak Tamat" selected="selected">Tidak Tamat</option>
+                          <option value="SD">SD</option>
+                          <option value="SMP">SMP</option>
+                          <option value="SLTA">SLTA</option>
+                          <option value="D1">D1</option>
+                          <option value="D3">D3</option>
+                          <option value="D4">D4</option>
+                          <option value="S1">S1</option>
+                          <option value="S2">S2</option>
+                          <option value="S3">S3</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <label>Agama Pasien</label>
+                        <select name="agama_istri" class="form-control">
+                          <option value="Islam" selected="selected">Islam</option>
+                          <option value="Kristen">Kristen</option>
+                          <option value="Hindu">Hindu</option>
+                          <option value="Budha">Budha</option>
+                          <option value="Protestan">Protestan</option>
+                          <option value="Kong Hu Chu">Kong Hu Chu</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <label>Pekerjaan Pasien</label>
+                        <select name="pekerjaan_istri" class="form-control"></select>
+                      </div>
+                    </div>
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <label>Alamat KTP</label>
+                        <input type="text" name="alamat_ktp_istri" class="form-control" placeholder="Alamat KTP">
+                      </div>
+                    </div>
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <label>Alamat Domisili</label>
+                        <input type="text" name="alamat_istri" class="form-control" placeholder="Alamat Domisili">
+                      </div>
+                    </div>
+                    <hr>
+
+                    <div class="col-md-12">
+                      <h1>Data Penanggung Jawab (Suami/Istri/Ibu)</h1>
+                    </div>
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <label>Nama Ayah Kandung</label>
+                        <input type="text" name="nama_ayah_kandung" class="form-control" placeholder="Nama Ayah Kandung">
+                      </div>
+                    </div>
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <label>Penanggung Jawab</label>
+                        <input type="text" name="nama_suami" class="form-control" placeholder="Penanggung Jawab" required>
+                      </div>
+                    </div>
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <label>Tanggal Lahir</label>
+                        <input type="date" name="tgl_lahir_suami" class="form-control" placeholder="Tanggal Lahir Penanggung Jawab" required>
+                      </div>
+                    </div>
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <label>Pendidikan</label>
+                        <select name="pendidikan_suami" class="form-control">
+                          <option value="Tidak Tamat" selected="selected">Tidak Tamat</option>
+                          <option value="SD">SD</option>
+                          <option value="SMP">SMP</option>
+                          <option value="SLTA">SLTA</option>
+                          <option value="D1">D1</option>
+                          <option value="D3">D3</option>
+                          <option value="D4">D4</option>
+                          <option value="S1">S1</option>
+                          <option value="S2">S2</option>
+                          <option value="S3">S3</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <label>Agama</label>
+                        <select name="agama_suami" class="form-control">
+                          <option value="Islam" selected="selected">Islam</option>
+                          <option value="Kristen">Kristen</option>
+                          <option value="Hindu">Hindu</option>
+                          <option value="Budha">Budha</option>
+                          <option value="Protestan">Protestan</option>
+                          <option value="Kong Hu Chu">Kong Hu Chu</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <label>Pekerjaan</label>
+                        <select name="pekerjaan_suami" class="form-control"></select>
+                      </div>
+                    </div>
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <label>Alamat KTP</label>
+                        <input type="text" name="alamat_ktp_suami" class="form-control" placeholder="Alamat KTP">
+                      </div>
+                    </div>
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <label>Alamat Domisili</label>
+                        <input type="text" name="alamat_suami" class="form-control" placeholder="Alamat Domisili">
+                      </div>
+                    </div>
+                    <hr>
+
+                    <div class="col-md-12 formTambahan">
+                      <h1>Data Tambahan</h1>
+                      <div class="alert alert-danger" role="alert">
+                        Catatan: Khusus untuk <b>Kabupaten Bandung Barat</b> silahkan pilih nama desa, selain itu nama desa biarkan "<b>Tidak Ada</b>".
+                      </div>
+                    </div>
+                    <div class="col-md-12 formTambahan">
+                      <div class="form-group">
+                        <label>Kota</label>
+                        <select name="id_kota" class="form-control"></select>
+                      </div>
+                    </div>
+                    <div class="col-md-12 formTambahan">
+                      <div class="form-group">
+                        <label>Desa</label>
+                        <select name="id_desa" class="form-control"></select>
+                      </div>
+                    </div>
+                    <div class="col-md-12 formTambahan">
+                      <div class="form-group">
+                        <label>Golongan Darah</label>
+                        <select name="gol_darah" class="form-control">
+                          <option value="A">A</option>
+                          <option value="B">B</option>
+                          <option value="AB">AB</option>
+                          <option value="O">O</option>
+                          <option value="-" selected="selected">-</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-md-12 formTambahan">
+                      <div class="form-group">
+                        <label>No Telp / WA</label>
+                        <input type="text" name="no_telp_pasien" class="form-control" placeholder="No Telepon">
+                      </div>
+                    </div>
+                    <div class="col-md-12 formTambahan">
+                      <div class="form-group">
+                        <label>Alamat Email</label>
+                        <input type="email" name="email" class="form-control" placeholder="Alamat Email">
+                      </div>
+                    </div>
+                    <div class="col-md-12 formTambahan">
+                      <div class="form-group">
+                        <label>Medsos</label>
+                        <input type="text" name="medsos" class="form-control" placeholder="Medsos">
+                      </div>
+                    </div>
+                    <div class="col-md-12 formTambahan">
+                      <div class="form-group">
+                        <label>Catatan Bidan</label>
+                        <select name="catatan_bidan" class="form-control" multiple>
+                          <option value="Metoda REFRESH">Metoda REFRESH</option>
+                          <option value="TP (Catat & Masukan Ke KTP)">TP (Catat & Masukan Ke KTP)</option>
+                          <option value="Rencana Persalinan">Rencana Persalinan</option>
+                          <option value="Brosur">Brosur</option>
+                          <option value="Tanda Persalinan >= 37 mgg">Tanda Persalinan >= 37 mgg</option>
+                          <option value="Breast Care >= 37 mgg">Breast Care >= 37 mgg</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-sm btn-danger" data-dismiss="modal"><i class="fa fa-times"></i> Batal</button>
+                <button id="0" name="btn_tambah_Pasien" type="button" class="btn btn-sm btn-success"><i class="fa fa-plus"></i> Tambah</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal fade" id="pemeriksaanUmum" role="dialog" aria-labelledby="pemeriksaanUmumLabel" aria-hidden="true">
           <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
               <div class="modal-header">
@@ -304,7 +600,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           </div>
         </div>
 
-        <!-- <div class="modal fade" id="pemeriksaanUmum" tabindex="-1" role="dialog" aria-labelledby="pemeriksaanUmumLabel" aria-hidden="true">
+        <!-- <div class="modal fade" id="pemeriksaanUmum" role="dialog" aria-labelledby="pemeriksaanUmumLabel" aria-hidden="true">
           <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
               <div class="modal-header">
@@ -367,7 +663,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           </div>
         </div> -->
 
-        <div class="modal fade" id="programIspa" tabindex="-1" role="dialog" aria-labelledby="programIspaLabel" aria-hidden="true">
+        <div class="modal fade" id="programIspa" role="dialog" aria-labelledby="programIspaLabel" aria-hidden="true">
           <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
               <div class="modal-header">
@@ -457,7 +753,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           </div>
         </div>
 
-        <div class="modal fade" id="imunisasi" tabindex="-1" role="dialog" aria-labelledby="imunisasiLabel" aria-hidden="true">
+        <div class="modal fade" id="imunisasi" role="dialog" aria-labelledby="imunisasiLabel" aria-hidden="true">
           <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
               <div class="modal-header">
@@ -670,7 +966,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           </div>
         </div>
 
-        <div class="modal fade" id="persalinan" tabindex="-1" role="dialog" aria-labelledby="persalinanLabel" aria-hidden="true">
+        <div class="modal fade" id="persalinan" role="dialog" aria-labelledby="persalinanLabel" aria-hidden="true">
           <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
               <div class="modal-header">
@@ -800,7 +1096,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           </div>
         </div>
 
-        <div class="modal fade" id="pemeriksaanKehamilan" tabindex="-1" role="dialog" aria-labelledby="pemeriksaanKehamilanLabel" aria-hidden="true">
+        <div class="modal fade" id="pemeriksaanKehamilan" role="dialog" aria-labelledby="pemeriksaanKehamilanLabel" aria-hidden="true">
           <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
               <div class="modal-header">
@@ -984,7 +1280,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           </div>
         </div>
 
-        <div class="modal fade" id="pemeriksaanKB" tabindex="-1" role="dialog" aria-labelledby="pemeriksaanKBLabel" aria-hidden="true">
+        <div class="modal fade" id="pemeriksaanKB" role="dialog" aria-labelledby="pemeriksaanKBLabel" aria-hidden="true">
           <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
               <div class="modal-header">

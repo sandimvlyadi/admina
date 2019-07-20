@@ -9,7 +9,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <link rel="icon" type="image/png" href="../assets/img/favicon.png">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <title>
-    Admina | Antrian
+    Admina | Kunjungan
   </title>
   <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
   <!--     Fonts and icons     -->
@@ -56,7 +56,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <span class="navbar-toggler-bar bar3"></span>
               </button>
             </div>
-            <a class="navbar-brand" href="">Antrian</a>
+            <a class="navbar-brand" href="">Kunjungan</a>
           </div>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-bar navbar-kebab"></span>
@@ -97,7 +97,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
               <div class="card-header">
                 <div class="row">
                 	<div class="col-6">
-                		<h4 class="card-title"> Tabel Antrian</h4>
+                		<h4 class="card-title"> Tabel Kunjungan</h4>
                 	</div>
                 	<div class="col-6">
                 		<div class="pull-right">
@@ -115,8 +115,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                       <th>Pasien</th>
                       <th>Dokter</th>
                       <th>No. Antrian</th>
-                      <th>Tanggal Antrian</th>
-                      <th>Status Antrian</th>
+                      <th>Tanggal Kunjungan</th>
+                      <th>Status</th>
                       <th>Kode Antrian</th>
                       <th style="min-width: 100px;">Aksi</th>
                     </thead>
@@ -162,7 +162,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     </div>
                     <div class="col-md-6">
                       <div class="form-group">
-                        <label>Tanggal Antrian</label>
+                        <label>Tanggal Kunjungan</label>
                         <input type="text" name="tgl_antrian" class="form-control" placeholder="Tanggal Antrian" required>
                       </div>
                     </div>

@@ -88,7 +88,7 @@ $(document).ready(function(){
         success: function(response){
             if(response.result){
                 for(var x in response.data){
-                    $('select[name="id_pasien"]').append('<option value="'+ response.data[x].id +'">'+response.data[x].nama_pasien+'</option>');
+                    $('select[name="id_pasien"]').append('<option value="'+ response.data[x].id +'">'+response.data[x].no_registrasi+' | '+response.data[x].nama_pasien+'</option>');
                 }
             }
         }

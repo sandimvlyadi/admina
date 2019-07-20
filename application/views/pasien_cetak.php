@@ -138,7 +138,7 @@ function terbilang($bilangan)
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Laporan Bulanan Rumah Bersalin</title>
+    <title>Cetak Identitas Pasien</title>
 	<style type="text/css">
 	body {
 	  counter-reset: section;           /* Set the section counter to 0 */
