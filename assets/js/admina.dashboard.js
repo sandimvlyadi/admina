@@ -19,6 +19,7 @@ var selectKota = '';
 var selectDesa = '';
 var selectDarah = '';
 var selectCatatan = '';
+var selectTindakanImunisasi = '';
 
 $('#li-dashboard').addClass('active');
 
@@ -271,16 +272,16 @@ $(document).ready(function(){
     $('#formDataImunisasi select[name="bcg"]').select2({
         'theme': 'bootstrap4'
     });
-    $('#formDataImunisasi select[name="dpt1"]').select2({
+    $('#formDataImunisasi select[name="pentabio1"]').select2({
         'theme': 'bootstrap4'
     });
-    $('#formDataImunisasi select[name="dpt2"]').select2({
+    $('#formDataImunisasi select[name="pentabio2"]').select2({
         'theme': 'bootstrap4'
     });
-    $('#formDataImunisasi select[name="dpt3"]').select2({
+    $('#formDataImunisasi select[name="pentabio3"]').select2({
         'theme': 'bootstrap4'
     });
-    $('#formDataImunisasi select[name="dpt4"]').select2({
+    $('#formDataImunisasi select[name="campak"]').select2({
         'theme': 'bootstrap4'
     });
     $('#formDataImunisasi select[name="polio1"]').select2({
@@ -295,13 +296,13 @@ $(document).ready(function(){
     $('#formDataImunisasi select[name="polio4"]').select2({
         'theme': 'bootstrap4'
     });
-    $('#formDataImunisasi select[name="ipy"]').select2({
+    $('#formDataImunisasi select[name="tt"]').select2({
         'theme': 'bootstrap4'
     });
-    $('#formDataImunisasi select[name="campak1"]').select2({
+    $('#formDataImunisasi select[name="campak_ulang"]').select2({
         'theme': 'bootstrap4'
     });
-    $('#formDataImunisasi select[name="campak2"]').select2({
+    $('#formDataImunisasi select[name="pentabio_ulang"]').select2({
         'theme': 'bootstrap4'
     });
 
@@ -460,6 +461,25 @@ $(document).ready(function(){
         }
     });
     selectDesa = $('select[name="id_desa"]').select2({
+        'theme': 'bootstrap4'
+    });
+
+    $.ajax({
+        type: 'GET',
+        url: baseurl + 'macam-tindakan-imunisasi/select/',
+        dataType: 'json',
+        success: function(response){
+            if(response.result){
+                $('select[name="id_macam_tindakan_imunisasi"]').append('<option value="0">Tidak Ada</option>');
+                for(var x in response.data){
+                    $('select[name="id_macam_tindakan_imunisasi"]').append('<option value="'+ response.data[x].id +'">'+response.data[x].nama_tindakan+'</option>');
+                }
+            } else{
+                $('select[name="id_macam_tindakan_imunisasi"]').append('<option value="0">Tidak Ada</option>');
+            }
+        }
+    });
+    selectTindakanImunisasi = $('select[name="id_macam_tindakan_imunisasi"]').select2({
         'theme': 'bootstrap4'
     });
 
@@ -853,17 +873,18 @@ $('#tableProses').on('click', 'button[name="btn_selesai"]', function(){
                         $('#formDataImunisasi input[name="pb"]').val('');
                         $('#formDataImunisasi select[name="hb0"]').val('0').trigger('change');
                         $('#formDataImunisasi select[name="bcg"]').val('0').trigger('change');
-                        $('#formDataImunisasi select[name="dpt1"]').val('0').trigger('change');
-                        $('#formDataImunisasi select[name="dpt2"]').val('0').trigger('change');
-                        $('#formDataImunisasi select[name="dpt3"]').val('0').trigger('change');
-                        $('#formDataImunisasi select[name="dpt4"]').val('0').trigger('change');
+                        $('#formDataImunisasi select[name="pentabio1"]').val('0').trigger('change');
+                        $('#formDataImunisasi select[name="pentabio2"]').val('0').trigger('change');
+                        $('#formDataImunisasi select[name="pentabio3"]').val('0').trigger('change');
+                        $('#formDataImunisasi select[name="campak"]').val('0').trigger('change');
                         $('#formDataImunisasi select[name="polio1"]').val('0').trigger('change');
                         $('#formDataImunisasi select[name="polio2"]').val('0').trigger('change');
                         $('#formDataImunisasi select[name="polio3"]').val('0').trigger('change');
                         $('#formDataImunisasi select[name="polio4"]').val('0').trigger('change');
-                        $('#formDataImunisasi select[name="ipy"]').val('0').trigger('change');
-                        $('#formDataImunisasi select[name="campak1"]').val('0').trigger('change');
-                        $('#formDataImunisasi select[name="campak2"]').val('0').trigger('change');
+                        $('#formDataImunisasi select[name="tt"]').val('0').trigger('change');
+                        $('#formDataImunisasi select[name="campak_ulang"]').val('0').trigger('change');
+                        $('#formDataImunisasi select[name="pentabio_ulang"]').val('0').trigger('change');
+                        $('#formDataImunisasi select[name="id_macam_tindakan_imunisasi"]').val('0').trigger('change');
                         $('#formDataImunisasi textarea[name="catatan"]').val('');
                         $('button[name="btn_selesai_imunisasi"]').attr('id', d.id);
 

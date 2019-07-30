@@ -205,26 +205,27 @@ function terbilang($bilangan)
 				    <th rowspan="3">BB (GRAM)</th>
 				    <th rowspan="3">PB (CM)</th>
 				    <th colspan="13">MACAM IMUNISASI</th>
+				    <th rowspan="3">TINDAKAN</th>
 				  </tr>
 				  <tr>
 				    <td rowspan="2">HB0</td>
 				    <td rowspan="2">BCG</td>
-				    <td colspan="4">DPT</td>
+				    <td colspan="4">PENTABIO</td>
 				    <td colspan="4">POLIO</td>
-				    <td rowspan="2">IPY</td>
+				    <td rowspan="2">TT</td>
 				    <td colspan="2">CAMPAK</td>
 				  </tr>
 				  <tr>
-				  	<td>1</td>
-				  	<td>2</td>
-				  	<td>3</td>
-				  	<td>4</td>
-				  	<td>1</td>
-				  	<td>2</td>
-				  	<td>3</td>
-				  	<td>4</td>
-				  	<td>1</td>
-				  	<td>2</td>
+				  	<td style="min-width: 20px;">1</td>
+				  	<td style="min-width: 20px;">2</td>
+				  	<td style="min-width: 20px;">3</td>
+				  	<td style="min-width: 20px;">Ulang</td>
+				  	<td style="min-width: 20px;">1</td>
+				  	<td style="min-width: 20px;">2</td>
+				  	<td style="min-width: 20px;">3</td>
+				  	<td style="min-width: 20px;">4</td>
+				  	<td style="min-width: 20px;">1</td>
+				  	<td style="min-width: 20px;">Ulang</td>
 				  </tr>
 			  </thead>
 			  <tbody>
@@ -243,17 +244,18 @@ function terbilang($bilangan)
 				  		<td align="center"><?php if($detail[$i]['pb'] > 0) { echo $detail[$i]['pb']; }?></td>
 				  		<td align="center"><?php if($detail[$i]['hb0'] == 1) { echo "&#10004;"; } ?></td>
 				  		<td align="center"><?php if($detail[$i]['bcg'] == 1) { echo "&#10004;"; } ?></td>
-				  		<td align="center"><?php if($detail[$i]['dpt1'] == 1) { echo "&#10004;"; } ?></td>
-				  		<td align="center"><?php if($detail[$i]['dpt2'] == 1) { echo "&#10004;"; } ?></td>
-				  		<td align="center"><?php if($detail[$i]['dpt3'] == 1) { echo "&#10004;"; } ?></td>
-				  		<td align="center"><?php if($detail[$i]['dpt4'] == 1) { echo "&#10004;"; } ?></td>
+				  		<td align="center"><?php if($detail[$i]['pentabio1'] == 1) { echo "&#10004;"; } ?></td>
+				  		<td align="center"><?php if($detail[$i]['pentabio2'] == 1) { echo "&#10004;"; } ?></td>
+				  		<td align="center"><?php if($detail[$i]['pentabio3'] == 1) { echo "&#10004;"; } ?></td>
+				  		<td align="center"><?php if($detail[$i]['pentabio_ulang'] == 1) { echo "&#10004;"; } ?></td>
 				  		<td align="center"><?php if($detail[$i]['polio1'] == 1) { echo "&#10004;"; } ?></td>
 				  		<td align="center"><?php if($detail[$i]['polio2'] == 1) { echo "&#10004;"; } ?></td>
 				  		<td align="center"><?php if($detail[$i]['polio3'] == 1) { echo "&#10004;"; } ?></td>
 				  		<td align="center"><?php if($detail[$i]['polio4'] == 1) { echo "&#10004;"; } ?></td>
-				  		<td align="center"><?php if($detail[$i]['ipy'] == 1) { echo "&#10004;"; } ?></td>
-				  		<td align="center"><?php if($detail[$i]['campak1'] == 1) { echo "&#10004;"; } ?></td>
-				  		<td align="center"><?php if($detail[$i]['campak2'] == 1) { echo "&#10004;"; } ?></td>
+				  		<td align="center"><?php if($detail[$i]['tt'] == 1) { echo "&#10004;"; } ?></td>
+				  		<td align="center"><?php if($detail[$i]['campak'] == 1) { echo "&#10004;"; } ?></td>
+				  		<td align="center"><?php if($detail[$i]['campak_ulang'] == 1) { echo "&#10004;"; } ?></td>
+				  		<td><?php echo $detail[$i]['nama_tindakan'];?></td>
 			  		</tr>
 			  		<?php $no++;
 			  	}

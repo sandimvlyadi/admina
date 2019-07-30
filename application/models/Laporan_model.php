@@ -691,7 +691,19 @@ class Laporan_model extends CI_Model {
                     $r = $this->db->query($q)->result_array();
                     break;
                 case '5':
-                    $q = "SELECT * FROM `detail_imunisasi` WHERE `created_at` LIKE '". $periode ."%' AND `deleted_at` IS NULL;";
+                    $q =    "SELECT 
+                                a.*,
+                                b.`nama_tindakan` 
+                            FROM 
+                                `detail_imunisasi` a
+                            LEFT JOIN
+                                `macam_tindakan_imunisasi` b
+                                    ON
+                                a.`id_macam_tindakan_imunisasi` = b.`id`
+                            WHERE 
+                                a.`created_at` LIKE '". $periode ."%' 
+                                    AND 
+                                a.`deleted_at` IS NULL;";
                     $r = $this->db->query($q)->result_array();
                     break;
                 case '6':

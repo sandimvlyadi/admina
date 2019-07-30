@@ -430,18 +430,19 @@ class Dashboard_model extends CI_Model {
                                 `pb`,
                                 `hb0`,
                                 `bcg`,
-                                `dpt1`,
-                                `dpt2`,
-                                `dpt3`,
-                                `dpt4`,
+                                `pentabio1`,
+                                `pentabio2`,
+                                `pentabio3`,
+                                `campak`,
                                 `polio1`,
                                 `polio2`,
                                 `polio3`,
                                 `polio4`,
-                                `ipy`,
-                                `campak1`,
-                                `campak2`,
-                                `catatan`
+                                `tt`,
+                                `pentabio_ulang`,
+                                `campak_ulang`,
+                                `catatan`,
+                                `id_macam_tindakan_imunisasi`
                             ) 
                         VALUES 
                             (
@@ -456,18 +457,19 @@ class Dashboard_model extends CI_Model {
                                 '". $this->db->escape_str($f['pb']) ."',
                                 '". $this->db->escape_str($f['hb0']) ."',
                                 '". $this->db->escape_str($f['bcg']) ."',
-                                '". $this->db->escape_str($f['dpt1']) ."',
-                                '". $this->db->escape_str($f['dpt2']) ."',
-                                '". $this->db->escape_str($f['dpt3']) ."',
-                                '". $this->db->escape_str($f['dpt4']) ."',
+                                '". $this->db->escape_str($f['pentabio1']) ."',
+                                '". $this->db->escape_str($f['pentabio2']) ."',
+                                '". $this->db->escape_str($f['pentabio3']) ."',
+                                '". $this->db->escape_str($f['campak']) ."',
                                 '". $this->db->escape_str($f['polio1']) ."',
                                 '". $this->db->escape_str($f['polio2']) ."',
                                 '". $this->db->escape_str($f['polio3']) ."',
                                 '". $this->db->escape_str($f['polio4']) ."',
-                                '". $this->db->escape_str($f['ipy']) ."',
-                                '". $this->db->escape_str($f['campak1']) ."',
-                                '". $this->db->escape_str($f['campak2']) ."',
-                                '". $this->db->escape_str($f['catatan']) ."'
+                                '". $this->db->escape_str($f['tt']) ."',
+                                '". $this->db->escape_str($f['pentabio_ulang']) ."',
+                                '". $this->db->escape_str($f['campak_ulang']) ."',
+                                '". $this->db->escape_str($f['catatan']) ."',
+                                '". $this->db->escape_str($f['id_macam_tindakan_imunisasi']) ."'
                             )
                         ;";
                     $this->db->simple_query($q);
@@ -621,7 +623,7 @@ class Dashboard_model extends CI_Model {
                                 '". $this->db->escape_str($f['catatan']) ."'
                             )
                         ;";
-                    file_put_contents('./dump/asdf.txt', $q);
+                    // file_put_contents('./dump/asdf.txt', $q);
                     $this->db->simple_query($q);
                     break;
                 default:

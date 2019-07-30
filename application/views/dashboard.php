@@ -858,42 +858,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     </div>
                     <div class="col-md-3">
                       <div class="form-group">
-                        <label>DPT 1</label>
-                        <select name="dpt1" class="form-control">
-                          <option value="0" selected>Tidak</option>
-                          <option value="1">Ya</option>
-                        </select>
-                      </div>
-                    </div>
-                    <div class="col-md-3">
-                      <div class="form-group">
-                        <label>DPT 2</label>
-                        <select name="dpt2" class="form-control">
-                          <option value="0" selected>Tidak</option>
-                          <option value="1">Ya</option>
-                        </select>
-                      </div>
-                    </div>
-                    <div class="col-md-3">
-                      <div class="form-group">
-                        <label>DPT 3</label>
-                        <select name="dpt3" class="form-control">
-                          <option value="0" selected>Tidak</option>
-                          <option value="1">Ya</option>
-                        </select>
-                      </div>
-                    </div>
-                    <div class="col-md-3">
-                      <div class="form-group">
-                        <label>DPT 4</label>
-                        <select name="dpt4" class="form-control">
-                          <option value="0" selected>Tidak</option>
-                          <option value="1">Ya</option>
-                        </select>
-                      </div>
-                    </div>
-                    <div class="col-md-3">
-                      <div class="form-group">
                         <label>Polio 1</label>
                         <select name="polio1" class="form-control">
                           <option value="0" selected>Tidak</option>
@@ -928,10 +892,46 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         </select>
                       </div>
                     </div>
+                    <div class="col-md-3">
+                      <div class="form-group">
+                        <label>Pentabio 1</label>
+                        <select name="pentabio1" class="form-control">
+                          <option value="0" selected>Tidak</option>
+                          <option value="1">Ya</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="form-group">
+                        <label>Pentabio 2</label>
+                        <select name="pentabio2" class="form-control">
+                          <option value="0" selected>Tidak</option>
+                          <option value="1">Ya</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="form-group">
+                        <label>Pentabio 3</label>
+                        <select name="pentabio3" class="form-control">
+                          <option value="0" selected>Tidak</option>
+                          <option value="1">Ya</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="form-group">
+                        <label>Campak</label>
+                        <select name="campak" class="form-control">
+                          <option value="0" selected>Tidak</option>
+                          <option value="1">Ya</option>
+                        </select>
+                      </div>
+                    </div>
                     <div class="col-md-6">
                       <div class="form-group">
-                        <label>IPY</label>
-                        <select name="ipy" class="form-control">
+                        <label>TT</label>
+                        <select name="tt" class="form-control">
                           <option value="0" selected>Tidak</option>
                           <option value="1">Ya</option>
                         </select>
@@ -939,8 +939,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     </div>
                     <div class="col-md-3">
                       <div class="form-group">
-                        <label>Campak 1</label>
-                        <select name="campak1" class="form-control">
+                        <label>Pentabio Ulang</label>
+                        <select name="pentabio_ulang" class="form-control">
                           <option value="0" selected>Tidak</option>
                           <option value="1">Ya</option>
                         </select>
@@ -948,11 +948,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     </div>
                     <div class="col-md-3">
                       <div class="form-group">
-                        <label>Campak 2</label>
-                        <select name="campak2" class="form-control">
+                        <label>Campak Ulang</label>
+                        <select name="campak_ulang" class="form-control">
                           <option value="0" selected>Tidak</option>
                           <option value="1">Ya</option>
                         </select>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label><b>Tindakan: </b></label>
+                        <select name="id_macam_tindakan_imunisasi" class="form-control"></select>
                       </div>
                     </div>
                   </div>
