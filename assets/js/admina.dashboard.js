@@ -322,6 +322,10 @@ $(document).ready(function(){
         'theme': 'bootstrap4'
     });
 
+    $('#formDataPemeriksaanKehamilan select[name="buku_kia"]').select2({
+        'theme': 'bootstrap4'
+    });
+
     $.ajax({
         type: 'GET',
         url: baseurl + 'dashboard/select-satuan-usia/',
@@ -752,6 +756,10 @@ $('button[name="btn_tambah_Pasien"]').on('click', function(){
                     }
                 });
                 $('#tambahPasien').modal('hide');
+                
+                if (response.redirect_id != 0) {
+                    window.open(baseurl + 'pasien/cetak/' + response.redirect_id + '/', '_blank');
+                }
             } else{
                 $.notify({
                     icon: "now-ui-icons ui-1_bell-53",
@@ -924,7 +932,7 @@ $('#tableProses').on('click', 'button[name="btn_selesai"]', function(){
                         $('#formDataPemeriksaanKehamilan input[name="umur"]').val('');
                         $('#formDataPemeriksaanKehamilan input[name="nama_suami"]').val(d.nama_suami);
                         $('#formDataPemeriksaanKehamilan input[name="no_kk"]').val(d.no_kk);
-                        $('#formDataPemeriksaanKehamilan input[name="buku_kia"]').val('');
+                        $('#formDataPemeriksaanKehamilan input[name="buku_kia"]').val('baru');
                         $('#formDataPemeriksaanKehamilan textarea[name="alamat"]').val(d.alamat_istri);
                         $('#formDataPemeriksaanKehamilan input[name="hpht"]').val(getToday());
                         $('#formDataPemeriksaanKehamilan input[name="tp"]').val(getToday());

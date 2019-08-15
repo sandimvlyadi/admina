@@ -458,9 +458,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
                     <div class="col-md-12 formTambahan">
                       <h1>Data Tambahan</h1>
-                      <div class="alert alert-danger" role="alert">
+                      <!-- <div class="alert alert-danger" role="alert">
                         Catatan: Khusus untuk <b>Kabupaten Bandung Barat</b> silahkan pilih nama desa, selain itu nama desa biarkan "<b>Tidak Ada</b>".
-                      </div>
+                      </div> -->
                     </div>
                     <div class="col-md-12 formTambahan">
                       <div class="form-group">
@@ -1169,8 +1169,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     </div>
                     <div class="col-md-6">
                       <div class="form-group">
-                        <label>Buku KIA</label>
-                        <input type="text" name="buku_kia" class="form-control" placeholder="Buku KIA">
+                        <label>KIA</label>
+                        <!-- <input type="text" name="buku_kia" class="form-control" placeholder="Buku KIA"> -->
+                        <select name="buku_kia" class="form-control">
+                          <option value="baru">Baru</option>
+                          <option value="lama">Lama</option>
+                        </select>
                       </div>
                     </div>
                     <div class="col-md-6">

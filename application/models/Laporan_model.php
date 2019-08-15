@@ -750,4 +750,455 @@ class Laporan_model extends CI_Model {
         return $result;
     }
 
+    function count_kia($thn = 2019, $bln = 01, $kia = 'baru', $desa = 1)
+    {
+        $q = "  SELECT 
+                    a.* 
+                FROM 
+                    `detail_pemeriksaan_kehamilan` a
+                LEFT JOIN
+                    `pasiens` b
+                        ON
+                    a.`id_pasien` = b.`id`
+                WHERE 
+                    b.`id_desa` = '". $desa ."'
+                        AND
+                    a.`created_at` LIKE '". $thn ."-". $bln ."-%' 
+                        AND 
+                    a.`buku_kia` = '". $kia ."' 
+                        AND 
+                    a.`deleted_at` IS NULL;";
+        $r = $this->db->query($q, false)->result_array();
+
+        return count($r);
+    }
+
+    function count_kb($thn = 2019, $bln = 01, $baru = 1, $alat = 1, $desa = 1)
+    {
+        $q = "  SELECT 
+                    a.* 
+                FROM 
+                    `detail_pemeriksaan_kb` a 
+                LEFT JOIN
+                    `antrians` b
+                        ON
+                    a.`id_antrian` = b.`id`
+                LEFT JOIN
+                    `pasiens` c
+                        ON
+                    b.`id_pasien` = c.`id`
+                WHERE 
+                    c.`id_desa` = '". $desa ."'
+                        AND
+                    a.`created_at` LIKE '". $thn ."-". $bln ."-%' 
+                        AND 
+                    a.`baru` = '". $baru ."' 
+                        AND 
+                    a.`id_alat_kontrasepsi` = '". $alat ."' 
+                        AND 
+                    a.`deleted_at` IS NULL;";
+        $r = $this->db->query($q, false)->result_array();
+
+        return count($r);
+    }
+
+    function count_imunisasi_hb0($thn = 2019, $bln = 01, $desa = 1)
+    {
+        $q = "  SELECT 
+                    a.* 
+                FROM 
+                    a.`detail_imunisasi` 
+                LEFT JOIN
+                    `antrians` b
+                        ON
+                    a.`id_antrian` = b.`id`
+                LEFT JOIN
+                    `pasiens` c
+                        ON
+                    b.`id_pasien` = c.`id`
+                WHERE 
+                    c.`id_desa` = '". $desa ."'
+                        AND
+                    a.`created_at` LIKE '". $thn ."-". $bln ."-%' 
+                        AND 
+                    a.`hb0` = 1 
+                        AND 
+                    a.`deleted_at` IS NULL;";
+        $r = $this->db->query($q, false)->result_array();
+
+        return count($r);
+    }
+
+    function count_imunisasi_bcg($thn = 2019, $bln = 01, $desa = 1)
+    {
+        $q = "  SELECT 
+                    a.* 
+                FROM 
+                    a.`detail_imunisasi` 
+                LEFT JOIN
+                    `antrians` b
+                        ON
+                    a.`id_antrian` = b.`id`
+                LEFT JOIN
+                    `pasiens` c
+                        ON
+                    b.`id_pasien` = c.`id`
+                WHERE 
+                    c.`id_desa` = '". $desa ."'
+                        AND
+                    a.`created_at` LIKE '". $thn ."-". $bln ."-%' 
+                        AND 
+                    a.`bcg` = 1 
+                        AND 
+                    a.`deleted_at` IS NULL;";
+        $r = $this->db->query($q, false)->result_array();
+
+        return count($r);
+    }
+
+    function count_imunisasi_polio1($thn = 2019, $bln = 01, $desa = 1)
+    {
+        $q = "  SELECT 
+                    a.* 
+                FROM 
+                    a.`detail_imunisasi` 
+                LEFT JOIN
+                    `antrians` b
+                        ON
+                    a.`id_antrian` = b.`id`
+                LEFT JOIN
+                    `pasiens` c
+                        ON
+                    b.`id_pasien` = c.`id`
+                WHERE 
+                    c.`id_desa` = '". $desa ."'
+                        AND
+                    a.`created_at` LIKE '". $thn ."-". $bln ."-%' 
+                        AND 
+                    a.`polio1` = 1 
+                        AND 
+                    a.`deleted_at` IS NULL;";
+        $r = $this->db->query($q, false)->result_array();
+
+        return count($r);
+    }
+
+    function count_imunisasi_polio2($thn = 2019, $bln = 01, $desa = 1)
+    {
+        $q = "  SELECT 
+                    a.* 
+                FROM 
+                    a.`detail_imunisasi` 
+                LEFT JOIN
+                    `antrians` b
+                        ON
+                    a.`id_antrian` = b.`id`
+                LEFT JOIN
+                    `pasiens` c
+                        ON
+                    b.`id_pasien` = c.`id`
+                WHERE 
+                    c.`id_desa` = '". $desa ."'
+                        AND
+                    a.`created_at` LIKE '". $thn ."-". $bln ."-%' 
+                        AND 
+                    a.`polio2` = 1 
+                        AND 
+                    a.`deleted_at` IS NULL;";
+        $r = $this->db->query($q, false)->result_array();
+
+        return count($r);
+    }
+
+    function count_imunisasi_polio3($thn = 2019, $bln = 01, $desa = 1)
+    {
+        $q = "  SELECT 
+                    a.* 
+                FROM 
+                    a.`detail_imunisasi` 
+                LEFT JOIN
+                    `antrians` b
+                        ON
+                    a.`id_antrian` = b.`id`
+                LEFT JOIN
+                    `pasiens` c
+                        ON
+                    b.`id_pasien` = c.`id`
+                WHERE 
+                    c.`id_desa` = '". $desa ."'
+                        AND
+                    a.`created_at` LIKE '". $thn ."-". $bln ."-%' 
+                        AND 
+                    a.`polio3` = 1 
+                        AND 
+                    a.`deleted_at` IS NULL;";
+        $r = $this->db->query($q, false)->result_array();
+
+        return count($r);
+    }
+
+    function count_imunisasi_polio4($thn = 2019, $bln = 01, $desa = 1)
+    {
+        $q = "  SELECT 
+                    a.* 
+                FROM 
+                    a.`detail_imunisasi` 
+                LEFT JOIN
+                    `antrians` b
+                        ON
+                    a.`id_antrian` = b.`id`
+                LEFT JOIN
+                    `pasiens` c
+                        ON
+                    b.`id_pasien` = c.`id`
+                WHERE 
+                    c.`id_desa` = '". $desa ."'
+                        AND
+                    a.`created_at` LIKE '". $thn ."-". $bln ."-%' 
+                        AND 
+                    a.`polio4` = 1 
+                        AND 
+                    a.`deleted_at` IS NULL;";
+        $r = $this->db->query($q, false)->result_array();
+
+        return count($r);
+    }
+
+    function count_imunisasi_pentabio1($thn = 2019, $bln = 01, $desa = 1)
+    {
+        $q = "  SELECT 
+                    a.* 
+                FROM 
+                    a.`detail_imunisasi` 
+                LEFT JOIN
+                    `antrians` b
+                        ON
+                    a.`id_antrian` = b.`id`
+                LEFT JOIN
+                    `pasiens` c
+                        ON
+                    b.`id_pasien` = c.`id`
+                WHERE 
+                    c.`id_desa` = '". $desa ."'
+                        AND
+                    a.`created_at` LIKE '". $thn ."-". $bln ."-%' 
+                        AND 
+                    a.`pentabio1` = 1 
+                        AND 
+                    a.`deleted_at` IS NULL;";
+        $r = $this->db->query($q, false)->result_array();
+
+        return count($r);
+    }
+
+    function count_imunisasi_pentabio2($thn = 2019, $bln = 01, $desa = 1)
+    {
+        $q = "  SELECT 
+                    a.* 
+                FROM 
+                    a.`detail_imunisasi` 
+                LEFT JOIN
+                    `antrians` b
+                        ON
+                    a.`id_antrian` = b.`id`
+                LEFT JOIN
+                    `pasiens` c
+                        ON
+                    b.`id_pasien` = c.`id`
+                WHERE 
+                    c.`id_desa` = '". $desa ."'
+                        AND
+                    a.`created_at` LIKE '". $thn ."-". $bln ."-%' 
+                        AND 
+                    a.`pentabio2` = 1 
+                        AND 
+                    a.`deleted_at` IS NULL;";
+        $r = $this->db->query($q, false)->result_array();
+
+        return count($r);
+    }
+
+    function count_imunisasi_pentabio3($thn = 2019, $bln = 01, $desa = 1)
+    {
+        $q = "  SELECT 
+                    a.* 
+                FROM 
+                    a.`detail_imunisasi` 
+                LEFT JOIN
+                    `antrians` b
+                        ON
+                    a.`id_antrian` = b.`id`
+                LEFT JOIN
+                    `pasiens` c
+                        ON
+                    b.`id_pasien` = c.`id`
+                WHERE 
+                    c.`id_desa` = '". $desa ."'
+                        AND
+                    a.`created_at` LIKE '". $thn ."-". $bln ."-%' 
+                        AND 
+                    a.`pentabio3` = 1 
+                        AND 
+                    a.`deleted_at` IS NULL;";
+        $r = $this->db->query($q, false)->result_array();
+
+        return count($r);
+    }
+
+    function count_imunisasi_pentabio_ulang($thn = 2019, $bln = 01, $desa = 1)
+    {
+        $q = "  SELECT 
+                    a.* 
+                FROM 
+                    a.`detail_imunisasi` 
+                LEFT JOIN
+                    `antrians` b
+                        ON
+                    a.`id_antrian` = b.`id`
+                LEFT JOIN
+                    `pasiens` c
+                        ON
+                    b.`id_pasien` = c.`id`
+                WHERE 
+                    c.`id_desa` = '". $desa ."'
+                        AND
+                    a.`created_at` LIKE '". $thn ."-". $bln ."-%' 
+                        AND 
+                    a.`pentabio_ulang` = 1 
+                        AND 
+                    a.`deleted_at` IS NULL;";
+        $r = $this->db->query($q, false)->result_array();
+
+        return count($r);
+    }
+
+    function count_imunisasi_campak($thn = 2019, $bln = 01, $desa = 1)
+    {
+        $q = "  SELECT 
+                    a.* 
+                FROM 
+                    a.`detail_imunisasi` 
+                LEFT JOIN
+                    `antrians` b
+                        ON
+                    a.`id_antrian` = b.`id`
+                LEFT JOIN
+                    `pasiens` c
+                        ON
+                    b.`id_pasien` = c.`id`
+                WHERE 
+                    c.`id_desa` = '". $desa ."'
+                        AND
+                    a.`created_at` LIKE '". $thn ."-". $bln ."-%' 
+                        AND 
+                    a.`campak` = 1 
+                        AND 
+                    a.`deleted_at` IS NULL;";
+        $r = $this->db->query($q, false)->result_array();
+
+        return count($r);
+    }
+
+    function count_imunisasi_campak_ulang($thn = 2019, $bln = 01, $desa = 1)
+    {
+        $q = "  SELECT 
+                    a.* 
+                FROM 
+                    a.`detail_imunisasi` 
+                LEFT JOIN
+                    `antrians` b
+                        ON
+                    a.`id_antrian` = b.`id`
+                LEFT JOIN
+                    `pasiens` c
+                        ON
+                    b.`id_pasien` = c.`id`
+                WHERE 
+                    c.`id_desa` = '". $desa ."'
+                        AND
+                    a.`created_at` LIKE '". $thn ."-". $bln ."-%' 
+                        AND 
+                    a.`campak_ulang` = 1 
+                        AND 
+                    a.`deleted_at` IS NULL;";
+        $r = $this->db->query($q, false)->result_array();
+
+        return count($r);
+    }
+
+    function count_imunisasi_tt($thn = 2019, $bln = 01, $desa = 1)
+    {
+        $q = "  SELECT 
+                    a.* 
+                FROM 
+                    a.`detail_imunisasi` 
+                LEFT JOIN
+                    `antrians` b
+                        ON
+                    a.`id_antrian` = b.`id`
+                LEFT JOIN
+                    `pasiens` c
+                        ON
+                    b.`id_pasien` = c.`id`
+                WHERE 
+                    c.`id_desa` = '". $desa ."'
+                        AND
+                    a.`created_at` LIKE '". $thn ."-". $bln ."-%' 
+                        AND 
+                    a.`tt` = 1 
+                        AND 
+                    a.`deleted_at` IS NULL;";
+        $r = $this->db->query($q, false)->result_array();
+
+        return count($r);
+    }
+
+    function count_imunisasi_tindakan($thn = 2019, $bln = 01, $tindakan = 1, $desa = 1)
+    {
+        $q = "  SELECT 
+                    a.* 
+                FROM 
+                    a.`detail_imunisasi` 
+                LEFT JOIN
+                    `antrians` b
+                        ON
+                    a.`id_antrian` = b.`id`
+                LEFT JOIN
+                    `pasiens` c
+                        ON
+                    b.`id_pasien` = c.`id`
+                WHERE 
+                    c.`id_desa` = '". $desa ."'
+                        AND
+                    a.`created_at` LIKE '". $thn ."-". $bln ."-%' 
+                        AND 
+                    a.`id_macam_tindakan_imunisasi` = '". $tindakan ."'
+                        AND 
+                    a.`deleted_at` IS NULL;";
+        $r = $this->db->query($q, false)->result_array();
+
+        return count($r);
+    }
+
+    function count_partus($thn = 2019, $bln = 01, $desa = 1)
+    {
+        $q = "  SELECT 
+                    a.* 
+                FROM 
+                    a.`detail_persalinan` 
+                LEFT JOIN
+                    `pasiens` b 
+                        ON
+                    a.`id_pasien` = b.`id`
+                WHERE 
+                    b.`id_desa` = '". $desa ."'
+                        AND
+                    a.`created_at` LIKE '". $thn ."-". $bln ."-%' 
+                        AND 
+                    a.`deleted_at` IS NULL;";
+        $r = $this->db->query($q, false)->result_array();
+
+        return count($r);
+    }
+
 }

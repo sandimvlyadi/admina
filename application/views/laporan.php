@@ -171,7 +171,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                       </div>
                     </div>
                 	</div>
-                  <div class="row laporan-bulanan mt-5" style="display: none;">
+                  <!-- <div class="row laporan-bulanan mt-5" style="display: none;">
                     <div class="col-md-12">
                       <h3><strong>LAPORAN BULANAN</strong></h3>
                       <div class="table-responsive">
@@ -468,7 +468,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         </table>
                       </div>
                     </div>
-                  </div>
+                  </div> -->
                 </form>
               </div>
               <div class="card-footer row">

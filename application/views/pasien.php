@@ -411,9 +411,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
                     <div class="col-md-12 formTambahan">
                       <h1>Data Tambahan</h1>
-                      <div class="alert alert-danger" role="alert">
+                      <!-- <div class="alert alert-danger" role="alert">
                         Catatan: Khusus untuk <b>Kabupaten Bandung Barat</b> silahkan pilih nama desa, selain itu nama desa biarkan "<b>Tidak Ada</b>".
-                      </div>
+                      </div> -->
                     </div>
                     <div class="col-md-12 formTambahan">
                       <div class="form-group">

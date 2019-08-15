@@ -312,14 +312,14 @@ $('#tableLaporan').on('click', 'button[name="btn_print"]', function(){
     window.open(baseurl + 'laporan/cetak/' + id + '/', '_blank');
 });
 
-$('select[name="id_jenis_laporan"]').on('change', function(){
-    var id = $(this).val();
-    if (id == 1) {
-        $('.laporan-bulanan').show();
-    } else{
-        $('.laporan-bulanan').hide();
-    }
-});
+// $('select[name="id_jenis_laporan"]').on('change', function(){
+//     var id = $(this).val();
+//     if (id == 1) {
+//         $('.laporan-bulanan').show();
+//     } else{
+//         $('.laporan-bulanan').hide();
+//     }
+// });
 
 $('#tableLaporanBulanan tbody td').on('change', 'input', function(){
     var jml = Array();

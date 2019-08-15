@@ -9,6 +9,17 @@ function tglIndo($date)
 	$m = intval(substr($date, 5, 2)) - 1;
 	$y = substr($date, 0, 4);
 
+	return $d . ' Bulan: ' . $bulan[$m] . ' Tahun: ' . $y;
+}
+
+function tglIndo1($date)
+{
+	$bulan = array('Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember');
+
+	$d = substr($date, 8, 2);
+	$m = intval(substr($date, 5, 2)) - 1;
+	$y = substr($date, 0, 4);
+
 	return $d . ' ' . $bulan[$m] . ' ' . $y;
 }
 
@@ -192,18 +203,13 @@ function terbilang($bilangan)
 					</tr>
 					<tr>
 						<td width="5%">&nbsp;</td>
-						<td width="15%">Nama</td>
+						<td width="15%">Nyonya</td>
 						<td width="80%">: <?php echo $nama_pasien; ?></td>
 					</tr>
 					<tr>
 						<td width="5%">&nbsp;</td>
-						<td width="15%">Umur</td>
-						<td width="80%">: <?php echo $umur_istri; ?> tahun</td>
-					</tr>
-					<tr>
-						<td width="5%">&nbsp;</td>
-						<td width="15%">Pekerjaan</td>
-						<td width="80%">: <?php echo $pekerjaan_istri; ?></td>
+						<td width="15%">Istri dari Tuan</td>
+						<td width="80%">: <?php echo $nama_suami; ?></td>
 					</tr>
 					<tr>
 						<td width="5%">&nbsp;</td>
@@ -211,66 +217,22 @@ function terbilang($bilangan)
 						<td width="80%">: <?php echo $alamat_istri; ?></td>
 					</tr>
 					<tr>
-						<td colspan="3" align="center"><h2><u>ISTRI DARI</u></h2></td>
+						<td width="5%">&nbsp;</td>
+						<td width="15%">Pada Hari</td>
+						<td width="80%">: <?php echo $hari_lahir; ?> Tanggal: <?php echo tglIndo($tanggal_lahir); ?> Jam: <?php echo substr($jam_lahir, 0, 5); ?></td>
+					</tr>
+					<tr>
+						<td colspan="3">Telah melahirkan anak <?php echo $jenis_kelamin_bayi; ?> dalam keadaan selamat.</td>
 					</tr>
 					<tr>
 						<td width="5%">&nbsp;</td>
 						<td width="15%">Nama</td>
-						<td width="80%">: <?php echo $nama_suami; ?></td>
+						<td width="80%">: <?php echo $nama_bayi; ?></td>
 					</tr>
 					<tr>
 						<td width="5%">&nbsp;</td>
-						<td width="15%">Umur</td>
-						<td width="80%">: <?php echo $umur_suami; ?> tahun</td>
-					</tr>
-					<tr>
-						<td width="5%">&nbsp;</td>
-						<td width="15%">Pekerjaan</td>
-						<td width="80%">: <?php echo $pekerjaan_suami; ?></td>
-					</tr>
-					<tr>
-						<td width="5%">&nbsp;</td>
-						<td width="15%">Alamat</td>
-						<td width="80%">: <?php echo $alamat_suami; ?></td>
-					</tr>
-					<tr>
-						<td colspan="3">Benar ianya melahirkan seorang anak ke <b><?php echo $anak_ke; ?></b> ( <?php echo terbilang($anak_ke); ?> ) dengan selamat di Klinik Utama Nur Khadijah.</td>
-					</tr>
-					<tr>
-						<td width="5%">&nbsp;</td>
-						<td width="15%">Hari</td>
-						<td width="80%">: <?php echo $hari_lahir; ?></td>
-					</tr>
-					<tr>
-						<td width="5%">&nbsp;</td>
-						<td width="15%">Jenis Kelamin</td>
-						<td width="80%">: <?php echo $jenis_kelamin_bayi; ?></td>
-					</tr>
-					<tr>
-						<td width="5%">&nbsp;</td>
-						<td width="15%">Tanggal</td>
-						<td width="80%">: <?php echo tglIndo($tanggal_lahir); ?></td>
-					</tr>
-					<tr>
-						<td width="5%">&nbsp;</td>
-						<td width="15%">Berat Badan</td>
-						<td width="80%">: <?php echo $berat_bayi; ?> KG</td>
-					</tr>
-					<tr>
-						<td width="5%">&nbsp;</td>
-						<td width="15%">Jam</td>
-						<td width="80%">: <?php echo $jam_lahir; ?></td>
-					</tr>
-					<tr>
-						<td width="5%">&nbsp;</td>
-						<td width="15%">Panjang Badan</td>
-						<td width="80%">: <?php echo $panjang_bayi; ?> CM</td>
-					</tr>
-					<tr>
-						<td colspan="3">Anak tersebut diberi nama : <b><?php echo $nama_bayi; ?></b></td>
-					</tr>
-					<tr>
-						<td colspan="3">Demikianlah diperbuat Surat Keterangan Lahir ini dengan sebenarnya untuk dapat digunakan seperlunya.</td>
+						<td width="15%">Anak ke-</td>
+						<td width="80%">: <?php echo $anak_ke; ?> ( <?php echo terbilang($anak_ke); ?> )</td>
 					</tr>
 				</tbody>
 			</table>
@@ -280,26 +242,23 @@ function terbilang($bilangan)
 	</tr>
 	
 	<tr>
-		<td width="25%">&nbsp;</td>
-		<td width="25%">&nbsp;</td>
 		<td width="20%">&nbsp;</td>
-		<td align="center">
-			<p>Cihanjuang, <?php echo date('d-m-Y', time()); ?></p>
+		<td width="20%">&nbsp;</td>
+		<td colspan="2" align="center">
+			<p>Cihanjuang, <?php echo tglIndo1(date('Y-m-d', time())); ?></p>
 		</td>
 	</tr>
 	<tr>
 		<td width="25%">&nbsp;</td>
 		<td width="25%">&nbsp;</td>
-		<td width="20%">&nbsp;</td>
-		<td height="20">
+		<td colspan="2" height="50">
 			&nbsp;
 		</td>
 	</tr>
 	<tr>
 		<td width="25%">&nbsp;</td>
 		<td width="25%">&nbsp;</td>
-		<td width="20%">&nbsp;</td>
-		<td align="center">
+		<td colspan="2" align="center">
 			<p>(<?php echo $nama_dokter; ?>)</p>
 		</td>
 	</tr>
