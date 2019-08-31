@@ -2,61 +2,73 @@
         <ul class="nav">
           <li id="li-dashboard">
             <a href="<?php echo base_url('dashboard/'); ?>">
-              <i class="now-ui-icons business_bank"></i>
+              <i class="fas fa-home"></i>
               <p>Dashboard</p>
             </a>
 					</li>
 					<li id="li-antrian">
             <a href="<?php echo base_url('antrian/'); ?>">
-              <i class="now-ui-icons design_bullet-list-67"></i>
+              <i class="fas fa-address-book"></i>
               <p>Kunjungan</p>
             </a>
 					</li>
-					<li id="li-obat">
-            <a href="<?php echo base_url('obat/'); ?>">
-              <i class="now-ui-icons design_bullet-list-67"></i>
-              <p>Obat</p>
+					<li id="li-apotek">
+            <a href="<?php echo base_url('apotek/'); ?>">
+              <i class="fas fa-clinic-medical"></i>
+              <p>Apotek</p>
             </a>
 					</li>
 					<li id="li-pasien">
             <a href="<?php echo base_url('pasien/'); ?>">
-              <i class="now-ui-icons design_bullet-list-67"></i>
+              <i class="fas fa-procedures"></i>
               <p>Pasien</p>
             </a>
 					</li>
 					<li id="li-rekam-medis">
             <a href="<?php echo base_url('rekam-medis/'); ?>">
-              <i class="now-ui-icons design_bullet-list-67"></i>
+              <i class="fas fa-file-medical-alt"></i>
               <p>Rekam Medis</p>
             </a>
 					</li>
-					<li id="li-pembelian">
+					<li id="li-laporan">
+            <a href="<?php echo base_url('laporan/'); ?>">
+              <i class="fas fa-file-medical"></i>
+              <p>Laporan</p>
+            </a>
+					</li>
+					<li id="li-obat">
+            <a href="<?php echo base_url('obat/'); ?>">
+              <i class="fas fa-pills"></i>
+              <p>Obat</p>
+            </a>
+					</li>
+					<!-- <li id="li-pembelian">
             <a href="<?php echo base_url('pembelian/'); ?>">
-              <i class="now-ui-icons design_bullet-list-67"></i>
+              <i class="fas fa-cart-arrow-down"></i>
               <p>Pembelian</p>
             </a>
 					</li>
 					<li id="li-pembayaran">
             <a href="<?php echo base_url('pembayaran/'); ?>">
-              <i class="now-ui-icons design_bullet-list-67"></i>
+              <i class="fas fa-money-bill-wave"></i>
               <p>Pembayaran</p>
             </a>
 					</li>
 					<li id="li-penjualan">
             <a href="<?php echo base_url('penjualan/'); ?>">
-              <i class="now-ui-icons design_bullet-list-67"></i>
+              <i class="fas fa-store"></i>
               <p>Penjualan</p>
             </a>
-					</li>
+					</li> -->
 					<li id="li-supplier">
             <a href="<?php echo base_url('supplier/'); ?>">
-              <i class="now-ui-icons design_bullet-list-67"></i>
+              <i class="fas fa-store-alt"></i>
               <p>Supplier</p>
             </a>
 					</li>
 					<li>
 						<a data-toggle="collapse" href="#menuSurat" >
-							<i class="now-ui-icons ui-1_email-85"></i>
+							<i class="fas fa-envelope"></i>
 							<p>
 								Surat <b class="caret"></b>
 							</p>
@@ -102,12 +114,6 @@
 							</ul>
 							<hr>
 						</div>
-					</li>
-					<li id="li-laporan">
-            <a href="<?php echo base_url('laporan/'); ?>">
-              <i class="now-ui-icons design_bullet-list-67"></i>
-              <p>Laporan</p>
-            </a>
 					</li>
 					<!-- <li>
 						<a data-toggle="collapse" href="#menuLaporan" >
@@ -166,13 +172,19 @@
 					</li> -->
 					<li>
 						<a data-toggle="collapse" href="#menuMaster" >
-							<i class="now-ui-icons shopping_box"></i>
+							<i class="fas fa-box"></i>
 							<p>
 								Master <b class="caret"></b>
 							</p>
 						</a>
 						<div class="collapse " id="menuMaster">
 							<ul class="nav">
+                <li id="li-penyakit">
+									<a href="<?php echo base_url('penyakit/'); ?>">
+										<i class="now-ui-icons arrows-1_minimal-right"></i>
+										<p>Penyakit</p>
+									</a>
+								</li>
 								<li id="li-asuransi">
 									<a href="<?php echo base_url('asuransi/'); ?>">
 										<i class="now-ui-icons arrows-1_minimal-right"></i>
@@ -263,7 +275,7 @@
 					</li>
 					<li>
 						<a data-toggle="collapse" href="#menuTim" >
-							<i class="now-ui-icons business_badge"></i>
+							<i class="fas fa-user-friends"></i>
 							<p>
 								Tim <b class="caret"></b>
 							</p>
@@ -306,7 +318,7 @@
 					</li>
 					<li id="li-logout">
             <a href="<?php echo base_url('dashboard/logout/'); ?>">
-              <i class="now-ui-icons media-1_button-power"></i>
+              <i class="fas fa-power-off"></i>
               <p>Logout</p>
             </a>
 					</li>

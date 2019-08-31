@@ -420,4 +420,185 @@ class Pasien_model extends CI_Model {
         return $result;
     }
 
+    function query( $id = 0 )
+    {
+        $q = '';
+        
+        switch($id){
+            case 1:
+                $q = "SELECT 
+                    `id` 
+                FROM 
+                    `pasiens` 
+                WHERE 
+                    LOWER(`alamat_istri`) LIKE '%babakan muncang%'
+                        OR
+                    LOWER(`alamat_istri`) LIKE '%batas%'
+                        OR
+                    LOWER(`alamat_istri`) LIKE '%bojong sari%'
+                        OR
+                    LOWER(`alamat_istri`) LIKE '%centeng%'
+                        OR
+                    LOWER(`alamat_istri`) LIKE '%cibaligo%'
+                        OR
+                    LOWER(`alamat_istri`) LIKE '%cisasawi%'
+                        OR
+                    LOWER(`alamat_istri`) LIKE '%cisintok%'
+                        OR
+                    LOWER(`alamat_istri`) LIKE '%itjenad%'
+                        OR
+                    LOWER(`alamat_istri`) LIKE '%karang sari%'
+                        OR
+                    LOWER(`alamat_istri`) LIKE '%l. panjang%'
+                        OR
+                    LOWER(`alamat_istri`) LIKE '%leuwi panjang%'
+                        OR
+                    LOWER(`alamat_istri`) LIKE '%l.panjang%'
+                        OR
+                    LOWER(`alamat_istri`) LIKE '%nata endah%'
+                        OR
+                    LOWER(`alamat_istri`) LIKE '%sawah lega%'
+                        OR
+                    LOWER(`alamat_istri`) LIKE '%bukit asri%'
+                        OR
+                    LOWER(`alamat_istri`) LIKE '%artabahana%';";
+                break;
+            case 2:
+                $q = "SELECT 
+                    `id` 
+                FROM 
+                    `pasiens` 
+                WHERE 
+                    LOWER(`alamat_istri`) LIKE '%babakan%'
+                        OR
+                    LOWER(`alamat_istri`) LIKE '%ciitis%'
+                        OR
+                    LOWER(`alamat_istri`) LIKE '%manglayang%'
+                        OR
+                    LOWER(`alamat_istri`) LIKE '%mokla%'
+                        OR
+                    LOWER(`alamat_istri`) LIKE '%ciwangun%'
+                        OR
+                    LOWER(`alamat_istri`) LIKE '%paneungteung%'
+                        OR
+                    LOWER(`alamat_istri`) LIKE '%tanjakan%'
+                        OR
+                    LOWER(`alamat_istri`) LIKE '%tutugan%'
+                        OR
+                    LOWER(`alamat_istri`) LIKE '%tugu%'
+                        OR
+                    LOWER(`alamat_istri`) LIKE '%sugawana%';";
+                break;
+            case 3: 
+                $q = "SELECT 
+                    `id` 
+                FROM 
+                    `pasiens` 
+                WHERE 
+                    LOWER(`alamat_istri`) LIKE '%caladi dalam%'
+                        OR
+                    LOWER(`alamat_istri`) LIKE '%ciwaruga%'
+                        OR
+                    LOWER(`alamat_istri`) LIKE '%lembur tengah%'
+                        OR
+                    LOWER(`alamat_istri`) LIKE '%mekarwangi%'
+                        OR
+                    LOWER(`alamat_istri`) LIKE '%pangkalan%'
+                        OR
+                    LOWER(`alamat_istri`) LIKE '%parigi lame%'
+                        OR
+                    LOWER(`alamat_istri`) LIKE '%k. lapang%'
+                        OR
+                    LOWER(`alamat_istri`) LIKE '%mekar bakti%';";
+                break;
+            case 4:
+                $q = "SELECT 
+                    `id` 
+                FROM 
+                    `pasiens` 
+                WHERE 
+                    LOWER(`alamat_istri`) LIKE '%asr. parongpong%'
+                        OR
+                    LOWER(`alamat_istri`) LIKE '%baru laksana%'
+                        OR
+                    LOWER(`alamat_istri`) LIKE '%girihieum%'
+                        OR
+                    LOWER(`alamat_istri`) LIKE '%girimulya%'
+                        OR
+                    LOWER(`alamat_istri`) LIKE '%jyagoong%'
+                        OR
+                    LOWER(`alamat_istri`) LIKE '%nyampai%'
+                        OR
+                    LOWER(`alamat_istri`) LIKE '%parongpong%'
+                        OR
+                    LOWER(`alamat_istri`) LIKE '%pasar kemis%'
+                        OR
+                    LOWER(`alamat_istri`) LIKE '%asr. denkavkud%';";
+                break;
+            case 5:
+                $q = "SELECT 
+                    `id` 
+                FROM 
+                    `pasiens` 
+                WHERE 
+                    LOWER(`alamat_istri`) LIKE '%belapati%'
+                        OR
+                    LOWER(`alamat_istri`) LIKE '%kancah%'
+                        OR
+                    LOWER(`alamat_istri`) LIKE '%nagrak%'
+                        OR
+                    LOWER(`alamat_istri`) LIKE '%panyairan%'
+                        OR
+                    LOWER(`alamat_istri`) LIKE '%pasir baru%'
+                        OR
+                    LOWER(`alamat_istri`) LIKE '%pasir sereh%'
+                        OR
+                    LOWER(`alamat_istri`) LIKE '%patrol%'
+                        OR
+                    LOWER(`alamat_istri`) LIKE '%sersan bajuri%'
+                        OR
+                    LOWER(`alamat_istri`) LIKE '%sukamulya%'
+                        OR
+                    LOWER(`alamat_istri`) LIKE '%nyingkir%';";
+                break;
+            case 6:
+                $q = "SELECT 
+                    `id` 
+                FROM 
+                    `pasiens` 
+                WHERE 
+                    LOWER(`alamat_istri`) LIKE '%jompo%'
+                        OR
+                    LOWER(`alamat_istri`) LIKE '%kebon hui%'
+                        OR
+                    LOWER(`alamat_istri`) LIKE '%kampung baru%'
+                        OR
+                    LOWER(`alamat_istri`) LIKE '%sukamaju%'
+                        OR
+                    LOWER(`alamat_istri`) LIKE '%sindang palay%'
+                        OR
+                    LOWER(`alamat_istri`) LIKE '%pangsor%'
+                        OR
+                    LOWER(`alamat_istri`) LIKE '%kp. nihmat%';";
+                break;
+            case 7:
+                break;
+            case 8:
+                break;
+            default:
+                break;
+        }
+
+        $r = $this->db->query($q, false)->result_array();
+
+        $s = '';
+        if(count($r) > 0){
+            for ($i=0; $i < count($r); $i++) { 
+                $s .= $r[$i]['id'] . ', ';
+            }
+        }
+
+        return $s;
+    }
+
 }

@@ -211,291 +211,313 @@ function terbilang($bilangan)
 			<table id="tableLaporanBulanan" align="center" width="100%" border="1" cellpadding="3">
         <thead align="center">
           <tr>
-            <th rowspan="3">DESA</th>
+            <th rowspan="4">DESA</th>
             <th colspan="2">KIA</th>
-            <th colspan="6">KB</th>
-            <th colspan="17">IMUNISASI</th>
-            <th rowspan="3">PARTUS</th>
-            <th rowspan="3">JUMLAH</th>
+            <th colspan="12">KB</th>
+            <th colspan="13">IMUNISASI</th>
+            <th rowspan="4">PARTUS</th>
+            <th rowspan="4">JUMLAH</th>
           </tr>
           <tr>
             <td colspan="2">HAMIL</td>
-            <td colspan="3">BARU</td>
-            <td colspan="3">LAMA</td>
-            <td rowspan="2">BCG</td>
-            <td colspan="3">DPT</td>
-            <td colspan="4">POLIO</td>
-            <td colspan="4">HB</td>
-            <td rowspan="2">CAMPAK</td>
-            <td colspan="2">TT</td>
-            <td colspan="2">TT WUS</td>
+            <td colspan="6">BARU</td>
+            <td colspan="6">LAMA</td>
+            <td rowspan="3">HB0</td>
+            <td rowspan="3">BCG</td>
+            <td colspan="4" rowspan="2">PENTABIO</td>
+            <td colspan="4" rowspan="2">POLIO</td>
+            <td rowspan="3">TT</td>
+            <td colspan="2" rowspan="2">CAMPAK</td>
           </tr>
           <tr>
-            <td>B</td>
-            <td>L</td>
-            <td>IUD</td>
-            <td>PIL</td>
-            <td>SUN</td>
-            <td>IUD</td>
-            <td>PIL</td>
-            <td>SUN</td>
+            <td rowspan="2">B</td>
+            <td rowspan="2">L</td>
+            <td colspan="2">SUN</td>
+            <td rowspan="2">PIL</td>
+            <td colspan="2">IUD</td>
+            <td rowspan="2">KON</td>
+            <td colspan="2">SUN</td>
+            <td rowspan="2">PIL</td>
+            <td colspan="2">IUD</td>
+            <td rowspan="2">KON</td>
+          </tr>
+          <tr>
+            <td>1 BLN</td>
+            <td>3 BLN</td>
+            <td>BKKBN</td>
+            <td>NON</td>
+            <td>1 BLN</td>
+            <td>3 BLN</td>
+            <td>BKKBN</td>
+            <td>NON</td>
             <td>1</td>
             <td>2</td>
             <td>3</td>
+            <td>ULG</td>
             <td>1</td>
             <td>2</td>
             <td>3</td>
             <td>4</td>
-            <td>0</td>
             <td>1</td>
-            <td>2</td>
-            <td>3</td>
-            <td>1</td>
-            <td>2</td>
-            <td>1</td>
-            <td>2</td>
+            <td>ULG</td>
           </tr>
         </thead>
         <tbody>
           <tr>
             <td>CIHANJUANG RAHAYU</td>
-            <td align="center"><?php echo $detail[0]['cihanjuang_rahayu_hamil_b']; ?></td>
-            <td align="center"><?php echo $detail[0]['cihanjuang_rahayu_hamil_l']; ?></td>
-            <td align="center"><?php echo $detail[0]['cihanjuang_rahayu_kb_baru_iud']; ?></td>
-            <td align="center"><?php echo $detail[0]['cihanjuang_rahayu_kb_baru_pil']; ?></td>
-            <td align="center"><?php echo $detail[0]['cihanjuang_rahayu_kb_baru_sun']; ?></td>
-            <td align="center"><?php echo $detail[0]['cihanjuang_rahayu_kb_lama_iud']; ?></td>
-            <td align="center"><?php echo $detail[0]['cihanjuang_rahayu_kb_lama_pil']; ?></td>
-            <td align="center"><?php echo $detail[0]['cihanjuang_rahayu_kb_lama_sun']; ?></td>
-            <td align="center"><?php echo $detail[0]['cihanjuang_rahayu_imunisasi_bcg']; ?></td>
-            <td align="center"><?php echo $detail[0]['cihanjuang_rahayu_imunisasi_dpt_1']; ?></td>
-            <td align="center"><?php echo $detail[0]['cihanjuang_rahayu_imunisasi_dpt_2']; ?></td>
-            <td align="center"><?php echo $detail[0]['cihanjuang_rahayu_imunisasi_dpt_3']; ?></td>
-            <td align="center"><?php echo $detail[0]['cihanjuang_rahayu_imunisasi_polio_1']; ?></td>
-            <td align="center"><?php echo $detail[0]['cihanjuang_rahayu_imunisasi_polio_2']; ?></td>
-            <td align="center"><?php echo $detail[0]['cihanjuang_rahayu_imunisasi_polio_3']; ?></td>
-            <td align="center"><?php echo $detail[0]['cihanjuang_rahayu_imunisasi_polio_4']; ?></td>
-            <td align="center"><?php echo $detail[0]['cihanjuang_rahayu_imunisasi_hb_0']; ?></td>
-            <td align="center"><?php echo $detail[0]['cihanjuang_rahayu_imunisasi_hb_1']; ?></td>
-            <td align="center"><?php echo $detail[0]['cihanjuang_rahayu_imunisasi_hb_2']; ?></td>
-            <td align="center"><?php echo $detail[0]['cihanjuang_rahayu_imunisasi_hb_3']; ?></td>
-            <td align="center"><?php echo $detail[0]['cihanjuang_rahayu_imunisasi_campak']; ?></td>
-            <td align="center"><?php echo $detail[0]['cihanjuang_rahayu_imunisasi_tt_1']; ?></td>
-            <td align="center"><?php echo $detail[0]['cihanjuang_rahayu_imunisasi_tt_2']; ?></td>
-            <td align="center"><?php echo $detail[0]['cihanjuang_rahayu_imunisasi_tt_wus_1']; ?></td>
-            <td align="center"><?php echo $detail[0]['cihanjuang_rahayu_imunisasi_tt_wus_2']; ?></td>
-            <td align="center"><?php echo $detail[0]['cihanjuang_rahayu_partus']; ?></td>
-            <td align="center"></td>
+            <td align="center"><?php echo $detail['cihanjuang_rahayu']['kia']['baru']; ?></td>
+            <td align="center"><?php echo $detail['cihanjuang_rahayu']['kia']['lama']; ?></td>
+            <td align="center"><?php echo $detail['cihanjuang_rahayu']['kb']['baru']['suntik_1_bulan']; ?></td>
+            <td align="center"><?php echo $detail['cihanjuang_rahayu']['kb']['baru']['suntik_3_bulan']; ?></td>
+            <td align="center"><?php echo $detail['cihanjuang_rahayu']['kb']['baru']['pil']; ?></td>
+            <td align="center"><?php echo $detail['cihanjuang_rahayu']['kb']['baru']['iud_bkkbn']; ?></td>
+            <td align="center"><?php echo $detail['cihanjuang_rahayu']['kb']['baru']['iud_non_bkkbn']; ?></td>
+            <td align="center"><?php echo $detail['cihanjuang_rahayu']['kb']['baru']['kondom']; ?></td>
+            <td align="center"><?php echo $detail['cihanjuang_rahayu']['kb']['lama']['suntik_1_bulan']; ?></td>
+            <td align="center"><?php echo $detail['cihanjuang_rahayu']['kb']['lama']['suntik_3_bulan']; ?></td>
+            <td align="center"><?php echo $detail['cihanjuang_rahayu']['kb']['lama']['pil']; ?></td>
+            <td align="center"><?php echo $detail['cihanjuang_rahayu']['kb']['lama']['iud_bkkbn']; ?></td>
+            <td align="center"><?php echo $detail['cihanjuang_rahayu']['kb']['lama']['iud_non_bkkbn']; ?></td>
+            <td align="center"><?php echo $detail['cihanjuang_rahayu']['kb']['lama']['kondom']; ?></td>
+            <td align="center"><?php echo $detail['cihanjuang_rahayu']['imunisasi']['hb0']; ?></td>
+            <td align="center"><?php echo $detail['cihanjuang_rahayu']['imunisasi']['bcg']; ?></td>
+            <td align="center"><?php echo $detail['cihanjuang_rahayu']['imunisasi']['pentabio_1']; ?></td>
+            <td align="center"><?php echo $detail['cihanjuang_rahayu']['imunisasi']['pentabio_2']; ?></td>
+            <td align="center"><?php echo $detail['cihanjuang_rahayu']['imunisasi']['pentabio_3']; ?></td>
+            <td align="center"><?php echo $detail['cihanjuang_rahayu']['imunisasi']['pentabio_ulang']; ?></td>
+            <td align="center"><?php echo $detail['cihanjuang_rahayu']['imunisasi']['polio_1']; ?></td>
+            <td align="center"><?php echo $detail['cihanjuang_rahayu']['imunisasi']['polio_2']; ?></td>
+            <td align="center"><?php echo $detail['cihanjuang_rahayu']['imunisasi']['polio_3']; ?></td>
+            <td align="center"><?php echo $detail['cihanjuang_rahayu']['imunisasi']['polio_4']; ?></td>
+            <td align="center"><?php echo $detail['cihanjuang_rahayu']['imunisasi']['tt']; ?></td>
+            <td align="center"><?php echo $detail['cihanjuang_rahayu']['imunisasi']['campak']; ?></td>
+            <td align="center"><?php echo $detail['cihanjuang_rahayu']['imunisasi']['campak_ulang']; ?></td>
+            <td align="center"><?php echo $detail['cihanjuang_rahayu']['partus']; ?></td>
+            <td align="center">0</td>
           </tr>
           <tr>
             <td>CIHANJUANG</td>
-            <td align="center"><?php echo $detail[0]['cihanjuang_hamil_b']; ?></td>
-            <td align="center"><?php echo $detail[0]['cihanjuang_hamil_l']; ?></td>
-            <td align="center"><?php echo $detail[0]['cihanjuang_kb_baru_iud']; ?></td>
-            <td align="center"><?php echo $detail[0]['cihanjuang_kb_baru_pil']; ?></td>
-            <td align="center"><?php echo $detail[0]['cihanjuang_kb_baru_sun']; ?></td>
-            <td align="center"><?php echo $detail[0]['cihanjuang_kb_lama_iud']; ?></td>
-            <td align="center"><?php echo $detail[0]['cihanjuang_kb_lama_pil']; ?></td>
-            <td align="center"><?php echo $detail[0]['cihanjuang_kb_lama_sun']; ?></td>
-            <td align="center"><?php echo $detail[0]['cihanjuang_imunisasi_bcg']; ?></td>
-            <td align="center"><?php echo $detail[0]['cihanjuang_imunisasi_dpt_1']; ?></td>
-            <td align="center"><?php echo $detail[0]['cihanjuang_imunisasi_dpt_2']; ?></td>
-            <td align="center"><?php echo $detail[0]['cihanjuang_imunisasi_dpt_3']; ?></td>
-            <td align="center"><?php echo $detail[0]['cihanjuang_imunisasi_polio_1']; ?></td>
-            <td align="center"><?php echo $detail[0]['cihanjuang_imunisasi_polio_2']; ?></td>
-            <td align="center"><?php echo $detail[0]['cihanjuang_imunisasi_polio_3']; ?></td>
-            <td align="center"><?php echo $detail[0]['cihanjuang_imunisasi_polio_4']; ?></td>
-            <td align="center"><?php echo $detail[0]['cihanjuang_imunisasi_hb_0']; ?></td>
-            <td align="center"><?php echo $detail[0]['cihanjuang_imunisasi_hb_1']; ?></td>
-            <td align="center"><?php echo $detail[0]['cihanjuang_imunisasi_hb_2']; ?></td>
-            <td align="center"><?php echo $detail[0]['cihanjuang_imunisasi_hb_3']; ?></td>
-            <td align="center"><?php echo $detail[0]['cihanjuang_imunisasi_campak']; ?></td>
-            <td align="center"><?php echo $detail[0]['cihanjuang_imunisasi_tt_1']; ?></td>
-            <td align="center"><?php echo $detail[0]['cihanjuang_imunisasi_tt_2']; ?></td>
-            <td align="center"><?php echo $detail[0]['cihanjuang_imunisasi_tt_wus_1']; ?></td>
-            <td align="center"><?php echo $detail[0]['cihanjuang_imunisasi_tt_wus_2']; ?></td>
-            <td align="center"><?php echo $detail[0]['cihanjuang_partus']; ?></td>
-            <td align="center"></td>
+            <td align="center"><?php echo $detail['cihanjuang']['kia']['baru']; ?></td>
+            <td align="center"><?php echo $detail['cihanjuang']['kia']['lama']; ?></td>
+            <td align="center"><?php echo $detail['cihanjuang']['kb']['baru']['suntik_1_bulan']; ?></td>
+            <td align="center"><?php echo $detail['cihanjuang']['kb']['baru']['suntik_3_bulan']; ?></td>
+            <td align="center"><?php echo $detail['cihanjuang']['kb']['baru']['pil']; ?></td>
+            <td align="center"><?php echo $detail['cihanjuang']['kb']['baru']['iud_bkkbn']; ?></td>
+            <td align="center"><?php echo $detail['cihanjuang']['kb']['baru']['iud_non_bkkbn']; ?></td>
+            <td align="center"><?php echo $detail['cihanjuang']['kb']['baru']['kondom']; ?></td>
+            <td align="center"><?php echo $detail['cihanjuang']['kb']['lama']['suntik_1_bulan']; ?></td>
+            <td align="center"><?php echo $detail['cihanjuang']['kb']['lama']['suntik_3_bulan']; ?></td>
+            <td align="center"><?php echo $detail['cihanjuang']['kb']['lama']['pil']; ?></td>
+            <td align="center"><?php echo $detail['cihanjuang']['kb']['lama']['iud_bkkbn']; ?></td>
+            <td align="center"><?php echo $detail['cihanjuang']['kb']['lama']['iud_non_bkkbn']; ?></td>
+            <td align="center"><?php echo $detail['cihanjuang']['kb']['lama']['kondom']; ?></td>
+            <td align="center"><?php echo $detail['cihanjuang']['imunisasi']['hb0']; ?></td>
+            <td align="center"><?php echo $detail['cihanjuang']['imunisasi']['bcg']; ?></td>
+            <td align="center"><?php echo $detail['cihanjuang']['imunisasi']['pentabio_1']; ?></td>
+            <td align="center"><?php echo $detail['cihanjuang']['imunisasi']['pentabio_2']; ?></td>
+            <td align="center"><?php echo $detail['cihanjuang']['imunisasi']['pentabio_3']; ?></td>
+            <td align="center"><?php echo $detail['cihanjuang']['imunisasi']['pentabio_ulang']; ?></td>
+            <td align="center"><?php echo $detail['cihanjuang']['imunisasi']['polio_1']; ?></td>
+            <td align="center"><?php echo $detail['cihanjuang']['imunisasi']['polio_2']; ?></td>
+            <td align="center"><?php echo $detail['cihanjuang']['imunisasi']['polio_3']; ?></td>
+            <td align="center"><?php echo $detail['cihanjuang']['imunisasi']['polio_4']; ?></td>
+            <td align="center"><?php echo $detail['cihanjuang']['imunisasi']['tt']; ?></td>
+            <td align="center"><?php echo $detail['cihanjuang']['imunisasi']['campak']; ?></td>
+            <td align="center"><?php echo $detail['cihanjuang']['imunisasi']['campak_ulang']; ?></td>
+            <td align="center"><?php echo $detail['cihanjuang']['partus']; ?></td>
+            <td align="center">0</td>
           </tr>
           <tr>
             <td>SARIWANGI</td>
-            <td align="center"><?php echo $detail[0]['sariwangi_hamil_b']; ?></td>
-            <td align="center"><?php echo $detail[0]['sariwangi_hamil_l']; ?></td>
-            <td align="center"><?php echo $detail[0]['sariwangi_kb_baru_iud']; ?></td>
-            <td align="center"><?php echo $detail[0]['sariwangi_kb_baru_pil']; ?></td>
-            <td align="center"><?php echo $detail[0]['sariwangi_kb_baru_sun']; ?></td>
-            <td align="center"><?php echo $detail[0]['sariwangi_kb_lama_iud']; ?></td>
-            <td align="center"><?php echo $detail[0]['sariwangi_kb_lama_pil']; ?></td>
-            <td align="center"><?php echo $detail[0]['sariwangi_kb_lama_sun']; ?></td>
-            <td align="center"><?php echo $detail[0]['sariwangi_imunisasi_bcg']; ?></td>
-            <td align="center"><?php echo $detail[0]['sariwangi_imunisasi_dpt_1']; ?></td>
-            <td align="center"><?php echo $detail[0]['sariwangi_imunisasi_dpt_2']; ?></td>
-            <td align="center"><?php echo $detail[0]['sariwangi_imunisasi_dpt_3']; ?></td>
-            <td align="center"><?php echo $detail[0]['sariwangi_imunisasi_polio_1']; ?></td>
-            <td align="center"><?php echo $detail[0]['sariwangi_imunisasi_polio_2']; ?></td>
-            <td align="center"><?php echo $detail[0]['sariwangi_imunisasi_polio_3']; ?></td>
-            <td align="center"><?php echo $detail[0]['sariwangi_imunisasi_polio_4']; ?></td>
-            <td align="center"><?php echo $detail[0]['sariwangi_imunisasi_hb_0']; ?></td>
-            <td align="center"><?php echo $detail[0]['sariwangi_imunisasi_hb_1']; ?></td>
-            <td align="center"><?php echo $detail[0]['sariwangi_imunisasi_hb_2']; ?></td>
-            <td align="center"><?php echo $detail[0]['sariwangi_imunisasi_hb_3']; ?></td>
-            <td align="center"><?php echo $detail[0]['sariwangi_imunisasi_campak']; ?></td>
-            <td align="center"><?php echo $detail[0]['sariwangi_imunisasi_tt_1']; ?></td>
-            <td align="center"><?php echo $detail[0]['sariwangi_imunisasi_tt_2']; ?></td>
-            <td align="center"><?php echo $detail[0]['sariwangi_imunisasi_tt_wus_1']; ?></td>
-            <td align="center"><?php echo $detail[0]['sariwangi_imunisasi_tt_wus_2']; ?></td>
-            <td align="center"><?php echo $detail[0]['sariwangi_partus']; ?></td>
-            <td align="center"></td>
+            <td align="center"><?php echo $detail['sariwangi']['kia']['baru']; ?></td>
+            <td align="center"><?php echo $detail['sariwangi']['kia']['lama']; ?></td>
+            <td align="center"><?php echo $detail['sariwangi']['kb']['baru']['suntik_1_bulan']; ?></td>
+            <td align="center"><?php echo $detail['sariwangi']['kb']['baru']['suntik_3_bulan']; ?></td>
+            <td align="center"><?php echo $detail['sariwangi']['kb']['baru']['pil']; ?></td>
+            <td align="center"><?php echo $detail['sariwangi']['kb']['baru']['iud_bkkbn']; ?></td>
+            <td align="center"><?php echo $detail['sariwangi']['kb']['baru']['iud_non_bkkbn']; ?></td>
+            <td align="center"><?php echo $detail['sariwangi']['kb']['baru']['kondom']; ?></td>
+            <td align="center"><?php echo $detail['sariwangi']['kb']['lama']['suntik_1_bulan']; ?></td>
+            <td align="center"><?php echo $detail['sariwangi']['kb']['lama']['suntik_3_bulan']; ?></td>
+            <td align="center"><?php echo $detail['sariwangi']['kb']['lama']['pil']; ?></td>
+            <td align="center"><?php echo $detail['sariwangi']['kb']['lama']['iud_bkkbn']; ?></td>
+            <td align="center"><?php echo $detail['sariwangi']['kb']['lama']['iud_non_bkkbn']; ?></td>
+            <td align="center"><?php echo $detail['sariwangi']['kb']['lama']['kondom']; ?></td>
+            <td align="center"><?php echo $detail['sariwangi']['imunisasi']['hb0']; ?></td>
+            <td align="center"><?php echo $detail['sariwangi']['imunisasi']['bcg']; ?></td>
+            <td align="center"><?php echo $detail['sariwangi']['imunisasi']['pentabio_1']; ?></td>
+            <td align="center"><?php echo $detail['sariwangi']['imunisasi']['pentabio_2']; ?></td>
+            <td align="center"><?php echo $detail['sariwangi']['imunisasi']['pentabio_3']; ?></td>
+            <td align="center"><?php echo $detail['sariwangi']['imunisasi']['pentabio_ulang']; ?></td>
+            <td align="center"><?php echo $detail['sariwangi']['imunisasi']['polio_1']; ?></td>
+            <td align="center"><?php echo $detail['sariwangi']['imunisasi']['polio_2']; ?></td>
+            <td align="center"><?php echo $detail['sariwangi']['imunisasi']['polio_3']; ?></td>
+            <td align="center"><?php echo $detail['sariwangi']['imunisasi']['polio_4']; ?></td>
+            <td align="center"><?php echo $detail['sariwangi']['imunisasi']['tt']; ?></td>
+            <td align="center"><?php echo $detail['sariwangi']['imunisasi']['campak']; ?></td>
+            <td align="center"><?php echo $detail['sariwangi']['imunisasi']['campak_ulang']; ?></td>
+            <td align="center"><?php echo $detail['sariwangi']['partus']; ?></td>
+            <td align="center">0</td>
           </tr>
           <tr>
             <td>KARYAWANGI</td>
-            <td align="center"><?php echo $detail[0]['karyawangi_hamil_b']; ?></td>
-            <td align="center"><?php echo $detail[0]['karyawangi_hamil_l']; ?></td>
-            <td align="center"><?php echo $detail[0]['karyawangi_kb_baru_iud']; ?></td>
-            <td align="center"><?php echo $detail[0]['karyawangi_kb_baru_pil']; ?></td>
-            <td align="center"><?php echo $detail[0]['karyawangi_kb_baru_sun']; ?></td>
-            <td align="center"><?php echo $detail[0]['karyawangi_kb_lama_iud']; ?></td>
-            <td align="center"><?php echo $detail[0]['karyawangi_kb_lama_pil']; ?></td>
-            <td align="center"><?php echo $detail[0]['karyawangi_kb_lama_sun']; ?></td>
-            <td align="center"><?php echo $detail[0]['karyawangi_imunisasi_bcg']; ?></td>
-            <td align="center"><?php echo $detail[0]['karyawangi_imunisasi_dpt_1']; ?></td>
-            <td align="center"><?php echo $detail[0]['karyawangi_imunisasi_dpt_2']; ?></td>
-            <td align="center"><?php echo $detail[0]['karyawangi_imunisasi_dpt_3']; ?></td>
-            <td align="center"><?php echo $detail[0]['karyawangi_imunisasi_polio_1']; ?></td>
-            <td align="center"><?php echo $detail[0]['karyawangi_imunisasi_polio_2']; ?></td>
-            <td align="center"><?php echo $detail[0]['karyawangi_imunisasi_polio_3']; ?></td>
-            <td align="center"><?php echo $detail[0]['karyawangi_imunisasi_polio_4']; ?></td>
-            <td align="center"><?php echo $detail[0]['karyawangi_imunisasi_hb_0']; ?></td>
-            <td align="center"><?php echo $detail[0]['karyawangi_imunisasi_hb_1']; ?></td>
-            <td align="center"><?php echo $detail[0]['karyawangi_imunisasi_hb_2']; ?></td>
-            <td align="center"><?php echo $detail[0]['karyawangi_imunisasi_hb_3']; ?></td>
-            <td align="center"><?php echo $detail[0]['karyawangi_imunisasi_campak']; ?></td>
-            <td align="center"><?php echo $detail[0]['karyawangi_imunisasi_tt_1']; ?></td>
-            <td align="center"><?php echo $detail[0]['karyawangi_imunisasi_tt_2']; ?></td>
-            <td align="center"><?php echo $detail[0]['karyawangi_imunisasi_tt_wus_1']; ?></td>
-            <td align="center"><?php echo $detail[0]['karyawangi_imunisasi_tt_wus_2']; ?></td>
-            <td align="center"><?php echo $detail[0]['karyawangi_partus']; ?></td>
-            <td align="center"></td>
+            <td align="center"><?php echo $detail['karyawangi']['kia']['baru']; ?></td>
+            <td align="center"><?php echo $detail['karyawangi']['kia']['lama']; ?></td>
+            <td align="center"><?php echo $detail['karyawangi']['kb']['baru']['suntik_1_bulan']; ?></td>
+            <td align="center"><?php echo $detail['karyawangi']['kb']['baru']['suntik_3_bulan']; ?></td>
+            <td align="center"><?php echo $detail['karyawangi']['kb']['baru']['pil']; ?></td>
+            <td align="center"><?php echo $detail['karyawangi']['kb']['baru']['iud_bkkbn']; ?></td>
+            <td align="center"><?php echo $detail['karyawangi']['kb']['baru']['iud_non_bkkbn']; ?></td>
+            <td align="center"><?php echo $detail['karyawangi']['kb']['baru']['kondom']; ?></td>
+            <td align="center"><?php echo $detail['karyawangi']['kb']['lama']['suntik_1_bulan']; ?></td>
+            <td align="center"><?php echo $detail['karyawangi']['kb']['lama']['suntik_3_bulan']; ?></td>
+            <td align="center"><?php echo $detail['karyawangi']['kb']['lama']['pil']; ?></td>
+            <td align="center"><?php echo $detail['karyawangi']['kb']['lama']['iud_bkkbn']; ?></td>
+            <td align="center"><?php echo $detail['karyawangi']['kb']['lama']['iud_non_bkkbn']; ?></td>
+            <td align="center"><?php echo $detail['karyawangi']['kb']['lama']['kondom']; ?></td>
+            <td align="center"><?php echo $detail['karyawangi']['imunisasi']['hb0']; ?></td>
+            <td align="center"><?php echo $detail['karyawangi']['imunisasi']['bcg']; ?></td>
+            <td align="center"><?php echo $detail['karyawangi']['imunisasi']['pentabio_1']; ?></td>
+            <td align="center"><?php echo $detail['karyawangi']['imunisasi']['pentabio_2']; ?></td>
+            <td align="center"><?php echo $detail['karyawangi']['imunisasi']['pentabio_3']; ?></td>
+            <td align="center"><?php echo $detail['karyawangi']['imunisasi']['pentabio_ulang']; ?></td>
+            <td align="center"><?php echo $detail['karyawangi']['imunisasi']['polio_1']; ?></td>
+            <td align="center"><?php echo $detail['karyawangi']['imunisasi']['polio_2']; ?></td>
+            <td align="center"><?php echo $detail['karyawangi']['imunisasi']['polio_3']; ?></td>
+            <td align="center"><?php echo $detail['karyawangi']['imunisasi']['polio_4']; ?></td>
+            <td align="center"><?php echo $detail['karyawangi']['imunisasi']['tt']; ?></td>
+            <td align="center"><?php echo $detail['karyawangi']['imunisasi']['campak']; ?></td>
+            <td align="center"><?php echo $detail['karyawangi']['imunisasi']['campak_ulang']; ?></td>
+            <td align="center"><?php echo $detail['karyawangi']['partus']; ?></td>
+            <td align="center">0</td>
           </tr>
           <tr>
             <td>CIHIDEUNG</td>
-            <td align="center"><?php echo $detail[0]['cihideung_hamil_b']; ?></td>
-            <td align="center"><?php echo $detail[0]['cihideung_hamil_l']; ?></td>
-            <td align="center"><?php echo $detail[0]['cihideung_kb_baru_iud']; ?></td>
-            <td align="center"><?php echo $detail[0]['cihideung_kb_baru_pil']; ?></td>
-            <td align="center"><?php echo $detail[0]['cihideung_kb_baru_sun']; ?></td>
-            <td align="center"><?php echo $detail[0]['cihideung_kb_lama_iud']; ?></td>
-            <td align="center"><?php echo $detail[0]['cihideung_kb_lama_pil']; ?></td>
-            <td align="center"><?php echo $detail[0]['cihideung_kb_lama_sun']; ?></td>
-            <td align="center"><?php echo $detail[0]['cihideung_imunisasi_bcg']; ?></td>
-            <td align="center"><?php echo $detail[0]['cihideung_imunisasi_dpt_1']; ?></td>
-            <td align="center"><?php echo $detail[0]['cihideung_imunisasi_dpt_2']; ?></td>
-            <td align="center"><?php echo $detail[0]['cihideung_imunisasi_dpt_3']; ?></td>
-            <td align="center"><?php echo $detail[0]['cihideung_imunisasi_polio_1']; ?></td>
-            <td align="center"><?php echo $detail[0]['cihideung_imunisasi_polio_2']; ?></td>
-            <td align="center"><?php echo $detail[0]['cihideung_imunisasi_polio_3']; ?></td>
-            <td align="center"><?php echo $detail[0]['cihideung_imunisasi_polio_4']; ?></td>
-            <td align="center"><?php echo $detail[0]['cihideung_imunisasi_hb_0']; ?></td>
-            <td align="center"><?php echo $detail[0]['cihideung_imunisasi_hb_1']; ?></td>
-            <td align="center"><?php echo $detail[0]['cihideung_imunisasi_hb_2']; ?></td>
-            <td align="center"><?php echo $detail[0]['cihideung_imunisasi_hb_3']; ?></td>
-            <td align="center"><?php echo $detail[0]['cihideung_imunisasi_campak']; ?></td>
-            <td align="center"><?php echo $detail[0]['cihideung_imunisasi_tt_1']; ?></td>
-            <td align="center"><?php echo $detail[0]['cihideung_imunisasi_tt_2']; ?></td>
-            <td align="center"><?php echo $detail[0]['cihideung_imunisasi_tt_wus_1']; ?></td>
-            <td align="center"><?php echo $detail[0]['cihideung_imunisasi_tt_wus_2']; ?></td>
-            <td align="center"><?php echo $detail[0]['cihideung_partus']; ?></td>
-            <td align="center"></td>
+            <td align="center"><?php echo $detail['cihideung']['kia']['baru']; ?></td>
+            <td align="center"><?php echo $detail['cihideung']['kia']['lama']; ?></td>
+            <td align="center"><?php echo $detail['cihideung']['kb']['baru']['suntik_1_bulan']; ?></td>
+            <td align="center"><?php echo $detail['cihideung']['kb']['baru']['suntik_3_bulan']; ?></td>
+            <td align="center"><?php echo $detail['cihideung']['kb']['baru']['pil']; ?></td>
+            <td align="center"><?php echo $detail['cihideung']['kb']['baru']['iud_bkkbn']; ?></td>
+            <td align="center"><?php echo $detail['cihideung']['kb']['baru']['iud_non_bkkbn']; ?></td>
+            <td align="center"><?php echo $detail['cihideung']['kb']['baru']['kondom']; ?></td>
+            <td align="center"><?php echo $detail['cihideung']['kb']['lama']['suntik_1_bulan']; ?></td>
+            <td align="center"><?php echo $detail['cihideung']['kb']['lama']['suntik_3_bulan']; ?></td>
+            <td align="center"><?php echo $detail['cihideung']['kb']['lama']['pil']; ?></td>
+            <td align="center"><?php echo $detail['cihideung']['kb']['lama']['iud_bkkbn']; ?></td>
+            <td align="center"><?php echo $detail['cihideung']['kb']['lama']['iud_non_bkkbn']; ?></td>
+            <td align="center"><?php echo $detail['cihideung']['kb']['lama']['kondom']; ?></td>
+            <td align="center"><?php echo $detail['cihideung']['imunisasi']['hb0']; ?></td>
+            <td align="center"><?php echo $detail['cihideung']['imunisasi']['bcg']; ?></td>
+            <td align="center"><?php echo $detail['cihideung']['imunisasi']['pentabio_1']; ?></td>
+            <td align="center"><?php echo $detail['cihideung']['imunisasi']['pentabio_2']; ?></td>
+            <td align="center"><?php echo $detail['cihideung']['imunisasi']['pentabio_3']; ?></td>
+            <td align="center"><?php echo $detail['cihideung']['imunisasi']['pentabio_ulang']; ?></td>
+            <td align="center"><?php echo $detail['cihideung']['imunisasi']['polio_1']; ?></td>
+            <td align="center"><?php echo $detail['cihideung']['imunisasi']['polio_2']; ?></td>
+            <td align="center"><?php echo $detail['cihideung']['imunisasi']['polio_3']; ?></td>
+            <td align="center"><?php echo $detail['cihideung']['imunisasi']['polio_4']; ?></td>
+            <td align="center"><?php echo $detail['cihideung']['imunisasi']['tt']; ?></td>
+            <td align="center"><?php echo $detail['cihideung']['imunisasi']['campak']; ?></td>
+            <td align="center"><?php echo $detail['cihideung']['imunisasi']['campak_ulang']; ?></td>
+            <td align="center"><?php echo $detail['cihideung']['partus']; ?></td>
+            <td align="center">0</td>
           </tr>
           <tr>
             <td>CIGUGUR</td>
-            <td align="center"><?php echo $detail[0]['cigugur_hamil_b']; ?></td>
-            <td align="center"><?php echo $detail[0]['cigugur_hamil_l']; ?></td>
-            <td align="center"><?php echo $detail[0]['cigugur_kb_baru_iud']; ?></td>
-            <td align="center"><?php echo $detail[0]['cigugur_kb_baru_pil']; ?></td>
-            <td align="center"><?php echo $detail[0]['cigugur_kb_baru_sun']; ?></td>
-            <td align="center"><?php echo $detail[0]['cigugur_kb_lama_iud']; ?></td>
-            <td align="center"><?php echo $detail[0]['cigugur_kb_lama_pil']; ?></td>
-            <td align="center"><?php echo $detail[0]['cigugur_kb_lama_sun']; ?></td>
-            <td align="center"><?php echo $detail[0]['cigugur_imunisasi_bcg']; ?></td>
-            <td align="center"><?php echo $detail[0]['cigugur_imunisasi_dpt_1']; ?></td>
-            <td align="center"><?php echo $detail[0]['cigugur_imunisasi_dpt_2']; ?></td>
-            <td align="center"><?php echo $detail[0]['cigugur_imunisasi_dpt_3']; ?></td>
-            <td align="center"><?php echo $detail[0]['cigugur_imunisasi_polio_1']; ?></td>
-            <td align="center"><?php echo $detail[0]['cigugur_imunisasi_polio_2']; ?></td>
-            <td align="center"><?php echo $detail[0]['cigugur_imunisasi_polio_3']; ?></td>
-            <td align="center"><?php echo $detail[0]['cigugur_imunisasi_polio_4']; ?></td>
-            <td align="center"><?php echo $detail[0]['cigugur_imunisasi_hb_0']; ?></td>
-            <td align="center"><?php echo $detail[0]['cigugur_imunisasi_hb_1']; ?></td>
-            <td align="center"><?php echo $detail[0]['cigugur_imunisasi_hb_2']; ?></td>
-            <td align="center"><?php echo $detail[0]['cigugur_imunisasi_hb_3']; ?></td>
-            <td align="center"><?php echo $detail[0]['cigugur_imunisasi_campak']; ?></td>
-            <td align="center"><?php echo $detail[0]['cigugur_imunisasi_tt_1']; ?></td>
-            <td align="center"><?php echo $detail[0]['cigugur_imunisasi_tt_2']; ?></td>
-            <td align="center"><?php echo $detail[0]['cigugur_imunisasi_tt_wus_1']; ?></td>
-            <td align="center"><?php echo $detail[0]['cigugur_imunisasi_tt_wus_2']; ?></td>
-            <td align="center"><?php echo $detail[0]['cigugur_partus']; ?></td>
-            <td align="center"></td>
+            <td align="center"><?php echo $detail['cigugur']['kia']['baru']; ?></td>
+            <td align="center"><?php echo $detail['cigugur']['kia']['lama']; ?></td>
+            <td align="center"><?php echo $detail['cigugur']['kb']['baru']['suntik_1_bulan']; ?></td>
+            <td align="center"><?php echo $detail['cigugur']['kb']['baru']['suntik_3_bulan']; ?></td>
+            <td align="center"><?php echo $detail['cigugur']['kb']['baru']['pil']; ?></td>
+            <td align="center"><?php echo $detail['cigugur']['kb']['baru']['iud_bkkbn']; ?></td>
+            <td align="center"><?php echo $detail['cigugur']['kb']['baru']['iud_non_bkkbn']; ?></td>
+            <td align="center"><?php echo $detail['cigugur']['kb']['baru']['kondom']; ?></td>
+            <td align="center"><?php echo $detail['cigugur']['kb']['lama']['suntik_1_bulan']; ?></td>
+            <td align="center"><?php echo $detail['cigugur']['kb']['lama']['suntik_3_bulan']; ?></td>
+            <td align="center"><?php echo $detail['cigugur']['kb']['lama']['pil']; ?></td>
+            <td align="center"><?php echo $detail['cigugur']['kb']['lama']['iud_bkkbn']; ?></td>
+            <td align="center"><?php echo $detail['cigugur']['kb']['lama']['iud_non_bkkbn']; ?></td>
+            <td align="center"><?php echo $detail['cigugur']['kb']['lama']['kondom']; ?></td>
+            <td align="center"><?php echo $detail['cigugur']['imunisasi']['hb0']; ?></td>
+            <td align="center"><?php echo $detail['cigugur']['imunisasi']['bcg']; ?></td>
+            <td align="center"><?php echo $detail['cigugur']['imunisasi']['pentabio_1']; ?></td>
+            <td align="center"><?php echo $detail['cigugur']['imunisasi']['pentabio_2']; ?></td>
+            <td align="center"><?php echo $detail['cigugur']['imunisasi']['pentabio_3']; ?></td>
+            <td align="center"><?php echo $detail['cigugur']['imunisasi']['pentabio_ulang']; ?></td>
+            <td align="center"><?php echo $detail['cigugur']['imunisasi']['polio_1']; ?></td>
+            <td align="center"><?php echo $detail['cigugur']['imunisasi']['polio_2']; ?></td>
+            <td align="center"><?php echo $detail['cigugur']['imunisasi']['polio_3']; ?></td>
+            <td align="center"><?php echo $detail['cigugur']['imunisasi']['polio_4']; ?></td>
+            <td align="center"><?php echo $detail['cigugur']['imunisasi']['tt']; ?></td>
+            <td align="center"><?php echo $detail['cigugur']['imunisasi']['campak']; ?></td>
+            <td align="center"><?php echo $detail['cigugur']['imunisasi']['campak_ulang']; ?></td>
+            <td align="center"><?php echo $detail['cigugur']['partus']; ?></td>
+            <td align="center">0</td>
           </tr>
           <tr>
             <td>CIPANAS</td>
-            <td align="center"><?php echo $detail[0]['cipanas_hamil_b']; ?></td>
-            <td align="center"><?php echo $detail[0]['cipanas_hamil_l']; ?></td>
-            <td align="center"><?php echo $detail[0]['cipanas_kb_baru_iud']; ?></td>
-            <td align="center"><?php echo $detail[0]['cipanas_kb_baru_pil']; ?></td>
-            <td align="center"><?php echo $detail[0]['cipanas_kb_baru_sun']; ?></td>
-            <td align="center"><?php echo $detail[0]['cipanas_kb_lama_iud']; ?></td>
-            <td align="center"><?php echo $detail[0]['cipanas_kb_lama_pil']; ?></td>
-            <td align="center"><?php echo $detail[0]['cipanas_kb_lama_sun']; ?></td>
-            <td align="center"><?php echo $detail[0]['cipanas_imunisasi_bcg']; ?></td>
-            <td align="center"><?php echo $detail[0]['cipanas_imunisasi_dpt_1']; ?></td>
-            <td align="center"><?php echo $detail[0]['cipanas_imunisasi_dpt_2']; ?></td>
-            <td align="center"><?php echo $detail[0]['cipanas_imunisasi_dpt_3']; ?></td>
-            <td align="center"><?php echo $detail[0]['cipanas_imunisasi_polio_1']; ?></td>
-            <td align="center"><?php echo $detail[0]['cipanas_imunisasi_polio_2']; ?></td>
-            <td align="center"><?php echo $detail[0]['cipanas_imunisasi_polio_3']; ?></td>
-            <td align="center"><?php echo $detail[0]['cipanas_imunisasi_polio_4']; ?></td>
-            <td align="center"><?php echo $detail[0]['cipanas_imunisasi_hb_0']; ?></td>
-            <td align="center"><?php echo $detail[0]['cipanas_imunisasi_hb_1']; ?></td>
-            <td align="center"><?php echo $detail[0]['cipanas_imunisasi_hb_2']; ?></td>
-            <td align="center"><?php echo $detail[0]['cipanas_imunisasi_hb_3']; ?></td>
-            <td align="center"><?php echo $detail[0]['cipanas_imunisasi_campak']; ?></td>
-            <td align="center"><?php echo $detail[0]['cipanas_imunisasi_tt_1']; ?></td>
-            <td align="center"><?php echo $detail[0]['cipanas_imunisasi_tt_2']; ?></td>
-            <td align="center"><?php echo $detail[0]['cipanas_imunisasi_tt_wus_1']; ?></td>
-            <td align="center"><?php echo $detail[0]['cipanas_imunisasi_tt_wus_2']; ?></td>
-            <td align="center"><?php echo $detail[0]['cipanas_partus']; ?></td>
-            <td align="center"></td>
+            <td align="center"><?php echo $detail['cipanas']['kia']['baru']; ?></td>
+            <td align="center"><?php echo $detail['cipanas']['kia']['lama']; ?></td>
+            <td align="center"><?php echo $detail['cipanas']['kb']['baru']['suntik_1_bulan']; ?></td>
+            <td align="center"><?php echo $detail['cipanas']['kb']['baru']['suntik_3_bulan']; ?></td>
+            <td align="center"><?php echo $detail['cipanas']['kb']['baru']['pil']; ?></td>
+            <td align="center"><?php echo $detail['cipanas']['kb']['baru']['iud_bkkbn']; ?></td>
+            <td align="center"><?php echo $detail['cipanas']['kb']['baru']['iud_non_bkkbn']; ?></td>
+            <td align="center"><?php echo $detail['cipanas']['kb']['baru']['kondom']; ?></td>
+            <td align="center"><?php echo $detail['cipanas']['kb']['lama']['suntik_1_bulan']; ?></td>
+            <td align="center"><?php echo $detail['cipanas']['kb']['lama']['suntik_3_bulan']; ?></td>
+            <td align="center"><?php echo $detail['cipanas']['kb']['lama']['pil']; ?></td>
+            <td align="center"><?php echo $detail['cipanas']['kb']['lama']['iud_bkkbn']; ?></td>
+            <td align="center"><?php echo $detail['cipanas']['kb']['lama']['iud_non_bkkbn']; ?></td>
+            <td align="center"><?php echo $detail['cipanas']['kb']['lama']['kondom']; ?></td>
+            <td align="center"><?php echo $detail['cipanas']['imunisasi']['hb0']; ?></td>
+            <td align="center"><?php echo $detail['cipanas']['imunisasi']['bcg']; ?></td>
+            <td align="center"><?php echo $detail['cipanas']['imunisasi']['pentabio_1']; ?></td>
+            <td align="center"><?php echo $detail['cipanas']['imunisasi']['pentabio_2']; ?></td>
+            <td align="center"><?php echo $detail['cipanas']['imunisasi']['pentabio_3']; ?></td>
+            <td align="center"><?php echo $detail['cipanas']['imunisasi']['pentabio_ulang']; ?></td>
+            <td align="center"><?php echo $detail['cipanas']['imunisasi']['polio_1']; ?></td>
+            <td align="center"><?php echo $detail['cipanas']['imunisasi']['polio_2']; ?></td>
+            <td align="center"><?php echo $detail['cipanas']['imunisasi']['polio_3']; ?></td>
+            <td align="center"><?php echo $detail['cipanas']['imunisasi']['polio_4']; ?></td>
+            <td align="center"><?php echo $detail['cipanas']['imunisasi']['tt']; ?></td>
+            <td align="center"><?php echo $detail['cipanas']['imunisasi']['campak']; ?></td>
+            <td align="center"><?php echo $detail['cipanas']['imunisasi']['campak_ulang']; ?></td>
+            <td align="center"><?php echo $detail['cipanas']['partus']; ?></td>
+            <td align="center">0</td>
           </tr>
           <tr>
             <td>JUMLAH</td>
-            <td align="center"></td>
-            <td align="center"></td>
-            <td align="center"></td>
-            <td align="center"></td>
-            <td align="center"></td>
-            <td align="center"></td>
-            <td align="center"></td>
-            <td align="center"></td>
-            <td align="center"></td>
-            <td align="center"></td>
-            <td align="center"></td>
-            <td align="center"></td>
-            <td align="center"></td>
-            <td align="center"></td>
-            <td align="center"></td>
-            <td align="center"></td>
-            <td align="center"></td>
-            <td align="center"></td>
-            <td align="center"></td>
-            <td align="center"></td>
-            <td align="center"></td>
-            <td align="center"></td>
-            <td align="center"></td>
-            <td align="center"></td>
-            <td align="center"></td>
-            <td align="center"></td>
-            <td align="center"></td>
+            <td align="center">0</td>
+            <td align="center">0</td>
+            <td align="center">0</td>
+            <td align="center">0</td>
+            <td align="center">0</td>
+            <td align="center">0</td>
+            <td align="center">0</td>
+            <td align="center">0</td>
+            <td align="center">0</td>
+            <td align="center">0</td>
+            <td align="center">0</td>
+            <td align="center">0</td>
+            <td align="center">0</td>
+            <td align="center">0</td>
+            <td align="center">0</td>
+            <td align="center">0</td>
+            <td align="center">0</td>
+            <td align="center">0</td>
+            <td align="center">0</td>
+            <td align="center">0</td>
+            <td align="center">0</td>
+            <td align="center">0</td>
+            <td align="center">0</td>
+            <td align="center">0</td>
+            <td align="center">0</td>
+            <td align="center">0</td>
+            <td align="center">0</td>
+            <td align="center">0</td>
+            <td align="center">0</td>
           </tr>
         </tbody>
       </table>

@@ -156,6 +156,12 @@ class Pasien extends CI_Controller {
 		$response = $this->model->detail($param);
 
 		echo json_encode($response, JSON_PRETTY_PRINT);
-    }
+	}
+	
+	public function query( $id = 0 )
+	{
+		$r = $this->model->query($id);
+		echo $r;
+	}
     
 }

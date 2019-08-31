@@ -170,401 +170,401 @@ class Laporan_model extends CI_Model {
 		}
 
 		if ($this->db->simple_query($q)) {
-            if ($f['id_jenis_laporan'] == 1 && $id == 0) {
-                $q =    "SELECT 
-                            * 
-                        FROM 
-                            `laporan` 
-                        WHERE 
-                            `id_jenis_laporan` = '". $this->db->escape_str($f['id_jenis_laporan']) ."' 
-                                AND 
-                            `tahun_laporan` = '". $this->db->escape_str($f['tahun_laporan']) ."' 
-                                AND 
-                            `bulan_laporan` = '". $this->db->escape_str($f['bulan_laporan']) ."'
-                        ORDER BY
-                            `id` DESC
-                        LIMIT 1
-                        ;";
-                $r = $this->db->query($q, false)->result_array();
-                $id_laporan_bulanan = $r[0]['id'];
-                $q =    "INSERT INTO 
-                            `detail_laporan_bulanan` 
-                            (
-                                `id_laporan_bulanan`, 
-                                `cihanjuang_rahayu_hamil_b`,
-                                `cihanjuang_rahayu_hamil_l`,
-                                `cihanjuang_rahayu_kb_baru_iud`,
-                                `cihanjuang_rahayu_kb_baru_pil`,
-                                `cihanjuang_rahayu_kb_baru_sun`,
-                                `cihanjuang_rahayu_kb_lama_iud`,
-                                `cihanjuang_rahayu_kb_lama_pil`,
-                                `cihanjuang_rahayu_kb_lama_sun`,
-                                `cihanjuang_rahayu_imunisasi_bcg`,
-                                `cihanjuang_rahayu_imunisasi_dpt_1`,
-                                `cihanjuang_rahayu_imunisasi_dpt_2`,
-                                `cihanjuang_rahayu_imunisasi_dpt_3`,
-                                `cihanjuang_rahayu_imunisasi_polio_1`,
-                                `cihanjuang_rahayu_imunisasi_polio_2`,
-                                `cihanjuang_rahayu_imunisasi_polio_3`,
-                                `cihanjuang_rahayu_imunisasi_polio_4`,
-                                `cihanjuang_rahayu_imunisasi_hb_0`,
-                                `cihanjuang_rahayu_imunisasi_hb_1`,
-                                `cihanjuang_rahayu_imunisasi_hb_2`,
-                                `cihanjuang_rahayu_imunisasi_hb_3`,
-                                `cihanjuang_rahayu_imunisasi_campak`,
-                                `cihanjuang_rahayu_imunisasi_tt_1`,
-                                `cihanjuang_rahayu_imunisasi_tt_2`,
-                                `cihanjuang_rahayu_imunisasi_tt_wus_1`,
-                                `cihanjuang_rahayu_imunisasi_tt_wus_2`,
-                                `cihanjuang_rahayu_partus`,
-                                `cihanjuang_hamil_b`,
-                                `cihanjuang_hamil_l`,
-                                `cihanjuang_kb_baru_iud`,
-                                `cihanjuang_kb_baru_pil`,
-                                `cihanjuang_kb_baru_sun`,
-                                `cihanjuang_kb_lama_iud`,
-                                `cihanjuang_kb_lama_pil`,
-                                `cihanjuang_kb_lama_sun`,
-                                `cihanjuang_imunisasi_bcg`,
-                                `cihanjuang_imunisasi_dpt_1`,
-                                `cihanjuang_imunisasi_dpt_2`,
-                                `cihanjuang_imunisasi_dpt_3`,
-                                `cihanjuang_imunisasi_polio_1`,
-                                `cihanjuang_imunisasi_polio_2`,
-                                `cihanjuang_imunisasi_polio_3`,
-                                `cihanjuang_imunisasi_polio_4`,
-                                `cihanjuang_imunisasi_hb_0`,
-                                `cihanjuang_imunisasi_hb_1`,
-                                `cihanjuang_imunisasi_hb_2`,
-                                `cihanjuang_imunisasi_hb_3`,
-                                `cihanjuang_imunisasi_campak`,
-                                `cihanjuang_imunisasi_tt_1`,
-                                `cihanjuang_imunisasi_tt_2`,
-                                `cihanjuang_imunisasi_tt_wus_1`,
-                                `cihanjuang_imunisasi_tt_wus_2`,
-                                `cihanjuang_partus`,
-                                `sariwangi_hamil_b`,
-                                `sariwangi_hamil_l`,
-                                `sariwangi_kb_baru_iud`,
-                                `sariwangi_kb_baru_pil`,
-                                `sariwangi_kb_baru_sun`,
-                                `sariwangi_kb_lama_iud`,
-                                `sariwangi_kb_lama_pil`,
-                                `sariwangi_kb_lama_sun`,
-                                `sariwangi_imunisasi_bcg`,
-                                `sariwangi_imunisasi_dpt_1`,
-                                `sariwangi_imunisasi_dpt_2`,
-                                `sariwangi_imunisasi_dpt_3`,
-                                `sariwangi_imunisasi_polio_1`,
-                                `sariwangi_imunisasi_polio_2`,
-                                `sariwangi_imunisasi_polio_3`,
-                                `sariwangi_imunisasi_polio_4`,
-                                `sariwangi_imunisasi_hb_0`,
-                                `sariwangi_imunisasi_hb_1`,
-                                `sariwangi_imunisasi_hb_2`,
-                                `sariwangi_imunisasi_hb_3`,
-                                `sariwangi_imunisasi_campak`,
-                                `sariwangi_imunisasi_tt_1`,
-                                `sariwangi_imunisasi_tt_2`,
-                                `sariwangi_imunisasi_tt_wus_1`,
-                                `sariwangi_imunisasi_tt_wus_2`,
-                                `sariwangi_partus`,
-                                `karyawangi_hamil_b`,
-                                `karyawangi_hamil_l`,
-                                `karyawangi_kb_baru_iud`,
-                                `karyawangi_kb_baru_pil`,
-                                `karyawangi_kb_baru_sun`,
-                                `karyawangi_kb_lama_iud`,
-                                `karyawangi_kb_lama_pil`,
-                                `karyawangi_kb_lama_sun`,
-                                `karyawangi_imunisasi_bcg`,
-                                `karyawangi_imunisasi_dpt_1`,
-                                `karyawangi_imunisasi_dpt_2`,
-                                `karyawangi_imunisasi_dpt_3`,
-                                `karyawangi_imunisasi_polio_1`,
-                                `karyawangi_imunisasi_polio_2`,
-                                `karyawangi_imunisasi_polio_3`,
-                                `karyawangi_imunisasi_polio_4`,
-                                `karyawangi_imunisasi_hb_0`,
-                                `karyawangi_imunisasi_hb_1`,
-                                `karyawangi_imunisasi_hb_2`,
-                                `karyawangi_imunisasi_hb_3`,
-                                `karyawangi_imunisasi_campak`,
-                                `karyawangi_imunisasi_tt_1`,
-                                `karyawangi_imunisasi_tt_2`,
-                                `karyawangi_imunisasi_tt_wus_1`,
-                                `karyawangi_imunisasi_tt_wus_2`,
-                                `karyawangi_partus`,
-                                `cihideung_hamil_b`,
-                                `cihideung_hamil_l`,
-                                `cihideung_kb_baru_iud`,
-                                `cihideung_kb_baru_pil`,
-                                `cihideung_kb_baru_sun`,
-                                `cihideung_kb_lama_iud`,
-                                `cihideung_kb_lama_pil`,
-                                `cihideung_kb_lama_sun`,
-                                `cihideung_imunisasi_bcg`,
-                                `cihideung_imunisasi_dpt_1`,
-                                `cihideung_imunisasi_dpt_2`,
-                                `cihideung_imunisasi_dpt_3`,
-                                `cihideung_imunisasi_polio_1`,
-                                `cihideung_imunisasi_polio_2`,
-                                `cihideung_imunisasi_polio_3`,
-                                `cihideung_imunisasi_polio_4`,
-                                `cihideung_imunisasi_hb_0`,
-                                `cihideung_imunisasi_hb_1`,
-                                `cihideung_imunisasi_hb_2`,
-                                `cihideung_imunisasi_hb_3`,
-                                `cihideung_imunisasi_campak`,
-                                `cihideung_imunisasi_tt_1`,
-                                `cihideung_imunisasi_tt_2`,
-                                `cihideung_imunisasi_tt_wus_1`,
-                                `cihideung_imunisasi_tt_wus_2`,
-                                `cihideung_partus`,
-                                `cigugur_hamil_b`,
-                                `cigugur_hamil_l`,
-                                `cigugur_kb_baru_iud`,
-                                `cigugur_kb_baru_pil`,
-                                `cigugur_kb_baru_sun`,
-                                `cigugur_kb_lama_iud`,
-                                `cigugur_kb_lama_pil`,
-                                `cigugur_kb_lama_sun`,
-                                `cigugur_imunisasi_bcg`,
-                                `cigugur_imunisasi_dpt_1`,
-                                `cigugur_imunisasi_dpt_2`,
-                                `cigugur_imunisasi_dpt_3`,
-                                `cigugur_imunisasi_polio_1`,
-                                `cigugur_imunisasi_polio_2`,
-                                `cigugur_imunisasi_polio_3`,
-                                `cigugur_imunisasi_polio_4`,
-                                `cigugur_imunisasi_hb_0`,
-                                `cigugur_imunisasi_hb_1`,
-                                `cigugur_imunisasi_hb_2`,
-                                `cigugur_imunisasi_hb_3`,
-                                `cigugur_imunisasi_campak`,
-                                `cigugur_imunisasi_tt_1`,
-                                `cigugur_imunisasi_tt_2`,
-                                `cigugur_imunisasi_tt_wus_1`,
-                                `cigugur_imunisasi_tt_wus_2`,
-                                `cigugur_partus`,
-                                `cipanas_hamil_b`,
-                                `cipanas_hamil_l`,
-                                `cipanas_kb_baru_iud`,
-                                `cipanas_kb_baru_pil`,
-                                `cipanas_kb_baru_sun`,
-                                `cipanas_kb_lama_iud`,
-                                `cipanas_kb_lama_pil`,
-                                `cipanas_kb_lama_sun`,
-                                `cipanas_imunisasi_bcg`,
-                                `cipanas_imunisasi_dpt_1`,
-                                `cipanas_imunisasi_dpt_2`,
-                                `cipanas_imunisasi_dpt_3`,
-                                `cipanas_imunisasi_polio_1`,
-                                `cipanas_imunisasi_polio_2`,
-                                `cipanas_imunisasi_polio_3`,
-                                `cipanas_imunisasi_polio_4`,
-                                `cipanas_imunisasi_hb_0`,
-                                `cipanas_imunisasi_hb_1`,
-                                `cipanas_imunisasi_hb_2`,
-                                `cipanas_imunisasi_hb_3`,
-                                `cipanas_imunisasi_campak`,
-                                `cipanas_imunisasi_tt_1`,
-                                `cipanas_imunisasi_tt_2`,
-                                `cipanas_imunisasi_tt_wus_1`,
-                                `cipanas_imunisasi_tt_wus_2`,
-                                `cipanas_partus`,
-                                `created_at`
-                            ) 
-                        VALUES 
-                            (
-                                '". $this->db->escape_str($id_laporan_bulanan) ."',
-                                '". $this->db->escape_str($f['cihanjuang_rahayu_hamil_b']) ."',
-                                '". $this->db->escape_str($f['cihanjuang_rahayu_hamil_l']) ."',
-                                '". $this->db->escape_str($f['cihanjuang_rahayu_kb_baru_iud']) ."',
-                                '". $this->db->escape_str($f['cihanjuang_rahayu_kb_baru_pil']) ."',
-                                '". $this->db->escape_str($f['cihanjuang_rahayu_kb_baru_sun']) ."',
-                                '". $this->db->escape_str($f['cihanjuang_rahayu_kb_lama_iud']) ."',
-                                '". $this->db->escape_str($f['cihanjuang_rahayu_kb_lama_pil']) ."',
-                                '". $this->db->escape_str($f['cihanjuang_rahayu_kb_lama_sun']) ."',
-                                '". $this->db->escape_str($f['cihanjuang_rahayu_imunisasi_bcg']) ."',
-                                '". $this->db->escape_str($f['cihanjuang_rahayu_imunisasi_dpt_1']) ."',
-                                '". $this->db->escape_str($f['cihanjuang_rahayu_imunisasi_dpt_2']) ."',
-                                '". $this->db->escape_str($f['cihanjuang_rahayu_imunisasi_dpt_3']) ."',
-                                '". $this->db->escape_str($f['cihanjuang_rahayu_imunisasi_polio_1']) ."',
-                                '". $this->db->escape_str($f['cihanjuang_rahayu_imunisasi_polio_2']) ."',
-                                '". $this->db->escape_str($f['cihanjuang_rahayu_imunisasi_polio_3']) ."',
-                                '". $this->db->escape_str($f['cihanjuang_rahayu_imunisasi_polio_4']) ."',
-                                '". $this->db->escape_str($f['cihanjuang_rahayu_imunisasi_hb_0']) ."',
-                                '". $this->db->escape_str($f['cihanjuang_rahayu_imunisasi_hb_1']) ."',
-                                '". $this->db->escape_str($f['cihanjuang_rahayu_imunisasi_hb_2']) ."',
-                                '". $this->db->escape_str($f['cihanjuang_rahayu_imunisasi_hb_3']) ."',
-                                '". $this->db->escape_str($f['cihanjuang_rahayu_imunisasi_campak']) ."',
-                                '". $this->db->escape_str($f['cihanjuang_rahayu_imunisasi_tt_1']) ."',
-                                '". $this->db->escape_str($f['cihanjuang_rahayu_imunisasi_tt_2']) ."',
-                                '". $this->db->escape_str($f['cihanjuang_rahayu_imunisasi_tt_wus_1']) ."',
-                                '". $this->db->escape_str($f['cihanjuang_rahayu_imunisasi_tt_wus_2']) ."',
-                                '". $this->db->escape_str($f['cihanjuang_rahayu_partus']) ."',
-                                '". $this->db->escape_str($f['cihanjuang_hamil_b']) ."',
-                                '". $this->db->escape_str($f['cihanjuang_hamil_l']) ."',
-                                '". $this->db->escape_str($f['cihanjuang_kb_baru_iud']) ."',
-                                '". $this->db->escape_str($f['cihanjuang_kb_baru_pil']) ."',
-                                '". $this->db->escape_str($f['cihanjuang_kb_baru_sun']) ."',
-                                '". $this->db->escape_str($f['cihanjuang_kb_lama_iud']) ."',
-                                '". $this->db->escape_str($f['cihanjuang_kb_lama_pil']) ."',
-                                '". $this->db->escape_str($f['cihanjuang_kb_lama_sun']) ."',
-                                '". $this->db->escape_str($f['cihanjuang_imunisasi_bcg']) ."',
-                                '". $this->db->escape_str($f['cihanjuang_imunisasi_dpt_1']) ."',
-                                '". $this->db->escape_str($f['cihanjuang_imunisasi_dpt_2']) ."',
-                                '". $this->db->escape_str($f['cihanjuang_imunisasi_dpt_3']) ."',
-                                '". $this->db->escape_str($f['cihanjuang_imunisasi_polio_1']) ."',
-                                '". $this->db->escape_str($f['cihanjuang_imunisasi_polio_2']) ."',
-                                '". $this->db->escape_str($f['cihanjuang_imunisasi_polio_3']) ."',
-                                '". $this->db->escape_str($f['cihanjuang_imunisasi_polio_4']) ."',
-                                '". $this->db->escape_str($f['cihanjuang_imunisasi_hb_0']) ."',
-                                '". $this->db->escape_str($f['cihanjuang_imunisasi_hb_1']) ."',
-                                '". $this->db->escape_str($f['cihanjuang_imunisasi_hb_2']) ."',
-                                '". $this->db->escape_str($f['cihanjuang_imunisasi_hb_3']) ."',
-                                '". $this->db->escape_str($f['cihanjuang_imunisasi_campak']) ."',
-                                '". $this->db->escape_str($f['cihanjuang_imunisasi_tt_1']) ."',
-                                '". $this->db->escape_str($f['cihanjuang_imunisasi_tt_2']) ."',
-                                '". $this->db->escape_str($f['cihanjuang_imunisasi_tt_wus_1']) ."',
-                                '". $this->db->escape_str($f['cihanjuang_imunisasi_tt_wus_2']) ."',
-                                '". $this->db->escape_str($f['cihanjuang_partus']) ."',
-                                '". $this->db->escape_str($f['sariwangi_hamil_b']) ."',
-                                '". $this->db->escape_str($f['sariwangi_hamil_l']) ."',
-                                '". $this->db->escape_str($f['sariwangi_kb_baru_iud']) ."',
-                                '". $this->db->escape_str($f['sariwangi_kb_baru_pil']) ."',
-                                '". $this->db->escape_str($f['sariwangi_kb_baru_sun']) ."',
-                                '". $this->db->escape_str($f['sariwangi_kb_lama_iud']) ."',
-                                '". $this->db->escape_str($f['sariwangi_kb_lama_pil']) ."',
-                                '". $this->db->escape_str($f['sariwangi_kb_lama_sun']) ."',
-                                '". $this->db->escape_str($f['sariwangi_imunisasi_bcg']) ."',
-                                '". $this->db->escape_str($f['sariwangi_imunisasi_dpt_1']) ."',
-                                '". $this->db->escape_str($f['sariwangi_imunisasi_dpt_2']) ."',
-                                '". $this->db->escape_str($f['sariwangi_imunisasi_dpt_3']) ."',
-                                '". $this->db->escape_str($f['sariwangi_imunisasi_polio_1']) ."',
-                                '". $this->db->escape_str($f['sariwangi_imunisasi_polio_2']) ."',
-                                '". $this->db->escape_str($f['sariwangi_imunisasi_polio_3']) ."',
-                                '". $this->db->escape_str($f['sariwangi_imunisasi_polio_4']) ."',
-                                '". $this->db->escape_str($f['sariwangi_imunisasi_hb_0']) ."',
-                                '". $this->db->escape_str($f['sariwangi_imunisasi_hb_1']) ."',
-                                '". $this->db->escape_str($f['sariwangi_imunisasi_hb_2']) ."',
-                                '". $this->db->escape_str($f['sariwangi_imunisasi_hb_3']) ."',
-                                '". $this->db->escape_str($f['sariwangi_imunisasi_campak']) ."',
-                                '". $this->db->escape_str($f['sariwangi_imunisasi_tt_1']) ."',
-                                '". $this->db->escape_str($f['sariwangi_imunisasi_tt_2']) ."',
-                                '". $this->db->escape_str($f['sariwangi_imunisasi_tt_wus_1']) ."',
-                                '". $this->db->escape_str($f['sariwangi_imunisasi_tt_wus_2']) ."',
-                                '". $this->db->escape_str($f['sariwangi_partus']) ."',
-                                '". $this->db->escape_str($f['karyawangi_hamil_b']) ."',
-                                '". $this->db->escape_str($f['karyawangi_hamil_l']) ."',
-                                '". $this->db->escape_str($f['karyawangi_kb_baru_iud']) ."',
-                                '". $this->db->escape_str($f['karyawangi_kb_baru_pil']) ."',
-                                '". $this->db->escape_str($f['karyawangi_kb_baru_sun']) ."',
-                                '". $this->db->escape_str($f['karyawangi_kb_lama_iud']) ."',
-                                '". $this->db->escape_str($f['karyawangi_kb_lama_pil']) ."',
-                                '". $this->db->escape_str($f['karyawangi_kb_lama_sun']) ."',
-                                '". $this->db->escape_str($f['karyawangi_imunisasi_bcg']) ."',
-                                '". $this->db->escape_str($f['karyawangi_imunisasi_dpt_1']) ."',
-                                '". $this->db->escape_str($f['karyawangi_imunisasi_dpt_2']) ."',
-                                '". $this->db->escape_str($f['karyawangi_imunisasi_dpt_3']) ."',
-                                '". $this->db->escape_str($f['karyawangi_imunisasi_polio_1']) ."',
-                                '". $this->db->escape_str($f['karyawangi_imunisasi_polio_2']) ."',
-                                '". $this->db->escape_str($f['karyawangi_imunisasi_polio_3']) ."',
-                                '". $this->db->escape_str($f['karyawangi_imunisasi_polio_4']) ."',
-                                '". $this->db->escape_str($f['karyawangi_imunisasi_hb_0']) ."',
-                                '". $this->db->escape_str($f['karyawangi_imunisasi_hb_1']) ."',
-                                '". $this->db->escape_str($f['karyawangi_imunisasi_hb_2']) ."',
-                                '". $this->db->escape_str($f['karyawangi_imunisasi_hb_3']) ."',
-                                '". $this->db->escape_str($f['karyawangi_imunisasi_campak']) ."',
-                                '". $this->db->escape_str($f['karyawangi_imunisasi_tt_1']) ."',
-                                '". $this->db->escape_str($f['karyawangi_imunisasi_tt_2']) ."',
-                                '". $this->db->escape_str($f['karyawangi_imunisasi_tt_wus_1']) ."',
-                                '". $this->db->escape_str($f['karyawangi_imunisasi_tt_wus_2']) ."',
-                                '". $this->db->escape_str($f['karyawangi_partus']) ."',
-                                '". $this->db->escape_str($f['cihideung_hamil_b']) ."',
-                                '". $this->db->escape_str($f['cihideung_hamil_l']) ."',
-                                '". $this->db->escape_str($f['cihideung_kb_baru_iud']) ."',
-                                '". $this->db->escape_str($f['cihideung_kb_baru_pil']) ."',
-                                '". $this->db->escape_str($f['cihideung_kb_baru_sun']) ."',
-                                '". $this->db->escape_str($f['cihideung_kb_lama_iud']) ."',
-                                '". $this->db->escape_str($f['cihideung_kb_lama_pil']) ."',
-                                '". $this->db->escape_str($f['cihideung_kb_lama_sun']) ."',
-                                '". $this->db->escape_str($f['cihideung_imunisasi_bcg']) ."',
-                                '". $this->db->escape_str($f['cihideung_imunisasi_dpt_1']) ."',
-                                '". $this->db->escape_str($f['cihideung_imunisasi_dpt_2']) ."',
-                                '". $this->db->escape_str($f['cihideung_imunisasi_dpt_3']) ."',
-                                '". $this->db->escape_str($f['cihideung_imunisasi_polio_1']) ."',
-                                '". $this->db->escape_str($f['cihideung_imunisasi_polio_2']) ."',
-                                '". $this->db->escape_str($f['cihideung_imunisasi_polio_3']) ."',
-                                '". $this->db->escape_str($f['cihideung_imunisasi_polio_4']) ."',
-                                '". $this->db->escape_str($f['cihideung_imunisasi_hb_0']) ."',
-                                '". $this->db->escape_str($f['cihideung_imunisasi_hb_1']) ."',
-                                '". $this->db->escape_str($f['cihideung_imunisasi_hb_2']) ."',
-                                '". $this->db->escape_str($f['cihideung_imunisasi_hb_3']) ."',
-                                '". $this->db->escape_str($f['cihideung_imunisasi_campak']) ."',
-                                '". $this->db->escape_str($f['cihideung_imunisasi_tt_1']) ."',
-                                '". $this->db->escape_str($f['cihideung_imunisasi_tt_2']) ."',
-                                '". $this->db->escape_str($f['cihideung_imunisasi_tt_wus_1']) ."',
-                                '". $this->db->escape_str($f['cihideung_imunisasi_tt_wus_2']) ."',
-                                '". $this->db->escape_str($f['cihideung_partus']) ."',
-                                '". $this->db->escape_str($f['cigugur_hamil_b']) ."',
-                                '". $this->db->escape_str($f['cigugur_hamil_l']) ."',
-                                '". $this->db->escape_str($f['cigugur_kb_baru_iud']) ."',
-                                '". $this->db->escape_str($f['cigugur_kb_baru_pil']) ."',
-                                '". $this->db->escape_str($f['cigugur_kb_baru_sun']) ."',
-                                '". $this->db->escape_str($f['cigugur_kb_lama_iud']) ."',
-                                '". $this->db->escape_str($f['cigugur_kb_lama_pil']) ."',
-                                '". $this->db->escape_str($f['cigugur_kb_lama_sun']) ."',
-                                '". $this->db->escape_str($f['cigugur_imunisasi_bcg']) ."',
-                                '". $this->db->escape_str($f['cigugur_imunisasi_dpt_1']) ."',
-                                '". $this->db->escape_str($f['cigugur_imunisasi_dpt_2']) ."',
-                                '". $this->db->escape_str($f['cigugur_imunisasi_dpt_3']) ."',
-                                '". $this->db->escape_str($f['cigugur_imunisasi_polio_1']) ."',
-                                '". $this->db->escape_str($f['cigugur_imunisasi_polio_2']) ."',
-                                '". $this->db->escape_str($f['cigugur_imunisasi_polio_3']) ."',
-                                '". $this->db->escape_str($f['cigugur_imunisasi_polio_4']) ."',
-                                '". $this->db->escape_str($f['cigugur_imunisasi_hb_0']) ."',
-                                '". $this->db->escape_str($f['cigugur_imunisasi_hb_1']) ."',
-                                '". $this->db->escape_str($f['cigugur_imunisasi_hb_2']) ."',
-                                '". $this->db->escape_str($f['cigugur_imunisasi_hb_3']) ."',
-                                '". $this->db->escape_str($f['cigugur_imunisasi_campak']) ."',
-                                '". $this->db->escape_str($f['cigugur_imunisasi_tt_1']) ."',
-                                '". $this->db->escape_str($f['cigugur_imunisasi_tt_2']) ."',
-                                '". $this->db->escape_str($f['cigugur_imunisasi_tt_wus_1']) ."',
-                                '". $this->db->escape_str($f['cigugur_imunisasi_tt_wus_2']) ."',
-                                '". $this->db->escape_str($f['cigugur_partus']) ."',
-                                '". $this->db->escape_str($f['cipanas_hamil_b']) ."',
-                                '". $this->db->escape_str($f['cipanas_hamil_l']) ."',
-                                '". $this->db->escape_str($f['cipanas_kb_baru_iud']) ."',
-                                '". $this->db->escape_str($f['cipanas_kb_baru_pil']) ."',
-                                '". $this->db->escape_str($f['cipanas_kb_baru_sun']) ."',
-                                '". $this->db->escape_str($f['cipanas_kb_lama_iud']) ."',
-                                '". $this->db->escape_str($f['cipanas_kb_lama_pil']) ."',
-                                '". $this->db->escape_str($f['cipanas_kb_lama_sun']) ."',
-                                '". $this->db->escape_str($f['cipanas_imunisasi_bcg']) ."',
-                                '". $this->db->escape_str($f['cipanas_imunisasi_dpt_1']) ."',
-                                '". $this->db->escape_str($f['cipanas_imunisasi_dpt_2']) ."',
-                                '". $this->db->escape_str($f['cipanas_imunisasi_dpt_3']) ."',
-                                '". $this->db->escape_str($f['cipanas_imunisasi_polio_1']) ."',
-                                '". $this->db->escape_str($f['cipanas_imunisasi_polio_2']) ."',
-                                '". $this->db->escape_str($f['cipanas_imunisasi_polio_3']) ."',
-                                '". $this->db->escape_str($f['cipanas_imunisasi_polio_4']) ."',
-                                '". $this->db->escape_str($f['cipanas_imunisasi_hb_0']) ."',
-                                '". $this->db->escape_str($f['cipanas_imunisasi_hb_1']) ."',
-                                '". $this->db->escape_str($f['cipanas_imunisasi_hb_2']) ."',
-                                '". $this->db->escape_str($f['cipanas_imunisasi_hb_3']) ."',
-                                '". $this->db->escape_str($f['cipanas_imunisasi_campak']) ."',
-                                '". $this->db->escape_str($f['cipanas_imunisasi_tt_1']) ."',
-                                '". $this->db->escape_str($f['cipanas_imunisasi_tt_2']) ."',
-                                '". $this->db->escape_str($f['cipanas_imunisasi_tt_wus_1']) ."',
-                                '". $this->db->escape_str($f['cipanas_imunisasi_tt_wus_2']) ."',
-                                '". $this->db->escape_str($f['cipanas_partus']) ."',
-                                NOW()
-                            );
-                        ";
-                $this->db->simple_query($q);
-            }
+            // if ($f['id_jenis_laporan'] == 1 && $id == 0) {
+            //     $q =    "SELECT 
+            //                 * 
+            //             FROM 
+            //                 `laporan` 
+            //             WHERE 
+            //                 `id_jenis_laporan` = '". $this->db->escape_str($f['id_jenis_laporan']) ."' 
+            //                     AND 
+            //                 `tahun_laporan` = '". $this->db->escape_str($f['tahun_laporan']) ."' 
+            //                     AND 
+            //                 `bulan_laporan` = '". $this->db->escape_str($f['bulan_laporan']) ."'
+            //             ORDER BY
+            //                 `id` DESC
+            //             LIMIT 1
+            //             ;";
+            //     $r = $this->db->query($q, false)->result_array();
+            //     $id_laporan_bulanan = $r[0]['id'];
+            //     $q =    "INSERT INTO 
+            //                 `detail_laporan_bulanan` 
+            //                 (
+            //                     `id_laporan_bulanan`, 
+            //                     `cihanjuang_rahayu_hamil_b`,
+            //                     `cihanjuang_rahayu_hamil_l`,
+            //                     `cihanjuang_rahayu_kb_baru_iud`,
+            //                     `cihanjuang_rahayu_kb_baru_pil`,
+            //                     `cihanjuang_rahayu_kb_baru_sun`,
+            //                     `cihanjuang_rahayu_kb_lama_iud`,
+            //                     `cihanjuang_rahayu_kb_lama_pil`,
+            //                     `cihanjuang_rahayu_kb_lama_sun`,
+            //                     `cihanjuang_rahayu_imunisasi_bcg`,
+            //                     `cihanjuang_rahayu_imunisasi_dpt_1`,
+            //                     `cihanjuang_rahayu_imunisasi_dpt_2`,
+            //                     `cihanjuang_rahayu_imunisasi_dpt_3`,
+            //                     `cihanjuang_rahayu_imunisasi_polio_1`,
+            //                     `cihanjuang_rahayu_imunisasi_polio_2`,
+            //                     `cihanjuang_rahayu_imunisasi_polio_3`,
+            //                     `cihanjuang_rahayu_imunisasi_polio_4`,
+            //                     `cihanjuang_rahayu_imunisasi_hb_0`,
+            //                     `cihanjuang_rahayu_imunisasi_hb_1`,
+            //                     `cihanjuang_rahayu_imunisasi_hb_2`,
+            //                     `cihanjuang_rahayu_imunisasi_hb_3`,
+            //                     `cihanjuang_rahayu_imunisasi_campak`,
+            //                     `cihanjuang_rahayu_imunisasi_tt_1`,
+            //                     `cihanjuang_rahayu_imunisasi_tt_2`,
+            //                     `cihanjuang_rahayu_imunisasi_tt_wus_1`,
+            //                     `cihanjuang_rahayu_imunisasi_tt_wus_2`,
+            //                     `cihanjuang_rahayu_partus`,
+            //                     `cihanjuang_hamil_b`,
+            //                     `cihanjuang_hamil_l`,
+            //                     `cihanjuang_kb_baru_iud`,
+            //                     `cihanjuang_kb_baru_pil`,
+            //                     `cihanjuang_kb_baru_sun`,
+            //                     `cihanjuang_kb_lama_iud`,
+            //                     `cihanjuang_kb_lama_pil`,
+            //                     `cihanjuang_kb_lama_sun`,
+            //                     `cihanjuang_imunisasi_bcg`,
+            //                     `cihanjuang_imunisasi_dpt_1`,
+            //                     `cihanjuang_imunisasi_dpt_2`,
+            //                     `cihanjuang_imunisasi_dpt_3`,
+            //                     `cihanjuang_imunisasi_polio_1`,
+            //                     `cihanjuang_imunisasi_polio_2`,
+            //                     `cihanjuang_imunisasi_polio_3`,
+            //                     `cihanjuang_imunisasi_polio_4`,
+            //                     `cihanjuang_imunisasi_hb_0`,
+            //                     `cihanjuang_imunisasi_hb_1`,
+            //                     `cihanjuang_imunisasi_hb_2`,
+            //                     `cihanjuang_imunisasi_hb_3`,
+            //                     `cihanjuang_imunisasi_campak`,
+            //                     `cihanjuang_imunisasi_tt_1`,
+            //                     `cihanjuang_imunisasi_tt_2`,
+            //                     `cihanjuang_imunisasi_tt_wus_1`,
+            //                     `cihanjuang_imunisasi_tt_wus_2`,
+            //                     `cihanjuang_partus`,
+            //                     `sariwangi_hamil_b`,
+            //                     `sariwangi_hamil_l`,
+            //                     `sariwangi_kb_baru_iud`,
+            //                     `sariwangi_kb_baru_pil`,
+            //                     `sariwangi_kb_baru_sun`,
+            //                     `sariwangi_kb_lama_iud`,
+            //                     `sariwangi_kb_lama_pil`,
+            //                     `sariwangi_kb_lama_sun`,
+            //                     `sariwangi_imunisasi_bcg`,
+            //                     `sariwangi_imunisasi_dpt_1`,
+            //                     `sariwangi_imunisasi_dpt_2`,
+            //                     `sariwangi_imunisasi_dpt_3`,
+            //                     `sariwangi_imunisasi_polio_1`,
+            //                     `sariwangi_imunisasi_polio_2`,
+            //                     `sariwangi_imunisasi_polio_3`,
+            //                     `sariwangi_imunisasi_polio_4`,
+            //                     `sariwangi_imunisasi_hb_0`,
+            //                     `sariwangi_imunisasi_hb_1`,
+            //                     `sariwangi_imunisasi_hb_2`,
+            //                     `sariwangi_imunisasi_hb_3`,
+            //                     `sariwangi_imunisasi_campak`,
+            //                     `sariwangi_imunisasi_tt_1`,
+            //                     `sariwangi_imunisasi_tt_2`,
+            //                     `sariwangi_imunisasi_tt_wus_1`,
+            //                     `sariwangi_imunisasi_tt_wus_2`,
+            //                     `sariwangi_partus`,
+            //                     `karyawangi_hamil_b`,
+            //                     `karyawangi_hamil_l`,
+            //                     `karyawangi_kb_baru_iud`,
+            //                     `karyawangi_kb_baru_pil`,
+            //                     `karyawangi_kb_baru_sun`,
+            //                     `karyawangi_kb_lama_iud`,
+            //                     `karyawangi_kb_lama_pil`,
+            //                     `karyawangi_kb_lama_sun`,
+            //                     `karyawangi_imunisasi_bcg`,
+            //                     `karyawangi_imunisasi_dpt_1`,
+            //                     `karyawangi_imunisasi_dpt_2`,
+            //                     `karyawangi_imunisasi_dpt_3`,
+            //                     `karyawangi_imunisasi_polio_1`,
+            //                     `karyawangi_imunisasi_polio_2`,
+            //                     `karyawangi_imunisasi_polio_3`,
+            //                     `karyawangi_imunisasi_polio_4`,
+            //                     `karyawangi_imunisasi_hb_0`,
+            //                     `karyawangi_imunisasi_hb_1`,
+            //                     `karyawangi_imunisasi_hb_2`,
+            //                     `karyawangi_imunisasi_hb_3`,
+            //                     `karyawangi_imunisasi_campak`,
+            //                     `karyawangi_imunisasi_tt_1`,
+            //                     `karyawangi_imunisasi_tt_2`,
+            //                     `karyawangi_imunisasi_tt_wus_1`,
+            //                     `karyawangi_imunisasi_tt_wus_2`,
+            //                     `karyawangi_partus`,
+            //                     `cihideung_hamil_b`,
+            //                     `cihideung_hamil_l`,
+            //                     `cihideung_kb_baru_iud`,
+            //                     `cihideung_kb_baru_pil`,
+            //                     `cihideung_kb_baru_sun`,
+            //                     `cihideung_kb_lama_iud`,
+            //                     `cihideung_kb_lama_pil`,
+            //                     `cihideung_kb_lama_sun`,
+            //                     `cihideung_imunisasi_bcg`,
+            //                     `cihideung_imunisasi_dpt_1`,
+            //                     `cihideung_imunisasi_dpt_2`,
+            //                     `cihideung_imunisasi_dpt_3`,
+            //                     `cihideung_imunisasi_polio_1`,
+            //                     `cihideung_imunisasi_polio_2`,
+            //                     `cihideung_imunisasi_polio_3`,
+            //                     `cihideung_imunisasi_polio_4`,
+            //                     `cihideung_imunisasi_hb_0`,
+            //                     `cihideung_imunisasi_hb_1`,
+            //                     `cihideung_imunisasi_hb_2`,
+            //                     `cihideung_imunisasi_hb_3`,
+            //                     `cihideung_imunisasi_campak`,
+            //                     `cihideung_imunisasi_tt_1`,
+            //                     `cihideung_imunisasi_tt_2`,
+            //                     `cihideung_imunisasi_tt_wus_1`,
+            //                     `cihideung_imunisasi_tt_wus_2`,
+            //                     `cihideung_partus`,
+            //                     `cigugur_hamil_b`,
+            //                     `cigugur_hamil_l`,
+            //                     `cigugur_kb_baru_iud`,
+            //                     `cigugur_kb_baru_pil`,
+            //                     `cigugur_kb_baru_sun`,
+            //                     `cigugur_kb_lama_iud`,
+            //                     `cigugur_kb_lama_pil`,
+            //                     `cigugur_kb_lama_sun`,
+            //                     `cigugur_imunisasi_bcg`,
+            //                     `cigugur_imunisasi_dpt_1`,
+            //                     `cigugur_imunisasi_dpt_2`,
+            //                     `cigugur_imunisasi_dpt_3`,
+            //                     `cigugur_imunisasi_polio_1`,
+            //                     `cigugur_imunisasi_polio_2`,
+            //                     `cigugur_imunisasi_polio_3`,
+            //                     `cigugur_imunisasi_polio_4`,
+            //                     `cigugur_imunisasi_hb_0`,
+            //                     `cigugur_imunisasi_hb_1`,
+            //                     `cigugur_imunisasi_hb_2`,
+            //                     `cigugur_imunisasi_hb_3`,
+            //                     `cigugur_imunisasi_campak`,
+            //                     `cigugur_imunisasi_tt_1`,
+            //                     `cigugur_imunisasi_tt_2`,
+            //                     `cigugur_imunisasi_tt_wus_1`,
+            //                     `cigugur_imunisasi_tt_wus_2`,
+            //                     `cigugur_partus`,
+            //                     `cipanas_hamil_b`,
+            //                     `cipanas_hamil_l`,
+            //                     `cipanas_kb_baru_iud`,
+            //                     `cipanas_kb_baru_pil`,
+            //                     `cipanas_kb_baru_sun`,
+            //                     `cipanas_kb_lama_iud`,
+            //                     `cipanas_kb_lama_pil`,
+            //                     `cipanas_kb_lama_sun`,
+            //                     `cipanas_imunisasi_bcg`,
+            //                     `cipanas_imunisasi_dpt_1`,
+            //                     `cipanas_imunisasi_dpt_2`,
+            //                     `cipanas_imunisasi_dpt_3`,
+            //                     `cipanas_imunisasi_polio_1`,
+            //                     `cipanas_imunisasi_polio_2`,
+            //                     `cipanas_imunisasi_polio_3`,
+            //                     `cipanas_imunisasi_polio_4`,
+            //                     `cipanas_imunisasi_hb_0`,
+            //                     `cipanas_imunisasi_hb_1`,
+            //                     `cipanas_imunisasi_hb_2`,
+            //                     `cipanas_imunisasi_hb_3`,
+            //                     `cipanas_imunisasi_campak`,
+            //                     `cipanas_imunisasi_tt_1`,
+            //                     `cipanas_imunisasi_tt_2`,
+            //                     `cipanas_imunisasi_tt_wus_1`,
+            //                     `cipanas_imunisasi_tt_wus_2`,
+            //                     `cipanas_partus`,
+            //                     `created_at`
+            //                 ) 
+            //             VALUES 
+            //                 (
+            //                     '". $this->db->escape_str($id_laporan_bulanan) ."',
+            //                     '". $this->db->escape_str($f['cihanjuang_rahayu_hamil_b']) ."',
+            //                     '". $this->db->escape_str($f['cihanjuang_rahayu_hamil_l']) ."',
+            //                     '". $this->db->escape_str($f['cihanjuang_rahayu_kb_baru_iud']) ."',
+            //                     '". $this->db->escape_str($f['cihanjuang_rahayu_kb_baru_pil']) ."',
+            //                     '". $this->db->escape_str($f['cihanjuang_rahayu_kb_baru_sun']) ."',
+            //                     '". $this->db->escape_str($f['cihanjuang_rahayu_kb_lama_iud']) ."',
+            //                     '". $this->db->escape_str($f['cihanjuang_rahayu_kb_lama_pil']) ."',
+            //                     '". $this->db->escape_str($f['cihanjuang_rahayu_kb_lama_sun']) ."',
+            //                     '". $this->db->escape_str($f['cihanjuang_rahayu_imunisasi_bcg']) ."',
+            //                     '". $this->db->escape_str($f['cihanjuang_rahayu_imunisasi_dpt_1']) ."',
+            //                     '". $this->db->escape_str($f['cihanjuang_rahayu_imunisasi_dpt_2']) ."',
+            //                     '". $this->db->escape_str($f['cihanjuang_rahayu_imunisasi_dpt_3']) ."',
+            //                     '". $this->db->escape_str($f['cihanjuang_rahayu_imunisasi_polio_1']) ."',
+            //                     '". $this->db->escape_str($f['cihanjuang_rahayu_imunisasi_polio_2']) ."',
+            //                     '". $this->db->escape_str($f['cihanjuang_rahayu_imunisasi_polio_3']) ."',
+            //                     '". $this->db->escape_str($f['cihanjuang_rahayu_imunisasi_polio_4']) ."',
+            //                     '". $this->db->escape_str($f['cihanjuang_rahayu_imunisasi_hb_0']) ."',
+            //                     '". $this->db->escape_str($f['cihanjuang_rahayu_imunisasi_hb_1']) ."',
+            //                     '". $this->db->escape_str($f['cihanjuang_rahayu_imunisasi_hb_2']) ."',
+            //                     '". $this->db->escape_str($f['cihanjuang_rahayu_imunisasi_hb_3']) ."',
+            //                     '". $this->db->escape_str($f['cihanjuang_rahayu_imunisasi_campak']) ."',
+            //                     '". $this->db->escape_str($f['cihanjuang_rahayu_imunisasi_tt_1']) ."',
+            //                     '". $this->db->escape_str($f['cihanjuang_rahayu_imunisasi_tt_2']) ."',
+            //                     '". $this->db->escape_str($f['cihanjuang_rahayu_imunisasi_tt_wus_1']) ."',
+            //                     '". $this->db->escape_str($f['cihanjuang_rahayu_imunisasi_tt_wus_2']) ."',
+            //                     '". $this->db->escape_str($f['cihanjuang_rahayu_partus']) ."',
+            //                     '". $this->db->escape_str($f['cihanjuang_hamil_b']) ."',
+            //                     '". $this->db->escape_str($f['cihanjuang_hamil_l']) ."',
+            //                     '". $this->db->escape_str($f['cihanjuang_kb_baru_iud']) ."',
+            //                     '". $this->db->escape_str($f['cihanjuang_kb_baru_pil']) ."',
+            //                     '". $this->db->escape_str($f['cihanjuang_kb_baru_sun']) ."',
+            //                     '". $this->db->escape_str($f['cihanjuang_kb_lama_iud']) ."',
+            //                     '". $this->db->escape_str($f['cihanjuang_kb_lama_pil']) ."',
+            //                     '". $this->db->escape_str($f['cihanjuang_kb_lama_sun']) ."',
+            //                     '". $this->db->escape_str($f['cihanjuang_imunisasi_bcg']) ."',
+            //                     '". $this->db->escape_str($f['cihanjuang_imunisasi_dpt_1']) ."',
+            //                     '". $this->db->escape_str($f['cihanjuang_imunisasi_dpt_2']) ."',
+            //                     '". $this->db->escape_str($f['cihanjuang_imunisasi_dpt_3']) ."',
+            //                     '". $this->db->escape_str($f['cihanjuang_imunisasi_polio_1']) ."',
+            //                     '". $this->db->escape_str($f['cihanjuang_imunisasi_polio_2']) ."',
+            //                     '". $this->db->escape_str($f['cihanjuang_imunisasi_polio_3']) ."',
+            //                     '". $this->db->escape_str($f['cihanjuang_imunisasi_polio_4']) ."',
+            //                     '". $this->db->escape_str($f['cihanjuang_imunisasi_hb_0']) ."',
+            //                     '". $this->db->escape_str($f['cihanjuang_imunisasi_hb_1']) ."',
+            //                     '". $this->db->escape_str($f['cihanjuang_imunisasi_hb_2']) ."',
+            //                     '". $this->db->escape_str($f['cihanjuang_imunisasi_hb_3']) ."',
+            //                     '". $this->db->escape_str($f['cihanjuang_imunisasi_campak']) ."',
+            //                     '". $this->db->escape_str($f['cihanjuang_imunisasi_tt_1']) ."',
+            //                     '". $this->db->escape_str($f['cihanjuang_imunisasi_tt_2']) ."',
+            //                     '". $this->db->escape_str($f['cihanjuang_imunisasi_tt_wus_1']) ."',
+            //                     '". $this->db->escape_str($f['cihanjuang_imunisasi_tt_wus_2']) ."',
+            //                     '". $this->db->escape_str($f['cihanjuang_partus']) ."',
+            //                     '". $this->db->escape_str($f['sariwangi_hamil_b']) ."',
+            //                     '". $this->db->escape_str($f['sariwangi_hamil_l']) ."',
+            //                     '". $this->db->escape_str($f['sariwangi_kb_baru_iud']) ."',
+            //                     '". $this->db->escape_str($f['sariwangi_kb_baru_pil']) ."',
+            //                     '". $this->db->escape_str($f['sariwangi_kb_baru_sun']) ."',
+            //                     '". $this->db->escape_str($f['sariwangi_kb_lama_iud']) ."',
+            //                     '". $this->db->escape_str($f['sariwangi_kb_lama_pil']) ."',
+            //                     '". $this->db->escape_str($f['sariwangi_kb_lama_sun']) ."',
+            //                     '". $this->db->escape_str($f['sariwangi_imunisasi_bcg']) ."',
+            //                     '". $this->db->escape_str($f['sariwangi_imunisasi_dpt_1']) ."',
+            //                     '". $this->db->escape_str($f['sariwangi_imunisasi_dpt_2']) ."',
+            //                     '". $this->db->escape_str($f['sariwangi_imunisasi_dpt_3']) ."',
+            //                     '". $this->db->escape_str($f['sariwangi_imunisasi_polio_1']) ."',
+            //                     '". $this->db->escape_str($f['sariwangi_imunisasi_polio_2']) ."',
+            //                     '". $this->db->escape_str($f['sariwangi_imunisasi_polio_3']) ."',
+            //                     '". $this->db->escape_str($f['sariwangi_imunisasi_polio_4']) ."',
+            //                     '". $this->db->escape_str($f['sariwangi_imunisasi_hb_0']) ."',
+            //                     '". $this->db->escape_str($f['sariwangi_imunisasi_hb_1']) ."',
+            //                     '". $this->db->escape_str($f['sariwangi_imunisasi_hb_2']) ."',
+            //                     '". $this->db->escape_str($f['sariwangi_imunisasi_hb_3']) ."',
+            //                     '". $this->db->escape_str($f['sariwangi_imunisasi_campak']) ."',
+            //                     '". $this->db->escape_str($f['sariwangi_imunisasi_tt_1']) ."',
+            //                     '". $this->db->escape_str($f['sariwangi_imunisasi_tt_2']) ."',
+            //                     '". $this->db->escape_str($f['sariwangi_imunisasi_tt_wus_1']) ."',
+            //                     '". $this->db->escape_str($f['sariwangi_imunisasi_tt_wus_2']) ."',
+            //                     '". $this->db->escape_str($f['sariwangi_partus']) ."',
+            //                     '". $this->db->escape_str($f['karyawangi_hamil_b']) ."',
+            //                     '". $this->db->escape_str($f['karyawangi_hamil_l']) ."',
+            //                     '". $this->db->escape_str($f['karyawangi_kb_baru_iud']) ."',
+            //                     '". $this->db->escape_str($f['karyawangi_kb_baru_pil']) ."',
+            //                     '". $this->db->escape_str($f['karyawangi_kb_baru_sun']) ."',
+            //                     '". $this->db->escape_str($f['karyawangi_kb_lama_iud']) ."',
+            //                     '". $this->db->escape_str($f['karyawangi_kb_lama_pil']) ."',
+            //                     '". $this->db->escape_str($f['karyawangi_kb_lama_sun']) ."',
+            //                     '". $this->db->escape_str($f['karyawangi_imunisasi_bcg']) ."',
+            //                     '". $this->db->escape_str($f['karyawangi_imunisasi_dpt_1']) ."',
+            //                     '". $this->db->escape_str($f['karyawangi_imunisasi_dpt_2']) ."',
+            //                     '". $this->db->escape_str($f['karyawangi_imunisasi_dpt_3']) ."',
+            //                     '". $this->db->escape_str($f['karyawangi_imunisasi_polio_1']) ."',
+            //                     '". $this->db->escape_str($f['karyawangi_imunisasi_polio_2']) ."',
+            //                     '". $this->db->escape_str($f['karyawangi_imunisasi_polio_3']) ."',
+            //                     '". $this->db->escape_str($f['karyawangi_imunisasi_polio_4']) ."',
+            //                     '". $this->db->escape_str($f['karyawangi_imunisasi_hb_0']) ."',
+            //                     '". $this->db->escape_str($f['karyawangi_imunisasi_hb_1']) ."',
+            //                     '". $this->db->escape_str($f['karyawangi_imunisasi_hb_2']) ."',
+            //                     '". $this->db->escape_str($f['karyawangi_imunisasi_hb_3']) ."',
+            //                     '". $this->db->escape_str($f['karyawangi_imunisasi_campak']) ."',
+            //                     '". $this->db->escape_str($f['karyawangi_imunisasi_tt_1']) ."',
+            //                     '". $this->db->escape_str($f['karyawangi_imunisasi_tt_2']) ."',
+            //                     '". $this->db->escape_str($f['karyawangi_imunisasi_tt_wus_1']) ."',
+            //                     '". $this->db->escape_str($f['karyawangi_imunisasi_tt_wus_2']) ."',
+            //                     '". $this->db->escape_str($f['karyawangi_partus']) ."',
+            //                     '". $this->db->escape_str($f['cihideung_hamil_b']) ."',
+            //                     '". $this->db->escape_str($f['cihideung_hamil_l']) ."',
+            //                     '". $this->db->escape_str($f['cihideung_kb_baru_iud']) ."',
+            //                     '". $this->db->escape_str($f['cihideung_kb_baru_pil']) ."',
+            //                     '". $this->db->escape_str($f['cihideung_kb_baru_sun']) ."',
+            //                     '". $this->db->escape_str($f['cihideung_kb_lama_iud']) ."',
+            //                     '". $this->db->escape_str($f['cihideung_kb_lama_pil']) ."',
+            //                     '". $this->db->escape_str($f['cihideung_kb_lama_sun']) ."',
+            //                     '". $this->db->escape_str($f['cihideung_imunisasi_bcg']) ."',
+            //                     '". $this->db->escape_str($f['cihideung_imunisasi_dpt_1']) ."',
+            //                     '". $this->db->escape_str($f['cihideung_imunisasi_dpt_2']) ."',
+            //                     '". $this->db->escape_str($f['cihideung_imunisasi_dpt_3']) ."',
+            //                     '". $this->db->escape_str($f['cihideung_imunisasi_polio_1']) ."',
+            //                     '". $this->db->escape_str($f['cihideung_imunisasi_polio_2']) ."',
+            //                     '". $this->db->escape_str($f['cihideung_imunisasi_polio_3']) ."',
+            //                     '". $this->db->escape_str($f['cihideung_imunisasi_polio_4']) ."',
+            //                     '". $this->db->escape_str($f['cihideung_imunisasi_hb_0']) ."',
+            //                     '". $this->db->escape_str($f['cihideung_imunisasi_hb_1']) ."',
+            //                     '". $this->db->escape_str($f['cihideung_imunisasi_hb_2']) ."',
+            //                     '". $this->db->escape_str($f['cihideung_imunisasi_hb_3']) ."',
+            //                     '". $this->db->escape_str($f['cihideung_imunisasi_campak']) ."',
+            //                     '". $this->db->escape_str($f['cihideung_imunisasi_tt_1']) ."',
+            //                     '". $this->db->escape_str($f['cihideung_imunisasi_tt_2']) ."',
+            //                     '". $this->db->escape_str($f['cihideung_imunisasi_tt_wus_1']) ."',
+            //                     '". $this->db->escape_str($f['cihideung_imunisasi_tt_wus_2']) ."',
+            //                     '". $this->db->escape_str($f['cihideung_partus']) ."',
+            //                     '". $this->db->escape_str($f['cigugur_hamil_b']) ."',
+            //                     '". $this->db->escape_str($f['cigugur_hamil_l']) ."',
+            //                     '". $this->db->escape_str($f['cigugur_kb_baru_iud']) ."',
+            //                     '". $this->db->escape_str($f['cigugur_kb_baru_pil']) ."',
+            //                     '". $this->db->escape_str($f['cigugur_kb_baru_sun']) ."',
+            //                     '". $this->db->escape_str($f['cigugur_kb_lama_iud']) ."',
+            //                     '". $this->db->escape_str($f['cigugur_kb_lama_pil']) ."',
+            //                     '". $this->db->escape_str($f['cigugur_kb_lama_sun']) ."',
+            //                     '". $this->db->escape_str($f['cigugur_imunisasi_bcg']) ."',
+            //                     '". $this->db->escape_str($f['cigugur_imunisasi_dpt_1']) ."',
+            //                     '". $this->db->escape_str($f['cigugur_imunisasi_dpt_2']) ."',
+            //                     '". $this->db->escape_str($f['cigugur_imunisasi_dpt_3']) ."',
+            //                     '". $this->db->escape_str($f['cigugur_imunisasi_polio_1']) ."',
+            //                     '". $this->db->escape_str($f['cigugur_imunisasi_polio_2']) ."',
+            //                     '". $this->db->escape_str($f['cigugur_imunisasi_polio_3']) ."',
+            //                     '". $this->db->escape_str($f['cigugur_imunisasi_polio_4']) ."',
+            //                     '". $this->db->escape_str($f['cigugur_imunisasi_hb_0']) ."',
+            //                     '". $this->db->escape_str($f['cigugur_imunisasi_hb_1']) ."',
+            //                     '". $this->db->escape_str($f['cigugur_imunisasi_hb_2']) ."',
+            //                     '". $this->db->escape_str($f['cigugur_imunisasi_hb_3']) ."',
+            //                     '". $this->db->escape_str($f['cigugur_imunisasi_campak']) ."',
+            //                     '". $this->db->escape_str($f['cigugur_imunisasi_tt_1']) ."',
+            //                     '". $this->db->escape_str($f['cigugur_imunisasi_tt_2']) ."',
+            //                     '". $this->db->escape_str($f['cigugur_imunisasi_tt_wus_1']) ."',
+            //                     '". $this->db->escape_str($f['cigugur_imunisasi_tt_wus_2']) ."',
+            //                     '". $this->db->escape_str($f['cigugur_partus']) ."',
+            //                     '". $this->db->escape_str($f['cipanas_hamil_b']) ."',
+            //                     '". $this->db->escape_str($f['cipanas_hamil_l']) ."',
+            //                     '". $this->db->escape_str($f['cipanas_kb_baru_iud']) ."',
+            //                     '". $this->db->escape_str($f['cipanas_kb_baru_pil']) ."',
+            //                     '". $this->db->escape_str($f['cipanas_kb_baru_sun']) ."',
+            //                     '". $this->db->escape_str($f['cipanas_kb_lama_iud']) ."',
+            //                     '". $this->db->escape_str($f['cipanas_kb_lama_pil']) ."',
+            //                     '". $this->db->escape_str($f['cipanas_kb_lama_sun']) ."',
+            //                     '". $this->db->escape_str($f['cipanas_imunisasi_bcg']) ."',
+            //                     '". $this->db->escape_str($f['cipanas_imunisasi_dpt_1']) ."',
+            //                     '". $this->db->escape_str($f['cipanas_imunisasi_dpt_2']) ."',
+            //                     '". $this->db->escape_str($f['cipanas_imunisasi_dpt_3']) ."',
+            //                     '". $this->db->escape_str($f['cipanas_imunisasi_polio_1']) ."',
+            //                     '". $this->db->escape_str($f['cipanas_imunisasi_polio_2']) ."',
+            //                     '". $this->db->escape_str($f['cipanas_imunisasi_polio_3']) ."',
+            //                     '". $this->db->escape_str($f['cipanas_imunisasi_polio_4']) ."',
+            //                     '". $this->db->escape_str($f['cipanas_imunisasi_hb_0']) ."',
+            //                     '". $this->db->escape_str($f['cipanas_imunisasi_hb_1']) ."',
+            //                     '". $this->db->escape_str($f['cipanas_imunisasi_hb_2']) ."',
+            //                     '". $this->db->escape_str($f['cipanas_imunisasi_hb_3']) ."',
+            //                     '". $this->db->escape_str($f['cipanas_imunisasi_campak']) ."',
+            //                     '". $this->db->escape_str($f['cipanas_imunisasi_tt_1']) ."',
+            //                     '". $this->db->escape_str($f['cipanas_imunisasi_tt_2']) ."',
+            //                     '". $this->db->escape_str($f['cipanas_imunisasi_tt_wus_1']) ."',
+            //                     '". $this->db->escape_str($f['cipanas_imunisasi_tt_wus_2']) ."',
+            //                     '". $this->db->escape_str($f['cipanas_partus']) ."',
+            //                     NOW()
+            //                 );
+            //             ";
+            //     $this->db->simple_query($q);
+            // }
 
 			$result['result'] = true;
 			$result['msg'] = 'Data berhasil disimpan.';
@@ -636,8 +636,290 @@ class Laporan_model extends CI_Model {
             $q = '';
             switch ($idJenisLaporan) {
                 case '1':
-                    $q = "SELECT * FROM `detail_laporan_bulanan` WHERE `id_laporan_bulanan` = '". $this->db->escape_str($id) ."' AND `deleted_at` IS NULL;";
-                    $r = $this->db->query($q)->result_array();
+                    // $q = "SELECT * FROM `detail_laporan_bulanan` WHERE `id_laporan_bulanan` = '". $this->db->escape_str($id) ."' AND `deleted_at` IS NULL;";
+                    // $r = $this->db->query($q)->result_array();
+                    $r = array(
+                        'cihanjuang_rahayu' => array(
+                            'kia'       => array(
+                                'baru'  => $this->count_kia($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 'baru', 1),
+                                'lama'  => $this->count_kia($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 'lama', 1)
+                            ),
+                            'kb'        => array(
+                                'baru'  => array(
+                                    'suntik_1_bulan'    => $this->count_kb($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 1, 1, 1),
+                                    'suntik_3_bulan'    => $this->count_kb($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 1, 2, 1),
+                                    'pil'               => $this->count_kb($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 1, 3, 1),
+                                    'iud_bkkbn'         => $this->count_kb($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 1, 4, 1),
+                                    'iud_non_bkkbn'     => $this->count_kb($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 1, 5, 1),
+                                    'kondom'            => $this->count_kb($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 1, 6, 1)
+                                ),
+                                'lama'  => array(
+                                    'suntik_1_bulan'    => $this->count_kb($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 0, 1, 1),
+                                    'suntik_3_bulan'    => $this->count_kb($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 0, 2, 1),
+                                    'pil'               => $this->count_kb($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 0, 3, 1),
+                                    'iud_bkkbn'         => $this->count_kb($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 0, 4, 1),
+                                    'iud_non_bkkbn'     => $this->count_kb($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 0, 5, 1),
+                                    'kondom'            => $this->count_kb($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 0, 6, 1)
+                                )
+                            ),
+                            'imunisasi' => array(
+                                'hb0'               => $this->count_imunisasi_hb0($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 1),
+                                'bcg'               => $this->count_imunisasi_bcg($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 1),
+                                'pentabio_1'        => $this->count_imunisasi_pentabio1($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 1),
+                                'pentabio_2'        => $this->count_imunisasi_pentabio2($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 1),
+                                'pentabio_3'        => $this->count_imunisasi_pentabio3($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 1),
+                                'pentabio_ulang'    => $this->count_imunisasi_pentabio_ulang($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 1),
+                                'polio_1'           => $this->count_imunisasi_polio1($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 1),
+                                'polio_2'           => $this->count_imunisasi_polio2($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 1),
+                                'polio_3'           => $this->count_imunisasi_polio3($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 1),
+                                'polio_4'           => $this->count_imunisasi_polio4($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 1),
+                                'tt'                => $this->count_imunisasi_tt($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 1),
+                                'campak'            => $this->count_imunisasi_campak($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 1),
+                                'campak_ulang'      => $this->count_imunisasi_campak_ulang($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 1)
+                            ),
+                            'partus'    => $this->count_partus($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 1)
+                        ),
+                        'cihanjuang'        => array(
+                            'kia'       => array(
+                                'baru'  => $this->count_kia($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 'baru', 2),
+                                'lama'  => $this->count_kia($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 'lama', 2)
+                            ),
+                            'kb'        => array(
+                                'baru'  => array(
+                                    'suntik_1_bulan'    => $this->count_kb($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 1, 1, 2),
+                                    'suntik_3_bulan'    => $this->count_kb($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 1, 2, 2),
+                                    'pil'               => $this->count_kb($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 1, 3, 2),
+                                    'iud_bkkbn'         => $this->count_kb($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 1, 4, 2),
+                                    'iud_non_bkkbn'     => $this->count_kb($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 1, 5, 2),
+                                    'kondom'            => $this->count_kb($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 1, 6, 2)
+                                ),
+                                'lama'  => array(
+                                    'suntik_1_bulan'    => $this->count_kb($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 0, 1, 2),
+                                    'suntik_3_bulan'    => $this->count_kb($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 0, 2, 2),
+                                    'pil'               => $this->count_kb($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 0, 3, 2),
+                                    'iud_bkkbn'         => $this->count_kb($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 0, 4, 2),
+                                    'iud_non_bkkbn'     => $this->count_kb($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 0, 5, 2),
+                                    'kondom'            => $this->count_kb($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 0, 6, 2)
+                                )
+                            ),
+                            'imunisasi' => array(
+                                'hb0'               => $this->count_imunisasi_hb0($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 2),
+                                'bcg'               => $this->count_imunisasi_bcg($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 2),
+                                'pentabio_1'        => $this->count_imunisasi_pentabio1($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 2),
+                                'pentabio_2'        => $this->count_imunisasi_pentabio2($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 2),
+                                'pentabio_3'        => $this->count_imunisasi_pentabio3($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 2),
+                                'pentabio_ulang'    => $this->count_imunisasi_pentabio_ulang($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 2),
+                                'polio_1'           => $this->count_imunisasi_polio1($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 2),
+                                'polio_2'           => $this->count_imunisasi_polio2($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 2),
+                                'polio_3'           => $this->count_imunisasi_polio3($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 2),
+                                'polio_4'           => $this->count_imunisasi_polio4($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 2),
+                                'tt'                => $this->count_imunisasi_tt($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 2),
+                                'campak'            => $this->count_imunisasi_campak($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 2),
+                                'campak_ulang'      => $this->count_imunisasi_campak_ulang($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 2)
+                            ),
+                            'partus'    => $this->count_partus($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 2)
+                        ),
+                        'sariwangi'         => array(
+                            'kia'       => array(
+                                'baru'  => $this->count_kia($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 'baru', 3),
+                                'lama'  => $this->count_kia($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 'lama', 3)
+                            ),
+                            'kb'        => array(
+                                'baru'  => array(
+                                    'suntik_1_bulan'    => $this->count_kb($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 1, 1, 3),
+                                    'suntik_3_bulan'    => $this->count_kb($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 1, 2, 3),
+                                    'pil'               => $this->count_kb($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 1, 3, 3),
+                                    'iud_bkkbn'         => $this->count_kb($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 1, 4, 3),
+                                    'iud_non_bkkbn'     => $this->count_kb($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 1, 5, 3),
+                                    'kondom'            => $this->count_kb($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 1, 6, 3)
+                                ),
+                                'lama'  => array(
+                                    'suntik_1_bulan'    => $this->count_kb($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 0, 1, 3),
+                                    'suntik_3_bulan'    => $this->count_kb($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 0, 2, 3),
+                                    'pil'               => $this->count_kb($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 0, 3, 3),
+                                    'iud_bkkbn'         => $this->count_kb($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 0, 4, 3),
+                                    'iud_non_bkkbn'     => $this->count_kb($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 0, 5, 3),
+                                    'kondom'            => $this->count_kb($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 0, 6, 3)
+                                )
+                            ),
+                            'imunisasi' => array(
+                                'hb0'               => $this->count_imunisasi_hb0($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 3),
+                                'bcg'               => $this->count_imunisasi_bcg($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 3),
+                                'pentabio_1'        => $this->count_imunisasi_pentabio1($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 3),
+                                'pentabio_2'        => $this->count_imunisasi_pentabio2($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 3),
+                                'pentabio_3'        => $this->count_imunisasi_pentabio3($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 3),
+                                'pentabio_ulang'    => $this->count_imunisasi_pentabio_ulang($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 3),
+                                'polio_1'           => $this->count_imunisasi_polio1($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 3),
+                                'polio_2'           => $this->count_imunisasi_polio2($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 3),
+                                'polio_3'           => $this->count_imunisasi_polio3($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 3),
+                                'polio_4'           => $this->count_imunisasi_polio4($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 3),
+                                'tt'                => $this->count_imunisasi_tt($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 3),
+                                'campak'            => $this->count_imunisasi_campak($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 3),
+                                'campak_ulang'      => $this->count_imunisasi_campak_ulang($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 3)
+                            ),
+                            'partus'    => $this->count_partus($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 3)
+                        ),
+                        'karyawangi'        => array(
+                            'kia'       => array(
+                                'baru'  => $this->count_kia($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 'baru', 4),
+                                'lama'  => $this->count_kia($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 'lama', 4)
+                            ),
+                            'kb'        => array(
+                                'baru'  => array(
+                                    'suntik_1_bulan'    => $this->count_kb($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 1, 1, 4),
+                                    'suntik_3_bulan'    => $this->count_kb($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 1, 2, 4),
+                                    'pil'               => $this->count_kb($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 1, 3, 4),
+                                    'iud_bkkbn'         => $this->count_kb($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 1, 4, 4),
+                                    'iud_non_bkkbn'     => $this->count_kb($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 1, 5, 4),
+                                    'kondom'            => $this->count_kb($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 1, 6, 4)
+                                ),
+                                'lama'  => array(
+                                    'suntik_1_bulan'    => $this->count_kb($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 0, 1, 4),
+                                    'suntik_3_bulan'    => $this->count_kb($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 0, 2, 4),
+                                    'pil'               => $this->count_kb($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 0, 3, 4),
+                                    'iud_bkkbn'         => $this->count_kb($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 0, 4, 4),
+                                    'iud_non_bkkbn'     => $this->count_kb($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 0, 5, 4),
+                                    'kondom'            => $this->count_kb($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 0, 6, 4)
+                                )
+                            ),
+                            'imunisasi' => array(
+                                'hb0'               => $this->count_imunisasi_hb0($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 4),
+                                'bcg'               => $this->count_imunisasi_bcg($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 4),
+                                'pentabio_1'        => $this->count_imunisasi_pentabio1($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 4),
+                                'pentabio_2'        => $this->count_imunisasi_pentabio2($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 4),
+                                'pentabio_3'        => $this->count_imunisasi_pentabio3($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 4),
+                                'pentabio_ulang'    => $this->count_imunisasi_pentabio_ulang($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 4),
+                                'polio_1'           => $this->count_imunisasi_polio1($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 4),
+                                'polio_2'           => $this->count_imunisasi_polio2($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 4),
+                                'polio_3'           => $this->count_imunisasi_polio3($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 4),
+                                'polio_4'           => $this->count_imunisasi_polio4($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 4),
+                                'tt'                => $this->count_imunisasi_tt($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 4),
+                                'campak'            => $this->count_imunisasi_campak($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 4),
+                                'campak_ulang'      => $this->count_imunisasi_campak_ulang($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 4)
+                            ),
+                            'partus'    => $this->count_partus($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 4)
+                        ),
+                        'cihideung'         => array(
+                            'kia'       => array(
+                                'baru'  => $this->count_kia($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 'baru', 5),
+                                'lama'  => $this->count_kia($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 'lama', 5)
+                            ),
+                            'kb'        => array(
+                                'baru'  => array(
+                                    'suntik_1_bulan'    => $this->count_kb($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 1, 1, 5),
+                                    'suntik_3_bulan'    => $this->count_kb($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 1, 2, 5),
+                                    'pil'               => $this->count_kb($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 1, 3, 5),
+                                    'iud_bkkbn'         => $this->count_kb($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 1, 4, 5),
+                                    'iud_non_bkkbn'     => $this->count_kb($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 1, 5, 5),
+                                    'kondom'            => $this->count_kb($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 1, 6, 5)
+                                ),
+                                'lama'  => array(
+                                    'suntik_1_bulan'    => $this->count_kb($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 0, 1, 5),
+                                    'suntik_3_bulan'    => $this->count_kb($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 0, 2, 5),
+                                    'pil'               => $this->count_kb($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 0, 3, 5),
+                                    'iud_bkkbn'         => $this->count_kb($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 0, 4, 5),
+                                    'iud_non_bkkbn'     => $this->count_kb($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 0, 5, 5),
+                                    'kondom'            => $this->count_kb($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 0, 6, 5)
+                                )
+                            ),
+                            'imunisasi' => array(
+                                'hb0'               => $this->count_imunisasi_hb0($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 6),
+                                'bcg'               => $this->count_imunisasi_bcg($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 6),
+                                'pentabio_1'        => $this->count_imunisasi_pentabio1($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 6),
+                                'pentabio_2'        => $this->count_imunisasi_pentabio2($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 6),
+                                'pentabio_3'        => $this->count_imunisasi_pentabio3($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 6),
+                                'pentabio_ulang'    => $this->count_imunisasi_pentabio_ulang($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 6),
+                                'polio_1'           => $this->count_imunisasi_polio1($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 6),
+                                'polio_2'           => $this->count_imunisasi_polio2($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 6),
+                                'polio_3'           => $this->count_imunisasi_polio3($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 6),
+                                'polio_4'           => $this->count_imunisasi_polio4($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 6),
+                                'tt'                => $this->count_imunisasi_tt($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 6),
+                                'campak'            => $this->count_imunisasi_campak($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 6),
+                                'campak_ulang'      => $this->count_imunisasi_campak_ulang($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 6)
+                            ),
+                            'partus'    => $this->count_partus($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 6)
+                        ),
+                        'cigugur'           => array(
+                            'kia'       => array(
+                                'baru'  => $this->count_kia($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 'baru', 7),
+                                'lama'  => $this->count_kia($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 'lama', 7)
+                            ),
+                            'kb'        => array(
+                                'baru'  => array(
+                                    'suntik_1_bulan'    => $this->count_kb($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 1, 1, 7),
+                                    'suntik_3_bulan'    => $this->count_kb($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 1, 2, 7),
+                                    'pil'               => $this->count_kb($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 1, 3, 7),
+                                    'iud_bkkbn'         => $this->count_kb($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 1, 4, 7),
+                                    'iud_non_bkkbn'     => $this->count_kb($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 1, 5, 7),
+                                    'kondom'            => $this->count_kb($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 1, 6, 7)
+                                ),
+                                'lama'  => array(
+                                    'suntik_1_bulan'    => $this->count_kb($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 0, 1, 7),
+                                    'suntik_3_bulan'    => $this->count_kb($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 0, 2, 7),
+                                    'pil'               => $this->count_kb($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 0, 3, 7),
+                                    'iud_bkkbn'         => $this->count_kb($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 0, 4, 7),
+                                    'iud_non_bkkbn'     => $this->count_kb($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 0, 5, 7),
+                                    'kondom'            => $this->count_kb($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 0, 6, 7)
+                                )
+                            ),
+                            'imunisasi' => array(
+                                'hb0'               => $this->count_imunisasi_hb0($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 7),
+                                'bcg'               => $this->count_imunisasi_bcg($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 7),
+                                'pentabio_1'        => $this->count_imunisasi_pentabio1($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 7),
+                                'pentabio_2'        => $this->count_imunisasi_pentabio2($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 7),
+                                'pentabio_3'        => $this->count_imunisasi_pentabio3($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 7),
+                                'pentabio_ulang'    => $this->count_imunisasi_pentabio_ulang($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 7),
+                                'polio_1'           => $this->count_imunisasi_polio1($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 7),
+                                'polio_2'           => $this->count_imunisasi_polio2($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 7),
+                                'polio_3'           => $this->count_imunisasi_polio3($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 7),
+                                'polio_4'           => $this->count_imunisasi_polio4($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 7),
+                                'tt'                => $this->count_imunisasi_tt($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 7),
+                                'campak'            => $this->count_imunisasi_campak($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 7),
+                                'campak_ulang'      => $this->count_imunisasi_campak_ulang($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 7)
+                            ),
+                            'partus'    => $this->count_partus($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 7)
+                        ),
+                        'cipanas'           => array(
+                            'kia'       => array(
+                                'baru'  => $this->count_kia($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 'baru', 8),
+                                'lama'  => $this->count_kia($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 'lama', 8)
+                            ),
+                            'kb'        => array(
+                                'baru'  => array(
+                                    'suntik_1_bulan'    => $this->count_kb($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 1, 1, 8),
+                                    'suntik_3_bulan'    => $this->count_kb($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 1, 2, 8),
+                                    'pil'               => $this->count_kb($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 1, 3, 8),
+                                    'iud_bkkbn'         => $this->count_kb($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 1, 4, 8),
+                                    'iud_non_bkkbn'     => $this->count_kb($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 1, 5, 8),
+                                    'kondom'            => $this->count_kb($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 1, 6, 8)
+                                ),
+                                'lama'  => array(
+                                    'suntik_1_bulan'    => $this->count_kb($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 0, 1, 8),
+                                    'suntik_3_bulan'    => $this->count_kb($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 0, 2, 8),
+                                    'pil'               => $this->count_kb($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 0, 3, 8),
+                                    'iud_bkkbn'         => $this->count_kb($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 0, 4, 8),
+                                    'iud_non_bkkbn'     => $this->count_kb($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 0, 5, 8),
+                                    'kondom'            => $this->count_kb($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 0, 6, 8)
+                                )
+                            ),
+                            'imunisasi' => array(
+                                'hb0'               => $this->count_imunisasi_hb0($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 8),
+                                'bcg'               => $this->count_imunisasi_bcg($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 8),
+                                'pentabio_1'        => $this->count_imunisasi_pentabio1($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 8),
+                                'pentabio_2'        => $this->count_imunisasi_pentabio2($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 8),
+                                'pentabio_3'        => $this->count_imunisasi_pentabio3($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 8),
+                                'pentabio_ulang'    => $this->count_imunisasi_pentabio_ulang($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 8),
+                                'polio_1'           => $this->count_imunisasi_polio1($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 8),
+                                'polio_2'           => $this->count_imunisasi_polio2($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 8),
+                                'polio_3'           => $this->count_imunisasi_polio3($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 8),
+                                'polio_4'           => $this->count_imunisasi_polio4($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 8),
+                                'tt'                => $this->count_imunisasi_tt($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 8),
+                                'campak'            => $this->count_imunisasi_campak($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 8),
+                                'campak_ulang'      => $this->count_imunisasi_campak_ulang($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 8)
+                            ),
+                            'partus'    => $this->count_partus($r[0]['tahun_laporan'], $r[0]['bulan_laporan'], 8)
+                        )
+                    );
                     break;
                 case '2':
                     $q = "SELECT * FROM `jenis_penyakit` WHERE `deleted_at` IS NULL;";
@@ -792,7 +1074,7 @@ class Laporan_model extends CI_Model {
                         AND
                     a.`created_at` LIKE '". $thn ."-". $bln ."-%' 
                         AND 
-                    a.`baru` = '". $baru ."' 
+                    a.`pasang_baru` = '". $baru ."' 
                         AND 
                     a.`id_alat_kontrasepsi` = '". $alat ."' 
                         AND 
@@ -807,7 +1089,7 @@ class Laporan_model extends CI_Model {
         $q = "  SELECT 
                     a.* 
                 FROM 
-                    a.`detail_imunisasi` 
+                    `detail_imunisasi` a
                 LEFT JOIN
                     `antrians` b
                         ON
@@ -834,7 +1116,7 @@ class Laporan_model extends CI_Model {
         $q = "  SELECT 
                     a.* 
                 FROM 
-                    a.`detail_imunisasi` 
+                    `detail_imunisasi` a
                 LEFT JOIN
                     `antrians` b
                         ON
@@ -861,7 +1143,7 @@ class Laporan_model extends CI_Model {
         $q = "  SELECT 
                     a.* 
                 FROM 
-                    a.`detail_imunisasi` 
+                    `detail_imunisasi` a
                 LEFT JOIN
                     `antrians` b
                         ON
@@ -888,7 +1170,7 @@ class Laporan_model extends CI_Model {
         $q = "  SELECT 
                     a.* 
                 FROM 
-                    a.`detail_imunisasi` 
+                    `detail_imunisasi` a
                 LEFT JOIN
                     `antrians` b
                         ON
@@ -915,7 +1197,7 @@ class Laporan_model extends CI_Model {
         $q = "  SELECT 
                     a.* 
                 FROM 
-                    a.`detail_imunisasi` 
+                    `detail_imunisasi` a
                 LEFT JOIN
                     `antrians` b
                         ON
@@ -942,7 +1224,7 @@ class Laporan_model extends CI_Model {
         $q = "  SELECT 
                     a.* 
                 FROM 
-                    a.`detail_imunisasi` 
+                    `detail_imunisasi` a
                 LEFT JOIN
                     `antrians` b
                         ON
@@ -969,7 +1251,7 @@ class Laporan_model extends CI_Model {
         $q = "  SELECT 
                     a.* 
                 FROM 
-                    a.`detail_imunisasi` 
+                    `detail_imunisasi` a
                 LEFT JOIN
                     `antrians` b
                         ON
@@ -996,7 +1278,7 @@ class Laporan_model extends CI_Model {
         $q = "  SELECT 
                     a.* 
                 FROM 
-                    a.`detail_imunisasi` 
+                    `detail_imunisasi` a
                 LEFT JOIN
                     `antrians` b
                         ON
@@ -1023,7 +1305,7 @@ class Laporan_model extends CI_Model {
         $q = "  SELECT 
                     a.* 
                 FROM 
-                    a.`detail_imunisasi` 
+                    `detail_imunisasi` a
                 LEFT JOIN
                     `antrians` b
                         ON
@@ -1050,7 +1332,7 @@ class Laporan_model extends CI_Model {
         $q = "  SELECT 
                     a.* 
                 FROM 
-                    a.`detail_imunisasi` 
+                    `detail_imunisasi` a
                 LEFT JOIN
                     `antrians` b
                         ON
@@ -1077,7 +1359,7 @@ class Laporan_model extends CI_Model {
         $q = "  SELECT 
                     a.* 
                 FROM 
-                    a.`detail_imunisasi` 
+                    `detail_imunisasi` a
                 LEFT JOIN
                     `antrians` b
                         ON
@@ -1104,7 +1386,7 @@ class Laporan_model extends CI_Model {
         $q = "  SELECT 
                     a.* 
                 FROM 
-                    a.`detail_imunisasi` 
+                    `detail_imunisasi` a
                 LEFT JOIN
                     `antrians` b
                         ON
@@ -1131,7 +1413,7 @@ class Laporan_model extends CI_Model {
         $q = "  SELECT 
                     a.* 
                 FROM 
-                    a.`detail_imunisasi` 
+                    `detail_imunisasi` a
                 LEFT JOIN
                     `antrians` b
                         ON
@@ -1158,7 +1440,7 @@ class Laporan_model extends CI_Model {
         $q = "  SELECT 
                     a.* 
                 FROM 
-                    a.`detail_imunisasi` 
+                    `detail_imunisasi` a
                 LEFT JOIN
                     `antrians` b
                         ON
@@ -1185,7 +1467,7 @@ class Laporan_model extends CI_Model {
         $q = "  SELECT 
                     a.* 
                 FROM 
-                    a.`detail_persalinan` 
+                    `detail_persalinan` a
                 LEFT JOIN
                     `pasiens` b 
                         ON
