@@ -101,6 +101,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 	</div>
                 	<div class="col-6">
                 		<div class="pull-right">
+                      <button name="btn_back" class="btn btn-danger btn-sm"><i class="fa fa-arrow-left"></i> Kembali</button>
                 			<button name="btn_add" class="btn btn-primary btn-sm" style="display: none;"><i class="fa fa-plus"></i> Tambah Data</button>
                 		</div>
                 	</div>

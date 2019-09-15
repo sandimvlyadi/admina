@@ -132,4 +132,26 @@ class Asuransi_model extends CI_Model {
 		return $result;
 	}
 
+	function select($id = 0)
+    {
+        $result = array(
+            'result'    => false,
+            'msg'       => ''  
+        );
+
+        $q = "";
+        if ($id == 0) {
+            $q = "SELECT * FROM `asuransies` WHERE `deleted_at` IS NULL ORDER BY `nama_asuransi` ASC;";
+        } else{
+            $q = "SELECT * FROM `asuransies` WHERE `id` = '". $this->db->escape_str($id) ."' AND `deleted_at` IS NULL;";
+        }
+        $r = $this->db->query($q, false)->result_array();
+        if (count($r) > 0) {
+            $result['result'] = true;
+            $result['data'] = $r;
+        }
+
+        return $result;
+    }
+
 }

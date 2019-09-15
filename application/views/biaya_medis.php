@@ -112,7 +112,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                       <th>Nama Biaya Medis</th>
                       <th>Biaya Medis</th>
                       <th>Keterangan</th>
-                      <th>Aksi</th>
+                      <th width="100">Aksi</th>
                     </thead>
                     <tbody>
                     </tbody>

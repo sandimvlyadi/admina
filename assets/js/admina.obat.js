@@ -28,6 +28,7 @@ $(document).ready(function(){
                             'nama_obat'         : response.data[x].nama_obat,
                             'harga_pokok_obat'  : response.data[x].harga_pokok_obat,
                             'harga_jual_obat'   : response.data[x].harga_jual_obat,
+                            'stok'              : response.data[x].stok,
                             'stok_minimal'      : response.data[x].stok_minimal,
                             'nama_satuan'       : response.data[x].nama_satuan,
                             'nama_kategori'     : response.data[x].nama_kategori,
@@ -51,6 +52,7 @@ $(document).ready(function(){
             { 'data' : 'nama_obat' },
             { 'data' : 'harga_pokok_obat' },
             { 'data' : 'harga_jual_obat' },
+            { 'data' : 'stok' },
             { 'data' : 'stok_minimal' },
             { 'data' : 'nama_satuan' },
             { 'data' : 'nama_kategori' },
@@ -62,7 +64,7 @@ $(document).ready(function(){
 		'columnDefs': [
     		{
     			'orderable'	: false,
-    			'targets'	: [ 0, 8 ]
+    			'targets'	: [ 0, 9 ]
     		}
   		]
 	});

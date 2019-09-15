@@ -108,7 +108,7 @@ class Rekam_medis_model extends CI_Model {
 			$result['result'] = true;
 			$result['detail'] = $r[0];
 
-            $q = "SELECT c.`nama_obat`, b.`qty_jual`, d.`nama_satuan` FROM `penjualans` a LEFT JOIN `penjualan_details` b ON b.`id_penjualan` = a.`id` LEFT JOIN `obats` c ON b.`id_obat` = c.`id` LEFT JOIN `satuans` d ON c.`id_satuan` = d.`id` WHERE a.`id_antrian` = '". $this->db->escape_str($id) ."' ";
+            $q = "SELECT b.`nama_obat`, a.`qty` AS `qty_jual`, c.`nama_satuan` FROM `apotek_detail_obat` a LEFT JOIN `obats` b ON b.`id` = a.`id_obat` LEFT JOIN `satuans` c ON c.`id` = b.`id_satuan` WHERE a.`id_antrian` = '". $this->db->escape_str($id) ."' ";
             $r = $this->db->query($q, false)->result_array();
             $result['obat'] = $r;
 		} else{

@@ -5,7 +5,28 @@ class Obat_model extends CI_Model {
 
 	function _get($data = array())
     {
-    	$q = "SELECT a.*, b.`nama_satuan`, c.`nama_kategori` FROM `obats` a LEFT JOIN `satuans` b ON a.`id_satuan` = b.`id` LEFT JOIN `kategoris` c ON a.`id_kategori` = c.`id` ";
+    	$q =    "SELECT 
+                    a.*, 
+                    b.`nama_satuan`, 
+                    c.`nama_kategori`,
+                    (
+                        (
+                            SELECT IFNULL(SUM(`qty_beli`), 0) FROM `pembelian_details` WHERE `id_obat` = a.`id` AND `deleted_at` IS NULL
+                        ) -
+                        (
+                            SELECT IFNULL(SUM(`qty`), 0) FROM `apotek_detail_obat` WHERE `id_obat` = a.`id` AND `deleted_at` IS NULL
+                        )
+                    ) AS `stok`
+                FROM 
+                    `obats` a 
+                LEFT JOIN 
+                    `satuans` b 
+                        ON 
+                    a.`id_satuan` = b.`id` 
+                LEFT JOIN 
+                    `kategoris` c 
+                        ON 
+                    a.`id_kategori` = c.`id` ";
 
         if ($data['search']['value'] && !isset($data['all'])) {
         	$s = $this->db->escape_str($data['search']['value']);
@@ -13,6 +34,8 @@ class Obat_model extends CI_Model {
         } else{
         	$q .= "WHERE a.`deleted_at` IS NULL ";
         }
+
+        $q .= "GROUP BY a.`id` ";
 
         if (isset($data['order'])) {
         	$dir = $this->db->escape_str($data['order'][0]['dir']);
@@ -22,6 +45,8 @@ class Obat_model extends CI_Model {
                     $q .= "ORDER BY b.`". $col ."` ". $dir ." ";
                 } elseif ($col == 'nama_kategori') {
                     $q .= "ORDER BY c.`". $col ."` ". $dir ." ";
+                } elseif ($col == 'stok') {
+                    $q .= "ORDER BY `stok` ". $dir ." ";
                 } else{
                     $q .= "ORDER BY a.`". $col ."` ". $dir ." ";
                 }
@@ -163,6 +188,28 @@ class Obat_model extends CI_Model {
         );
 
         $q = "SELECT * FROM `kategoris` WHERE `deleted_at` IS NULL ORDER BY `nama_kategori` ASC;";
+        $r = $this->db->query($q, false)->result_array();
+        if (count($r) > 0) {
+            $result['result'] = true;
+            $result['data'] = $r;
+        }
+
+        return $result;
+    }
+
+    function select($id = 0)
+    {
+        $result = array(
+            'result'    => false,
+            'msg'       => ''  
+        );
+
+        $q = "";
+        if ($id == 0) {
+            $q = "SELECT * FROM `obats` WHERE `deleted_at` IS NULL ORDER BY `nama_obat` ASC;";
+        } else{
+            $q = "SELECT * FROM `obats` WHERE `id` = '". $this->db->escape_str($id) ."' AND `deleted_at` IS NULL;";
+        }
         $r = $this->db->query($q, false)->result_array();
         if (count($r) > 0) {
             $result['result'] = true;

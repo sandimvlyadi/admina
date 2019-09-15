@@ -100,9 +100,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 		<h4 class="card-title"> Tabel Apotek</h4>
                 	</div>
                 	<div class="col-6">
-                		<!-- <div class="pull-right">
-                			<button name="btn_add" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i> Tambah Data</button>
-                		</div> -->
+                		<div class="pull-right">
+                			<button name="btn_langsung" class="btn btn-primary btn-sm"><i class="fa fa-shopping-basket"></i> Penjualan Langsung</button>
+                		</div>
                 	</div>
                 </div>
               </div>
@@ -115,6 +115,22 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                       <th>Nama Pasien</th>
                       <th>Jenis Pelayanan</th>
                       <th>Status</th>
+                      <th width="230">Aksi</th>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                  </table>
+                </div>
+                <br>
+                <br>
+                <br>
+                <h3>Penjualan Langsung</h3>
+                <div class="table-responsive">
+                  <table id="tablePenjualan" class="table table-striped table-hover">
+                    <thead class="text-primary">
+                      <th>No.</th>
+                      <th>Waktu</th>
+                      <th>List Obat</th>
                       <th>Aksi</th>
                     </thead>
                     <tbody>
@@ -123,12 +139,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 </div>
               </div>
 
+            <form id="formData" style="display: none;">
               <div class="col-md-12 rincian-pembayaran">
                 <h4><u><strong>Rincian Pembayaran</strong></u></h4>
                 <h4>1. Biaya Administrasi</h4>
                 <div class="wrap">
                   <div class="row">
-                    <table class="table table-hover">
+                    <table class="table table-borderless">
                       <tbody>
                         <tr>
                           <td>
@@ -142,24 +159,21 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     </table>
                   </div>
                 </div>
-                <h4>2. Biaya Pelayanan</h4>
+                <h4>2. Biaya Jasa / Medis / Pelayanan</h4>
                 <div class="wrap">
                   <div class="row">
-                    <table class="table table-hover">
+                    <table class="table table-borderless tablePelayanan">
                       <tbody>
                         <tr>
                           <td>
                             <select name="biaya_pelayanan[]" class="form-control">
-                              <option value="Pelayanan 1">Pelayanan 1</option>
-                              <option value="Pelayanan 2">Pelayanan 2</option>
-                              <option value="Pelayanan 3">Pelayanan 3</option>
                             </select>
                           </td>
                           <td width="200">
-                            <input type="number" name="biaya_pelayanan_nominal[]" class="form-control" placeholder="Rp. ">
+                            <input type="number" name="biaya_pelayanan_nominal[]" class="form-control" placeholder="Rp. " required>
                           </td>
                           <td width="125px">
-                            <button class="btn btn-success btn-sm"><i class="fa fa-plus"></i> Tambah</button>
+                            <button type="button" class="btn btn-success btn-sm btn-block"><i class="fa fa-plus"></i> Tambah</button>
                           </td>
                         </tr>
                       </tbody>
@@ -169,28 +183,142 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <h4>3. Biaya Obat</h4>
                 <div class="wrap">
                   <div class="row">
-                    <table class="table table-hover">
+                    <table class="table table-borderless tableObat">
+                      <thead>
+                        <tr>
+                          <th>
+                            Nama Obat
+                          </th>
+                          <th width="100">
+                            Qty
+                          </th>
+                          <th width="200">
+                            Nominal
+                          </th>
+                          <th width="125px"></th>
+                        </tr>
+                      </thead>
                       <tbody>
                         <tr>
                           <td>
                             <select name="biaya_obat[]" class="form-control">
-                              <option value="Obat 1">Obat 1</option>
-                              <option value="Obat 2">Obat 2</option>
-                              <option value="Obat 3">Obat 3</option>
                             </select>
                           </td>
+                          <td width="100">
+                            <input type="number" name="qty_obat[]" class="form-control" value="1">
+                          </td>
                           <td width="200">
-                            <input type="number" name="biaya_obat_nominal[]" class="form-control" placeholder="Rp. ">
+                            <input type="number" name="biaya_obat_nominal[]" class="form-control" placeholder="Rp. " required>
                           </td>
                           <td width="125px">
-                            <button class="btn btn-success btn-sm"><i class="fa fa-plus"></i> Tambah</button>
+                            <button type="button" class="btn btn-success btn-sm btn-block"><i class="fa fa-plus"></i> Tambah</button>
                           </td>
                         </tr>
                       </tbody>
                     </table>
                   </div>
                 </div>
+                <h4>4. Diskon</h4>
+                <div class="wrap">
+                  <div class="row">
+                    <table class="table table-borderless">
+                      <tbody>
+                        <tr>
+                          <td>
+                            <select name="jenis_diskon" class="form-control">
+                              <option value="0" selected>- Tidak Ada -</option>
+                              <option value="1">BPJS Kesehatan</option>
+                              <option value="2">Kerabat/Warga</option>
+                            </select>
+                          </td>
+                          <td width="325">
+                            <input type="number" name="biaya_diskon" class="form-control" placeholder="Rp. " required>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+                <h4>5. Grand Total</h4>
+                <div class="wrap">
+                  <div class="row">
+                    <table class="table table-borderless">
+                      <tbody>
+                        <tr>
+                          <td>
+                            <div class="form-group">
+                              <label>Grand Total:</label>
+                              <input type="text" name="total" class="form-control" placeholder="Rp. " readonly>
+                            </div>
+                          </td>
+                          <td>
+                            <div class="form-group">
+                              <label>Bayar:</label>
+                              <input type="number" name="bayar" class="form-control" placeholder="Rp. " required>
+                            </div>
+                          </td>
+                          <td>
+                            <div class="form-group">
+                              <label>Kembali:</label>
+                              <input type="text" name="kembali" class="form-control" placeholder="Rp. " readonly>
+                            </div>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+                <div class="pull-right mb-5">
+                  <button name="btn_back" type="button" class="btn btn-danger btn-sm"><i class="fa fa-arrow-left"></i> Kembali</button>
+                  <button id="0" name="btn_save" type="button" class="btn btn-success btn-sm"><i class="fa fa-save"></i> Selesai</button>
+                </div>
               </div>
+            </form>
+
+            <template id="biayaPelayanan">
+              <tr>
+                <td>
+                  <select name="biaya_pelayanan[]" class="form-control">
+                  <option value="0">- Pilih Biaya Medis -</option>
+                    <?php
+                      for ($i=0; $i < count($jasa); $i++) { ?>
+                        <option value="<?php echo $jasa[$i]['id'] ;?>"><?php echo $jasa[$i]['nama_biaya_medis'] ;?></option>
+                      <?php }
+                    ?>
+                  </select>
+                </td>
+                <td width="200">
+                  <input type="number" name="biaya_pelayanan_nominal[]" class="form-control" placeholder="Rp. " required>
+                </td>
+                <td width="125px">
+                  <button type="button" class="btn btn-danger btn-sm btn-block"><i class="fa fa-trash"></i> Hapus</button>
+                </td>
+              </tr>
+            </template>
+
+            <template id="biayaObat">
+              <tr>
+                <td>
+                  <select name="biaya_obat[]" class="form-control">
+                    <option value="0">- Pilih Obat -</option>
+                    <?php
+                      for ($i=0; $i < count($obat); $i++) { ?>
+                        <option value="<?php echo $obat[$i]['id'] ;?>"><?php echo $obat[$i]['nama_obat'] ;?></option>
+                      <?php }
+                    ?>
+                  </select>
+                </td>
+                <td width="100">
+                  <input type="number" name="qty_obat[]" class="form-control" value="1">
+                </td>
+                <td width="200">
+                  <input type="number" name="biaya_obat_nominal[]" class="form-control" placeholder="Rp. " required>
+                </td>
+                <td width="125px">
+                  <button type="button" class="btn btn-danger btn-sm btn-block"><i class="fa fa-trash"></i> Hapus</button>
+                </td>
+              </tr>
+            </template>
 
             </div>
           </div>

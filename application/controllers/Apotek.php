@@ -35,8 +35,22 @@ class Apotek extends CI_Controller {
 
 	public function index()
 	{
-		$this->load->view('apotek');
-    }
+		$data = array(
+			'jasa' => $this->model->get_jasa(),
+			'obat' => $this->model->get_obat()
+		);
+
+		$this->load->view('apotek', $data);
+	}
+	
+	public function penjualan()
+	{
+		$data = array(
+			'obat' => $this->model->get_obat()
+		);
+
+		$this->load->view('apotek_penjualan', $data);
+	}
 
     public function datatable()
     {
@@ -47,6 +61,18 @@ class Apotek extends CI_Controller {
 
 		$param 		= $_GET;
 		$response 	= $this->model->datatable($param);
+    	echo json_encode($response, JSON_PRETTY_PRINT);
+	}
+	
+	public function datatable_penjualan()
+    {
+		$response 	= array(
+			'result'	=> false,
+			'msg'		=> ''
+		);
+
+		$param 		= $_GET;
+		$response 	= $this->model->datatable_penjualan($param);
     	echo json_encode($response, JSON_PRETTY_PRINT);
     }
 
@@ -62,6 +88,22 @@ class Apotek extends CI_Controller {
 			'postData' => $_POST
 		);
 		$response = $this->model->save($param);
+
+		echo json_encode($response, JSON_PRETTY_PRINT);
+	}
+	
+	public function save_penjualan()
+    {
+		$response 	= array(
+			'result'	=> false,
+			'msg'		=> ''
+		);
+
+		$param = array(
+			'userData' => $this->userData,
+			'postData' => $_POST
+		);
+		$response = $this->model->save_penjualan($param);
 
 		echo json_encode($response, JSON_PRETTY_PRINT);
     }
@@ -80,6 +122,33 @@ class Apotek extends CI_Controller {
 		$response = $this->model->delete($param);
 
 		echo json_encode($response, JSON_PRETTY_PRINT);
-    }
+	}
+	
+	public function cetak($id = 0)
+	{
+		$data = $this->model->cetak($id, false);
+		if (!$data['result']) {
+			redirect('apotek/');
+		}
+		$this->load->view('cetak_biaya', $data);
+	}
+
+	public function cetak_detail($id = 0)
+	{
+		$data = $this->model->cetak($id, true);
+		if (!$data['result']) {
+			redirect('apotek/');
+		}
+		$this->load->view('cetak_biaya', $data);
+	}
+
+	public function cetak_langsung($id = 0)
+	{
+		$data = $this->model->cetak_langsung($id);
+		if (!$data['result']) {
+			redirect('apotek/');
+		}
+		$this->load->view('cetak_biaya_langsung', $data);
+	}
     
 }

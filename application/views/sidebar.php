@@ -42,13 +42,13 @@
               <p>Obat</p>
             </a>
 					</li>
-					<!-- <li id="li-pembelian">
+					<li id="li-pembelian">
             <a href="<?php echo base_url('pembelian/'); ?>">
               <i class="fas fa-cart-arrow-down"></i>
               <p>Pembelian</p>
             </a>
 					</li>
-					<li id="li-pembayaran">
+					<!-- <li id="li-pembayaran">
             <a href="<?php echo base_url('pembayaran/'); ?>">
               <i class="fas fa-money-bill-wave"></i>
               <p>Pembayaran</p>

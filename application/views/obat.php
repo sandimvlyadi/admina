@@ -115,6 +115,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                       <th>Nama Obat</th>
                       <th>Harga Pokok</th>
                       <th>Harga Jual</th>
+                      <th>Stok</th>
                       <th>Stok Minimal</th>
                       <th>Satuan</th>
                       <th>Kategori</th>

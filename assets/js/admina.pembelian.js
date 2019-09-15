@@ -303,10 +303,10 @@ $('select[name="jenis_pembelian"]').change(function(){
     
     if (id == 'Tunai') {
         $('input[name="status_pembelian"]').val('Close');
-        $('input[name="tgl_bayar"]').val('');
-        $('input[name="tgl_bayar"]').prop('readonly', true);
+        // $('input[name="tgl_bayar"]').val('');
+        $('input[name="tgl_bayar"]').prop('readonly', false);
     } else if (id == 'Hutang') {
         $('input[name="status_pembelian"]').val('Open');
-        $('input[name="tgl_bayar"]').prop('readonly', false);
+        $('input[name="tgl_bayar"]').prop('readonly', true);
     }
 });

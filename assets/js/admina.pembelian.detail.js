@@ -343,3 +343,7 @@ $('select[name="id_obat"]').change(function(string){
 
     passObat = true;
 });
+
+$('button[name="btn_back"]').on('click', function(){
+    window.location.href = baseurl + 'pembelian/';
+});

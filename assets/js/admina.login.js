@@ -56,3 +56,9 @@ $('a[href="#login"]').on('click', function(){
         }
     });
 });
+
+$('input').on('keypress', function(e){
+    if (e.keyCode == '13') {
+      $('a[href="#login"]').trigger('click');
+    }
+  });

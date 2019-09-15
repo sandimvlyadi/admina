@@ -102,6 +102,17 @@ class Obat extends CI_Controller {
 
 		$response = $this->model->select_kategori();
     	echo json_encode($response, JSON_PRETTY_PRINT);
+	}
+	
+	public function select($id = 0)
+    {
+    	$response 	= array(
+			'result'	=> false,
+			'msg'		=> ''
+		);
+
+		$response = $this->model->select($id);
+    	echo json_encode($response, JSON_PRETTY_PRINT);
     }
     
 }

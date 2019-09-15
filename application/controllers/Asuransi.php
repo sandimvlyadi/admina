@@ -80,6 +80,17 @@ class Asuransi extends CI_Controller {
 		$response = $this->model->delete($param);
 
 		echo json_encode($response, JSON_PRETTY_PRINT);
+	}
+	
+	public function select()
+    {
+    	$response 	= array(
+			'result'	=> false,
+			'msg'		=> ''
+		);
+
+		$response = $this->model->select();
+    	echo json_encode($response, JSON_PRETTY_PRINT);
     }
     
 }

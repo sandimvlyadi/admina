@@ -132,4 +132,26 @@ class Biaya_medis_model extends CI_Model {
 		return $result;
 	}
 
+	function select($id = 0)
+	{
+		$result = array(
+            'result'    => false,
+            'msg'       => ''  
+        );
+
+        $q = "";
+        if ($id == 0) {
+            $q = "SELECT * FROM `biaya_medis` WHERE `deleted_at` IS NULL ORDER BY `nama_biaya_medis` ASC;";
+        } else{
+            $q = "SELECT * FROM `biaya_medis` WHERE `id` = '". $this->db->escape_str($id) ."' AND `deleted_at` IS NULL;";
+        }
+        $r = $this->db->query($q, false)->result_array();
+        if (count($r) > 0) {
+            $result['result'] = true;
+            $result['data'] = $r;
+        }
+
+        return $result;
+	}
+
 }
