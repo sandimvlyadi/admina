@@ -9,7 +9,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <link rel="icon" type="image/png" href="assets/img/favicon.png">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <title>
-    Admina | Login
+    Klinik Nur Khadijah | Login
   </title>
   <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
   <!--     Fonts and icons     -->
@@ -28,7 +28,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 <body class="login-page">
   <div class="page-header clear-filter" filter-color="orange">
-    <div class="page-header-image" style="background-image:url(assets/img/login.jpg)"></div>
+    <div class="page-header-image" style="background-image:url(assets/img/hospital.jpg)"></div>
     <div class="content">
       <div class="container">
         <div class="col-md-4 ml-auto mr-auto">
@@ -36,22 +36,22 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <form id="formLogin" class="form">
               <div class="card-header text-center">
                 <div class="logo-container">
-                  <img src="assets/img/now-logo.png" alt="">
+                  <img src="assets/img/favicon.png" alt="">
                 </div>
               </div>
               <div class="card-body">
                 <div class="input-group no-border input-lg">
                   <div class="input-group-prepend">
                     <span class="input-group-text">
-                      <i class="now-ui-icons ui-1_email-85"></i>
+                      <i class="fa fa-user"></i>
                     </span>
                   </div>
-                  <input name="email" type="email" class="form-control" placeholder="Email" required>
+                  <input name="email" type="text" class="form-control" placeholder="Email / Username" required>
                 </div>
                 <div class="input-group no-border input-lg">
                   <div class="input-group-prepend">
                     <span class="input-group-text">
-                      <i class="now-ui-icons ui-1_lock-circle-open"></i>
+                      <i class="fa fa-lock"></i>
                     </span>
                   </div>
                   <input name="password" type="password" class="form-control" placeholder="Password" required>
