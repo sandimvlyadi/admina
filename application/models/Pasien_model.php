@@ -317,11 +317,11 @@ class Pasien_model extends CI_Model {
         );
 
         $d = date('Ym');
-        $q = "SELECT COUNT(*) AS `total` FROM `pasiens`;";
+        $q = "SELECT * FROM `pasiens` ORDER BY `id` DESC LIMIT 1;";
         $r = $this->db->query($q, false)->result_array();
         if (count($r) > 0) {
             $result['result'] = true;
-            $total = $r[0]['total'] + 1;
+            $total = intval($r[0]['no_registrasi']) + 1;
             $result['value'] = str_pad($total, 6, '0', STR_PAD_LEFT);
         }
 
