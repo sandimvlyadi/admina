@@ -9,7 +9,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <link rel="icon" type="image/png" href="../assets/img/favicon.png">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <title>
-    Admina | Karyawan
+    Klinik Nur Khadijah | Karyawan
   </title>
   <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
   <!--     Fonts and icons     -->
@@ -39,7 +39,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           <i class="now-ui-icons media-2_sound-wave"></i>
         </a>
         <a href="<?php echo base_url(); ?>" class="simple-text logo-normal">
-          Admina
+          Klinik Nur Khadijah
         </a>
       </div>
       <?php $this->load->view('sidebar'); ?>
