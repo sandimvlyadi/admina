@@ -219,4 +219,46 @@ class Obat_model extends CI_Model {
         return $result;
     }
 
+    function cetak()
+    {
+        $q =    "SELECT 
+                    a.*, 
+                    b.`nama_satuan`, 
+                    c.`nama_kategori`,
+                    (
+                        (
+                            SELECT IFNULL(SUM(`qty_beli`), 0) FROM `pembelian_details` WHERE `id_obat` = a.`id` AND `deleted_at` IS NULL
+                        ) -
+                        (
+                            SELECT IFNULL(SUM(`qty`), 0) FROM `apotek_detail_obat` WHERE `id_obat` = a.`id` AND `deleted_at` IS NULL
+                        )
+                    ) AS `stok`
+                FROM 
+                    `obats` a 
+                LEFT JOIN 
+                    `satuans` b 
+                        ON 
+                    a.`id_satuan` = b.`id` 
+                LEFT JOIN 
+                    `kategoris` c 
+                        ON 
+                    a.`id_kategori` = c.`id`
+                WHERE
+                    a.`deleted_at` IS NULL
+                GROUP BY
+                    a.`id`
+                ORDER BY
+                    a.`kode_obat` ASC
+                ";
+        $r = $this->db->query($q, false)->result_array();
+
+        $result = array(
+            'result'    => true,
+            'msg'       => '',
+            'data'      => $r
+        );
+
+        return $result;
+    }
+
 }

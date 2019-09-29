@@ -42,6 +42,11 @@ class Apotek extends CI_Controller {
 
 		$this->load->view('apotek', $data);
 	}
+
+	public function laporan()
+	{
+		$this->load->view('apotek_laporan');
+	}
 	
 	public function penjualan()
 	{
@@ -149,6 +154,20 @@ class Apotek extends CI_Controller {
 			redirect('apotek/');
 		}
 		$this->load->view('cetak_biaya_langsung', $data);
+	}
+
+	public function cetak_laporan_harian()
+	{
+		$tanggal = $_GET['tanggal'];
+		$data = $this->model->cetak_laporan_harian($tanggal);
+		$this->load->view('apotek_cetak_laporan_harian', $data);
+	}
+
+	public function cetak_laporan_bulanan()
+	{
+		$bulan = $_GET['bulan'];
+		$data = $this->model->cetak_laporan_bulanan($bulan);
+		$this->load->view('apotek_cetak_laporan_bulanan', $data);
 	}
     
 }

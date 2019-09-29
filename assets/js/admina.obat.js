@@ -343,3 +343,7 @@ $('button[name="btn_save"]').click(function(){
         }
     });
 });
+
+$('button[name="btn_cetak"]').on('click', function(){
+    window.open(baseurl+'obat/cetak/');
+})

@@ -415,3 +415,7 @@ $('#tablePenjualan tbody').on('click', 'button[name="btn_cetak"]', function(){
 	var id = $(this).attr('id');
 	window.open(baseurl+'apotek/cetak_langsung/'+id);
 });
+
+$('button[name="btn_laporan"]').on('click', function(){
+	window.location.href = baseurl+'apotek/laporan/';
+});
