@@ -316,6 +316,7 @@ $('input[name="bayar"]').on('keyup', function(){
 
 $('button[name="btn_save"]').on('click', function(){
 	$(this).attr('disabled', 'disabled');
+	var id = $(this).attr('id');
 	var missing = false;
     $('#formData').find('input').each(function(){
         if($(this).prop('required')){
@@ -349,7 +350,7 @@ $('button[name="btn_save"]').on('click', function(){
         type: 'POST',
         url: baseurl + 'apotek/save/',
         data: {
-        	'id': $(this).attr('id'),
+        	'id': id,
         	'form': $('#formData').serialize()
         },
         dataType: 'json',
@@ -366,7 +367,8 @@ $('button[name="btn_save"]').on('click', function(){
                       from: 'top',
                       align: 'center'
                     }
-                });
+				});
+				window.open(baseurl+'apotek/cetak/'+id);
                 table.ajax.reload(null, false);
                 $('button[name="btn_save"]').attr('id', 0);
 				$('input[type="number"]').val('');

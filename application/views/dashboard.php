@@ -141,7 +141,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
               <div class="card-header">
                 <div class="row">
                 	<div class="col-6">
-                		<h4 class="card-title"> Pasien yang harus dilayani (hari ini): </h4>
+                		<h4 class="card-title"> Pasien yang harus dilayani: </h4>
                 	</div>
                 </div>
               </div>
@@ -171,7 +171,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
               <div class="card-header">
                 <div class="row">
                   <div class="col-6">
-                    <h4 class="card-title"> Pasien yang sedang dilayani (hari ini): </h4>
+                    <h4 class="card-title"> Pasien yang sedang dilayani: </h4>
                   </div>
                 </div>
               </div>
@@ -581,6 +581,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                       <div class="form-group">
                         <label>Rentang Umur</label>
                         <select name="id_rentang_umur" class="form-control"></select>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label>Tindakan: </label>
+                        <select name="id_macam_tindakan_imunisasi_pemeriksaan_umum" class="form-control"></select>
                       </div>
                     </div>
                     <div class="col-md-12">
@@ -1267,10 +1273,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <textarea name="keterangan" class="form-control"></textarea>
                       </div>
                     </div>
-                    <div class="col-md-6">
+                    <!-- <div class="col-md-6">
                       <div class="form-group">
                         <label>VCT</label>
                         <input type="text" name="vct" class="form-control" placeholder="VCT" required>
+                      </div>
+                    </div> -->
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label>Keterangan Hamil</label>
+                        <select name="baru_lama" class="form-control">
+                          <option value="BARU" selected>Baru</option>
+                          <option value="LAMA">Lama</option>
+                        </select>
                       </div>
                     </div>
                     <div class="col-md-12">

@@ -323,6 +323,7 @@ class apotek_model extends CI_Model {
             $q = "SELECT * FROM `apotek_detail` ORDER BY `id` DESC LIMIT 1;";
             $r = $this->db->query($q, false)->result_array();
             $id_penjualan = $r[0]['id'];
+            $result['id_penjualan'] = $id_penjualan;
 
             for ($i=0; $i < count($f['biaya_obat']); $i++) { 
                 $q =    "INSERT INTO 
