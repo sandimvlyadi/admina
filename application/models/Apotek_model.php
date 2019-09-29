@@ -254,29 +254,31 @@ class apotek_model extends CI_Model {
             }
 
             for ($i=0; $i < count($f['biaya_obat']); $i++) { 
-                $q =    "INSERT INTO 
-                            `apotek_detail_obat` 
-                            (
-                                `created_at`,
-                                `id_antrian`,
-                                `id_obat`,
-                                `qty`,
-                                `biaya`,
-                                `id_penjualan`
-                            ) 
-                        VALUES 
-                            (
-                                NOW(),
-                                '". $this->db->escape_str($id) ."',
-                                '". $this->db->escape_str($f['biaya_obat'][$i]) ."',
-                                '". $this->db->escape_str($f['qty_obat'][$i]) ."',
-                                '". $this->db->escape_str(intval($f['biaya_obat_nominal'][$i])) ."',
-                                0
-                            );
-                        ";
-                if (!$this->db->simple_query($q)) {
-                    $result['result'] = false;
-                    $result['msg'] = 'Gagal menyimpan data detail pembayaran (obat).';
+                if ($f['biaya_obat'][$i] != 0) {
+                    $q =    "INSERT INTO 
+                                `apotek_detail_obat` 
+                                (
+                                    `created_at`,
+                                    `id_antrian`,
+                                    `id_obat`,
+                                    `qty`,
+                                    `biaya`,
+                                    `id_penjualan`
+                                ) 
+                            VALUES 
+                                (
+                                    NOW(),
+                                    '". $this->db->escape_str($id) ."',
+                                    '". $this->db->escape_str($f['biaya_obat'][$i]) ."',
+                                    '". $this->db->escape_str($f['qty_obat'][$i]) ."',
+                                    '". $this->db->escape_str(intval($f['biaya_obat_nominal'][$i])) ."',
+                                    0
+                                );
+                            ";
+                    if (!$this->db->simple_query($q)) {
+                        $result['result'] = false;
+                        $result['msg'] = 'Gagal menyimpan data detail pembayaran (obat).';
+                    }
                 }
             }
         } else{
@@ -401,12 +403,13 @@ class apotek_model extends CI_Model {
         return $r;
     }
 
-    function cetak($id = 0, $detail = false)
+    function cetak($id = 0, $detail = false, $pemeriksaan = false)
     {
         $result = array(
-			'result'    => false,
-            'msg'		=> '',
-            'detail'    => $detail
+			'result'        => false,
+            'msg'		    => '',
+            'detail'        => $detail,
+            'pemeriksaan'   => $pemeriksaan
         );
 
         $q =    "SELECT 
@@ -438,7 +441,20 @@ class apotek_model extends CI_Model {
         if (count($r) > 0) {
             $result['result'] = true;
 
-            $q0 = "SELECT * FROM `apotek_detail_medis` WHERE `id_antrian` = '". $this->db->escape_str($id) ."' AND `deleted_at` IS NULL;";
+            $q0 =   "SELECT 
+                        a.*,
+                        b.`nama_biaya_medis`,
+                        b.`biaya_medis`
+                    FROM 
+                        `apotek_detail_medis` a
+                    LEFT JOIN
+                        `biaya_medis` b
+                            ON
+                        b.`id` = a.`id_tindakan_medis`
+                    WHERE 
+                        a.`id_antrian` = '". $this->db->escape_str($id) ."' 
+                            AND 
+                        a.`deleted_at` IS NULL;";
             $r0 = $this->db->query($q0, false)->result_array();
             $q1 =   "SELECT 
                         a.*,
@@ -489,6 +505,8 @@ class apotek_model extends CI_Model {
                 )
             );
 
+            $result['data']['medis'] = $r0;
+            $result['data']['totalMedis'] = $totalMedis;
             $result['data']['obat'] = $r1;
             $result['data']['totalObat'] = $totalObat;
         }

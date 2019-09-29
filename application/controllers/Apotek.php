@@ -131,7 +131,7 @@ class Apotek extends CI_Controller {
 	
 	public function cetak($id = 0)
 	{
-		$data = $this->model->cetak($id, false);
+		$data = $this->model->cetak($id, false, false);
 		if (!$data['result']) {
 			redirect('apotek/');
 		}
@@ -140,7 +140,16 @@ class Apotek extends CI_Controller {
 
 	public function cetak_detail($id = 0)
 	{
-		$data = $this->model->cetak($id, true);
+		$data = $this->model->cetak($id, true, false);
+		if (!$data['result']) {
+			redirect('apotek/');
+		}
+		$this->load->view('cetak_biaya', $data);
+	}
+
+	public function cetak_detail_pemeriksaan($id = 0)
+	{
+		$data = $this->model->cetak($id, false, true);
 		if (!$data['result']) {
 			redirect('apotek/');
 		}

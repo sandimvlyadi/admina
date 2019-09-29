@@ -26,7 +26,7 @@ $(document).ready(function(){
 						}
 						
 						if (response.data[x].status_antrian == 'Bayar') {
-                            var button = '<button id="'+ response.data[x].id +'" name="btn_cetak" class="btn btn-primary btn-sm" title="Cetak"><i class="fas fa-print"></i> Cetak</button> <button id="'+ response.data[x].id +'" name="btn_cetak_detail" class="btn btn-default btn-sm" title="Cetak Detail"><i class="fas fa-print"></i> Cetak Detail</button>';
+							var button = '<button id="'+ response.data[x].id +'" name="btn_cetak" class="btn btn-primary btn-sm" title="Cetak"><i class="fas fa-print"></i> Cetak</button> <div class="btn-group dropup"> <button class="btn btn-default btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Cetak Detail</button> <div class="dropdown-menu"><a class="dropdown-item" href="'+ baseurl +'apotek/cetak_detail_pemeriksaan/'+ response.data[x].id +'" target="_blank">Detail Pemeriksaan</a><a class="dropdown-item" href="'+ baseurl +'apotek/cetak_detail/'+ response.data[x].id +'" target="_blank">Detail Obat</a></div></div>';
                         }
 
 	            		row.push({
@@ -341,25 +341,25 @@ $('button[name="btn_save"]').on('click', function(){
         }
 	});
 	
-	$('#formData').find('select[name="biaya_obat[]"]').each(function(){
-        if($(this).val() == 0){
-            $.notify({
-                icon: 'now-ui-icons ui-1_bell-53',
-                message: 'Silakan pilih obat terlebih dahulu.'
-            }, {
-                type: 'warning',
-                delay: 1000,
-                timer: 500,
-                placement: {
-                    from: 'top',
-                    align: 'center'
-                }
-            });
-            $(this).focus();
-            missing = true;
-            return false;
-        }
-    });
+	// $('#formData').find('select[name="biaya_obat[]"]').each(function(){
+    //     if($(this).val() == 0){
+    //         $.notify({
+    //             icon: 'now-ui-icons ui-1_bell-53',
+    //             message: 'Silakan pilih obat terlebih dahulu.'
+    //         }, {
+    //             type: 'warning',
+    //             delay: 1000,
+    //             timer: 500,
+    //             placement: {
+    //                 from: 'top',
+    //                 align: 'center'
+    //             }
+    //         });
+    //         $(this).focus();
+    //         missing = true;
+    //         return false;
+    //     }
+    // });
 
     $(this).removeAttr('disabled');
     if(missing){
