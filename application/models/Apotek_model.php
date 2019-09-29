@@ -22,6 +22,8 @@ class apotek_model extends CI_Model {
                     $q .= "ORDER BY b.`". $col ."` ". $dir ." ";
                 } elseif ($col == 'nama_pelayanan') {
                     $q .= "ORDER BY c.`". $col ."` ". $dir ." ";
+                } elseif ($col == 'waktu') {
+                    $q .= "ORDER BY a.`tgl_antrian` ". $dir ." ";
                 } else{
                     $q .= "ORDER BY a.`". $col ."` ". $dir ." ";
                 }
@@ -56,6 +58,8 @@ class apotek_model extends CI_Model {
                     $q .= "ORDER BY a.`created_at` ". $dir ." ";
                 } elseif ($col == 'list_obat') {
                     $q .= "ORDER BY `list_obat` ". $dir ." ";
+                } elseif ($col == 'waktu') {
+                    $q .= "ORDER BY a.`created_at` ". $dir ." ";
                 } else{
                     $q .= "ORDER BY a.`". $col ."` ". $dir ." ";
                 }
