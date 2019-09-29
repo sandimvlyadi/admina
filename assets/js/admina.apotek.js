@@ -58,7 +58,7 @@ $(document).ready(function(){
         	{ 'data' : 'aksi' }
         ],
 
-        // 'order' 	: [[ 1, 'ASC' ]],
+        'order' 	: [[ 1, 'DESC' ]],
 
 		'columnDefs': [
     		{
@@ -109,7 +109,7 @@ $(document).ready(function(){
         	{ 'data' : 'aksi' }
         ],
 
-        // 'order' 	: [[ 1, 'ASC' ]],
+        'order' 	: [[ 1, 'DESC' ]],
 
 		'columnDefs': [
     		{
