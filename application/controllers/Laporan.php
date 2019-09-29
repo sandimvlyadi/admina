@@ -125,6 +125,9 @@ class Laporan extends CI_Controller {
     				break;
     			case '7':
     				$this->load->view('laporan_pemeriksaan_kehamilan_cetak', $response);
+					break;
+				case '8':
+    				$this->load->view('laporan_harian_cetak', $response);
     				break;
     			default:
     				# code...

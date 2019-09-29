@@ -74,6 +74,7 @@ $(document).ready(function(){
                             'tahun_laporan'     : response.data[x].tahun_laporan,
                             'bulan_laporan'     : bulanLaporan(response.data[x].bulan_laporan),
                             'catatan'           : response.data[x].catatan,
+                            'created_at'        : response.data[x].created_at,
 	            			'aksi'	            : button
 	            		});
 	            		i = i + 1;
@@ -94,6 +95,7 @@ $(document).ready(function(){
             { 'data' : 'tahun_laporan' },
             { 'data' : 'bulan_laporan' },
             { 'data' : 'catatan' },
+            { 'data' : 'created_at' },
         	{ 'data' : 'aksi' }
         ],
 
@@ -102,7 +104,7 @@ $(document).ready(function(){
 		'columnDefs': [
     		{
     			'orderable'	: false,
-    			'targets'	: [ 0, 3, 5 ]
+    			'targets'	: [ 0, 3, 6 ]
     		}
   		]
 	});

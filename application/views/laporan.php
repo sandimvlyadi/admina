@@ -115,6 +115,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                       <th>Tahun</th>
                       <th>Bulan</th>
                       <th>Catatan</th>
+                      <th>Waktu</th>
                       <th style="min-width: 100px;">Aksi</th>
                     </thead>
                     <tbody>
