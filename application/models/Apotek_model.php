@@ -225,25 +225,27 @@ class apotek_model extends CI_Model {
             }
 
             for ($i=0; $i < count($f['biaya_pelayanan']); $i++) { 
-                $q =    "INSERT INTO 
-                            `apotek_detail_medis` 
-                            (
-                                `created_at`,
-                                `id_antrian`,
-                                `id_tindakan_medis`,
-                                `biaya`
-                            ) 
-                        VALUES 
-                            (
-                                NOW(),
-                                '". $this->db->escape_str($id) ."',
-                                '". $this->db->escape_str($f['biaya_pelayanan'][$i]) ."',
-                                '". $this->db->escape_str(intval($f['biaya_pelayanan_nominal'][$i])) ."'
-                            );
-                        ";
-                if (!$this->db->simple_query($q)) {
-                    $result['result'] = false;
-                    $result['msg'] = 'Gagal menyimpan data detail pembayaran (tindakan).';
+                if ($f['biaya_pelayanan'][$i] != 0) {
+                    $q =    "INSERT INTO 
+                                `apotek_detail_medis` 
+                                (
+                                    `created_at`,
+                                    `id_antrian`,
+                                    `id_tindakan_medis`,
+                                    `biaya`
+                                ) 
+                            VALUES 
+                                (
+                                    NOW(),
+                                    '". $this->db->escape_str($id) ."',
+                                    '". $this->db->escape_str($f['biaya_pelayanan'][$i]) ."',
+                                    '". $this->db->escape_str(intval($f['biaya_pelayanan_nominal'][$i])) ."'
+                                );
+                            ";
+                    if (!$this->db->simple_query($q)) {
+                        $result['result'] = false;
+                        $result['msg'] = 'Gagal menyimpan data detail pembayaran (tindakan).';
+                    }
                 }
             }
 
