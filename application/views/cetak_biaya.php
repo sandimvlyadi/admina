@@ -217,7 +217,7 @@ function terbilang($bilangan)
 		<td colspan="2"></td>
 	</tr>
 </table>
-<table align="center" border="0" width="100%" <?php if($detail){ echo 'style="display:none;"'; } ?>>
+<table align="center" border="0" width="100%" <?php if($detail || $pemeriksaan){ echo 'style="display:none;"'; } ?>>
 	<tr height="25">
 		<td width="50%">1. Material Kesehatan dan Obat-obatan</td>
 		<td align="right">
@@ -240,7 +240,7 @@ function terbilang($bilangan)
 		<td colspan="2" style="border-top: 1px solid #000;"></td>
 	</tr>
 </table>
-<table align="center" border="0" width="100%" <?php if($detail){ echo 'style="display:none;"'; } ?>>
+<table align="center" border="0" width="100%" <?php if($detail || $pemeriksaan){ echo 'style="display:none;"'; } ?>>
 	<tr height="25">
 		<td width="50%"><b>Diskon</b></td>
 		<td align="right">
@@ -257,7 +257,7 @@ function terbilang($bilangan)
 		<td colspan="2" style="border-bottom: 1px solid #000;"></td>
 	</tr>
 </table>
-<table align="center" border="0" width="100%" <?php if($detail){ echo 'style="display:none;"'; } ?>>
+<table align="center" border="0" width="100%" <?php if($detail || $pemeriksaan){ echo 'style="display:none;"'; } ?>>
 	<tr height="25">
 		<td width="50%"><b>Bayar</b></td>
 		<td align="right">
@@ -271,7 +271,7 @@ function terbilang($bilangan)
 		</td>
 	</tr>
 </table>
-<table align="center" border="0" width="100%" <?php if($detail){ echo 'style="display:none;"'; } ?>>
+<table align="center" border="0" width="100%" <?php if($detail || $pemeriksaan){ echo 'style="display:none;"'; } ?>>
 	<tr height="100">
 		<td align="center">
 			<b><i>Terbilang: <?php echo ucwords(terbilang($data['bayar']['total'])) . ' Rupiah'; ?></i></b>
@@ -306,6 +306,29 @@ function terbilang($bilangan)
 		<tr>
 			<td colspan="4" align="center"><b>TOTAL</b></td>
 			<td><b>Rp. <?php echo number_format($data['totalObat'],0,',','.'); ?></b></td>
+		</tr>
+	</tbody>
+</table>
+
+<table border="1" width="100%" <?php if(!$pemeriksaan){ echo 'style="display:none;"'; } ?>>
+	<thead>
+		<th>No.</th>
+		<th>Nama Tindakan</th>
+		<th>Sub Total</th>
+	</thead>
+	<tbody>
+		<?php
+			for ($i=0; $i < count($data['medis']); $i++) { ?>
+				<tr>
+					<td align="center"><?php echo $i+1; ?></td>
+					<td><?php echo $data['medis'][$i]['nama_biaya_medis']; ?></td>
+					<td><?php echo 'Rp. ' . number_format($data['medis'][$i]['biaya'],0,',','.'); ?></td>
+				</tr>
+			<?php }
+		?>
+		<tr>
+			<td colspan="2" align="center"><b>TOTAL</b></td>
+			<td><b>Rp. <?php echo number_format($data['totalMedis'],0,',','.'); ?></b></td>
 		</tr>
 	</tbody>
 </table>
