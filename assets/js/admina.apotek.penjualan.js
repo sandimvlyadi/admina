@@ -180,6 +180,7 @@ $('button[name="btn_save"]').on('click', function(){
                 });
                 
                 setTimeout(function(){
+                    window.open(baseurl+'apotek/cetak_langsung/'+response.id_penjualan);
                     window.location.href = baseurl + 'apotek/';
                 }, 1000);
             } else{

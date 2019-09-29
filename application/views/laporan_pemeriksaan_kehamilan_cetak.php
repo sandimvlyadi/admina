@@ -244,7 +244,7 @@ function terbilang($bilangan)
 				    <th>Hb (g/dl)</th>
 				    <th>RESIKO</th>
 				    <th>KETERANGAN (10T, JUMLAH Fe)</th>
-				    <th>VCT</th>
+				    <th>BARU/LAMA</th>
 				  </tr>
 			  </thead>
 			  <tbody>
@@ -274,7 +274,7 @@ function terbilang($bilangan)
 				  		<td align="center"><?php if($detail[$i]['hb'] > 0) { echo $detail[$i]['hb']; }?></td>
 				  		<td><?php echo $detail[$i]['resiko'];?></td>
 				  		<td><?php echo $detail[$i]['keterangan'];?></td>
-				  		<td align="center"><?php echo $detail[$i]['vct'];?></td>
+				  		<td align="center"><?php echo $detail[$i]['baru_lama'];?></td>
 			  		</tr>
 			  		<?php $no++;
 			  	}

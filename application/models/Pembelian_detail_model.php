@@ -193,6 +193,13 @@ class Pembelian_detail_model extends CI_Model {
                 $q = "UPDATE `pembelians` SET `total_harga_beli` = '". $total ."' WHERE `id` = '". $this->db->escape_str($idPembelian) ."';";
                 $this->db->simple_query($q);
             }
+
+            // $q = "SELECT * FROM `obats` WHERE `id` = '". $this->db->escape_str($f['id_obat']) ."' AND `deleted_at` = IS NULL;";
+            // $r = $this->db->query($q, false)->result_array();
+            // if (count($r > 0)) {
+            //     $q = "UPDATE `obats` SET `stok` = '". intval($f['qty_beli']) + intval($r[0]['stok']) ."' WHERE `id` = '". $this->db->escape_str($f['id_obat']) ."';";
+            //     $this->db->simple_query($q);
+            // }
 		} else{
 			$result['msg'] = 'Terjadi kesalahan saat menyimpan data.';
 		}

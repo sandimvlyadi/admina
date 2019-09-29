@@ -20,6 +20,7 @@ var selectDesa = '';
 var selectDarah = '';
 var selectCatatan = '';
 var selectTindakanImunisasi = '';
+var selectTindakanImunisasiPemeriksaanUmum = '';
 
 $('#li-dashboard').addClass('active');
 
@@ -484,6 +485,25 @@ $(document).ready(function(){
         }
     });
     selectTindakanImunisasi = $('select[name="id_macam_tindakan_imunisasi"]').select2({
+        'theme': 'bootstrap4'
+    });
+
+    $.ajax({
+        type: 'GET',
+        url: baseurl + 'macam-tindakan-imunisasi/select/',
+        dataType: 'json',
+        success: function(response){
+            if(response.result){
+                $('select[name="id_macam_tindakan_imunisasi_pemeriksaan_umum"]').append('<option value="0">Tidak Ada</option>');
+                for(var x in response.data){
+                    $('select[name="id_macam_tindakan_imunisasi_pemeriksaan_umum"]').append('<option value="'+ response.data[x].id +'">'+response.data[x].nama_tindakan+'</option>');
+                }
+            } else{
+                $('select[name="id_macam_tindakan_imunisasi_pemeriksaan_umum"]').append('<option value="0">Tidak Ada</option>');
+            }
+        }
+    });
+    selectTindakanImunisasiPemeriksaanUmum = $('select[name="id_macam_tindakan_imunisasi_pemeriksaan_umum"]').select2({
         'theme': 'bootstrap4'
     });
 
