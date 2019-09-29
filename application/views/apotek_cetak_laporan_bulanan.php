@@ -226,7 +226,7 @@ Bulan: <?php echo blnChanger(substr($_GET['bulan'],5,2)); ?> <?php echo substr($
                 <td><?php echo $value['kode_obat']; ?></td>
                 <td><?php echo $value['nama_obat']; ?></td>
                 <td><?php echo $value['qty']; ?></td>
-                <td><?php echo "Rp. " . number_format(intval($value['harga_pokok_obat']), 2, ',', '.'); ?></td>
+                <td><?php echo "Rp. " . number_format(intval($value['harga_jual_obat']), 2, ',', '.'); ?></td>
                 <td><?php echo "Rp. " . number_format(intval($value['biaya']), 2, ',', '.'); ?></td>
             </tr>
         <?php 
