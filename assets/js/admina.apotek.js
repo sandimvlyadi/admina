@@ -339,6 +339,26 @@ $('button[name="btn_save"]').on('click', function(){
                 return false;
             }
         }
+	});
+	
+	$('#formData').find('select[name="biaya_obat[]"]').each(function(){
+        if($(this).val() == 0){
+            $.notify({
+                icon: 'now-ui-icons ui-1_bell-53',
+                message: 'Silakan pilih obat terlebih dahulu.'
+            }, {
+                type: 'warning',
+                delay: 1000,
+                timer: 500,
+                placement: {
+                    from: 'top',
+                    align: 'center'
+                }
+            });
+            $(this).focus();
+            missing = true;
+            return false;
+        }
     });
 
     $(this).removeAttr('disabled');
