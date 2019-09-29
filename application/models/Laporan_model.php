@@ -26,7 +26,7 @@ class Laporan_model extends CI_Model {
                     $q .= "ORDER BY a.`". $col ."` ". $dir ." ";
                 }
         	} else{
-        		$q .= "ORDER BY a.`id` ". $dir ." ";
+        		$q .= "ORDER BY a.`id` DESC ";
         	}
         } else{
         	$q .= "ORDER BY a.`id` DESC ";
@@ -143,6 +143,7 @@ class Laporan_model extends CI_Model {
 			$q =    "INSERT INTO 
                         `laporan` 
                         (
+                            `created_at`,
                             `id_jenis_laporan`,
                             `tahun_laporan`,
                             `bulan_laporan`,
@@ -150,6 +151,7 @@ class Laporan_model extends CI_Model {
                         ) 
                     VALUES 
                         (
+                            NOW(),
                             '". $this->db->escape_str($f['id_jenis_laporan']) ."',
                             '". $this->db->escape_str($f['tahun_laporan']) ."',
                             '". $this->db->escape_str($f['bulan_laporan']) ."',
@@ -160,6 +162,7 @@ class Laporan_model extends CI_Model {
             $q =    "UPDATE 
                         `laporan` 
                     SET 
+                        `modified_at` = NOW(),
                         `id_jenis_laporan` = '". $this->db->escape_str($f['id_jenis_laporan']) ."', 
                         `tahun_laporan` = '". $this->db->escape_str($f['tahun_laporan']) ."', 
                         `bulan_laporan` = '". $this->db->escape_str($f['bulan_laporan']) ."', 
@@ -633,6 +636,8 @@ class Laporan_model extends CI_Model {
 
             $idJenisLaporan = $r[0]['id_jenis_laporan'];
             $periode = $r[0]['tahun_laporan'] . '-' . $r[0]['bulan_laporan'];
+            $periode_tahun = $r[0]['tahun_laporan'];
+            $periode_bulan = $r[0]['bulan_laporan'];
             $q = '';
             switch ($idJenisLaporan) {
                 case '1':
@@ -1020,6 +1025,65 @@ class Laporan_model extends CI_Model {
                                     AND 
                                 a.`deleted_at` IS NULL;";
                     $r = $this->db->query($q)->result_array();
+                    break;
+                case '8':
+                    $hamil = array();
+                    for ($i=0; $i < 31; $i++) { 
+                        $jml = $this->count_harian_hamil($periode.'-'.str_pad($i+1, 2, '0', STR_PAD_LEFT));
+                        array_push($hamil, $jml);
+                    }
+
+                    $hamil_baru = array();
+                    for ($i=0; $i < 31; $i++) { 
+                        $jml = $this->count_harian_hamil_baru($periode.'-'.str_pad($i+1, 2, '0', STR_PAD_LEFT));
+                        array_push($hamil_baru, $jml);
+                    }
+
+                    $kb = array();
+                    for ($i=0; $i < 31; $i++) { 
+                        $jml = $this->count_harian_kb($periode.'-'.str_pad($i+1, 2, '0', STR_PAD_LEFT));
+                        array_push($kb, $jml);
+                    }
+
+                    $iud = array();
+                    for ($i=0; $i < 31; $i++) { 
+                        $jml = $this->count_harian_iud($periode.'-'.str_pad($i+1, 2, '0', STR_PAD_LEFT));
+                        array_push($iud, $jml);
+                    }
+
+                    $sakit = array();
+                    for ($i=0; $i < 31; $i++) { 
+                        $jml = $this->count_harian_sakit($periode.'-'.str_pad($i+1, 2, '0', STR_PAD_LEFT));
+                        array_push($sakit, $jml);
+                    }
+
+                    $imunisasi = array();
+                    for ($i=0; $i < 31; $i++) { 
+                        $jml = $this->count_harian_imunisasi($periode.'-'.str_pad($i+1, 2, '0', STR_PAD_LEFT));
+                        array_push($imunisasi, $jml);
+                    }
+
+                    $usg = array();
+                    for ($i=0; $i < 31; $i++) { 
+                        array_push($usg, 0);
+                    }
+
+                    $partus = array();
+                    for ($i=0; $i < 31; $i++) { 
+                        $jml = $this->count_harian_partus($periode.'-'.str_pad($i+1, 2, '0', STR_PAD_LEFT));
+                        array_push($partus, $jml);
+                    }
+
+                    $r = array(
+                        'hamil' => $hamil,
+                        'hamil_baru' => $hamil_baru,
+                        'kb' => $kb,
+                        'iud' => $iud,
+                        'sakit' => $sakit,
+                        'imunisasi' => $imunisasi,
+                        'usg' => $usg,
+                        'partus' => $partus
+                    );
                     break;
                 default:
                     # code...
@@ -1480,6 +1544,55 @@ class Laporan_model extends CI_Model {
                     a.`deleted_at` IS NULL;";
         $r = $this->db->query($q, false)->result_array();
 
+        return count($r);
+    }
+
+    function count_harian_hamil($periode = '0000-00-00')
+    {
+        $q = "SELECT * FROM `detail_pemeriksaan_kehamilan` WHERE `created_at` LIKE '". $periode ."%' AND `deleted_at` IS NULL;";
+        $r = $this->db->query($q, false)->result_array();
+        return count($r);
+    }
+
+    function count_harian_hamil_baru($periode = '0000-00-00')
+    {
+        $q = "SELECT * FROM `detail_pemeriksaan_kehamilan` WHERE `baru_lama` = 'BARU' AND `created_at` LIKE '". $periode ."%' AND `deleted_at` IS NULL;";
+        $r = $this->db->query($q, false)->result_array();
+        return count($r);
+    }
+
+    function count_harian_kb($periode = '0000-00-00')
+    {
+        $q = "SELECT * FROM `detail_pemeriksaan_kb` WHERE `id_alat_kontrasepsi` IN ('1','2','3') AND `created_at` LIKE '". $periode ."%' AND `deleted_at` IS NULL;";
+        $r = $this->db->query($q, false)->result_array();
+        return count($r);
+    }
+
+    function count_harian_iud($periode = '0000-00-00')
+    {
+        $q = "SELECT * FROM `detail_pemeriksaan_kb` WHERE `id_alat_kontrasepsi` IN ('4','5') AND `created_at` LIKE '". $periode ."%' AND `deleted_at` IS NULL;";
+        $r = $this->db->query($q, false)->result_array();
+        return count($r);
+    }
+
+    function count_harian_sakit($periode = '0000-00-00')
+    {
+        $q = "SELECT * FROM `detail_pemeriksaan_umum` WHERE `created_at` LIKE '". $periode ."%' AND `deleted_at` IS NULL;";
+        $r = $this->db->query($q, false)->result_array();
+        return count($r);
+    }
+
+    function count_harian_imunisasi($periode = '0000-00-00')
+    {
+        $q = "SELECT * FROM `detail_imunisasi` WHERE `created_at` LIKE '". $periode ."%' AND `deleted_at` IS NULL;";
+        $r = $this->db->query($q, false)->result_array();
+        return count($r);
+    }
+
+    function count_harian_partus($periode = '0000-00-00')
+    {
+        $q = "SELECT * FROM `detail_persalinan` WHERE `created_at` LIKE '". $periode ."%' AND `deleted_at` IS NULL;";
+        $r = $this->db->query($q, false)->result_array();
         return count($r);
     }
 

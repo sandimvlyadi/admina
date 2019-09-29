@@ -982,7 +982,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title" id="persalinanLabel">Imunisasi</h5>
+                <h5 class="modal-title" id="persalinanLabel">Persalinan / Partus</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
@@ -1112,7 +1112,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title" id="pemeriksaanKehamilanLabel">Imunisasi</h5>
+                <h5 class="modal-title" id="pemeriksaanKehamilanLabel">Pemeriksaan Kehamilan</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
@@ -1309,7 +1309,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title" id="pemeriksaanKBLabel">Imunisasi</h5>
+                <h5 class="modal-title" id="pemeriksaanKBLabel">Pemeriksaan KB</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
