@@ -556,7 +556,8 @@ class apotek_model extends CI_Model {
                     SUM(a.`biaya`) AS `biaya`,
                     b.`kode_obat`,
                     b.`nama_obat`,
-                    b.`harga_pokok_obat`
+                    b.`harga_pokok_obat`,
+                    b.`harga_jual_obat`
                 FROM 
                     `apotek_detail_obat` a 
                 LEFT JOIN
@@ -595,7 +596,8 @@ class apotek_model extends CI_Model {
                     SUM(a.`biaya`) AS `biaya`,
                     b.`kode_obat`,
                     b.`nama_obat`,
-                    b.`harga_pokok_obat`
+                    b.`harga_pokok_obat`,
+                    b.`harga_jual_obat`
                 FROM 
                     `apotek_detail_obat` a 
                 LEFT JOIN
