@@ -106,7 +106,7 @@
 									</a>
 								</li>
 								<li id="li-surat-rujukan">
-									<a href="">
+                  <a href="<?php echo base_url('surat-rujukan/'); ?>">
 										<i class="now-ui-icons arrows-1_minimal-right"></i>
 										<p>Surat Rujukan</p>
 									</a>
