@@ -542,4 +542,82 @@ class apotek_model extends CI_Model {
         return $result;
     }
 
+    function cetak_laporan_harian($tanggal = '0000-00-00')
+    {
+        $result = array(
+			'result'    => false,
+            'msg'		=> '',
+            'data'      => array()
+        );
+
+        $q =    "SELECT 
+                    a.`id_obat`,
+                    SUM(a.`qty`) AS `qty`,
+                    SUM(a.`biaya`) AS `biaya`,
+                    b.`kode_obat`,
+                    b.`nama_obat`,
+                    b.`harga_pokok_obat`
+                FROM 
+                    `apotek_detail_obat` a 
+                LEFT JOIN
+                    `obats` b
+                        ON
+                    a.`id_obat` = b.`id`
+                WHERE 
+                    a.`created_at` like '". $tanggal ."%' 
+                        AND 
+                    a.`deleted_at` IS NULL
+                GROUP BY
+                    a.`id_obat`
+                ORDER BY
+                    b.`nama_obat` ASC
+                ;";
+        $r = $this->db->query($q, false)->result_array();
+        if (count($r) > 0) {
+            $result['result'] = true;
+            $result['data'] = $r;
+        }
+
+        return $result;
+    }
+
+    function cetak_laporan_bulanan($bulan = '0000-00')
+    {
+        $result = array(
+			'result'    => false,
+            'msg'		=> '',
+            'data'      => array()
+        );
+
+        $q =    "SELECT 
+                    a.`id_obat`,
+                    SUM(a.`qty`) AS `qty`,
+                    SUM(a.`biaya`) AS `biaya`,
+                    b.`kode_obat`,
+                    b.`nama_obat`,
+                    b.`harga_pokok_obat`
+                FROM 
+                    `apotek_detail_obat` a 
+                LEFT JOIN
+                    `obats` b
+                        ON
+                    a.`id_obat` = b.`id`
+                WHERE 
+                    a.`created_at` like '". $bulan ."%' 
+                        AND 
+                    a.`deleted_at` IS NULL
+                GROUP BY
+                    a.`id_obat`
+                ORDER BY
+                    b.`nama_obat` ASC
+                ;";
+        $r = $this->db->query($q, false)->result_array();
+        if (count($r) > 0) {
+            $result['result'] = true;
+            $result['data'] = $r;
+        }
+
+        return $result;
+    }
+
 }

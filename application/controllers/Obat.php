@@ -36,6 +36,17 @@ class Obat extends CI_Controller {
 	public function index()
 	{
 		$this->load->view('obat');
+	}
+	
+	public function cetak()
+	{
+		$obat = $this->model->cetak();
+		
+		$data = array(
+			'obat' => $obat['data']
+		);
+
+		$this->load->view('cetak_obat', $data);
     }
 
     public function datatable()
