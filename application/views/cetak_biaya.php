@@ -186,30 +186,32 @@ function terbilang($bilangan)
 						<img src="<?php echo base_url('assets/img/Logo.jpg'); ?>" alt="" style="width: 100%; height: 10%;">
 					</td>
 					<td width="75%" align="left">
-						<p style="font-size: 0.8em;">NPWP: 31.298.383.6-421.000<br>
-						Jalan Cihanjuang No. 293 Tutugan, Cihanjuang Rahayu,<br>
-						Parongpong, Kab. Bandung Barat, Bandung 40559, Indonesia<br>
-						Telp: +62 22 61139884 | Faks: +62 22 6640597</p>
+						<p style="font-size: 0.8em;">Jalan Cihanjuang No. 293 <br>
+						Tutugan, Cihanjuang Rahayu,<br>
+						Parongpong, Kab. Bandung Barat,<br>
+						Bandung 40559<br>
+						Telp: +62 22 61139884 | Faks: <br>
+						+62 22 6640597</p>
 					</td>
 				</tr>
 			</table>
 		</td>
 	</tr>
 	<tr align="center" height="50">
-		<td colspan="2"><b>BUKTI PEMBAYARAN</b></td>
+		<td colspan="2"><b><small>BUKTI PEMBAYARAN</small></b></td>
 	</tr>
-	<tr height="25">
+	<tr>
 		<td colspan="2" style="border-top: 3px solid #000;"></td>
 	</tr>
-	<tr height="25">
+	<tr>
 		<td>Nama</td>
 		<td>: <?php echo $data['pasien']['nama']; ?></td>
 	</tr>
-	<tr height="25">
+	<tr>
 		<td>Usia</td>
 		<td>: <?php echo $data['pasien']['usia']; ?> Tahun</td>
 	</tr>
-	<tr height="25">
+	<tr>
 		<td>Alamat</td>
 		<td>: <?php echo $data['pasien']['alamat']; ?></td>
 	</tr>
@@ -217,21 +219,26 @@ function terbilang($bilangan)
 		<td colspan="2"></td>
 	</tr>
 </table>
-<table align="center" border="0" width="100%" <?php if($detail || $pemeriksaan){ echo 'style="display:none;"'; } ?>>
+<table align="center" border="0" width="100%" <?php if($detail || $pemeriksaan){ echo 'style="display:none;"'; } ?> style="font-size:smaller;">
 	<tr height="25">
 		<td width="50%">1. Material Kesehatan dan Obat-obatan</td>
 		<td align="right">
 			<?php echo 'Rp. ' . number_format($data['biaya']['obat'],0,',','.'); ?>
 		</td>
 	</tr>
+  <?php
+    $medis = $data['medis'];
+    for ($i=0; $i < count($medis); $i++) { ?>
+      <tr height="25">
+        <td width="50%"><?php echo $i+2 . '. ' . $medis[$i]['nama_biaya_medis']; ?></td>
+        <td align="right">
+          <?php echo 'Rp. ' . number_format($medis[$i]['biaya_medis'],0,',','.'); ?>
+        </td>
+      </tr>
+    <?php }
+  ?>
 	<tr height="25">
-		<td width="50%">2. Jasa Pemeriksaan Sakit</td>
-		<td align="right">
-			<?php echo 'Rp. ' . number_format($data['biaya']['medis'],0,',','.'); ?>
-		</td>
-	</tr>
-	<tr height="25">
-		<td width="50%">3. Biaya Administrasi</td>
+		<td width="50%"><?php echo $i+2; ?>. Biaya Administrasi</td>
 		<td align="right">
 			<?php echo 'Rp. ' . number_format($data['biaya']['admin'],0,',','.'); ?>
 		</td>
